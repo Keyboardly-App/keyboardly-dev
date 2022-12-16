@@ -7,6 +7,17 @@
     android:background="@android:color/transparent">
 
     <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
+        android:id="@+id/keyboard_header"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+    </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
+    <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
         android:id="@+id/keyboard_qwerty_one"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -83,15 +94,6 @@
             android:layout_weight="1"
             android:text="P" />
 
-        <com.rowland.kokokeyboard.keys.RectangularKeyView
-            android:id="@+id/key_backspace"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:text="⌫"
-            app:is_special_key="true"
-            app:special_key_code="backspace"
-            app:screen_width_percent="0.3" />
 
     </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
 
@@ -237,6 +239,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="M" />
+
+
+        <com.rowland.kokokeyboard.keys.RectangularKeyView
+            android:id="@+id/key_backspace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⌫"
+            app:is_special_key="true"
+            app:special_key_code="backspace"
+            app:screen_width_percent="0.3" />
 
         <Space
             android:layout_width="0dp"

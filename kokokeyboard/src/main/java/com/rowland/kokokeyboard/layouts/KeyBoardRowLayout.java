@@ -20,7 +20,8 @@ public class KeyBoardRowLayout extends LinearLayout {
     }
 
     private void init() {
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         setLayoutParams(layoutParams);
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER);

@@ -124,14 +124,11 @@ public class KokoKeyboardView extends ExpandableLayout {
         View view;
 
         switch (type) {
-            case INPUT_TYPE_QWERTY_NUM:
-                view = LayoutInflater.from(getContext()).inflate(R.layout.qwerty_keypad_with_num, null);
-                keypad.addView(view);
-                return keypad;
             case INPUT_TYPE_QWERTY:
                 view = LayoutInflater.from(getContext()).inflate(R.layout.qwerty_keypad, null);
                 keypad.addView(view);
                 return keypad;
+            case INPUT_TYPE_QWERTY_NUM:
             default:
                 view = LayoutInflater.from(getContext()).inflate(R.layout.qwerty_keypad_with_num, null);
                 keypad.addView(view);

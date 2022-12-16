@@ -18,7 +18,6 @@
             <option value="$PROJECT_DIR$/libraries/actionview" />
             <option value="$PROJECT_DIR$/libraries/local" />
             <option value="$PROJECT_DIR$/libraries/style" />
-            <option value="$PROJECT_DIR$/samplekeyboard" />
           </set>
         </option>
       </GradleProjectSettings>
