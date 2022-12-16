@@ -1,0 +1,630 @@
+package app.keyboardly.style.helper
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.ContextWrapper
+import android.graphics.Bitmap
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
+import com.google.android.material.textfield.TextInputLayout
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.LocalTime
+import org.threeten.bp.YearMonth
+import org.threeten.bp.format.DateTimeFormatter
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
+import java.math.BigInteger
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
+import android.text.InputFilter
+import android.text.SpannableStringBuilder
+
+import android.text.Spanned
+
+import android.text.method.DigitsKeyListener
+
+fun toIDR(number: BigInteger): String =
+    "Rp" + NumberFormat.getNumberInstance(Locale.US).format(number).replace(",", ".")
+
+fun toIDR(number: Int): String =
+    "Rp" + NumberFormat.getNumberInstance(Locale.US).format(number).replace(",", ".")
+
+fun toIDR(number: Double): String =
+    "Rp" + NumberFormat.getNumberInstance(Locale.US).format(number.toInt()).replace(",", ".")
+
+fun toIDR(number: Long): String =
+    "Rp" + NumberFormat.getNumberInstance(Locale.US).format(number).replace(",", ".")
+
+fun toIDR(number: String): String =
+    "Rp" + NumberFormat.getNumberInstance(Locale.US).format(number.toInt()).replace(",", ".")
+
+fun toCurrency(number: Double?): String =
+    String.format("%,d", number?.toInt()).replace(',', '.')
+
+fun toCurrency(number: Int?): String =
+    String.format("%,d", number).replace(',', '.')
+
+fun toCurrency(number: BigInteger?): String =
+    String.format("%,d", number).replace(',', '.')
+
+fun toReadableDecimal(value: Double): String =
+    DecimalFormat("0.#").format(value)
+
+fun toLocalDate(dateString: String) =
+    LocalDate.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+fun toLocalDateTime(dateString: String) =
+    LocalDate.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+
+fun toConsumableDate(date: LocalDate) =
+    date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+fun toReadableDate(date: LocalDate) =
+    date.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))
+
+fun toConsumableTime(time: LocalTime) =
+    time.format(DateTimeFormatter.ofPattern("HH:mm"))
+
+fun toReadableTime(time: LocalTime) =
+    time.format(DateTimeFormatter.ofPattern("HH:mm"))
+
+fun toConsumableDateTime(date: LocalDate, time: LocalTime) =
+    LocalDateTime.of(date, time).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+
+fun toReadableDateTime(date: LocalDate, time: LocalTime) =
+    LocalDateTime.of(date, time).format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm"))
+
+fun toConsumableDateTime(dateTime: LocalDateTime) =
+    dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+
+fun toReadableDateTime(dateTime: LocalDateTime) =
+    dateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm"))
+
+@SuppressLint("SimpleDateFormat")
+fun toReadableDateTime(date: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    return try {
+        val dates = formatter.parse(date) as Date
+        val locale = getLocale()
+        val newFormat = SimpleDateFormat("d MMMM yyyy HH:mm", locale)
+        newFormat.format(dates)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+        date
+    }
+}
+/*
+@SuppressLint("SimpleDateFormat")
+fun Context.toReadableDateTimeElegant(date: String): String {
+    return if (date.startsWith(getCurrentDate())) {
+        val time = date.split(" ")[1]
+        this.getString(R.string.today) + "\n- ${time.subSequence(0,5)} WIB"
+    } else {
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val dates = formatter.parse(date) as Date
+        val locale = getLocale()
+        val newFormat = SimpleDateFormat("EEEE, dd MMM \n- HH:mm", locale)
+        newFormat.format(dates) + " WIB"
+    }
+}
+
+@SuppressLint("SimpleDateFormat")
+fun Context.toReadableDateTimeElegantInline(date: String): String {
+    return if (date.startsWith(getCurrentDate())) {
+        val time = date.split(" ")[1]
+        this.getString(R.string.today) + " ${time.subSequence(0,5)} WIB"
+    } else {
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val dates = formatter.parse(date) as Date
+        val locale = getLocale()
+        val newFormat = SimpleDateFormat("EEEE dd MMM, HH:mm", locale)
+        newFormat.format(dates) + " WIB"
+    }
+}*/
+
+@SuppressLint("SimpleDateFormat")
+fun toReadableDate(date: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd")
+    val dates = formatter.parse(date) as Date
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("d MMMM yyyy", locale)
+    return newFormat.format(dates)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun toReadableDay(date: String): String {
+    val formatter = SimpleDateFormat("yyyyMMddHHmm")
+    val dates = formatter.parse(date) as Date
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("EEEE", locale)
+    return newFormat.format(dates)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun toReadableDayFromStrip(date: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    val dates = formatter.parse(date) as Date
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("EEEE", locale)
+    return newFormat.format(dates)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun toReadableDayMonth(date: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd")
+    val dates = formatter.parse(date) as Date
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("dd MMMM", locale)
+    return newFormat.format(dates)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getDay(date: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd")
+    val dates = formatter.parse(date) as Date
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("dd", locale)
+    return newFormat.format(dates)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun rangeToReadableDateOnly(dateStart: String, dateEnd: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd")
+    val dates = formatter.parse(dateStart) as Date
+    val datesEnd = formatter.parse(dateEnd) as Date
+
+    val locale = getLocale()
+    val formatDateReadable = SimpleDateFormat("dd MMMM", locale)
+    val formatDateMonthOnly = SimpleDateFormat("MMMM", locale)
+
+    val monthStart = formatDateMonthOnly.format(dates)
+    val monthEnd = formatDateMonthOnly.format(datesEnd)
+
+    val start = formatDateReadable.format(dates)
+    val end = formatDateReadable.format(datesEnd)
+
+    return if (monthEnd == monthStart) {
+        "${start.substring(0, 2)}  - $end"
+    } else {
+        "$start - $end"
+    }
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentTime(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("dd MMMM yyyy HH:mm", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentTimeFull(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentDate(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("yyyy-MM-dd", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentDateSsFormat(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("yyyyMMdd-HH", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentDateSsFormatAlternatif(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("yyyy-MM-dd-HH", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentDateTime(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentDateTimeForNote(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentMonth(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("MM", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentHour(): String {
+    val current = Calendar.getInstance()
+    val timeToCheck = GregorianCalendar()
+    timeToCheck.time = current.time
+
+    return when (timeToCheck[GregorianCalendar.HOUR_OF_DAY]) {
+        in 0..2 -> {
+            "00"
+        }
+        in 3..5 -> {
+            "03"
+        }
+        in 6..8 -> {
+            "06"
+        }
+        in 9..11 -> {
+            "09"
+        }
+        in 12..14 -> {
+            "12"
+        }
+        in 15..17 -> {
+            "15"
+        }
+        in 18..20 -> {
+            "18"
+        }
+        else -> {
+            "21"
+        }
+    }
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentHourMinuteForWeather(): String {
+    val current = Calendar.getInstance()
+    val timeToCheck = GregorianCalendar()
+    timeToCheck.time = current.time
+
+    return when (timeToCheck[GregorianCalendar.HOUR_OF_DAY]) {
+        in 0..2 -> {
+            "00:00:00"
+        }
+        in 3..5 -> {
+            "03:00:00"
+        }
+        in 6..8 -> {
+            "06:00:00"
+        }
+        in 9..11 -> {
+            "09:00:00"
+        }
+        in 12..14 -> {
+            "12:00:00"
+        }
+        in 15..17 -> {
+            "15:00:00"
+        }
+        in 18..20 -> {
+            "18:00:00"
+        }
+        else -> {
+            "21:00:00"
+        }
+    }
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getCurrentMonthYear(): String {
+    val locale = getLocale()
+    val newFormat = SimpleDateFormat("yyyy-MM", locale)
+    return newFormat.format(Calendar.getInstance().time)
+}
+
+private fun getLocale() = Locale.getDefault()
+
+fun isCorrectEndDateAfterStartDate(start: String, end: String): Boolean {
+    return try {
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val endDate = sdf.parse(end)
+        val startDate = sdf.parse(start)
+        val result = endDate!!.compareTo(startDate)
+        // if result == -1 , end date before start date
+        // if result == 1 , end date after start date
+        // if result == 0 , end date == start date
+        result == 1
+    } catch (e: Exception) {
+        e.printStackTrace()
+        false
+    }
+}
+
+fun formatNumber2Digit(number: String): String? {
+    val numberFormat: NumberFormat = DecimalFormat("00")
+    return numberFormat.format(number)
+}
+
+fun formatNumber2Digit(number: Int): String? {
+    val numberFormat: NumberFormat = DecimalFormat("00")
+    return numberFormat.format(number)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getElegantTime(date: String): String {
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    val current = Calendar.getInstance().time.time
+
+    val targetDate = dateFormat.parse(date) as Date
+    val diff = current.minus(targetDate.time)
+
+    val seconds = TimeUnit.MILLISECONDS.toSeconds(diff)
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(diff)
+    val hour = TimeUnit.MILLISECONDS.toHours(diff)
+    val day = TimeUnit.MILLISECONDS.toDays(diff)
+
+    return when {
+        day.toInt() == 1 -> "Kemarin"
+        day in 1..6 -> "$day hari lalu"
+        hour < 24 -> "$hour jam lalu"
+        minutes < 60 -> "$minutes menit lalu"
+        seconds < 60 -> "Baru saja"
+        else -> "Beberapa waktu lalu"
+    }
+}
+
+/*
+fun toReadableDateRanged(startDate: LocalDate, endDate: LocalDate): String {
+    return when {
+        startDate.year == endDate.year && startDate.yearMonth == endDate.yearMonth -> {
+            startDate.format(DateTimeFormatter.ofPattern("dd")) + " - " + endDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))
+        }
+        startDate.year == endDate.year -> {
+            startDate.format(DateTimeFormatter.ofPattern("dd MMM")) + " - " + endDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))
+        }
+        else -> {
+            startDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy")) + " - " + endDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))
+        }
+    }
+}*/
+
+fun toReadableMonth(month: YearMonth) =
+    month.format(DateTimeFormatter.ofPattern("MMMM"))
+
+fun toBoolean(isDeleted: Int): Boolean {
+    return when (isDeleted) {
+        1 -> true
+        else -> false
+    }
+}
+
+fun toIndonesiaCountryCallingCode(phoneNumber: String): String {
+    return when {
+        phoneNumber.startsWith("0") -> phoneNumber.replaceFirst("0", "+62")
+        phoneNumber.startsWith("62") -> phoneNumber.replaceFirst("62", "+62")
+        else -> phoneNumber
+    }
+}
+
+fun currencyTextWatcher(editText: EditText) = object : TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+    override fun afterTextChanged(s: Editable?) {
+        var current = ""
+        s.let { _ ->
+            if (s.toString() != current) {
+                editText.removeTextChangedListener(this)
+                var filtered = s.toString().filter { "0123456789".contains(it) }
+                if (filtered.isBlank()) {
+                    filtered = "0"
+                }
+
+                val formatted = toCurrency(filtered.toBigInteger())
+                current = formatted
+                editText.setText(formatted)
+                editText.setSelection(formatted.length)
+
+                editText.addTextChangedListener(this)
+            }
+        }
+    }
+}
+
+fun textWatcherOnChange(onChange: (CharSequence?) -> Unit) = object : TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        onChange(s)
+    }
+    override fun afterTextChanged(s: Editable?) {
+    }
+}
+
+fun decimalTextWatcher(editText: EditText) = object :  TextWatcher {
+    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+
+    override fun afterTextChanged(s: Editable) {
+        val cursorPosition: Int = editText.selectionEnd
+        val originalStr: String = editText.text.toString()
+
+
+        editText.filters = arrayOf<InputFilter>(MoneyValueFilter(2))
+
+        editText.removeTextChangedListener(this)
+        try {
+            val value: String = editText.text.toString()
+            if (value != "") {
+                if (value.contains(",")){
+                    return
+                }
+                if (value.startsWith(".")) {
+                    editText.setText("0.")
+                }
+                val str: String = editText.text.toString().replaceAfter(",", "")
+                if (value != "") editText.setText(getDecimalFormattedString(str))
+                val diff: Int = editText.text.toString().length - originalStr.length
+                editText.setSelection(cursorPosition + diff)
+            }
+        } catch (ex: java.lang.Exception) {
+            ex.printStackTrace()
+        }
+        editText.addTextChangedListener(this)
+
+    }
+
+}
+
+class MoneyValueFilter(private val digits: Int) : DigitsKeyListener(false, true) {
+    override fun filter(
+        source: CharSequence,
+        start: Int,
+        end: Int,
+        dest: Spanned,
+        dstart: Int,
+        dend: Int
+    ): CharSequence {
+        var source = source
+        var start = start
+        var end = end
+        val out = super.filter(source, start, end, dest, dstart, dend)
+
+        // if changed, replace the source
+        if (out != null) {
+            source = out
+            start = 0
+            end = out.length
+        }
+        val len = end - start
+
+        // if deleting, source is empty
+        // and deleting can't break anything
+        if (len == 0) {
+            return source
+        }
+        val dlen = dest.length
+
+        // Find the position of the decimal .
+        for (i in 0 until dstart) {
+            if (dest[i] == '.') {
+                // being here means, that a number has
+                // been inserted after the dot
+                // check if the amount of digits is right
+                return getDecimalFormattedString(
+                    if (dlen - (i + 1) + len > digits) "" else SpannableStringBuilder(
+                        source,
+                        start,
+                        end
+                    ).toString()
+                )
+            }
+        }
+        for (i in start until end) {
+            if (source[i] == '.') {
+                // being here means, dot has been inserted
+                // check if the amount of digits is right
+                return if (dlen - dend + (end - (i + 1)) > digits) "" else break // return new SpannableStringBuilder(source,
+                // start, end);
+            }
+        }
+
+        // if the dot is after the inserted part,
+        // nothing can break
+        return getDecimalFormattedString(SpannableStringBuilder(source, start, end).toString())
+    }
+}
+
+fun getDecimalFormattedString(value: String?): String {
+    if (value != null && !value.equals("", ignoreCase = true)) {
+        val lst = StringTokenizer(value, ".")
+        var str1: String = value
+        var str2 = ""
+        if (lst.countTokens() > 1) {
+            str1 = lst.nextToken()
+            str2 = lst.nextToken()
+        }
+        var str3 = ""
+        var i = 0
+        var j = -1 + str1.length
+        if (str1[-1 + str1.length] == '.') {
+            j--
+            str3 = "."
+        }
+        var k = j
+        while (true) {
+            if (k < 0) {
+                if (str2.isNotEmpty()) str3 = "$str3.$str2"
+                return str3
+            }
+            str3 = str1[k].toString() + str3
+            i++
+            k--
+        }
+    }
+    return ""
+}
+fun removeErrorTextWatcher(editText: EditText, til: TextInputLayout) = object : TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        til.clearError()
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        editText.removeTextChangedListener(this)
+        editText.addTextChangedListener(this)
+    }
+}
+
+fun percentageTextWatcher(editText: EditText) = object : TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+    override fun afterTextChanged(s: Editable?) {
+        var current = ""
+        s.let { _ ->
+            if (s.toString() != current) {
+                editText.removeTextChangedListener(this)
+                var filtered = s.toString().filter { "0123456789".contains(it) }
+                if (filtered.isBlank()) {
+                    filtered = "0"
+                }
+                if (filtered.toInt() > 100) {
+                    filtered = "100"
+                }
+
+                val formatted = filtered
+                current = formatted
+                editText.setText(formatted)
+                editText.setSelection(formatted.length)
+
+                editText.addTextChangedListener(this)
+            }
+        }
+    }
+}
+
+fun Context.bitmapToFile(bitmap: Bitmap): File {
+    // Get the context wrapper
+    val wrapper = ContextWrapper(applicationContext)
+
+    // Initialize a new file instance to save bitmap object
+    var file = wrapper.getDir("image", Context.MODE_PRIVATE)
+    file = File(file, "${UUID.randomUUID()}.jpg")
+
+    try {
+        // Compress the bitmap and save in jpg format
+        val stream: OutputStream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+        stream.flush()
+        stream.close()
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+
+    return file
+}

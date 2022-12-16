@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleNavigationStyle" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="HintStyle" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">11sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="ChipCustomStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+</resources>

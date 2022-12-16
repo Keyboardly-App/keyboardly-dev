@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2012, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<resources>
+    <!-- Color resources for LXX_Light theme.
+          15%:0x26 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6 -->
+    <color name="key_text_color_lxx_light">#37474F</color>
+    <color name="key_functional_text_color_lxx_light">#CC37474F</color>
+    <color name="key_text_inactive_color_lxx_light">#B337474F</color>
+    <color name="key_hint_letter_color_lxx_light">#B337474F</color>
+    <color name="language_on_spacebar_text_color_lxx_light">#B337474F</color>
+    <color name="sliding_key_input_preview_color_lxx_light">@color/green_default</color>
+    <color name="key_background_pressed_lxx_light">#2637474F</color>
+    <!-- Color resources for LXX_Dark theme.
+         10%:0x19 50%:0x80 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6  -->
+    <color name="key_text_color_lxx_dark">#CCFFFFFF</color>
+    <color name="key_functional_text_color_lxx_dark">#CCFFFFFF</color>
+    <color name="key_text_inactive_color_lxx_dark">#80FFFFFF</color>
+    <color name="key_hint_letter_color_lxx_dark">#80FFFFFF</color>
+    <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
+    <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
+
+    <color name="orange_200">#F2A229</color>
+    <color name="green_light">#e7faeb</color>
+
+    <color name="green_default">#06c149</color>
+    <color name="green_default_press">#069339</color>
+
+    <color name="grey_light">#F2F2F2</color>
+    <color name="red_error">#F5353A</color>
+    <color name="background_default">@color/grey_light</color>
+    <color name="grey_50">#E0E0E0</color>
+    <color name="grey_100">#C5C5C5</color>
+    <color name="grey_150">#BDBDBD</color>
+    <color name="grey_200">#a6a6a6</color>
+    <color name="grey_500">#828282</color>
+    <color name="grey_600">#5C5C5C</color>
+    <color name="grey_700">#333333</color>
+    <color name="deep_blue_100">#004378</color>
+    <color name="deep_blue">#004175</color>
+    <color name="blue">#2D9CDB</color>
+    <color name="white">#ffffff</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="keyboard_light_color">#ECEFF1</color>
+    <color name="keyboard_dark_color">#333333</color>
+    <color name="header_background_color">@color/keyboard_light_color</color>
+</resources>

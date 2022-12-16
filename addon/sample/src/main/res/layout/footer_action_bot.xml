@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/footer_back_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="center"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="10dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_main_back_arrow" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/footer_submit_button"
+        style="@style/DefaultButtonAppCompat"
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:gravity="center"
+        android:paddingBottom="0dp"
+        android:paddingTop="0dp"
+        android:layout_gravity="center_vertical"
+        app:backgroundTint="@color/green_default"
+        android:layout_height="35dp"
+        android:text="@string/submit" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/footer_form_reset"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:text="@string/txt_reset"
+        android:textAllCaps="false"
+        android:textColor="@color/grey_500"
+        android:textSize="10sp" />
+</LinearLayout>

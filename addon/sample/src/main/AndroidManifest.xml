@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="app.keyboardly.sample">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/sample">
+        <dist:delivery>
+            <dist:on-demand />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+        <dist:install-time>
+            <dist:removable dist:value="true"/>
+        </dist:install-time>
+    </dist:module>
+</manifest>

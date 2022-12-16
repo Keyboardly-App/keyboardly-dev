@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:clickable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/botTextMain"
+        style="?textActionKeyboardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Discount feature here\n(On development)"
+        android:textSize="16sp" />
+
+
+    <EditText
+        android:id="@+id/botEditText"
+        android:hint="Email"
+        style="?textActionKeyboardStyle"
+
+        android:layout_margin="10dp"
+        android:layout_below="@id/botTextMain"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/botEditTextNumber"
+        android:hint="Group"
+        android:layout_margin="10dp"
+        style="?textActionKeyboardStyle"
+        android:layout_below="@id/botEditText"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include
+        android:id="@+id/footerDiscount"
+        layout="@layout/footer_action_bot"/>
+</RelativeLayout>

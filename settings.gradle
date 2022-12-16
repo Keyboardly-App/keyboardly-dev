@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Keyboardly Dev"
+include ':app'
+include ':libraries:actionview'
+include ':libraries:local'
+include ':libraries:style'
+include ':addon:sample'
+include ':kokokeyboard'

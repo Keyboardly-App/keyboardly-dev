@@ -1,0 +1,7 @@
+<resources>
+    <string name="hello_blank_fragment">Hello this is sample fragment.\nIt\'s possible to custom it just like
+    common fragment app.</string>
+    <string name="sample">Sample</string>
+    <string name="submit">Submit</string>
+    <string name="txt_reset">reset</string>
+</resources>

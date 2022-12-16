@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/campaign_view"
+                style="?textActionKeyboardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="250dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Campaign feature here\n(On development)"
+                android:textSize="16sp"
+                android:drawableTop="@drawable/ic_round_campaign_24"
+                app:drawableTopCompat="@drawable/ic_round_campaign_24"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <include
+        android:id="@+id/campaign_footer"
+        layout="@layout/footer_action_bot"/>
+
+
+</LinearLayout>

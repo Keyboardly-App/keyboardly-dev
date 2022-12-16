@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="height_header">50dp</dimen>
+    <dimen name="padding_top_hint">5dp</dimen>
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">6sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">6sp</dimen>
+    <dimen name="rowheight">125dp</dimen>
+</resources>

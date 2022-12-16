@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/_20sdp"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/button_card_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/_15sdp"
+        style="?actionKeyboardStyle"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="4sp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_click_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="TouchTargetSizeCheck">
+
+
+            <ImageView
+                android:id="@+id/toast_left_color"
+                android:layout_width="5dp"
+                android:layout_height="0dp"
+                android:clickable="false"
+                android:elevation="2sp"
+                android:minHeight="@dimen/_30sdp"
+                android:src="@drawable/toast_left"
+                app:layout_constraintBottom_toBottomOf="@id/toast_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/toast_text" />
+
+            <TextView
+                android:id="@+id/toast_text"
+                style="?textActionKeyboardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/inter_regular"
+                android:maxLines="5"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/toast_left_color"
+                tools:text="@tools:sample/lorem" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
