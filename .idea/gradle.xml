@@ -13,11 +13,11 @@
             <option value="$PROJECT_DIR$/addon" />
             <option value="$PROJECT_DIR$/addon/sample" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/kokokeyboard" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/actionview" />
             <option value="$PROJECT_DIR$/libraries/local" />
             <option value="$PROJECT_DIR$/libraries/style" />
+            <option value="$PROJECT_DIR$/samplekeyboard" />
           </set>
         </option>
       </GradleProjectSettings>
