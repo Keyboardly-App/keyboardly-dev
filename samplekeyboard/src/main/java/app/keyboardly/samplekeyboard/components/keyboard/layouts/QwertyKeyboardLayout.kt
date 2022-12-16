@@ -164,7 +164,7 @@ class QwertyKeyboardLayout(context: Context, controller: KeyboardController?) :
         rowFive.add(createButton("⇨", columnWidth, KeyboardController.SpecialKey.FORWARD))
 
         val rows = ArrayList<LinearLayout>()
-        rows.add(createNumbersRow())
+//        rows.add(createNumbersRow())
         rows.add(createRow(rowTwo))
         rows.add(createRow(rowThree))
         rows.add(createRow(rowFour))
@@ -227,7 +227,7 @@ class QwertyKeyboardLayout(context: Context, controller: KeyboardController?) :
         rowFive.add(createButton("⇨", columnWidth, KeyboardController.SpecialKey.FORWARD))
 
         val rows = ArrayList<LinearLayout>()
-        rows.add(createNumbersRow())
+//        rows.add(createNumbersRow())
         rows.add(createRow(rowTwo))
         rows.add(createRow(rowThree))
         rows.add(createRow(rowFour))
@@ -291,7 +291,7 @@ class QwertyKeyboardLayout(context: Context, controller: KeyboardController?) :
         rowFive.add(createButton("⇨", columnWidth, KeyboardController.SpecialKey.FORWARD))
 
         val rows = ArrayList<LinearLayout>()
-        rows.add(createNumbersRow())
+//        rows.add(createNumbersRow())
         rows.add(createRow(rowTwo))
         rows.add(createRow(rowThree))
         rows.add(createRow(rowFour))
@@ -355,7 +355,7 @@ class QwertyKeyboardLayout(context: Context, controller: KeyboardController?) :
         rowFive.add(createButton("⇨", columnWidth, KeyboardController.SpecialKey.FORWARD))
 
         val rows = ArrayList<LinearLayout>()
-        rows.add(createNumbersRow())
+//        rows.add(createNumbersRow())
         rows.add(createRow(rowTwo))
         rows.add(createRow(rowThree))
         rows.add(createRow(rowFour))

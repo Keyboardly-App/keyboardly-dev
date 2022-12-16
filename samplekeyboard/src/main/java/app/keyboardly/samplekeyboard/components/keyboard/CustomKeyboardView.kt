@@ -66,7 +66,7 @@ class CustomKeyboardView(context: Context, attr: AttributeSet) : ExpandableView(
 
         // empty onClickListener prevents user from
         // accidentally clicking views under the keyboard
-        setOnClickListener({})
+        setOnClickListener {}
         isSoundEffectsEnabled = false
     }
 
