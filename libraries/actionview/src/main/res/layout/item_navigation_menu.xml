@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_item_parent"
+    android:background="?selectableItemBackground"
+    android:layout_width="wrap_content"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:minHeight="@dimen/height_header"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/navigation_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/navigation_title"
+        tools:text="@tools:sample/first_names"
+        style="?textActionKeyboardStyle"
+        android:forceDarkAllowed="false"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="@dimen/_10ssp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:targetApi="q" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -11,6 +11,7 @@
             <enum name="space" value="2" />
             <enum name="done" value="3" />
             <enum name="mode_change" value="4" />
+            <enum name="add_on" value="5" />
         </attr>
     </declare-styleable>
 

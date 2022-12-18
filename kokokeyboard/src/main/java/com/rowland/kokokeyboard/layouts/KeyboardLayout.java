@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 public class KeyboardLayout extends LinearLayout {
 
-    private KeyboardManager keyboardManager;
+    private final KeyboardManager keyboardManager;
 
     public KeyboardLayout(Context context, KeyboardManager keyboardManager) {
         super(context);
@@ -48,18 +48,15 @@ public class KeyboardLayout extends LinearLayout {
                 setKeypadClickListener((ViewGroup) child);
             } else {
                 if (child != null) {
-                    child.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (view instanceof SquareKeyView) {
+                    child.setOnClickListener(view -> {
+                        if (view instanceof SquareKeyView) {
+                            keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
+                        }
+                        if (view instanceof RectangularKeyView) {
+                            if (((RectangularKeyView) view).isSpecialKey()) {
+                                keyboardManager.onKeyStroke(((RectangularKeyView) view).getSpecialKeyCode(), false);
+                            } else {
                                 keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
-                            }
-                            if (view instanceof RectangularKeyView) {
-                                if (((RectangularKeyView) view).isSpecialKey()) {
-                                    keyboardManager.onKeyStroke(((RectangularKeyView) view).getSpecialKeyCode(), false);
-                                } else {
-                                    keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
-                                }
                             }
                         }
                     });
@@ -67,12 +64,9 @@ public class KeyboardLayout extends LinearLayout {
                     if (child instanceof RectangularKeyView) {
                         if (((RectangularKeyView) child).isSpecialKey()) {
                             child.setLongClickable(true);
-                            child.setOnLongClickListener(new OnLongClickListener() {
-                                @Override
-                                public boolean onLongClick(View v) {
-                                    keyboardManager.onKeyStroke(((RectangularKeyView) child).getSpecialKeyCode(), true);
-                                    return true;
-                                }
+                            child.setOnLongClickListener(v -> {
+                                keyboardManager.onKeyStroke(((RectangularKeyView) child).getSpecialKeyCode(), true);
+                                return true;
                             });
 
                         }

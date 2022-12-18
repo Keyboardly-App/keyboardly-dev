@@ -4,6 +4,15 @@
     android:keyWidth="10%p"
     android:keyHeight="@dimen/symbol_key_height"
     android:verticalGap="0px">
+
+    <Row>
+        <Key
+            android:codes="-7"
+            android:isRepeatable="false"
+            android:keyWidth="20%p"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@drawable/ic_round_local_activity_24" />
+    </Row>
     <Row>
         <Key
             android:codes="113"

@@ -1,16 +1,19 @@
 <resources>
 
     <style name="Widget.Keys.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:backgroundTint">@color/white</item>
         <item name="enforceTextAppearance">false</item>
         <item name="android:textAppearance">@style/Widget.Keys.TextAppearance.Button</item>
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginRight">1dp</item>
         <item name="android:paddingLeft">1dp</item>
         <item name="android:paddingRight">1dp</item>
         <item name="android:insetLeft">2dp</item>
         <item name="android:insetRight">2dp</item>
-        <item name="cornerRadius">3dp</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="strokeColor">@color/key_stroke_selector</item>
+        <item name="cornerRadius">5dp</item>
+<!--        <item name="strokeWidth">1dp</item>-->
+<!--        <item name="strokeColor">@color/key_stroke_selector</item>-->
     </style>
 
     <style name="Widget.Keys.Button.Inverse" parent="Widget.Keys.Button.OutlinedButton">
@@ -18,7 +21,7 @@
     </style>
 
     <style name="Widget.Keys.TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="fontFamily">sans-serif/</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily">@font/inter_medium</item>
     </style>
 </resources>
