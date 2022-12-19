@@ -14,19 +14,27 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/default_height_navigation">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/backButton"
             android:visibility="gone"
+            tools:visibility="visible"
+            android:padding="@dimen/_2sdp"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_back_24"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/default_height_navigation"
             android:layout_height="match_parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/navigation"
+            android:orientation="horizontal"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_navigation_menu"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="@dimen/default_height_navigation"/>
 
     </LinearLayout>
 
@@ -34,13 +42,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <com.rowland.kokokeyboard.layouts.KeyboardWrapperLayout
+    <app.keyboardly.dev.keyboard.layouts.KeyboardWrapperLayout
         android:id="@+id/keyboard_wrapper_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
 
-        <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
+        <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
             android:id="@+id/keyboard_header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -52,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.rowland.kokokeyboard.keys.RectangularKeyView
+            <app.keyboardly.dev.keyboard.keys.RectangularKeyView
                 android:id="@+id/key_add_on"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -70,22 +78,22 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="7" />
-        </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
+        </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
-        <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
+        <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
             android:id="@+id/keyboard_qwerty_one"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_q"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Q" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_w"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -93,56 +101,56 @@
                 android:text="W" />
 
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_e"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="E" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_r"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="R" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_t"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="T" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_y"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Y" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_u"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="U" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_i"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="I" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_o"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="O" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_p"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -150,9 +158,9 @@
                 android:text="P" />
 
 
-        </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
+        </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
-        <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
+        <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
             android:id="@+id/keyboard_qwerty_two"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -163,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_a"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -171,56 +179,56 @@
                 android:text="A" />
 
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_s"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="S" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_d"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="D" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_f"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="F" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_g"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="G" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_h"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="H" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_j"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="J" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_k"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="K" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_l"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -232,9 +240,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5" />
 
-        </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
+        </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
-        <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
+        <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
             android:id="@+id/keyboard_qwerty_three"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -245,28 +253,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_z"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Z" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_x"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="X" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_c"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="C" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_v"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -274,7 +282,7 @@
                 android:text="V"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_b"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -282,21 +290,21 @@
                 android:text="B" />
 
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_n"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="N" />
 
-            <com.rowland.kokokeyboard.keys.SquareKeyView
+            <app.keyboardly.dev.keyboard.keys.SquareKeyView
                 android:id="@+id/key_m"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="M" />
 
-            <com.rowland.kokokeyboard.keys.RectangularKeyView
+            <app.keyboardly.dev.keyboard.keys.RectangularKeyView
                 android:id="@+id/key_backspace"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -310,9 +318,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
-        </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
+        </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
-        <com.rowland.kokokeyboard.layouts.KeyBoardRowLayout
+        <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
             android:id="@+id/keyboard_qwerty_four"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -323,7 +331,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <com.rowland.kokokeyboard.keys.RectangularKeyView
+            <app.keyboardly.dev.keyboard.keys.RectangularKeyView
                 android:id="@+id/key_space"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -338,8 +346,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-        </com.rowland.kokokeyboard.layouts.KeyBoardRowLayout>
-    </com.rowland.kokokeyboard.layouts.KeyboardWrapperLayout>
+        </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
+    </app.keyboardly.dev.keyboard.layouts.KeyboardWrapperLayout>
 
     <FrameLayout
         android:id="@+id/frame"

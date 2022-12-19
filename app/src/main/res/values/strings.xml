@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Keyboardly Dev</string>
+    <string name="nav_sample">Sample</string>
+
 </resources>

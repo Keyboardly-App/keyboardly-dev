@@ -60,3 +60,13 @@
 -keepclasseswithmembers class **.R$* {
     public static <fields>;
 }
+
+
+#noinspection ShrinkerUnresolvedReference
+-keep class app.keyboardly.sample.DynamicFeatureImpl {
+    #noinspection ShrinkerUnresolvedReference
+    app.keyboardly.sample.DynamicFeatureImpl$Provider Provider;
+}
+-keep class app.keyboardly.sample.DynamicFeatureImpl$Provider {
+    *;
+}

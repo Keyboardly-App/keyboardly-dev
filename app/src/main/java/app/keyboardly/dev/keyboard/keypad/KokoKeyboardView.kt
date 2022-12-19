@@ -1,4 +1,4 @@
-package com.rowland.kokokeyboard.keypad
+package app.keyboardly.dev.keyboard.keypad
 
 import android.app.Activity
 import android.content.Context
@@ -12,11 +12,12 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rowland.kokokeyboard.layouts.KeyboardLayout
-import com.rowland.kokokeyboard.manager.KeyboardManager.KeyboardListener
+import app.keyboardly.dev.keyboard.layouts.KeyboardLayout
+import app.keyboardly.dev.keyboard.manager.KeyboardManager.KeyboardListener
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.lib.ChipGroupCallback
 import app.keyboardly.lib.InputPresenter
@@ -27,16 +28,16 @@ import app.keyboardly.lib.navigation.NavigationMenuAdapter
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.lib.reflector.DynamicFeature
 import com.google.android.material.chip.Chip
-import com.rowland.kokokeyboard.utils.DynamicModuleHelper
-import com.rowland.kokokeyboard.R
-import com.rowland.kokokeyboard.di.BaseComponent
-import com.rowland.kokokeyboard.di.DaggerBaseComponent
-import com.rowland.kokokeyboard.manager.KeyboardManager
-import com.rowland.kokokeyboard.utils.InstallFeatureCallback
+import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
+import app.keyboardly.dev.R
+import app.keyboardly.dev.keyboard.di.BaseComponent
+import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
+import app.keyboardly.dev.keyboard.manager.KeyboardManager
+import app.keyboardly.dev.keyboard.utils.InstallFeatureCallback
 import timber.log.Timber
 import java.util.HashMap
 open class KokoKeyboardView : ExpandableLayout {
-    private lateinit var backButton: ImageView
+    private lateinit var backButton: ImageButton
     private var subMenuAddOnActive: Boolean = false
     private lateinit var adapterNavigation: NavigationMenuAdapter
     private lateinit var currentInputConnection: InputConnection
@@ -293,6 +294,7 @@ open class KokoKeyboardView : ExpandableLayout {
         val defaultMenuList = defaultNavigation()
 
         backButton.setOnClickListener {
+            Timber.i("submenu = $subMenuAddOnActive")
             if (subMenuAddOnActive){
                 viewDefaultNavigation(defaultMenuList)
             }
@@ -323,7 +325,7 @@ open class KokoKeyboardView : ExpandableLayout {
             R.string.nav_sample,
             R.drawable.ic_round_local_activity_24,
             true,
-            featurePackageId = "com.keyboardly.sample",
+            featurePackageId = "app.keyboardly.sample",
             featureNameId = "sample",
             nameString = "Sample"
         )

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="o" />
 
-    <com.rowland.kokokeyboard.keypad.KokoKeyboardView
+    <app.keyboardly.dev.keyboard.keypad.KokoKeyboardView
         android:id="@+id/keyboardTest"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"

@@ -3,8 +3,6 @@
     android:id="@+id/navigation_item_parent"
     android:background="?selectableItemBackground"
     android:layout_width="wrap_content"
-    android:paddingStart="4dp"
-    android:paddingEnd="4dp"
     android:gravity="center"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -13,7 +11,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/navigation_icon"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="4dp"
+        tools:src="@tools:sample/avatars"
+        android:layout_width="match_parent"
         android:layout_height="14dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -22,6 +22,8 @@
         style="?textActionKeyboardStyle"
         android:forceDarkAllowed="false"
         android:fontFamily="@font/inter_regular"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
         android:textSize="@dimen/_10ssp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
