@@ -8,17 +8,27 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.keyboardly.dev.keyboard.layouts.KeyboardLayout
-import app.keyboardly.dev.keyboard.manager.KeyboardManager.KeyboardListener
 import androidx.recyclerview.widget.RecyclerView
+import app.keyboardly.dev.R
+import app.keyboardly.dev.keyboard.di.BaseComponent
+import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
+import app.keyboardly.dev.keyboard.keys.RectangularKeyView
+import app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
+import app.keyboardly.dev.keyboard.layouts.KeyboardLayout
+import app.keyboardly.dev.keyboard.manager.KeyboardManager
+import app.keyboardly.dev.keyboard.manager.KeyboardManager.KeyboardListener
+import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
+import app.keyboardly.dev.keyboard.utils.InstallFeatureCallback
 import app.keyboardly.lib.ChipGroupCallback
 import app.keyboardly.lib.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
@@ -28,17 +38,20 @@ import app.keyboardly.lib.navigation.NavigationMenuAdapter
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.lib.reflector.DynamicFeature
 import com.google.android.material.chip.Chip
-import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
-import app.keyboardly.dev.R
-import app.keyboardly.dev.keyboard.di.BaseComponent
-import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
-import app.keyboardly.dev.keyboard.manager.KeyboardManager
-import app.keyboardly.dev.keyboard.utils.InstallFeatureCallback
 import timber.log.Timber
-import java.util.HashMap
+
+/**
+ * KokokeyboardView
+ * original source :
+ * https://github.com/RowlandOti/KokoKeyboard
+ */
 open class KokoKeyboardView : ExpandableLayout {
-    private lateinit var backButton: ImageButton
+    private lateinit var navigationParent: LinearLayout
+    private lateinit var mainHeaderParent: LinearLayout
+    private lateinit var logoButton: ImageView
+    private lateinit var backButton: ImageView
     private var subMenuAddOnActive: Boolean = false
+    private var defaultHeader: Boolean = true
     private lateinit var adapterNavigation: NavigationMenuAdapter
     private lateinit var currentInputConnection: InputConnection
     private lateinit var currentEditorInfo: EditorInfo
@@ -81,9 +94,36 @@ open class KokoKeyboardView : ExpandableLayout {
                     KeyboardManager.KEYCODE_DONE -> collapse()
                 }
             }
+
+            override fun onButtonClicked(id: Int) {
+                Timber.i("clicked id=$id")
+                when (id) {
+                    R.id.logoButton -> {
+                        onLogoButtonClicked()
+                    }
+                    R.id.backButton -> {
+                        onBackButtonClicked()
+                    }
+                    else -> {
+                        Timber.w("unhandle clicked id=$id")
+                    }
+                }
+            }
         }
 
         initDependency()
+    }
+
+    private fun onLogoButtonClicked() {
+        Timber.i("default Header=$defaultHeader")
+        if (defaultHeader) {
+            mainHeaderParent.visibility = GONE
+            navigationParent.visibility = VISIBLE
+            backButton.visibility = VISIBLE
+            defaultHeader = false
+        } else {
+            defaultHeaderView()
+        }
     }
 
     var TAG = KeyboardManager::class.java.simpleName
@@ -106,7 +146,7 @@ open class KokoKeyboardView : ExpandableLayout {
         val keyboard = generateCorrectKeyboard(type, inputConnection)
         keyboards[field] = keyboard
         keyboards[field]!!.registerListener(keyboardListener)
-        field.onFocusChangeListener = OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (hasFocus) {
                 val imm =
                     context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -289,16 +329,26 @@ open class KokoKeyboardView : ExpandableLayout {
     }
 
     private fun initView(view: View) {
-        navigationView = view.findViewById(R.id.navigation)
-        backButton = view.findViewById(R.id.backButton)
-        val defaultMenuList = defaultNavigation()
-
-        backButton.setOnClickListener {
-            Timber.i("submenu = $subMenuAddOnActive")
-            if (subMenuAddOnActive){
-                viewDefaultNavigation(defaultMenuList)
+        navigationParent = view.findViewById(R.id.navigation_parent)
+        mainHeaderParent = view.findViewById(R.id.mainHeaderParent)
+        val keyboardHeader : KeyBoardRowLayout = view.findViewById(R.id.keyboard_header)
+        val keyAddon: RectangularKeyView = view.findViewById(R.id.key_add_on)
+        keyAddon.setOnClickListener {
+            Timber.i("//keyAddon//")
+            if (defaultHeader){
+                mainHeaderParent.visibility = GONE
+                navigationParent.visibility = VISIBLE
+                backButton.visibility = VISIBLE
+                defaultHeader = false
+            } else {
+                defaultHeaderView()
             }
         }
+
+        navigationView = view.findViewById(R.id.navigation)
+        logoButton = view.findViewById(R.id.logoButton)
+        backButton = view.findViewById(R.id.backButton)
+        val defaultMenuList = defaultNavigation()
 
         adapterNavigation = NavigationMenuAdapter(defaultMenuList,object: NavigationCallback{
             override fun onClickMenu(data: NavigationMenuModel) {
@@ -313,9 +363,27 @@ open class KokoKeyboardView : ExpandableLayout {
         }
     }
 
+    private fun onBackButtonClicked() {
+        Timber.i("submenu = $subMenuAddOnActive // defaultHeader=$defaultHeader")
+        if (subMenuAddOnActive) {
+            viewDefaultNavigation(defaultNavigation())
+        } else {
+            if (!defaultHeader) {
+                defaultHeaderView()
+            } else {
+                Timber.w("default header is true.")
+            }
+        }
+    }
+
+    private fun defaultHeaderView() {
+        mainHeaderParent.visibility = VISIBLE
+        navigationParent.visibility = GONE
+        defaultHeader = true
+    }
+
     private fun viewDefaultNavigation(defaultMenuList: MutableList<NavigationMenuModel>) {
         adapterNavigation.updateList(defaultMenuList)
-        backButton.visibility = GONE
         subMenuAddOnActive = false
     }
 

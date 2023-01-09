@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="TitleNavigationStyle" parent="TextAppearance.AppCompat.Small">
         <item name="android:textSize">10sp</item>
@@ -16,4 +16,22 @@
         <item name="checkedIcon">@null</item>
     </style>
 
+
+    <style name="DefaultTextInputStyle" parent="Widget.Design.TextInputLayout">
+        <item name="hintTextColor">@color/grey_500</item>
+        <item name="android:textColorHint">@color/grey_500</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeColor">@color/green_default</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+    </style>
+
+    <style name="InputHintStyle" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/green_default</item>
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+    </style>
 </resources>

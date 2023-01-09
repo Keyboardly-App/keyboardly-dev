@@ -10,8 +10,10 @@ import android.widget.LinearLayout;
 import app.keyboardly.dev.keyboard.keys.RectangularKeyView;
 import app.keyboardly.dev.keyboard.keys.SquareKeyView;
 import app.keyboardly.dev.keyboard.manager.KeyboardManager;
+import timber.log.Timber;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 public class KeyboardLayout extends LinearLayout {
 
@@ -44,6 +46,7 @@ public class KeyboardLayout extends LinearLayout {
     public void setKeypadClickListener(ViewGroup parent) {
         for (int i = 0; i < parent.getChildCount(); i++) {
             final View child = parent.getChildAt(i);
+            Timber.d("child="+child);
             if (child instanceof ViewGroup) {
                 setKeypadClickListener((ViewGroup) child);
             } else {
@@ -51,13 +54,14 @@ public class KeyboardLayout extends LinearLayout {
                     child.setOnClickListener(view -> {
                         if (view instanceof SquareKeyView) {
                             keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
-                        }
-                        if (view instanceof RectangularKeyView) {
+                        } else if (view instanceof RectangularKeyView) {
                             if (((RectangularKeyView) view).isSpecialKey()) {
                                 keyboardManager.onKeyStroke(((RectangularKeyView) view).getSpecialKeyCode(), false);
                             } else {
                                 keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
                             }
+                        } else {
+                            Timber.w("view="+view);
                         }
                     });
 
@@ -68,8 +72,12 @@ public class KeyboardLayout extends LinearLayout {
                                 keyboardManager.onKeyStroke(((RectangularKeyView) child).getSpecialKeyCode(), true);
                                 return true;
                             });
-
                         }
+                    } else if (child instanceof AppCompatImageView) {
+                        child.setClickable(true);
+                        child.setOnClickListener(v -> keyboardManager.onButtonClick(child.getId()));
+                    } else {
+                        Timber.w("child="+child);
                     }
                 }
             }

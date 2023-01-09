@@ -22,6 +22,7 @@ public class KeyboardManager {
     public interface KeyboardListener {
         void characterClicked(char c);
         void specialKeyClicked(int keyCode);
+        void onButtonClicked(int id);
     }
 
     public KeyboardManager(InputConnection inputConnection) {
@@ -82,6 +83,12 @@ public class KeyboardManager {
         handleKeyStroke(keyCode, isLongPress);
         for (KeyboardListener listener : listeners) {
             listener.specialKeyClicked(keyCode);
+        }
+    }
+
+    public void onButtonClick(int resId){
+        for (KeyboardListener listener : listeners) {
+            listener.onButtonClicked(resId);
         }
     }
 
