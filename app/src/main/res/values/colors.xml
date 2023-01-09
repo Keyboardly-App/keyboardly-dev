@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="gray">#202020</color>
+    <color name="background_keyboard">#E4E4E4</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="green_default">#06c149</color>

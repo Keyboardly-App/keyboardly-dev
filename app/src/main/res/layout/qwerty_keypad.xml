@@ -8,22 +8,49 @@
     tools:ignore="TouchTargetSizeCheck,HardcodedText"
     android:background="@android:color/transparent">
 
+    <View
+        android:id="@+id/line_head"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/green_default" />
 
     <LinearLayout
-        android:id="@+id/headerKeyboard"
+        android:id="@+id/mainHeaderParent"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_height_navigation">
 
-        <ImageButton
-            android:id="@+id/backButton"
-            android:visibility="gone"
+        <ImageView
+            android:id="@+id/logoButton"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
             tools:visibility="visible"
-            android:padding="@dimen/_2sdp"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/ic_back_24"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="@dimen/default_height_navigation"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_parent"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_height_navigation">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            android:padding="5dp"
+            tools:visibility="visible"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_main_back"
             android:layout_width="@dimen/default_height_navigation"
             android:layout_height="match_parent"/>
 
@@ -36,6 +63,10 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/default_height_navigation"/>
 
+
+        <include
+            android:id="@+id/default_input_layout"
+            layout="@layout/form_edit_main" />
     </LinearLayout>
 
     <RelativeLayout
@@ -307,7 +338,7 @@
             <app.keyboardly.dev.keyboard.keys.RectangularKeyView
                 android:id="@+id/key_backspace"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="⌫"
                 app:is_special_key="true"
@@ -354,5 +385,17 @@
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/keyboard_action_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layoutDirection="ltr" >
+            <include
+                layout="@layout/keyboard_action_view"/>
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

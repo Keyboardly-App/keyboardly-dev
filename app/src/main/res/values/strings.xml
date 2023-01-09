@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Keyboardly Dev</string>
     <string name="nav_sample">Sample</string>
+    <string name="data_not_found_nback">Data not found.\nBack</string>
 
 </resources>

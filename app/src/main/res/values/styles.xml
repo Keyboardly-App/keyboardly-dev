@@ -12,8 +12,8 @@
         <item name="android:insetLeft">2dp</item>
         <item name="android:insetRight">2dp</item>
         <item name="cornerRadius">5dp</item>
-<!--        <item name="strokeWidth">1dp</item>-->
-<!--        <item name="strokeColor">@color/key_stroke_selector</item>-->
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/grey_100</item>
     </style>
 
     <style name="Widget.Keys.Button.Inverse" parent="Widget.Keys.Button.OutlinedButton">

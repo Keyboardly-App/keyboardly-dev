@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/mainLayoutEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/height_header"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:clickable="false"
+        style="?actionKeyboardStyle"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <!-- edit main long -->
+            <LinearLayout
+                android:id="@+id/parent_edit_main_long"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/editMainLongTIL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/InputHintStyle"
+                    tools:text="@tools:sample/full_names"
+                    android:textColorHint="@color/green_default"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/default_input_long"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:minHeight="34dp"
+                    android:cursorVisible="true"
+                    android:maxLines="2"
+                    style="?mainEditTextActionKeyboardStyle"
+                    android:background="@android:color/transparent"
+                    android:textIsSelectable="false"
+                    android:scrollbars="vertical"
+                    android:singleLine="false"
+                    android:gravity="start|center_vertical"
+                    android:paddingVertical="0dp"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:paddingBottom="0dp"
+                    android:focusableInTouchMode="true"
+                    tools:text="@tools:sample/lorem" />
+
+
+                <View
+                    android:background="@color/green_default"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="2dp"/>
+            </LinearLayout>
+
+            <!-- edit main-->
+            <LinearLayout
+                android:id="@+id/parent_edit_main"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/height_header"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/editMainTIL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/InputHintStyle"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="2dp"
+                    tools:text="@tools:sample/full_names"
+                    android:textColorHint="@color/green_default"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editMain"
+                    style="?mainEditTextActionKeyboardStyle"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingVertical="0dp"
+                    android:paddingBottom="0dp"
+                    android:clickable="true"
+                    android:cursorVisible="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint=""
+                    android:inputType="textCapSentences"
+                    android:maxLength="150"
+                    android:singleLine="true"
+                    android:textIsSelectable="false"
+                    tools:text="||||"
+                    tools:ignore="NestedWeights" />
+
+                <View
+                    android:background="@color/green_default"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="2dp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/onBackMainEditText"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_done"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                <ProgressBar
+                    android:id="@+id/progressInput"
+                    android:visibility="gone"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

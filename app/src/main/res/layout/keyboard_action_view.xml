@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/message_nothing"
+        style="?textActionKeyboardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:drawableBottom="@drawable/ic_main_back_arrow"
+        android:focusable="true"
+        android:gravity="center"
+        android:minHeight="100dp"
+        android:padding="@dimen/_40sdp"
+        android:text="@string/data_not_found_nback"
+        android:visibility="gone"
+        app:drawableBottomCompat="@drawable/ic_main_back_arrow"
+        tools:ignore="UseCompatTextViewDrawableXml"
+        tools:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/progress_main_parent"
+        android:visibility="gone"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:visibility="visible"
+        android:focusable="true">
+
+        <ProgressBar
+            android:id="@+id/progress_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_top_container_rv"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        style="?actionKeyboardStyle"
+        android:layout_height="wrap_content" />
+    <DatePicker
+        android:id="@+id/date_picker_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:calendarViewShown="false"
+        style="?datePickerKeyboardStyle"
+        android:theme="?datePickerKeyboardStyle"
+        android:datePickerMode="spinner"
+        android:visibility="gone"
+        android:spinnersShown="true" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipgroup_top_container"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/container_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:minHeight="@dimen/_150sdp" />
+</RelativeLayout>
