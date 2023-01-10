@@ -13,17 +13,10 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.di.BaseComponent
 import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
-import app.keyboardly.dev.keyboard.keys.RectangularKeyView
-import app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
 import app.keyboardly.dev.keyboard.layouts.KeyboardLayout
 import app.keyboardly.dev.keyboard.manager.KeyboardManager
 import app.keyboardly.dev.keyboard.manager.KeyboardManager.KeyboardListener
@@ -34,9 +27,7 @@ import app.keyboardly.lib.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.navigation.NavigationCallback
-import app.keyboardly.lib.navigation.NavigationMenuAdapter
 import app.keyboardly.lib.navigation.NavigationMenuModel
-import app.keyboardly.lib.reflector.DynamicFeature
 import com.google.android.material.chip.Chip
 import timber.log.Timber
 
@@ -46,16 +37,9 @@ import timber.log.Timber
  * https://github.com/RowlandOti/KokoKeyboard
  */
 open class KokoKeyboardView : ExpandableLayout {
-    private lateinit var navigationParent: LinearLayout
-    private lateinit var mainHeaderParent: LinearLayout
-    private lateinit var logoButton: ImageView
-    private lateinit var backButton: ImageView
-    private var subMenuAddOnActive: Boolean = false
-    private var defaultHeader: Boolean = true
-    private lateinit var adapterNavigation: NavigationMenuAdapter
+    private lateinit var container: KeyboardActionContainer
     private lateinit var currentInputConnection: InputConnection
     private lateinit var currentEditorInfo: EditorInfo
-    private lateinit var navigationView: RecyclerView
 
     private var activeEditField: EditText? = null
     private val keyboards = HashMap<EditText?, KeyboardLayout>()
@@ -99,10 +83,10 @@ open class KokoKeyboardView : ExpandableLayout {
                 Timber.i("clicked id=$id")
                 when (id) {
                     R.id.logoButton -> {
-                        onLogoButtonClicked()
+                        container.onLogoButtonClicked()
                     }
                     R.id.backButton -> {
-                        onBackButtonClicked()
+                        container.onBackButtonClicked()
                     }
                     else -> {
                         Timber.w("unhandle clicked id=$id")
@@ -112,18 +96,6 @@ open class KokoKeyboardView : ExpandableLayout {
         }
 
         initDependency()
-    }
-
-    private fun onLogoButtonClicked() {
-        Timber.i("default Header=$defaultHeader")
-        if (defaultHeader) {
-            mainHeaderParent.visibility = GONE
-            navigationParent.visibility = VISIBLE
-            backButton.visibility = VISIBLE
-            defaultHeader = false
-        } else {
-            defaultHeaderView()
-        }
     }
 
     var TAG = KeyboardManager::class.java.simpleName
@@ -169,7 +141,7 @@ open class KokoKeyboardView : ExpandableLayout {
                 }
             }
         }
-        field.setOnClickListener { v: View? ->
+        field.setOnClickListener {
             if (!isExpanded) {
                 expand()
             }
@@ -203,7 +175,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun viewKeyboardNavigation() {
-
+                container.viewNavigation()
             }
 
             override fun getKeyboardHeight(): Int {
@@ -211,15 +183,15 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun viewDefaultKeyboard() {
-
+                container.viewDefault()
             }
 
             override fun viewAddOnNavigation() {
-
+                container.viewAddOnNavigation()
             }
 
             override fun viewLayoutAction() {
-
+                container.viewLayoutAction()
             }
 
             override fun viewInputMode(active: Boolean) {
@@ -227,7 +199,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun commitText(text: String) {
-
+                currentInputConnection.commitText(text, text.length)
             }
 
             override fun setTextWatcher(textWatcher: TextWatcher) {
@@ -235,11 +207,11 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun setActionView(view: KeyboardActionView) {
-
+                container.setActionView(view.getView())
             }
 
             override fun setActionView(view: View?) {
-
+                container.setActionView(view)
             }
 
             override fun showChipOptions(
@@ -292,11 +264,11 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun setNavigationCallback(navigationCallback: NavigationCallback) {
-
+                container.updateNavigationCallBack(navigationCallback)
             }
 
             override fun setNavigationMenu(list: MutableList<NavigationMenuModel>) {
-
+                container.switchAddOnNavigationView(list)
             }
 
         }
@@ -329,139 +301,10 @@ open class KokoKeyboardView : ExpandableLayout {
     }
 
     private fun initView(view: View) {
-        navigationParent = view.findViewById(R.id.navigation_parent)
-        mainHeaderParent = view.findViewById(R.id.mainHeaderParent)
-        val keyboardHeader : KeyBoardRowLayout = view.findViewById(R.id.keyboard_header)
-        val keyAddon: RectangularKeyView = view.findViewById(R.id.key_add_on)
-        keyAddon.setOnClickListener {
-            Timber.i("//keyAddon//")
-            if (defaultHeader){
-                mainHeaderParent.visibility = GONE
-                navigationParent.visibility = VISIBLE
-                backButton.visibility = VISIBLE
-                defaultHeader = false
-            } else {
-                defaultHeaderView()
-            }
-        }
-
-        navigationView = view.findViewById(R.id.navigation)
-        logoButton = view.findViewById(R.id.logoButton)
-        backButton = view.findViewById(R.id.backButton)
-        val defaultMenuList = defaultNavigation()
-
-        adapterNavigation = NavigationMenuAdapter(defaultMenuList,object: NavigationCallback{
-            override fun onClickMenu(data: NavigationMenuModel) {
-                navigationOnClick(data)
-                Log.d(TAG, "onClickMenu: data=${data.name}")
-            }
-        })
-        navigationView.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,
-                false)
-            adapter = adapterNavigation
-        }
+        container = KeyboardActionContainer(view, moduleHelper)
     }
 
-    private fun onBackButtonClicked() {
-        Timber.i("submenu = $subMenuAddOnActive // defaultHeader=$defaultHeader")
-        if (subMenuAddOnActive) {
-            viewDefaultNavigation(defaultNavigation())
-        } else {
-            if (!defaultHeader) {
-                defaultHeaderView()
-            } else {
-                Timber.w("default header is true.")
-            }
-        }
-    }
 
-    private fun defaultHeaderView() {
-        mainHeaderParent.visibility = VISIBLE
-        navigationParent.visibility = GONE
-        defaultHeader = true
-    }
-
-    private fun viewDefaultNavigation(defaultMenuList: MutableList<NavigationMenuModel>) {
-        adapterNavigation.updateList(defaultMenuList)
-        subMenuAddOnActive = false
-    }
-
-    private fun defaultNavigation(): MutableList<NavigationMenuModel> {
-        val model = NavigationMenuModel(
-            1,
-            R.string.nav_sample,
-            R.drawable.ic_round_local_activity_24,
-            true,
-            featurePackageId = "app.keyboardly.sample",
-            featureNameId = "sample",
-            nameString = "Sample"
-        )
-
-        val mutableList = mutableListOf<NavigationMenuModel>()
-        mutableList.add(model)
-        return mutableList
-    }
-
-    private fun navigationOnClick(data: NavigationMenuModel) {
-        val featureName = data.featureNameId
-        if (featureName != null) {
-            // check is feature installed
-            if (moduleHelper.isFeatureInstalled(featureName)) {
-                data.featurePackageId?.let {
-                    // open sub menu
-                    openSubMenuFeature(it)
-                }
-            } else {
-                toast("Feature ${data.nameString} not installed yet.")
-            }
-        } else {
-            Timber.e("Error. Something wrong on the feature.")
-        }
-    }
-
-    private fun toast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun openSubMenuFeature(featureNameId: String) {
-        try {
-            // load add on
-            val dynamicModule: DynamicFeature? = moduleHelper.initialize(featureNameId)
-            if (dynamicModule != null) {
-                // get submenu is exist
-                val subsMenu = dynamicModule.getSubMenus()
-                if (subsMenu.isNotEmpty()) {
-                    // show submenu on keyboard
-                    switchAddOnNavigationView(subsMenu)
-                } else {
-                    // if submenu empty, load the view
-                    // get view from add on
-                    val view = dynamicModule.getView()
-                    Timber.d("view=$view")
-                    if (view != null) {
-                        dependency?.setActionView(view)
-                    } else {
-                        Timber.e("nothing to do.")
-                    }
-                }
-            } else {
-                Timber.e("dynamic module null")
-                toast("Failed open feature, something wrong.")
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            toast("Failed open feature.\ne:${e.message}")
-        }
-    }
-
-    private fun switchAddOnNavigationView(list: MutableList<NavigationMenuModel>) {
-        subMenuAddOnActive = true
-        backButton.visibility = View.VISIBLE
-        adapterNavigation.updateList(list)
-        navigationView.scrollToPosition(0)
-        // set visibility gone for button more key when submenu active.
-    }
 
     companion object {
         var dependency: KeyboardActionDependency? = null

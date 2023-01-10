@@ -33,6 +33,7 @@ public class SquareKeyView extends MaterialButton {
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.KeyPadView);
         try {
+            setAllCaps(false);
             screenWidthPercentage = a.getFloat(R.styleable.KeyPadView_screen_width_percent, 0.20f);
             widthHeightRatio = a.getFloat(R.styleable.KeyPadView_width_height_ratio, 1.0f);
         } finally {

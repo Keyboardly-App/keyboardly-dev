@@ -1,4 +1,4 @@
-package app.keyboardly.dev.keyboard.keypad
+package app.keyboardly.dev.keyboard.keypad.keyboardaction
 
 import android.view.View
 import android.widget.*
@@ -11,24 +11,23 @@ import com.google.android.material.chip.ChipGroup
  *
  * This is class full variable view for Woowa keyboard needed
  */
-open class WoowaBaseId(
+open class KeyboardBaseId(
     view: View
 ) {
 
     // default navigation recycler view
     val navigationView: RecyclerView = view.findViewById(R.id.navigation)
-//    val mainHeader: LinearLayout = view.findViewById(R.id.header_main)
-//    val moreKey: ImageView = view.findViewById(R.id.more_key)
-//    val moreKeyParent: LinearLayout = view.findViewById(R.id.more_key_parent)
-//    val logoMainHeader: ImageView = view.findViewById(R.id.header_logo_iv)
-//    val rvQuickReplyHeader: RecyclerView = view.findViewById(R.id.header_quick_reply_rv)
-//    val navigationBack: ImageView = view.findViewById(R.id.navigation_back)
+    val mainHeader: LinearLayout = view.findViewById(R.id.mainHeaderParent)
+
+    val logoMainHeader: ImageView = view.findViewById(R.id.logoButton)
+    val navigationBack: ImageView = view.findViewById(R.id.backButton)
 //    val titleHeader: TextView = view.findViewById(R.id.main_header_title_tv)
 
     val keyboardActionWrapper: LinearLayout = view.findViewById(R.id.keyboard_action_wrapper)
+    val keyboardWrapper: LinearLayout = view.findViewById(R.id.keyboard_wrapper_layout)
 //    val headerWrapper: RelativeLayout = view.findViewById(R.id.header_wrapper)
 
-//    val headerShadowAction: View = view.findViewById(R.id.header_shadow)
+    val headerShadowAction: View = view.findViewById(R.id.header_shadow)
     val frame: FrameLayout = view.findViewById(R.id.container_frame)
     val progressMain: RelativeLayout = view.findViewById(R.id.progress_main_parent)
     val messageOnFrame: TextView = view.findViewById(R.id.message_nothing)
