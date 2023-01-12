@@ -5,6 +5,8 @@ import android.view.inputmethod.InputConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class KeyboardManager {
 
     public static final int KEYCODE_BACKSPACE = 1;
@@ -17,7 +19,8 @@ public class KeyboardManager {
     private String inputText = "";
 
     private List<KeyboardListener> listeners = new ArrayList<>();
-    private InputConnection inputConnection;
+    private InputConnection defaultInputConnection;
+    private InputConnection customConnection;
 
     public interface KeyboardListener {
         void characterClicked(char c);
@@ -26,7 +29,16 @@ public class KeyboardManager {
     }
 
     public KeyboardManager(InputConnection inputConnection) {
-        this.inputConnection = inputConnection;
+        this.defaultInputConnection = inputConnection;
+    }
+
+    public void setCustomInputConnection(InputConnection inputConnection) {
+        customConnection = inputConnection;
+    }
+
+    public void resetInputConnection() {
+        customConnection = null;
+        Timber.i("custom connection reset. customConnection="+customConnection);
     }
 
     protected void handleKeyStroke(int key, boolean isLongPress) {
@@ -37,7 +49,7 @@ public class KeyboardManager {
                 if (isLongPress) {
                     clearAll();
                 } else {
-                    inputConnection.deleteSurroundingText(1, 0);
+                    getInputConnection().deleteSurroundingText(1, 0);
                     StringBuilder builder = new StringBuilder(this.inputText);
                     inputText = builder.deleteCharAt(--cursorPosition).toString();
                 }
@@ -52,8 +64,18 @@ public class KeyboardManager {
         }
     }
 
+    public InputConnection getInputConnection() {
+        InputConnection inputConnection;
+        if (customConnection!=null){
+            inputConnection = customConnection;
+        } else {
+            inputConnection = defaultInputConnection;
+        }
+        return inputConnection;
+    }
+
     protected void handleKeyStroke(char c) {
-        inputConnection.commitText(Character.toString(c), 1);
+        getInputConnection().commitText(Character.toString(c), 1);
 
         if (cursorPosition++ >= inputText.length()) {
             inputText = inputText + c;
@@ -63,8 +85,8 @@ public class KeyboardManager {
     }
 
     public void onKeyStroke(char c) {
-        CharSequence beforeText = inputConnection.getTextBeforeCursor(100, 0).toString();
-        CharSequence afterText = inputConnection.getTextAfterCursor(100, 0).toString();
+        CharSequence beforeText = getInputConnection().getTextBeforeCursor(100, 0).toString();
+        CharSequence afterText = getInputConnection().getTextAfterCursor(100, 0).toString();
         cursorPosition = beforeText.length();
         inputText = beforeText.toString() + afterText.toString();
 
@@ -75,8 +97,8 @@ public class KeyboardManager {
     }
 
     public void onKeyStroke(int keyCode, boolean isLongPress) {
-        CharSequence beforeText = inputConnection.getTextBeforeCursor(100, 0).toString();
-        CharSequence afterText = inputConnection.getTextAfterCursor(100, 0).toString();
+        CharSequence beforeText = getInputConnection().getTextBeforeCursor(100, 0).toString();
+        CharSequence afterText = getInputConnection().getTextAfterCursor(100, 0).toString();
         cursorPosition = beforeText.length();
         inputText = beforeText.toString() + afterText.toString();
 
@@ -94,7 +116,7 @@ public class KeyboardManager {
 
     public void clearAll() {
         while (cursorPosition > 0) {
-            inputConnection.deleteSurroundingText(1, 0);
+            getInputConnection().deleteSurroundingText(1, 0);
             StringBuilder builder = new StringBuilder(this.inputText);
             inputText = builder.deleteCharAt(--cursorPosition).toString();
         }

@@ -9,6 +9,6 @@ import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
  */
 class KeyboardActionContainer(
     view: View,
-    private val moduleHelper: DynamicModuleHelper
-) : KeyboardInputManager(view, moduleHelper){
-}
+    moduleHelper: DynamicModuleHelper,
+    kokoKeyboardView: KokoKeyboardView,
+) : KeyboardInputManager(view, moduleHelper, kokoKeyboardView)

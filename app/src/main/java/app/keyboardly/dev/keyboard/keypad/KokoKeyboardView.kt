@@ -37,8 +37,8 @@ import timber.log.Timber
  * https://github.com/RowlandOti/KokoKeyboard
  */
 open class KokoKeyboardView : ExpandableLayout {
+    private lateinit var keyboardManager: KeyboardManager
     private lateinit var container: KeyboardActionContainer
-    private lateinit var currentInputConnection: InputConnection
     private lateinit var currentEditorInfo: EditorInfo
 
     private var activeEditField: EditText? = null
@@ -114,15 +114,12 @@ open class KokoKeyboardView : ExpandableLayout {
         val editorInfo = EditorInfo()
         currentEditorInfo = editorInfo
         val inputConnection = field.onCreateInputConnection(editorInfo)
-        currentInputConnection = inputConnection
         val keyboard = generateCorrectKeyboard(type, inputConnection)
         keyboards[field] = keyboard
         keyboards[field]!!.registerListener(keyboardListener)
         field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (hasFocus) {
-                val imm =
-                    context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(field.windowToken, 0)
+                hideSoftKeyboard(field)
                 activeEditField = field
                 removeAllViews()
                 val keyboard1 = keyboards[activeEditField]
@@ -148,8 +145,21 @@ open class KokoKeyboardView : ExpandableLayout {
         }
     }
 
+    fun hideSoftKeyboard(field: EditText) {
+        val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(field.windowToken, 0)
+    }
+
     fun unregisterEditText(field: EditText?) {
         keyboards.remove(field)
+    }
+
+    open fun setCustomInputConnection(inputConnection: InputConnection) {
+        keyboardManager.setCustomInputConnection(inputConnection)
+    }
+
+    open fun getInputConnection(): InputConnection? {
+        return keyboardManager.inputConnection
     }
 
     private fun initDependency(){
@@ -162,7 +172,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun getCurrentInputConnection(): InputConnection {
-                return this@KokoKeyboardView.currentInputConnection
+                return keyboardManager.inputConnection
             }
 
             override fun getCurrentEditorInfo(): EditorInfo {
@@ -170,11 +180,11 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun getRecyclerView(): RecyclerView {
-                // TODO: fix this
-                return RecyclerView(context)
+                return container.recyclerView
             }
 
             override fun viewKeyboardNavigation() {
+                keyboardManager.resetInputConnection()
                 container.viewNavigation()
             }
 
@@ -187,6 +197,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun viewAddOnNavigation() {
+                keyboardManager.resetInputConnection()
                 container.viewAddOnNavigation()
             }
 
@@ -195,11 +206,11 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun viewInputMode(active: Boolean) {
-
+                container.viewInputMode(active)
             }
 
             override fun commitText(text: String) {
-                currentInputConnection.commitText(text, text.length)
+                getInputConnection()?.commitText(text, text.length)
             }
 
             override fun setTextWatcher(textWatcher: TextWatcher) {
@@ -248,7 +259,11 @@ open class KokoKeyboardView : ExpandableLayout {
                 textWatcher: TextWatcher?,
                 onCloseSearch: () -> Unit?
             ) {
-
+                if (longInput!=null && longInput){
+                    container.requestInputLong(editTextTarget,inputPresenter,hint)
+                } else {
+                    container.requestInput(editTextTarget,enableInput,inputPresenter,hint, inputType, textWatcher, onCloseSearch)
+                }
             }
 
             override fun showRecyclerViewOptions(onViewReady: KeyboardActionDependency.OnViewReady) {
@@ -275,7 +290,8 @@ open class KokoKeyboardView : ExpandableLayout {
     }
 
     private fun generateCorrectKeyboard(type: Int, ic: InputConnection): KeyboardLayout {
-        val keypad = KeyboardLayout(context, KeyboardManager(ic))
+        keyboardManager = KeyboardManager(ic)
+        val keypad = KeyboardLayout(context, keyboardManager)
         val view: View
         return when (type) {
             INPUT_TYPE_QWERTY -> {
@@ -301,7 +317,7 @@ open class KokoKeyboardView : ExpandableLayout {
     }
 
     private fun initView(view: View) {
-        container = KeyboardActionContainer(view, moduleHelper)
+        container = KeyboardActionContainer(view, moduleHelper, this)
     }
 
 

@@ -35,8 +35,8 @@ open class KeyboardBaseId(
     val chipGroupOnFrame: ChipGroup = view.findViewById(R.id.chipgroup_top_container)
     val datePickerOnFrame: DatePicker = view.findViewById(R.id.date_picker_container)
     val navigationParentLayout: LinearLayout = view.findViewById(R.id.navigation_parent)
-//    val floatingRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewScrollTop)
-//    val floatingRoot: RelativeLayout = view.findViewById(R.id.relativeLayoutRvTop)
+    val floatingRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewScrollTop)
+    val floatingRoot: RelativeLayout = view.findViewById(R.id.relativeLayoutRvTop)
 
     /* ids for input layout */
     val defaultInputLayout: View = view.findViewById(R.id.default_input_layout)

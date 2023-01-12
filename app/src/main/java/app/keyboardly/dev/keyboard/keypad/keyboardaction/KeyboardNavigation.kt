@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.keyboardly.dev.R
-import app.keyboardly.dev.keyboard.keypad.ExpandableLayout
 import app.keyboardly.dev.keyboard.keypad.KokoKeyboardView
 import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
 import app.keyboardly.dev.keyboard.utils.gone
@@ -27,7 +26,6 @@ open class KeyboardNavigation(
     var adapterNavigation: NavigationMenuAdapter? = null
     var defaultHeader: Boolean = true
     var subMenuAddOnActive: Boolean = false
-
 
     init {
         val defaultMenuList = defaultNavigation()
@@ -64,9 +62,8 @@ open class KeyboardNavigation(
     fun viewLayoutAction() {
 //        if (!frame.isVisible || !keyboardActionWrapper.isVisible) {
         goneOptionsView()
-        headerShadowAction.invisible()
         defaultInputLayout.gone()
-        mainHeader.invisible()
+        mainHeader.gone()
         navigationView.invisible()
         navigationParentLayout.invisible()
         getKeyboardViewWrapper().invisible()
@@ -89,11 +86,11 @@ open class KeyboardNavigation(
 //        }
     }
 
-    private fun getKeyboardViewWrapper(): View {
+    fun getKeyboardViewWrapper(): View {
         return keyboardWrapper
     }
 
-    private fun goneOptionsView() {
+    fun goneOptionsView() {
 
     }
 
