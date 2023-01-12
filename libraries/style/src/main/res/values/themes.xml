@@ -228,7 +228,7 @@
 
     </style>
 
-    <style name="DefaultButtonAppCompat"  parent="Widget.AppCompat.Button">
+    <style name="DefaultButtonAppCompat"  parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_green</item>
