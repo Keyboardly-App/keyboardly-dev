@@ -6,11 +6,11 @@ import app.keyboardly.lib.ChipGroupCallback
 import app.keyboardly.lib.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
+import app.keyboardly.sample.R
+import app.keyboardly.sample.databinding.DiscountFeatureLayoutBinding
+import app.keyboardly.style.helper.invisible
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import app.keyboardly.style.helper.invisible
-import app.keyboardly.sample.R
-import app.keyboardly.sample.databinding.BotFeatureLayoutBinding
 
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
@@ -19,10 +19,10 @@ class DiscountView (
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallback {
 
-    private lateinit var binding: BotFeatureLayoutBinding
+    private lateinit var binding: DiscountFeatureLayoutBinding
 
     override fun onCreate() {
-        binding = BotFeatureLayoutBinding.inflate(getLayoutInflater())
+        binding = DiscountFeatureLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
         initClick()
         initFooter()
@@ -30,10 +30,10 @@ class DiscountView (
 
     private fun initClick() {
         binding.apply {
-            botEditText.setOnClickListener {
-                dependency.requestInput(botEditText,this@DiscountView)
+            editText.setOnClickListener {
+                dependency.requestInput(editText,this@DiscountView)
             }
-            botEditTextNumber.setOnClickListener {
+            editTextNumber.setOnClickListener {
                 val list = mutableListOf<Chip>()
 
                 val chip = createChip().apply {
@@ -50,7 +50,7 @@ class DiscountView (
                     text = "Hijau"
                 }
                 list.add(chip3)
-                dependency.showChipOptions(list, this@DiscountView, botEditTextNumber)
+                dependency.showChipOptions(list, this@DiscountView,editTextNumber)
             }
         }
     }
@@ -71,7 +71,7 @@ class DiscountView (
                 footerFormReset.invisible()
                 footerSubmitButton.text = "Save"
                 footerSubmitButton.setOnClickListener {
-                    val text = botTextMain.text.toString()
+                    val text = textMain.text.toString()
                     dependency.commitText(text)
                 }
             }
@@ -93,7 +93,7 @@ class DiscountView (
     override fun onDoneChip(editText: EditText, chipGroup: ChipGroup) {
         val text = editText.text
         Log.d("BotFeature", "text=$text")
-        binding.botEditTextNumber.text = text
+        binding.editTextNumber.text = text
         dependency.viewLayoutAction()
     }
 }

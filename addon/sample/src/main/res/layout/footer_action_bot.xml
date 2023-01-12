@@ -27,7 +27,6 @@
         android:paddingBottom="0dp"
         android:paddingTop="0dp"
         android:layout_gravity="center_vertical"
-        app:backgroundTint="@color/green_default"
         android:layout_height="35dp"
         android:text="@string/submit" />
 

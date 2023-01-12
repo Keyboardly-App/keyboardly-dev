@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="100dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textMain"
+                style="?textActionKeyboardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Discount feature\n(On development)"
+                android:textSize="16sp" />
+
+
+            <EditText
+                android:id="@+id/editText"
+                style="?textActionKeyboardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textMain"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                style="?textActionKeyboardStyle"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText"
+                android:layout_margin="10dp"
+                android:hint="Group"
+                android:inputType="number" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    <include
+        android:id="@+id/footerDiscount"
+        layout="@layout/footer_action_bot" />
+
+</LinearLayout>
