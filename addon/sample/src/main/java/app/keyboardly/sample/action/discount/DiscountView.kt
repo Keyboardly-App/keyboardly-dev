@@ -1,5 +1,6 @@
 package app.keyboardly.sample.action.discount
 
+import android.text.InputType
 import android.util.Log
 import android.widget.EditText
 import app.keyboardly.lib.ChipGroupCallback
@@ -30,10 +31,17 @@ class DiscountView (
 
     private fun initClick() {
         binding.apply {
-            editText.setOnClickListener {
-                dependency.requestInput(editText,this@DiscountView)
+            email.setOnClickListener {
+                dependency.requestInput(email,this@DiscountView)
             }
-            editTextNumber.setOnClickListener {
+            name.setOnClickListener {
+                dependency.requestInput(name,this@DiscountView)
+            }
+            number.setOnClickListener {
+                dependency.requestInput(name,this@DiscountView,
+                    inputType = InputType.TYPE_CLASS_NUMBER)
+            }
+            group.setOnClickListener {
                 val list = mutableListOf<Chip>()
 
                 val chip = createChip().apply {
@@ -50,7 +58,7 @@ class DiscountView (
                     text = "Hijau"
                 }
                 list.add(chip3)
-                dependency.showChipOptions(list, this@DiscountView,editTextNumber)
+                dependency.showChipOptions(list, this@DiscountView, group)
             }
         }
     }
@@ -79,21 +87,21 @@ class DiscountView (
     }
 
     override fun onDone(text: String, editText: EditText?) {
-        Log.d("BotFeature", "text onDone=$text")
+        Log.d("discount", "text onDone=$text")
         dependency.viewLayoutAction()
         editText?.setText(text)
     }
 
     override fun onChipCheckedChange(chip: Chip, isChecked: Boolean, chipGroup: ChipGroup) {
         val selectedTags = getSelectedTags(chipGroup)
-        Log.d("BotFeature", "selectedTags=$selectedTags")
+        Log.d("discount", "selectedTags=$selectedTags")
         dependency.getEditTextInput().setText(selectedTags)
     }
 
     override fun onDoneChip(editText: EditText, chipGroup: ChipGroup) {
         val text = editText.text
-        Log.d("BotFeature", "text=$text")
-        binding.editTextNumber.text = text
+        Log.d("discount", "text=$text")
+        binding.group.text = text
         dependency.viewLayoutAction()
     }
 }

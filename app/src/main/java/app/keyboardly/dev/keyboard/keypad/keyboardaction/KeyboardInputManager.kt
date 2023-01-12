@@ -252,7 +252,7 @@ open class KeyboardInputManager(
         Timber.d("hint=" + mEditFieldTIL.hint)
     }
 
-    private fun setHint(resId: CharSequence?) {
+    fun setHint(resId: CharSequence?) {
         mEditFieldTIL.text = resId
         mEditFieldLongTIL.text = resId
 
@@ -286,7 +286,7 @@ open class KeyboardInputManager(
         }
     }
 
-    private fun viewBaseInput() {
+    fun viewBaseInput() {
         frame.gone()
         navigationParentLayout.invisible()
         parentEditMainLong.gone()
@@ -298,7 +298,7 @@ open class KeyboardInputManager(
 
 
 
-    private fun enableEditText(enable: Boolean) {
+    fun enableEditText(enable: Boolean) {
         mEditField.isFocusable = enable
         mEditField.isLongClickable = enable
         mEditField.isClickable = enable

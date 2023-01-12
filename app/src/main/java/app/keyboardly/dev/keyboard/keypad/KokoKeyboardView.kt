@@ -167,8 +167,7 @@ open class KokoKeyboardView : ExpandableLayout {
             override fun getContext(): Context = context
 
             override fun getEditTextInput(): EditText {
-                // TODO: add edittext
-                return EditText(context)
+                return container.mEditField
             }
 
             override fun getCurrentInputConnection(): InputConnection {
@@ -176,7 +175,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun getCurrentEditorInfo(): EditorInfo {
-                return this@KokoKeyboardView.currentEditorInfo
+                return currentEditorInfo
             }
 
             override fun getRecyclerView(): RecyclerView {
@@ -214,7 +213,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun setTextWatcher(textWatcher: TextWatcher) {
-
+                container.textWatcher = textWatcher
             }
 
             override fun setActionView(view: KeyboardActionView) {
@@ -230,23 +229,23 @@ open class KokoKeyboardView : ExpandableLayout {
                 callback: ChipGroupCallback,
                 editText: EditText?
             ) {
-
+                container.showChipOptions(list, callback, editText)
             }
 
             override fun showDatePicker(editText: EditText?, inputPresenter: InputPresenter?) {
-
+                container.showDatePicker(editText, inputPresenter)
             }
 
             override fun loadingOnInput(loading: Boolean) {
-
+                container.loadingOnInput(loading)
             }
 
             override fun showTitleAboveList(loading: Boolean, title: String?) {
-
+                container.showTitle(loading, title)
             }
 
             override fun loadingMain(loading: Boolean) {
-
+                container.loadingMain(loading)
             }
 
             override fun requestInput(
@@ -267,15 +266,15 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun showRecyclerViewOptions(onViewReady: KeyboardActionDependency.OnViewReady) {
-
+                container.viewList(onViewReady)
             }
 
             override fun showFloatingRecyclerView(onViewReady: KeyboardActionDependency.OnViewReady) {
-
+                container.viewFloatingRv(onViewReady)
             }
 
             override fun showMessageView(onViewMessageReady: KeyboardActionDependency.OnViewMessageReady) {
-
+                container.showMessageView(onViewMessageReady)
             }
 
             override fun setNavigationCallback(navigationCallback: NavigationCallback) {

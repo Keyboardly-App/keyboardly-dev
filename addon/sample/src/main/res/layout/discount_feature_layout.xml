@@ -12,9 +12,10 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:paddingBottom="100dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
 
             <TextView
@@ -28,11 +29,31 @@
 
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/name"
                 style="?textActionKeyboardStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textMain"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:hint="Name"
+                android:inputType="textEmailAddress" />
+
+
+            <EditText
+                android:id="@+id/number"
+                style="?textActionKeyboardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:hint="Number"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/email"
+                style="?textActionKeyboardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:focusable="false"
                 android:hint="Email"
@@ -40,17 +61,16 @@
 
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/group"
                 style="?textActionKeyboardStyle"
                 android:focusable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editText"
                 android:layout_margin="10dp"
                 android:hint="Group"
-                android:inputType="number" />
+                android:inputType="text" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </ScrollView>
 

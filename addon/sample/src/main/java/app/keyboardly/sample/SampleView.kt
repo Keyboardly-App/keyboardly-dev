@@ -28,7 +28,7 @@ class SampleView(
         menu.add(
             NavigationMenuModel(
                 DISCOUNT,
-                nameString = "Discount",
+                nameString = "Register",
                 icon = R.drawable.ic_round_discount_24
             )
         )

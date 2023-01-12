@@ -1,6 +1,7 @@
 package app.keyboardly.dev.keyboard.keypad.keyboardaction
 
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.keyboardly.dev.R
@@ -19,7 +20,7 @@ import timber.log.Timber
  * Created by Zainal on 09/01/2023 - 19:19
  */
 open class KeyboardNavigation(
-    private val view: View,
+    val view: View,
     private val moduleHelper: DynamicModuleHelper
 ) : KeyboardBaseId(view), NavigationCallback {
 
@@ -27,8 +28,11 @@ open class KeyboardNavigation(
     var defaultHeader: Boolean = true
     var subMenuAddOnActive: Boolean = false
 
+    fun Int.toPx(): Int = (this * view.context.resources.displayMetrics.density).toInt()
+
     init {
         val defaultMenuList = defaultNavigation()
+        @Suppress("LeakingThis")
         adapterNavigation = NavigationMenuAdapter(defaultMenuList, this)
         navigationView.apply {
             layoutManager = LinearLayoutManager(
@@ -64,6 +68,7 @@ open class KeyboardNavigation(
         goneOptionsView()
         defaultInputLayout.gone()
         mainHeader.gone()
+        headerShadowAction.gone()
         navigationView.invisible()
         navigationParentLayout.invisible()
         getKeyboardViewWrapper().invisible()
@@ -91,7 +96,20 @@ open class KeyboardNavigation(
     }
 
     fun goneOptionsView() {
-
+        if (mEditField.isFocused && floatingRecyclerView.isShown) {
+            val layoutParams =
+                RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 200.toPx())
+            floatingRecyclerView.layoutParams = layoutParams
+        } else {
+            floatingRoot.gone()
+            floatingRecyclerView.gone()
+        }
+        recyclerView.gone()
+        chipGroupOnFrame.gone()
+        datePickerOnFrame.gone()
+        messageOnFrame.gone()
+        keyboardActionWrapper.gone()
+        progressMain.gone()
     }
 
     fun viewNavigation() {
