@@ -5,17 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
+    android:descendantFocusability="blocksDescendants"
     tools:ignore="TouchTargetSizeCheck,HardcodedText"
     android:background="@android:color/transparent">
 
+
+    <!-- view for recycler view -->
+    <RelativeLayout
+        android:id="@+id/relativeLayoutRvTop"
+        android:layout_width="match_parent"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toTopOf="@id/line_head"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewScrollTop"
+            tools:itemCount="5"
+            android:animationCache="false"
+            android:focusable="true"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_alignParentBottom="true"
+            tools:listitem="@layout/item_add_on_list"
+            app:layout_constraintHeight_default="wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
     <View
         android:id="@+id/header_shadow"
-        android:clickable="false"
-        tools:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@id/line_head"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="1dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="@dimen/default_height_navigation"/>
+        android:layout_height="@dimen/height_header" />
 
     <View
         android:id="@+id/line_head"
@@ -39,7 +62,7 @@
             tools:visibility="visible"
             android:clickable="true"
             android:focusable="true"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/ic_launcher_foreground"
             android:layout_width="@dimen/default_height_navigation"
             android:layout_height="match_parent"/>
 
@@ -74,18 +97,20 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="@dimen/default_height_navigation"/>
-
-        <include
-            android:id="@+id/default_input_layout"
-            layout="@layout/form_edit_main" />
     </LinearLayout>
+
+    <include
+        android:id="@+id/default_input_layout"
+        tools:visibility="gone"
+        android:visibility="gone"
+        layout="@layout/form_edit_main" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/keyboard_parent"
-        app:layout_constraintTop_toBottomOf="@id/header_shadow"
+        app:layout_constraintTop_toBottomOf="@id/navigation_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp">
 
         <app.keyboardly.dev.keyboard.layouts.KeyboardWrapperLayout
             android:id="@+id/keyboard_wrapper_layout"
@@ -370,7 +395,7 @@
         android:id="@+id/keyboard_action_wrapper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/header_shadow"
+        app:layout_constraintTop_toBottomOf="@id/line_head"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
         tools:visibility="visible" >

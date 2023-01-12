@@ -12,6 +12,7 @@
         android:minHeight="@dimen/height_header"
         android:orientation="vertical"
         android:visibility="gone"
+        tools:visibility="visible"
         android:clickable="false"
         style="?actionKeyboardStyle"
         android:animateLayoutChanges="true">
