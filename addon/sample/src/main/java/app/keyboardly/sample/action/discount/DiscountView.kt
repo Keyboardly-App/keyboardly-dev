@@ -38,7 +38,7 @@ class DiscountView (
                 dependency.requestInput(name,this@DiscountView)
             }
             number.setOnClickListener {
-                dependency.requestInput(name,this@DiscountView,
+                dependency.requestInput(number,this@DiscountView,
                     inputType = InputType.TYPE_CLASS_NUMBER)
             }
             group.setOnClickListener {

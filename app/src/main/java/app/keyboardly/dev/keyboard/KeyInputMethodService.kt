@@ -10,7 +10,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import app.keyboardly.dev.R
 
-//ToDo: allow  integration of custom keyboard as a systme wide keyboard
+//ToDo: allow  integration of custom keyboard as a system wide keyboard
 class KeyInputMethodService : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     private var mKeyboard: Keyboard? = null
     private var mKeyboardWithNum: Keyboard? = null
@@ -50,7 +50,7 @@ class KeyInputMethodService : InputMethodService(), KeyboardView.OnKeyboardActio
     }
 
     override fun onCreateInputView(): View {
-        mKeyboardInputView = layoutInflater.inflate(R.layout.qwerty_keypad, null) as KeyboardView
+        mKeyboardInputView = layoutInflater.inflate(R.layout.qwerty_keyboard, null) as KeyboardView
         mKeyboardInputView!!.setOnKeyboardActionListener(this)
         mKeyboardInputView!!.keyboard = mActiveKeyboard
         mKeyboardInputView!!.isPreviewEnabled = false

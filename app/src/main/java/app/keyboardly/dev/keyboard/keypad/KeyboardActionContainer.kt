@@ -200,6 +200,7 @@ class KeyboardActionContainer(
         doneEditButton.setOnClickListener {
             Timber.i("done edit.$editText")
             editText?.let{
+                it.text = mEditField.text
                 callback.onDoneChip(it,chipGroupOnFrame)
             }
         }

@@ -24,7 +24,7 @@ open class KeyboardBaseId(
 //    val titleHeader: TextView = view.findViewById(R.id.main_header_title_tv)
 
     val keyboardActionWrapper: LinearLayout = view.findViewById(R.id.keyboard_action_wrapper)
-    val keyboardWrapper: LinearLayout = view.findViewById(R.id.keyboard_wrapper_layout)
+    val keyboardWrapper: FrameLayout = view.findViewById(R.id.keyboardView)
 //    val headerWrapper: RelativeLayout = view.findViewById(R.id.header_wrapper)
 
     val headerShadowAction: View = view.findViewById(R.id.header_shadow)

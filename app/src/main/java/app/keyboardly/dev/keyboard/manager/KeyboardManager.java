@@ -13,7 +13,7 @@ public class KeyboardManager {
     public static final int KEYCODE_SPACE = 2;
     public static final int KEYCODE_DONE = 3;
     public static final int KEYCODE_MODE_CHANGE = 4;
-    public static final int KEYCODE_ADDON = 5;
+    public static final int KEYCODE_SHIFT = 5;
 
     private int cursorPosition = 0;
     private String inputText = "";
@@ -123,6 +123,7 @@ public class KeyboardManager {
     }
 
     public void registerListener(KeyboardListener listener) {
+        listeners.clear();
         listeners.add(listener);
     }
 }

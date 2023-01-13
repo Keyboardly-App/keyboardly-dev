@@ -20,16 +20,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="q" />
+            android:text="Q" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_w"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="w" />
+            android:text="W" />
 
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
@@ -37,56 +35,56 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="e" />
+            android:text="E" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_r"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="r" />
+            android:text="R" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_t"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="t" />
+            android:text="T" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_y"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="y" />
+            android:text="Y" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_u"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="u" />
+            android:text="U" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_i"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="i" />
+            android:text="I" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_o"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="o" />
+            android:text="O" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_p"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="p" />
+            android:text="P" />
 
 
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
@@ -107,7 +105,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="a" />
+            android:text="A" />
 
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
@@ -115,56 +113,56 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="s" />
+            android:text="S" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_d"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="d" />
+            android:text="D" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_f"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="f" />
+            android:text="F" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_g"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="g" />
+            android:text="G" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_h"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="h" />
+            android:text="H" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_j"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="j" />
+            android:text="J" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_k"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="k" />
+            android:text="K" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_l"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="l" />
+            android:text="L" />
 
         <Space
             android:layout_width="0dp"
@@ -194,28 +192,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="z" />
+            android:text="Z" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_x"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="x" />
+            android:text="X" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_c"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="c" />
+            android:text="C" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="v"
+            android:text="V"
             tools:ignore="TouchTargetSizeCheck" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
@@ -223,7 +221,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="b" />
+            android:text="B" />
 
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
@@ -231,14 +229,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="n" />
+            android:text="N" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_m"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="m" />
+            android:text="M" />
 
         <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             android:id="@+id/key_backspace"

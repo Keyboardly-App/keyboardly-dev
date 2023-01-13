@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.di.BaseComponent
@@ -37,6 +38,9 @@ import timber.log.Timber
  * https://github.com/RowlandOti/KokoKeyboard
  */
 open class KokoKeyboardView : ExpandableLayout {
+    private lateinit var field: EditText
+    private lateinit var keyboard: KeyboardLayout
+    private var frameKeyboard: FrameLayout? = null
     private lateinit var keyboardManager: KeyboardManager
     private lateinit var container: KeyboardActionContainer
     private lateinit var currentEditorInfo: EditorInfo
@@ -74,7 +78,7 @@ open class KokoKeyboardView : ExpandableLayout {
                 when (keyCode) {
                     KeyboardManager.KEYCODE_BACKSPACE -> {}
                     KeyboardManager.KEYCODE_SPACE -> {}
-                    KeyboardManager.KEYCODE_ADDON -> gotoAddOn()
+                    KeyboardManager.KEYCODE_SHIFT -> shiftKeyboard()
                     KeyboardManager.KEYCODE_DONE -> collapse()
                 }
             }
@@ -99,14 +103,26 @@ open class KokoKeyboardView : ExpandableLayout {
     }
 
     var TAG = KeyboardManager::class.java.simpleName
-    private fun gotoAddOn() {
-        Log.i(TAG, "key add on triggered")
+    private var isLowerCase = true
+
+    private fun shiftKeyboard() {
+        Timber.i("islower case=$isLowerCase")
+        isLowerCase = !isLowerCase
+
+        val keyboardViewResId = if (isLowerCase) R.layout.qwerty_keypad_lowercase
+            else R.layout.qwerty_keypad_uppercase
+        val keyboardView = LayoutInflater.from(context).inflate(keyboardViewResId, null)
+        frameKeyboard?.removeAllViews()
+        frameKeyboard?.addView(keyboardView)
+        keyboards[field]?.setKeypadClickListener(frameKeyboard)
+        Timber.i("updated=$isLowerCase")
     }
 
     fun registerEditText(type: Int, field: EditText) {
         if (!field.isEnabled) {
             return
         }
+        this.field = field
         field.setRawInputType(InputType.TYPE_CLASS_TEXT)
         field.isSoundEffectsEnabled = false
         field.isLongClickable = false
@@ -114,19 +130,14 @@ open class KokoKeyboardView : ExpandableLayout {
         val editorInfo = EditorInfo()
         currentEditorInfo = editorInfo
         val inputConnection = field.onCreateInputConnection(editorInfo)
-        val keyboard = generateCorrectKeyboard(type, inputConnection)
+        keyboard = generateCorrectKeyboard(type, inputConnection)
         keyboards[field] = keyboard
-        keyboards[field]!!.registerListener(keyboardListener)
+        keyboards[field]?.registerListener(keyboardListener)
         field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (hasFocus) {
                 hideSoftKeyboard(field)
                 activeEditField = field
-                removeAllViews()
-                val keyboard1 = keyboards[activeEditField]
-                addView(keyboard1)
-                if (!isExpanded) {
-                    expand()
-                }
+                updateKeyboard()
             } else {
                 if (isExpanded) {
                     for (editText in keyboards.keys) {
@@ -142,6 +153,15 @@ open class KokoKeyboardView : ExpandableLayout {
             if (!isExpanded) {
                 expand()
             }
+        }
+    }
+
+    private fun updateKeyboard() {
+        removeAllViews()
+        val keyboard1 = keyboards[activeEditField]
+        addView(keyboard1)
+        if (!isExpanded) {
+            expand()
         }
     }
 
@@ -290,14 +310,11 @@ open class KokoKeyboardView : ExpandableLayout {
 
     private fun generateCorrectKeyboard(type: Int, ic: InputConnection): KeyboardLayout {
         keyboardManager = KeyboardManager(ic)
-        val keypad = KeyboardLayout(context, keyboardManager)
+        var keypad = KeyboardLayout(context, keyboardManager)
         val view: View
         return when (type) {
             INPUT_TYPE_QWERTY -> {
-                view = LayoutInflater.from(context)
-                    .inflate(R.layout.qwerty_keypad, null)
-                keypad.addView(view)
-                initView(view)
+                keypad = initView()
                 keypad
             }
             INPUT_TYPE_QWERTY_NUM -> {
@@ -315,8 +332,21 @@ open class KokoKeyboardView : ExpandableLayout {
         }
     }
 
-    private fun initView(view: View) {
+    private fun initView(isLowerCase: Boolean?=true): KeyboardLayout{
+        val keypad = KeyboardLayout(context, keyboardManager)
+
+        val view = LayoutInflater.from(context).inflate(R.layout.qwerty_keyboard, null)
         container = KeyboardActionContainer(view, moduleHelper, this)
+        val keyboardView = if (isLowerCase!!){
+            LayoutInflater.from(context).inflate(R.layout.qwerty_keypad_lowercase, null)
+        } else {
+            LayoutInflater.from(context).inflate(R.layout.qwerty_keypad_uppercase, null)
+        }
+        frameKeyboard = view.findViewById(R.id.keyboardView)
+        frameKeyboard?.addView(keyboardView)
+
+        keypad.addView(view)
+        return keypad
     }
 
 
