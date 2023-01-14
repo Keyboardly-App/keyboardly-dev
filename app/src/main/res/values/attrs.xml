@@ -14,6 +14,7 @@
             <enum name="shift" value="5" />
             <enum name="symbol" value="6" />
             <enum name="alphabet" value="7" />
+            <enum name="enter" value="8" />
         </attr>
     </declare-styleable>
 

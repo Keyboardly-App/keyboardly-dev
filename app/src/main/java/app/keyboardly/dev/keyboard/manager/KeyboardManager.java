@@ -16,6 +16,7 @@ public class KeyboardManager {
     public static final int KEYCODE_SHIFT = 5;
     public static final int KEYCODE_SYMBOL = 6;
     public static final int KEYCODE_ALPHABET = 7;
+    public static final int KEYCODE_ENTER = 8;
 
     private int cursorPosition = 0;
     private String inputText = "";
@@ -55,6 +56,9 @@ public class KeyboardManager {
                     StringBuilder builder = new StringBuilder(this.inputText);
                     inputText = builder.deleteCharAt(--cursorPosition).toString();
                 }
+                break;
+            case KEYCODE_ENTER:
+                this.handleKeyStroke('\n');
                 break;
             case KEYCODE_SPACE :
                 this.handleKeyStroke(' ');

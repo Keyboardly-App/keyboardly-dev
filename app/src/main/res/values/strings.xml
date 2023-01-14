@@ -10,5 +10,7 @@
     <string name="symbol_ask">\?</string>
     <string name="symbol_coma">,</string>
     <string name="symbol_dot">.</string>
+    <string name="symbol_enter">↵</string>
+    <string name="abc">ABC</string>
 
 </resources>
