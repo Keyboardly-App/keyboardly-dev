@@ -104,7 +104,7 @@ interface KeyboardActionDependency {
     /**
      * show date picker from keyboard
      */
-    fun showDatePicker(editText: EditText?=null, inputPresenter: InputPresenter?)
+    fun showDatePicker(editText: EditText?=null, inputPresenter: InputPresenter?, readableMode:Boolean?=true)
 
     /**
      * loading view on submit icon default input

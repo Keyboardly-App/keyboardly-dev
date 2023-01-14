@@ -77,6 +77,7 @@ open class KokoKeyboardView : ExpandableLayout {
                 when (keyCode) {
                     KeyboardManager.KEYCODE_BACKSPACE -> {}
                     KeyboardManager.KEYCODE_SPACE -> {}
+                    KeyboardManager.KEYCODE_ENTER -> {}
                     KeyboardManager.KEYCODE_SHIFT -> shiftKeyboard()
                     KeyboardManager.KEYCODE_DONE -> collapse()
                     KeyboardManager.KEYCODE_SYMBOL -> setKeypadSymbolNumber()
@@ -269,8 +270,12 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.showChipOptions(list, callback, editText)
             }
 
-            override fun showDatePicker(editText: EditText?, inputPresenter: InputPresenter?) {
-                container.showDatePicker(editText, inputPresenter)
+            override fun showDatePicker(
+                editText: EditText?,
+                inputPresenter: InputPresenter?,
+                readableMode: Boolean?
+            ) {
+                container.showDatePicker(editText, inputPresenter, readableMode)
             }
 
             override fun loadingOnInput(loading: Boolean) {

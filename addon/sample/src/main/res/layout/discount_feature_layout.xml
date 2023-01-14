@@ -18,15 +18,15 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
+
             <TextView
                 android:id="@+id/textMain"
                 style="?textActionKeyboardStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Discount feature\n(On development)"
+                android:text="Register"
                 android:textSize="16sp" />
-
 
             <EditText
                 android:id="@+id/name"
@@ -61,13 +61,66 @@
 
 
             <EditText
+                android:id="@+id/dateBorn"
+                style="?textActionKeyboardStyle"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Born Date"
+                android:inputType="text" />
+
+
+            <TextView
+                android:text="@string/gender"
+                style="@style/DefaultTextInputStyle"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/genderRadioGroup"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:text="@string/male"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:text="@string/female"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <EditText
                 android:id="@+id/group"
                 style="?textActionKeyboardStyle"
                 android:focusable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Group"
+                android:hint="Color"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/address"
+                style="?textActionKeyboardStyle"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Address"
                 android:inputType="text" />
 
         </LinearLayout>

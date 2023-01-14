@@ -1,6 +1,5 @@
 package app.keyboardly.dev.keyboard.keypad
 
-import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
@@ -224,7 +223,8 @@ class KeyboardActionContainer(
 
     fun showDatePicker(
         editTextTarget: EditText?,
-        mPresenter: InputPresenter?
+        mPresenter: InputPresenter?,
+        readableMode: Boolean? = true
     ) {
         viewBaseInput()
         enableEditText(false)
@@ -236,16 +236,42 @@ class KeyboardActionContainer(
             setHint(this)
         }
 
-        mEditField.text = editTextTarget?.text
+        val currentText = editTextTarget?.text.toString()
+        var yearFromEdittext: Int? = null
+        var monthFromEdittext: Int? = null
+        var dayFromEdittext: Int? = null
 
+        Timber.i("current text="+currentText)
         var selectedDate = ""
+
+        if (currentText.contains("-") && currentText.length == 10 ) {
+            try {
+                val splits = currentText.split("-")
+                if (splits.size == 3) {
+                    yearFromEdittext = splits.first().toInt()
+                    monthFromEdittext = splits[1].toInt()
+                    dayFromEdittext = splits.last().toInt()
+
+                    selectedDate = currentText
+                    val readable = toReadableDate(currentText)
+                    mEditField.setText(readable)
+                } else {
+                    mEditField.setText("")
+                }
+            } catch (e: Exception){
+                e.printStackTrace()
+                mEditField.setText("")
+            }
+        }
+
 
         val calendar: Calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
-        datePickerOnFrame.init(
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
+        val yearCalendar = yearFromEdittext?:calendar.get(Calendar.YEAR)
+        val monthOfYear = monthFromEdittext?:calendar.get(Calendar.MONTH)
+        val dateOfYear = dayFromEdittext?:calendar.get(Calendar.DAY_OF_MONTH)
+
+        datePickerOnFrame.init(yearCalendar, monthOfYear, dateOfYear
         ) { _, year, month, day ->
             // TODO: add on date change here by interface class
             var dayStr = day.toString()
@@ -257,10 +283,9 @@ class KeyboardActionContainer(
             selectedDate = dateSelected
             Timber.d("date-> $dateSelected//$selectedDate")
             dateSelected.apply {
-                val readableDate = toReadableDate(this)
+                val readableDate = if (readableMode!!) toReadableDate(this) else this
                 mEditField.setText(readableDate)
                 mEditField.setSelection(readableDate.length)
-
                 editTextTarget?.setText(readableDate)
             }
         }
@@ -273,14 +298,11 @@ class KeyboardActionContainer(
         }
     }
 
-
-
-    @SuppressLint("SimpleDateFormat")
-    fun toReadableDate(date: String): String {
+    private fun toReadableDate(date: String): String {
         val formatter = SimpleDateFormat("yyyy-MM-dd")
         val dates = formatter.parse(date) as Date
         val locale = getLocale()
-        val newFormat = SimpleDateFormat("d MMMM yyyy", locale)
+        val newFormat = SimpleDateFormat("dd MMMM yyyy", locale)
         return newFormat.format(dates)
     }
 

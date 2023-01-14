@@ -277,23 +277,28 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
 
         <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             android:id="@+id/key_alphabet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="ABC"
+            android:text="@string/abc"
             app:is_special_key="true"
             app:screen_width_percent="0.60"
             app:special_key_code="alphabet" />
 
 
-        <app.keyboardly.dev.keyboard.keys.SquareKeyView
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             android:id="@+id/key_qoma"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            app:is_special_key="false"
             android:text="@string/symbol_coma" />
 
 
@@ -301,7 +306,7 @@
             android:id="@+id/key_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
+            android:layout_weight="5"
             android:text=""
             app:is_special_key="true"
             app:screen_width_percent="0.60"
@@ -309,18 +314,28 @@
 
 
 
-        <app.keyboardly.dev.keyboard.keys.SquareKeyView
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             android:id="@+id/key_dot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            app:is_special_key="false"
             android:text="@string/symbol_dot" />
 
 
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            android:id="@+id/key_enter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:is_special_key="true"
+            app:special_key_code="enter"
+            android:text="@string/symbol_enter" />
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="0.2" />
 
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 

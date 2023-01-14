@@ -4,4 +4,7 @@
     <string name="sample">Sample</string>
     <string name="submit">Submit</string>
     <string name="txt_reset">reset</string>
+    <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
 </resources>

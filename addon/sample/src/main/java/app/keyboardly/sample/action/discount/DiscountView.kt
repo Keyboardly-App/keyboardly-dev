@@ -41,6 +41,13 @@ class DiscountView (
                 dependency.requestInput(number,this@DiscountView,
                     inputType = InputType.TYPE_CLASS_NUMBER)
             }
+            address.setOnClickListener {
+                dependency.requestInput(address,this@DiscountView,
+                    longInput = true)
+            }
+            dateBorn.setOnClickListener {
+                dependency.showDatePicker(dateBorn, this@DiscountView)
+            }
             group.setOnClickListener {
                 val list = mutableListOf<Chip>()
 
@@ -88,8 +95,15 @@ class DiscountView (
 
     override fun onDone(text: String, editText: EditText?) {
         Log.d("discount", "text onDone=$text")
+        val prefixDate = "date:"
+        if (text.startsWith(prefixDate)){
+            val dateSelected = text.replace(prefixDate,"")
+            editText?.setText(dateSelected)
+            Log.d("discount","Selected date=$dateSelected")
+        } else {
+            editText?.setText(text)
+        }
         dependency.viewLayoutAction()
-        editText?.setText(text)
     }
 
     override fun onChipCheckedChange(chip: Chip, isChecked: Boolean, chipGroup: ChipGroup) {
