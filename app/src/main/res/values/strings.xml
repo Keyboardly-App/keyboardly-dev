@@ -3,4 +3,12 @@
     <string name="nav_sample">Sample</string>
     <string name="data_not_found_nback">Data not found.\nBack</string>
 
+    <string name="symbol_at">\@</string>
+    <string name="symbol_and">&amp;</string>
+    <string name="symbol_double_tick">\"</string>
+    <string name="symbol_single_tick">\'</string>
+    <string name="symbol_ask">\?</string>
+    <string name="symbol_coma">,</string>
+    <string name="symbol_dot">.</string>
+
 </resources>

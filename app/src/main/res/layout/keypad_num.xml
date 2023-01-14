@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app.keyboardly.dev.keyboard.layouts.KeyboardWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/keyboard_wrapper_layout_uppercase"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
+        android:id="@+id/keyboard_row_num"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="1" />
+        
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="2" />
+        
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="3" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+    </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
+
+    <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
+        android:id="@+id/keyboard_qwerty_one"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="4" />
+        
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_five"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="5" />
+        
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_six"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="6" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+    </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
+
+    <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
+        android:id="@+id/keyboard_qwerty_two"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_seven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="7" />
+        
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_eight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="8" />
+
+        
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_nine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="9" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+    </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
+
+    <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
+        android:id="@+id/keyboard_qwerty_three"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5" />
+
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            app:is_special_key="false"
+            android:id="@+id/key_zero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="0" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5" />
+
+    </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
+
+</app.keyboardly.dev.keyboard.layouts.KeyboardWrapperLayout>
+

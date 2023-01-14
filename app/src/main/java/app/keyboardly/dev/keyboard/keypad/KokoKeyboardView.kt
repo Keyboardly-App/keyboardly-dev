@@ -5,7 +5,6 @@ import android.content.Context
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnFocusChangeListener
@@ -80,6 +79,8 @@ open class KokoKeyboardView : ExpandableLayout {
                     KeyboardManager.KEYCODE_SPACE -> {}
                     KeyboardManager.KEYCODE_SHIFT -> shiftKeyboard()
                     KeyboardManager.KEYCODE_DONE -> collapse()
+                    KeyboardManager.KEYCODE_SYMBOL -> setKeypadSymbolNumber()
+                    KeyboardManager.KEYCODE_ALPHABET -> setKeypadAlphabet()
                 }
             }
 
@@ -111,11 +112,27 @@ open class KokoKeyboardView : ExpandableLayout {
 
         val keyboardViewResId = if (isLowerCase) R.layout.qwerty_keypad_lowercase
             else R.layout.qwerty_keypad_uppercase
+        updateKeypad(keyboardViewResId)
+        Timber.i("updated=$isLowerCase")
+    }
+
+    fun setKeypadNumber(){
+        updateKeypad(R.layout.keypad_num)
+    }
+
+    fun setKeypadSymbolNumber(){
+        updateKeypad(R.layout.keypad_num_with_symbol)
+    }
+
+    fun setKeypadAlphabet(){
+        updateKeypad(R.layout.qwerty_keypad_lowercase)
+    }
+
+    private fun updateKeypad(keyboardViewResId: Int) {
         val keyboardView = LayoutInflater.from(context).inflate(keyboardViewResId, null)
         frameKeyboard?.removeAllViews()
         frameKeyboard?.addView(keyboardView)
         keyboards[field]?.setKeypadClickListener(frameKeyboard)
-        Timber.i("updated=$isLowerCase")
     }
 
     fun registerEditText(type: Int, field: EditText) {

@@ -14,6 +14,8 @@ public class KeyboardManager {
     public static final int KEYCODE_DONE = 3;
     public static final int KEYCODE_MODE_CHANGE = 4;
     public static final int KEYCODE_SHIFT = 5;
+    public static final int KEYCODE_SYMBOL = 6;
+    public static final int KEYCODE_ALPHABET = 7;
 
     private int cursorPosition = 0;
     private String inputText = "";

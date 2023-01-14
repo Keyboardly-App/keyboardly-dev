@@ -135,8 +135,15 @@ open class KeyboardInputManager(
         }
     }
 
-    private fun setKeyboardViewAsRequired(i: Int, textWatcher: TextWatcher?) {
+    private fun setKeyboardViewAsRequired(inputType: Int, textWatcher: TextWatcher?) {
+        when(inputType){
+            InputType.TYPE_CLASS_NUMBER -> kokoKeyboardView.setKeypadNumber()
+            else -> kokoKeyboardView.setKeypadAlphabet()
+        }
 
+        if (textWatcher!=null) {
+            mEditField.addTextChangedListener(textWatcher)
+        }
     }
 
     /**

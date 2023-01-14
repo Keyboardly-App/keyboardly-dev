@@ -12,6 +12,8 @@
             <enum name="done" value="3" />
             <enum name="mode_change" value="4" />
             <enum name="shift" value="5" />
+            <enum name="symbol" value="6" />
+            <enum name="alphabet" value="7" />
         </attr>
     </declare-styleable>
 

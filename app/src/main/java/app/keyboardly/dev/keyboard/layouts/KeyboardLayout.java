@@ -46,19 +46,23 @@ public class KeyboardLayout extends LinearLayout {
     public void setKeypadClickListener(ViewGroup parent) {
         for (int i = 0; i < parent.getChildCount(); i++) {
             final View child = parent.getChildAt(i);
-            Timber.d("child="+child);
             if (child instanceof ViewGroup) {
                 setKeypadClickListener((ViewGroup) child);
             } else {
                 if (child != null) {
                     child.setOnClickListener(view -> {
+
                         if (view instanceof SquareKeyView) {
-                            keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
+                            char text = ((Button) view).getText().charAt(0);
+                            keyboardManager.onKeyStroke(text);
                         } else if (view instanceof RectangularKeyView) {
-                            if (((RectangularKeyView) view).isSpecialKey()) {
+                            boolean isSpecialKey = ((RectangularKeyView) view).isSpecialKey();
+                            Timber.d("is spesical key ="+isSpecialKey);
+                            if (isSpecialKey) {
                                 keyboardManager.onKeyStroke(((RectangularKeyView) view).getSpecialKeyCode(), false);
                             } else {
-                                keyboardManager.onKeyStroke(((Button) view).getText().charAt(0));
+                                char text = ((Button) view).getText().charAt(0);
+                                keyboardManager.onKeyStroke(text);
                             }
                         } else {
                             Timber.w("view="+view);
