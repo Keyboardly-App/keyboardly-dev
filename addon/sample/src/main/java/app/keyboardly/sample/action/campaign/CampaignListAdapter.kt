@@ -35,7 +35,7 @@ class CampaignListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(context)
-        val binding = ItemDataTextBinding.inflate(layoutInflater)
+        val binding = ItemDataTextBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
     }
 

@@ -30,7 +30,7 @@ abstract class KeyboardActionView (
 
     fun view() = viewLayout
 
-    fun instanceLogic() {
+    private fun instanceLogic() {
         if (viewLayout == null) {
             onCreate()
         } else {
