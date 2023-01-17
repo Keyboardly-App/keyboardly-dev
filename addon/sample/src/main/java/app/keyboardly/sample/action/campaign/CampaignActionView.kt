@@ -23,6 +23,7 @@ class CampaignActionView (
 ) : KeyboardActionView(dependency), InputPresenter {
 
 
+    private var textWatcher: TextWatcher? = null
     private lateinit var campaignAdapter: CampaignListAdapter
     private var floatingRv: RecyclerView? = null
     private var countDownTimer: CountDownTimer? = null
@@ -42,6 +43,8 @@ class CampaignActionView (
                     override fun onClick(data: CampaignModel) {
                         dependency.commitText(data.description)
                         floatingRv?.gone()
+                        textWatcher = null
+                        campaignAdapter.updateList(listCampaign)
                         dependency.viewLayoutAction()
                     }
             })
@@ -56,7 +59,7 @@ class CampaignActionView (
                 }
             }
 
-            val textWatcher = object : TextWatcher{
+            textWatcher = object : TextWatcher{
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                 override fun onTextChanged(char: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -94,6 +97,7 @@ class CampaignActionView (
                 onCloseSearch = {
                     campaignAdapter.updateList(listCampaign)
                     floatingRv?.gone()
+                    textWatcher = null
                     dependency.viewLayoutAction()
                 })
             }
