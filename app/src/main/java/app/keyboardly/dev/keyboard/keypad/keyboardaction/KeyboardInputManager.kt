@@ -25,12 +25,9 @@ open class KeyboardInputManager(
     private val kokoKeyboardView: KokoKeyboardView
 ) : KeyboardNavigation(view, moduleHelper){
 
-    var mPresenter: InputPresenter? = null
-    var moreKeyExpand: Boolean = false
-    var editable = true
+    private var mPresenter: InputPresenter? = null
     private var reInputFlag = false
     private var customEditorInfo: EditorInfo? = null
-    var textWatcher: TextWatcher? = null
 
     init {
         mEditField.onFocusChangeListener = View.OnFocusChangeListener { _: View?, hasFocus: Boolean ->
@@ -141,6 +138,10 @@ open class KeyboardInputManager(
             else -> kokoKeyboardView.setKeypadAlphabet()
         }
 
+        mEditField.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
+        mEditFieldLong.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
+        this.textWatcher = textWatcher
+
         if (textWatcher!=null) {
             mEditField.addTextChangedListener(textWatcher)
         }
@@ -226,6 +227,7 @@ open class KeyboardInputManager(
             } else {
                 if (textWatcher != null) {
                     Timber.d("on close")
+                    mEditField.removeTextChangedListener(textWatcher)
                     onClose()
                 } else {
                     editTextTarget?.setText("")

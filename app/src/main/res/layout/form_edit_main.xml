@@ -58,6 +58,8 @@
                     android:clickable="true"
                     android:inputType="textMultiLine|textCapSentences"
                     android:paddingBottom="0dp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
                     android:focusableInTouchMode="true"
                     tools:text="@tools:sample/lorem" />
 
@@ -102,6 +104,8 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint=""
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
                     android:inputType="textCapSentences"
                     android:maxLength="150"
                     android:singleLine="true"

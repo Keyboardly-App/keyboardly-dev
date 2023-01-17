@@ -267,7 +267,6 @@ class KeyboardActionContainer(
             }
         }
 
-
         val calendar: Calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()
         val yearCalendar = yearFromEdittext?:calendar.get(Calendar.YEAR)

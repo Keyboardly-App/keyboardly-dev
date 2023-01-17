@@ -1,5 +1,6 @@
 package app.keyboardly.dev.keyboard.keypad.keyboardaction
 
+import android.text.TextWatcher
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -24,9 +25,10 @@ open class KeyboardNavigation(
     private val moduleHelper: DynamicModuleHelper
 ) : KeyboardBaseId(view), NavigationCallback {
 
-    var adapterNavigation: NavigationMenuAdapter? = null
+    private var adapterNavigation: NavigationMenuAdapter? = null
     var defaultHeader: Boolean = true
     var subMenuAddOnActive: Boolean = false
+    var textWatcher: TextWatcher? = null
 
     fun Int.toPx(): Int = (this * view.context.resources.displayMetrics.density).toInt()
 
@@ -76,7 +78,7 @@ open class KeyboardNavigation(
         frame.visible()
         frame.invalidate()
         keyboardActionWrapper.visible()
-//        resetInputConnection()
+        resetInputConnection()
 //        reInputFlag = false
 //        Timber.d("header shadow=${headerShadowAction.isVisible}")
 //        Timber.d("header wrapper=${headerWrapper.isVisible}")
@@ -89,6 +91,15 @@ open class KeyboardNavigation(
 //        } else {
 //            Timber.e("frame is currently visible")
 //        }
+    }
+
+    private fun resetInputConnection() {
+        Timber.w("resetted.")
+        mEditField.removeTextChangedListener(textWatcher)
+        textWatcher = null
+        mEditField.clearFocus()
+        mEditField.text = null
+        mEditFieldLong.text = null
     }
 
     fun getKeyboardViewWrapper(): View {
@@ -287,10 +298,10 @@ open class KeyboardNavigation(
             adapterNavigation?.updateList(menuList)
         }*/
         getKeyboardViewWrapper().visible()
+        resetInputConnection()
 //            keyboardSwitcher.apply {
 //                getmain.visible()
 //                resetKeyboardAlpahabet(Settings.getInstance())
-//                resetInputConnection()
 //            }
     }
 
