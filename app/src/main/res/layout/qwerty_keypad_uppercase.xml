@@ -14,7 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_q"
             android:layout_width="0dp"
@@ -85,7 +88,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="P" />
-
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
 
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
@@ -98,7 +104,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.2" />
 
         <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_a"
@@ -167,7 +173,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.2" />
 
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
@@ -176,7 +182,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
         <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             android:id="@+id/key_shift"
             android:layout_width="0dp"
@@ -247,7 +256,10 @@
             app:is_special_key="true"
             app:screen_width_percent="0.3"
             app:special_key_code="backspace" />
-
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2" />
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
     <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
@@ -259,13 +271,13 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.2" />
 
         <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             android:id="@+id/key_symbol"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:text="\?123"
             app:is_special_key="true"
             app:screen_width_percent="0.60"
@@ -303,7 +315,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.2" />
 
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 </app.keyboardly.dev.keyboard.layouts.KeyboardWrapperLayout>
