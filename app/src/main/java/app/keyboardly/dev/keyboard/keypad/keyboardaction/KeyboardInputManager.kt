@@ -238,6 +238,7 @@ open class KeyboardInputManager(
             if (recyclerView.isShown
                 || messageOnFrame.isShown
                 || floatingRecyclerView.isShown
+                || !keyboardWrapper.isShown
             ) {
                 reInputFlag = true
                 viewInputMode(true)
@@ -271,9 +272,10 @@ open class KeyboardInputManager(
     fun viewInputMode(active: Boolean) {
         if (active) {
             goneOptionsView()
-            /*if (!getKeyboardViewWrapper().isShown) {
+            if (!getKeyboardViewWrapper().isShown) {
                 getKeyboardViewWrapper().visible()
-            }*/
+            }
+            keyboardView.visible()
             keyboardWrapper.visible()
             keyboardActionWrapper.gone()
             viewBaseInput()
@@ -285,7 +287,7 @@ open class KeyboardInputManager(
             mEditField.setTextIsSelectable(true)
         } else {
             reInputFlag = false
-//            headerWrapper.invisible()
+            headerWrapper.invisible()
             headerShadowAction.gone()
             mLayoutEdit.gone()
             defaultInputLayout.gone()
@@ -298,7 +300,7 @@ open class KeyboardInputManager(
         navigationParentLayout.invisible()
         parentEditMainLong.gone()
 
-//        headerWrapper.visible()
+        headerWrapper.visible()
         mLayoutEdit.visible()
         defaultInputLayout.visible()
     }

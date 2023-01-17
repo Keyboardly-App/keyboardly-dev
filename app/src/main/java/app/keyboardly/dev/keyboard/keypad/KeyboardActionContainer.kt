@@ -56,6 +56,8 @@ class KeyboardActionContainer(
     fun viewFloatingRv(onViewReady: KeyboardActionDependency.OnViewReady) {
         floatingRoot.visible()
         floatingRecyclerView.visible()
+
+        Timber.i("floating rv=${floatingRoot.isVisible} // ${floatingRecyclerView.isVisible}")
         floatingRecyclerView.layoutParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
         onViewReady.onRecyclerViewReady(floatingRecyclerView)
         mEditField.performClick()
@@ -142,7 +144,7 @@ class KeyboardActionContainer(
             }
             navigationParentLayout.visible()
             navigationBack.visible()
-//            headerWrapper.visible()
+            headerWrapper.visible()
 //            titleHeader.visible()
 
             mainHeader.gone()
@@ -154,6 +156,7 @@ class KeyboardActionContainer(
             if (!defaultHeader
                 && !subMenuAddOnActive) {
                 mainHeader.visible()
+                headerWrapper.visible()
                 navigationView.visible()
             }
         }

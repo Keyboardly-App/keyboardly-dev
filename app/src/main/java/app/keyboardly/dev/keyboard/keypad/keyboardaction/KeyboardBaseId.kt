@@ -2,6 +2,7 @@ package app.keyboardly.dev.keyboard.keypad.keyboardaction
 
 import android.view.View
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.R
 import com.google.android.material.chip.ChipGroup
@@ -24,8 +25,9 @@ open class KeyboardBaseId(
 //    val titleHeader: TextView = view.findViewById(R.id.main_header_title_tv)
 
     val keyboardActionWrapper: LinearLayout = view.findViewById(R.id.keyboard_action_wrapper)
-    val keyboardWrapper: FrameLayout = view.findViewById(R.id.keyboardView)
-//    val headerWrapper: RelativeLayout = view.findViewById(R.id.header_wrapper)
+    val keyboardView: FrameLayout = view.findViewById(R.id.keyboardView)
+    val keyboardWrapper: ConstraintLayout = view.findViewById(R.id.keyboard_parent)
+    val headerWrapper: RelativeLayout = view.findViewById(R.id.headerWrapper)
 
     val headerShadowAction: View = view.findViewById(R.id.header_shadow)
     val frame: FrameLayout = view.findViewById(R.id.container_frame)

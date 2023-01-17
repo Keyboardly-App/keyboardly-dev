@@ -37,6 +37,7 @@ import timber.log.Timber
  * https://github.com/RowlandOti/KokoKeyboard
  */
 open class KokoKeyboardView : ExpandableLayout {
+    private var currentInputConnection: InputConnection? = null
     private lateinit var field: EditText
     private lateinit var keyboard: KeyboardLayout
     private var frameKeyboard: FrameLayout? = null
@@ -147,8 +148,8 @@ open class KokoKeyboardView : ExpandableLayout {
         field.showSoftInputOnFocus = false
         val editorInfo = EditorInfo()
         currentEditorInfo = editorInfo
-        val inputConnection = field.onCreateInputConnection(editorInfo)
-        keyboard = generateCorrectKeyboard(type, inputConnection)
+        currentInputConnection = field.onCreateInputConnection(editorInfo)
+        keyboard = generateCorrectKeyboard(type, currentInputConnection!!)
         keyboards[field] = keyboard
         keyboards[field]?.registerListener(keyboardListener)
         field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
@@ -247,7 +248,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun commitText(text: String) {
-                getInputConnection()?.commitText(text, text.length)
+                currentInputConnection?.commitText(text, text.length)
             }
 
             override fun setTextWatcher(textWatcher: TextWatcher) {
@@ -357,7 +358,7 @@ open class KokoKeyboardView : ExpandableLayout {
     private fun initView(isLowerCase: Boolean?=true): KeyboardLayout{
         val keypad = KeyboardLayout(context, keyboardManager)
 
-        val view = LayoutInflater.from(context).inflate(R.layout.qwerty_keyboard, null)
+        val view = LayoutInflater.from(context).inflate(R.layout.default_keyboard, null)
         container = KeyboardActionContainer(view, moduleHelper, this)
         val keyboardView = if (isLowerCase!!){
             LayoutInflater.from(context).inflate(R.layout.qwerty_keypad_lowercase, null)

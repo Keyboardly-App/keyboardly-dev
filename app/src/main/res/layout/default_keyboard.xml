@@ -15,8 +15,10 @@
         android:id="@+id/relativeLayoutRvTop"
         android:layout_width="match_parent"
         tools:visibility="visible"
+        android:maxHeight="200dp"
+        android:elevation="2sp"
         android:visibility="gone"
-        android:gravity="bottom"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@id/line_head"
         android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
@@ -24,7 +26,6 @@
             tools:itemCount="5"
             android:animationCache="false"
             android:focusable="true"
-            android:visibility="gone"
             tools:visibility="visible"
             android:layout_alignParentBottom="true"
             tools:listitem="@layout/item_add_on_list"
@@ -35,80 +36,86 @@
 
     <View
         android:id="@+id/header_shadow"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_head"
         android:layout_width="1dp"
+        tools:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="@dimen/height_header" />
 
     <View
         android:id="@+id/line_head"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/headerWrapper"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/green_default" />
 
-    <LinearLayout
-        android:id="@+id/mainHeaderParent"
-        app:layout_constraintTop_toBottomOf="@id/line_head"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
+    <RelativeLayout
+        android:id="@+id/headerWrapper"
+        app:layout_constraintBottom_toTopOf="@id/keyboard_parent"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/default_height_navigation">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/logoButton"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            tools:visibility="visible"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_launcher_foreground"
-            android:layout_width="@dimen/default_height_navigation"
-            android:layout_height="match_parent"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/navigation_parent"
-        app:layout_constraintTop_toBottomOf="@id/mainHeaderParent"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/default_height_navigation">
-
-        <ImageView
-            android:id="@+id/backButton"
-            android:background="@android:color/transparent"
-            android:visibility="visible"
-            android:padding="10dp"
-            tools:visibility="visible"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_main_back"
-            android:layout_width="@dimen/default_height_navigation"
-            android:layout_height="match_parent"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/navigation"
+        <LinearLayout
+            android:id="@+id/mainHeaderParent"
             android:orientation="horizontal"
-            tools:itemCount="6"
-            tools:listitem="@layout/item_navigation_menu"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/default_height_navigation"/>
-    </LinearLayout>
+            android:layout_height="@dimen/default_height_navigation">
 
-    <include
-        android:id="@+id/default_input_layout"
-        tools:visibility="gone"
-        android:visibility="gone"
-        layout="@layout/form_edit_main" />
+            <ImageView
+                android:id="@+id/logoButton"
+                android:background="@android:color/transparent"
+                tools:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_width="@dimen/default_height_navigation"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_height_navigation">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:background="@android:color/transparent"
+                android:visibility="visible"
+                android:padding="10dp"
+                tools:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_main_back"
+                android:layout_width="@dimen/default_height_navigation"
+                android:layout_height="match_parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/navigation"
+                android:orientation="horizontal"
+                tools:itemCount="6"
+                tools:listitem="@layout/item_navigation_menu"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height_navigation"/>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/default_input_layout"
+            tools:visibility="gone"
+            android:visibility="gone"
+            layout="@layout/form_edit_main" />
+
+    </RelativeLayout>
 
     <!-- keyboard keypad view -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/keyboard_parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:minHeight="200dp"

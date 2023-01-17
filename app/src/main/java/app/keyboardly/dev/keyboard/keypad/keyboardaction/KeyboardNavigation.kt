@@ -48,8 +48,8 @@ open class KeyboardNavigation(
      * to set main keyboard view
      * */
     open fun setActionView(view: View?) {
-        /*floatingRoot.gone()
-        floatingRecyclerView.gone()*/
+        floatingRoot.gone()
+        floatingRecyclerView.gone()
         try {
             frame.removeAllViews()
             frame.addView(view)
@@ -70,7 +70,7 @@ open class KeyboardNavigation(
         mainHeader.gone()
         headerShadowAction.gone()
         navigationView.invisible()
-        navigationParentLayout.invisible()
+        headerWrapper.invisible()
         getKeyboardViewWrapper().invisible()
 
         frame.visible()
@@ -101,8 +101,8 @@ open class KeyboardNavigation(
                 RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 200.toPx())
             floatingRecyclerView.layoutParams = layoutParams
         } else {
-            floatingRoot.gone()
-            floatingRecyclerView.gone()
+//            floatingRoot.gone()
+//            floatingRecyclerView.gone()
         }
         recyclerView.gone()
         chipGroupOnFrame.gone()
@@ -115,17 +115,19 @@ open class KeyboardNavigation(
     fun viewNavigation() {
         mainHeader.gone()
         navigationParentLayout.visible()
+        headerWrapper.visible()
         navigationBack.visible()
         defaultHeader = false
     }
 
-    fun defaultHeaderView() {
+    private fun defaultHeaderView() {
         mainHeader.visible()
+        headerWrapper.visible()
         navigationParentLayout.gone()
         defaultHeader = true
     }
 
-    fun navigationOnClick(data: NavigationMenuModel) {
+    private fun navigationOnClick(data: NavigationMenuModel) {
         val featureName = data.featureNameId
         if (featureName != null) {
             // check is feature installed
@@ -247,13 +249,13 @@ open class KeyboardNavigation(
         defaultInputLayout.gone()
         mainHeader.gone()
 //        titleHeader.gone()
-//        floatingRoot.gone()
+        floatingRoot.gone()
         keyboardActionWrapper.gone()
         frame.removeAllViews()
         navigationParentLayout.visible()
         navigationView.visible()
         headerShadowAction.visible()
-//        headerWrapper.visible()
+        headerWrapper.visible()
 
         // skip reset adapter navigation
         /*if (adapterNavigation != null) {
@@ -270,14 +272,14 @@ open class KeyboardNavigation(
         defaultInputLayout.gone()
         mainHeader.gone()
 //            titleHeader.gone()
-//            floatingRoot.gone()
+        floatingRoot.gone()
         keyboardActionWrapper.gone()
         frame.removeAllViews()
 
         navigationParentLayout.visible()
         navigationView.visible()
         headerShadowAction.visible()
-//            headerWrapper.visible()
+        headerWrapper.visible()
 
         // skip reset adapter navigation
         /*if (adapterNavigation != null) {

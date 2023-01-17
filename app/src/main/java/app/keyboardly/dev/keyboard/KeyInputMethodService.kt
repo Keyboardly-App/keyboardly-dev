@@ -50,7 +50,7 @@ class KeyInputMethodService : InputMethodService(), KeyboardView.OnKeyboardActio
     }
 
     override fun onCreateInputView(): View {
-        mKeyboardInputView = layoutInflater.inflate(R.layout.qwerty_keyboard, null) as KeyboardView
+        mKeyboardInputView = layoutInflater.inflate(R.layout.default_keyboard, null) as KeyboardView
         mKeyboardInputView!!.setOnKeyboardActionListener(this)
         mKeyboardInputView!!.keyboard = mActiveKeyboard
         mKeyboardInputView!!.isPreviewEnabled = false
