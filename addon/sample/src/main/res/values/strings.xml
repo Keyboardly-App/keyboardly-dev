@@ -7,4 +7,6 @@
     <string name="gender">Gender</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
+    <string name="campaign">Campaign</string>
+    <string name="search_campaign">Search campaign</string>
 </resources>

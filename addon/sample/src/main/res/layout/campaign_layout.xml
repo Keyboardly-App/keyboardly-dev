@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:clickable="true"
@@ -8,36 +7,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_main_back_arrow" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/campaign_view"
-                style="?textActionKeyboardStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="250dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Campaign feature here\n(On development)"
-                android:textSize="16sp"
-                android:drawableTop="@drawable/ic_round_campaign_24"
-                app:drawableTopCompat="@drawable/ic_round_campaign_24"
-                tools:ignore="UseCompatTextViewDrawableXml" />
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/titleCampaign"
+            android:text="@string/campaign"
+            style="@style/TitleTextActionKeyboard"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
 
+        <ImageView
+            android:id="@+id/search"
+            android:src="@drawable/ic_main_search"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
-    <include
-        android:id="@+id/campaign_footer"
-        layout="@layout/footer_action_bot"/>
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/campaignList"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/item_data_text"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 </LinearLayout>
