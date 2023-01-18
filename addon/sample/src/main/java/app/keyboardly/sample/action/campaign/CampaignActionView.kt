@@ -43,7 +43,6 @@ class CampaignActionView (
                     override fun onClick(data: CampaignModel) {
                         dependency.commitText(data.description)
                         floatingRv?.gone()
-                        textWatcher = null
                         campaignAdapter.updateList(listCampaign)
                         dependency.viewLayoutAction()
                     }
@@ -63,6 +62,7 @@ class CampaignActionView (
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                 override fun onTextChanged(char: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    Timber.i("char=$char")
                     if (char.isNullOrEmpty()){
                         dependency.loadingOnInput(false)
                         Timber.e("list is null")
@@ -86,9 +86,7 @@ class CampaignActionView (
                     }
                 }
 
-                override fun afterTextChanged(p0: Editable?) {
-                }
-
+                override fun afterTextChanged(p0: Editable?) {}
             }
 
             search.setOnClickListener {
@@ -97,7 +95,6 @@ class CampaignActionView (
                 onCloseSearch = {
                     campaignAdapter.updateList(listCampaign)
                     floatingRv?.gone()
-                    textWatcher = null
                     dependency.viewLayoutAction()
                 })
             }

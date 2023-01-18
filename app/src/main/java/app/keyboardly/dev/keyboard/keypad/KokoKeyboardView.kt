@@ -153,8 +153,9 @@ open class KokoKeyboardView : ExpandableLayout {
         keyboards[field] = keyboard
         keyboards[field]?.registerListener(keyboardListener)
         field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
+            Timber.i("has focus=$hasFocus")
             if (hasFocus) {
-                hideSoftKeyboard(field)
+//                hideSoftKeyboard(field)
                 activeEditField = field
                 updateKeyboard()
             } else {
@@ -164,7 +165,7 @@ open class KokoKeyboardView : ExpandableLayout {
                             return@OnFocusChangeListener
                         }
                     }
-                    collapse()
+//                    collapse()
                 }
             }
         }
@@ -197,10 +198,6 @@ open class KokoKeyboardView : ExpandableLayout {
         keyboardManager.setCustomInputConnection(inputConnection)
     }
 
-    open fun getInputConnection(): InputConnection? {
-        return keyboardManager.inputConnection
-    }
-
     private fun initDependency(){
         dependency = object: KeyboardActionDependency {
             override fun getContext(): Context = context
@@ -227,7 +224,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun getKeyboardHeight(): Int {
-                return 60
+                return 0 // not used on here
             }
 
             override fun viewDefaultKeyboard() {
@@ -236,6 +233,7 @@ open class KokoKeyboardView : ExpandableLayout {
 
             override fun viewAddOnNavigation() {
                 keyboardManager.resetInputConnection()
+                setKeypadAlphabet()
                 container.viewAddOnNavigation()
             }
 

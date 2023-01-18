@@ -50,8 +50,8 @@ open class KeyboardNavigation(
      * to set main keyboard view
      * */
     open fun setActionView(view: View?) {
-        floatingRoot.gone()
-        floatingRecyclerView.gone()
+        /*floatingRoot.gone()
+        floatingRecyclerView.gone()*/
         try {
             frame.removeAllViews()
             frame.addView(view)
@@ -94,12 +94,12 @@ open class KeyboardNavigation(
     }
 
     private fun resetInputConnection() {
-        Timber.w("resetted.")
         mEditField.removeTextChangedListener(textWatcher)
         textWatcher = null
         mEditField.clearFocus()
         mEditField.text = null
         mEditFieldLong.text = null
+        Timber.e("reset input connection.")
     }
 
     fun getKeyboardViewWrapper(): View {
@@ -112,8 +112,8 @@ open class KeyboardNavigation(
                 RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 200.toPx())
             floatingRecyclerView.layoutParams = layoutParams
         } else {
-//            floatingRoot.gone()
-//            floatingRecyclerView.gone()
+            floatingRoot.gone()
+            floatingRecyclerView.gone()
         }
         recyclerView.gone()
         chipGroupOnFrame.gone()
@@ -259,7 +259,6 @@ open class KeyboardNavigation(
     fun viewAddOnSubmenuNavigation() {
         defaultInputLayout.gone()
         mainHeader.gone()
-//        titleHeader.gone()
         floatingRoot.gone()
         keyboardActionWrapper.gone()
         frame.removeAllViews()
@@ -273,6 +272,7 @@ open class KeyboardNavigation(
             val menuList: List<NavigationMenuModel> = getListMenu(getContext())
             adapterNavigation?.updateList(menuList)
         }*/
+
         getKeyboardViewWrapper().visible()
     }
 

@@ -58,9 +58,8 @@ class KeyboardActionContainer(
         floatingRecyclerView.visible()
 
         Timber.i("floating rv=${floatingRoot.isVisible} // ${floatingRecyclerView.isVisible}")
-        floatingRecyclerView.layoutParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
         onViewReady.onRecyclerViewReady(floatingRecyclerView)
-        mEditField.performClick()
+//        mEditField.performClick()
         floatingRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -94,6 +93,7 @@ class KeyboardActionContainer(
                 }
             }
         })
+        floatingRecyclerView.layoutParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
     }
 
 

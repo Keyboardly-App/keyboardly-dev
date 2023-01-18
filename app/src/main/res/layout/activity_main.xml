@@ -7,12 +7,20 @@
     android:focusable="false"
     tools:context=".MainActivity">
 
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/keyboardMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/inputTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="type something"
+        android:textAlignment="textStart"
         android:minLines="3"
         android:focusedByDefault="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +28,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="o" />
 
+    </ScrollView>
+
     <app.keyboardly.dev.keyboard.keypad.KokoKeyboardView
-        android:id="@+id/keyboardTest"
+        android:id="@+id/keyboardMain"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

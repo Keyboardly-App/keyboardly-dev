@@ -30,7 +30,7 @@ open class KeyboardInputManager(
     private var customEditorInfo: EditorInfo? = null
 
     init {
-        mEditField.onFocusChangeListener = View.OnFocusChangeListener { _: View?, hasFocus: Boolean ->
+        /*mEditField.onFocusChangeListener = View.OnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (hasFocus) {
                 kokoKeyboardView.hideSoftKeyboard(mEditField)
             }
@@ -39,7 +39,7 @@ open class KeyboardInputManager(
             if (hasFocus) {
                 kokoKeyboardView.hideSoftKeyboard(mEditFieldLong)
             }
-        }
+        }*/
     }
     /**
      * default request default input text / number / email
@@ -138,13 +138,14 @@ open class KeyboardInputManager(
             else -> kokoKeyboardView.setKeypadAlphabet()
         }
 
-        mEditField.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
-        mEditFieldLong.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
-        this.textWatcher = textWatcher
-
+        Timber.i("added text watcher=$textWatcher")
         if (textWatcher!=null) {
             mEditField.addTextChangedListener(textWatcher)
+        } else {
+            mEditField.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
+            mEditFieldLong.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
         }
+        this.textWatcher = textWatcher
     }
 
     /**
@@ -159,7 +160,7 @@ open class KeyboardInputManager(
         onClose: () -> Unit?
     ) {
 //        Timber.e("request input//%s", editTextTarget.getResources().getResourceName(editTextTarget.getId()));
-//        Timber.d("textwatcher=$textWatcher")
+        Timber.d("textwatcher=$textWatcher")
 
         if (editTextTarget == null && mPresenter == null) {
             throw IllegalAccessException("Edittext or InputPresenter can't be null")

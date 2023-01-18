@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 //        val binding = ActivityMainBinding.inflate(layoutInflater)
 //        binding.keyboardTest.registerEditText(KokoKeyboardView.INPUT_TYPE_QWERTY, binding.inputTest)
 
-        val keyboardView = findViewById<KokoKeyboardView>(R.id.keyboardTest)
+        val keyboardView = findViewById<KokoKeyboardView>(R.id.keyboardMain)
         val editText = findViewById<EditText>(R.id.inputTest)
         editText.addTextChangedListener {
 

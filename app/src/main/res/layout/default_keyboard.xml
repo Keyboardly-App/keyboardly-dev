@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         tools:visibility="visible"
         android:maxHeight="200dp"
-        android:elevation="2sp"
         android:visibility="gone"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@id/line_head"

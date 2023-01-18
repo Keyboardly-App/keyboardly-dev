@@ -57,7 +57,7 @@ public class KeyboardLayout extends LinearLayout {
                             keyboardManager.onKeyStroke(text);
                         } else if (view instanceof RectangularKeyView) {
                             boolean isSpecialKey = ((RectangularKeyView) view).isSpecialKey();
-                            Timber.d("is spesical key ="+isSpecialKey);
+//                            Timber.d("is spesical key ="+isSpecialKey);
                             if (isSpecialKey) {
                                 keyboardManager.onKeyStroke(((RectangularKeyView) view).getSpecialKeyCode(), false);
                             } else {
@@ -65,7 +65,7 @@ public class KeyboardLayout extends LinearLayout {
                                 keyboardManager.onKeyStroke(text);
                             }
                         } else {
-                            Timber.w("view="+view);
+//                            Timber.w("view="+view);
                         }
                     });
 
@@ -81,7 +81,7 @@ public class KeyboardLayout extends LinearLayout {
                         child.setClickable(true);
                         child.setOnClickListener(v -> keyboardManager.onButtonClick(child.getId()));
                     } else {
-                        Timber.w("child="+child);
+//                        Timber.w("child="+child);
                     }
                 }
             }
