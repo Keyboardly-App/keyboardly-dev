@@ -16,7 +16,7 @@ import com.google.android.material.chip.ChipGroup
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
  */
-class DiscountView (
+class RegisterView (
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallback {
 
@@ -32,40 +32,31 @@ class DiscountView (
     private fun initClick() {
         binding.apply {
             email.setOnClickListener {
-                dependency.requestInput(email,this@DiscountView)
+                dependency.requestInput(email,this@RegisterView)
             }
             name.setOnClickListener {
-                dependency.requestInput(name,this@DiscountView)
+                dependency.requestInput(name,this@RegisterView)
             }
             number.setOnClickListener {
-                dependency.requestInput(number,this@DiscountView,
+                dependency.requestInput(number,this@RegisterView,
                     inputType = InputType.TYPE_CLASS_NUMBER)
             }
             address.setOnClickListener {
-                dependency.requestInput(address,this@DiscountView,
+                dependency.requestInput(address,this@RegisterView,
                     longInput = true)
             }
             dateBorn.setOnClickListener {
-                dependency.showDatePicker(dateBorn, this@DiscountView)
+                dependency.showDatePicker(dateBorn, this@RegisterView)
             }
             group.setOnClickListener {
                 val list = mutableListOf<Chip>()
+                val listColor = arrayOf("Red","White","Yellow","Green","Blue","Black")
 
-                val chip = createChip().apply {
-                    text = "Merah"
+                listColor.forEach {
+                    val chip = createChip().apply { text = it }
+                    list.add(chip)
                 }
-                list.add(chip)
-
-                val chip2 = createChip().apply {
-                    text = "Putih"
-                }
-                list.add(chip2)
-
-                val chip3 = createChip().apply {
-                    text = "Hijau"
-                }
-                list.add(chip3)
-                dependency.showChipOptions(list, this@DiscountView, group)
+                dependency.showChipOptions(list, this@RegisterView, group)
             }
         }
     }
@@ -86,8 +77,25 @@ class DiscountView (
                 footerFormReset.invisible()
                 footerSubmitButton.text = "Save"
                 footerSubmitButton.setOnClickListener {
-                    val text = textMain.text.toString()
-                    dependency.commitText(text)
+                    val registerText = StringBuffer()
+                    registerText.appendLine("Register")
+                    registerText.appendLine()
+                    registerText.appendLine("Name:")
+                    registerText.appendLine(name.text)
+                    registerText.appendLine("Number:")
+                    registerText.appendLine(number.text)
+                    registerText.appendLine("Email:")
+                    registerText.appendLine(email.text)
+                    registerText.appendLine("Date born:")
+                    registerText.appendLine(dateBorn.text)
+                    registerText.appendLine("Gender:")
+                    registerText.appendLine(if (male.isChecked) "Male" else "Female")
+                    registerText.appendLine("Group:")
+                    registerText.appendLine(group.text)
+                    registerText.appendLine("Address:")
+                    registerText.appendLine(address.text)
+                    val finalText = registerText.toString()
+                    dependency.commitText(finalText)
                 }
             }
         }
