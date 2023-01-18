@@ -12,9 +12,5 @@
             android:id="@+id/nav_addon"
             android:icon="@drawable/ic_round_interests_24"
             android:title="@string/menu_addon" />
-        <item
-            android:id="@+id/nav_blank"
-            android:icon="@drawable/ic_round_local_activity_24"
-            android:title="Blank" />
     </group>
 </menu>
