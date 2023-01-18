@@ -155,7 +155,7 @@ open class KokoKeyboardView : ExpandableLayout {
         field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
             Timber.i("has focus=$hasFocus")
             if (hasFocus) {
-//                hideSoftKeyboard(field)
+                hideSoftKeyboard(field)
                 activeEditField = field
                 updateKeyboard()
             } else {

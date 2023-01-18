@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="app.keyboardly.dev.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_addon"
+        android:name="app.keyboardly.dev.ui.addon.AddOnFragment"
+        android:label="@string/menu_addon"
+        tools:layout="@layout/fragment_addon" />
+
+    <fragment
+        android:id="@+id/nav_blank"
+        android:name="app.keyboardly.dev.ui.BlankFragment"
+        android:label="@string/hello_blank_fragment"
+        tools:layout="@layout/fragment_blank" />
+
+</navigation>
