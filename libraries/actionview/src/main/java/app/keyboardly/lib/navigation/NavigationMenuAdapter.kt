@@ -13,9 +13,6 @@ import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.actionview.databinding.ItemNavigationMenuBinding
-
-import app.keyboardly.lib.navigation.NavigationCallback
-import app.keyboardly.lib.navigation.NavigationMenuModel
 import com.bumptech.glide.Glide
 
 
@@ -85,6 +82,7 @@ class NavigationMenuAdapter(
                     val matrix = ColorMatrix()
                     matrix.setSaturation(0f)
                     val filter = ColorMatrixColorFilter(matrix)
+                    iconMenuIv.drawable.mutate()
                     iconMenuIv.colorFilter = filter
                 }
                 root.setOnClickListener {

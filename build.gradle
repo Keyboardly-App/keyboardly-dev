@@ -4,6 +4,7 @@
 buildscript {
     ext {
         nav_version = "2.5.3"
+        glideVersion = '4.14.2'
     }
 
     repositories {

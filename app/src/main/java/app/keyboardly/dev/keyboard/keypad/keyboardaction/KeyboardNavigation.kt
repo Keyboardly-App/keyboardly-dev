@@ -203,11 +203,12 @@ open class KeyboardNavigation(
         val model = NavigationMenuModel(
             1,
             R.string.nav_sample,
-            R.drawable.ic_round_local_activity_24,
+            null,
             true,
             featurePackageId = "app.keyboardly.sample",
             featureNameId = "sample",
-            nameString = "Sample"
+            nameString = "Sample",
+            iconUrl = "https://img.icons8.com/external-flaticons-flat-flat-icons/344/external-dummy-robotics-flaticons-flat-flat-icons.png"
         )
 
         val mutableList = mutableListOf<NavigationMenuModel>()

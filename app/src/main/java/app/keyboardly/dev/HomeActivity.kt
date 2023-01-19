@@ -51,16 +51,12 @@ class HomeActivity : AppCompatActivity() {
             navView.setNavigationItemSelectedListener { item ->
                 Timber.w("on click=> ${item.itemId}")
                 when (item.itemId) {
-                    R.id.nav_home -> navController.navigate(R.id.nav_home)
-                    R.id.nav_addon -> navController.navigate(R.id.nav_addon)
-                    R.id.nav_blank -> navController.navigate(R.id.nav_blank)
+                    R.id.nav_home, R.id.nav_addon -> navController.navigate(item.itemId)
                     else -> {
                         Timber.w("unhandle - item = ${item.itemId}")
                     }
                 }
-
                 drawerLayout.closeDrawer(GravityCompat.START)
-
                 true
             }
         }

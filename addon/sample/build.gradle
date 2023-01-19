@@ -8,6 +8,8 @@ android {
     defaultConfig {
         minSdk 21
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "FEATURE_ID", "\"app.keyboardly.sample\""
+        buildConfigField "String", "FEATURE_NAME", "\"sample\""
     }
 
     buildTypes {

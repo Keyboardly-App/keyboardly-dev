@@ -17,10 +17,11 @@
         android:label="@string/menu_addon"
         tools:layout="@layout/fragment_addon" />
 
-    <fragment
-        android:id="@+id/nav_blank"
-        android:name="app.keyboardly.dev.ui.BlankFragment"
-        android:label="@string/hello_blank_fragment"
-        tools:layout="@layout/fragment_blank" />
+    <!-- Sample dynamic feature -->
+    <include-dynamic
+        android:id="@+id/sample_default_nav"
+        app:moduleName="sample"
+        app:graphResName="sample_default_nav"
+        app:graphPackage="${applicationId}.sample"/>
 
 </navigation>

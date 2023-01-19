@@ -29,18 +29,6 @@ open class KeyboardInputManager(
     private var reInputFlag = false
     private var customEditorInfo: EditorInfo? = null
 
-    init {
-        /*mEditField.onFocusChangeListener = View.OnFocusChangeListener { _: View?, hasFocus: Boolean ->
-            if (hasFocus) {
-                kokoKeyboardView.hideSoftKeyboard(mEditField)
-            }
-        }
-        mEditFieldLong.onFocusChangeListener = View.OnFocusChangeListener { _: View?, hasFocus: Boolean ->
-            if (hasFocus) {
-                kokoKeyboardView.hideSoftKeyboard(mEditFieldLong)
-            }
-        }*/
-    }
     /**
      * default request default input text / number / email
      *

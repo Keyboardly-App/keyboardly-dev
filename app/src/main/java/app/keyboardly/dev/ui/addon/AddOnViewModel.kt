@@ -6,8 +6,30 @@ import androidx.lifecycle.ViewModel
 
 class AddOnViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Add On Fragment"
+    private val _list = MutableLiveData<List<AddOnModel>>().apply {
+        value = listMenu()
     }
-    val text: LiveData<String> = _text
+    val list: LiveData<List<AddOnModel>> = _list
+
+
+    private fun listMenu(): List<AddOnModel> {
+        val list = mutableListOf<AddOnModel>()
+
+        list.add(
+            AddOnModel(
+                21,
+                "sample",
+                "Sample",
+                "a sample add on",
+                "Keyboardly",
+                "https://keyboardly.app",
+                /*dummy icon*/
+                "https://img.icons8.com/external-flaticons-flat-flat-icons/344/external-dummy-robotics-flaticons-flat-flat-icons.png",
+                0,
+                SAMPLE_ID,
+            )
+        )
+
+        return list
+    }
 }
