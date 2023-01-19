@@ -114,7 +114,7 @@ interface KeyboardActionDependency {
     /**
      * show title above default Recycler view
      */
-    fun showTitleAboveList(loading: Boolean, title:String?=null)
+    fun showTitleAboveList(show: Boolean, title:String?=null)
 
     /**
      * loading view on main keyboard

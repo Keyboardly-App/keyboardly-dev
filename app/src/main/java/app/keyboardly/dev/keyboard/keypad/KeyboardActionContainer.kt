@@ -125,41 +125,10 @@ class KeyboardActionContainer(
     fun viewList(onViewReady: KeyboardActionDependency.OnViewReady) {
         viewInputMode(false)
         showBaseViewForOptions()
+        frame.gone()
         recyclerView.visible()
         messageOnFrame.gone()
         onViewReady.onRecyclerViewReady(recyclerView)
-    }
-
-
-    fun showTitle(show: Boolean, text: String? = "") {
-        messageOnFrame.gone()
-
-        if (show) {
-//            if (text != null) {
-//                titleHeader.text = text
-//            }
-
-            if (frame.isVisible){
-                frame.gone()
-            }
-            navigationParentLayout.visible()
-            navigationBack.visible()
-            headerWrapper.visible()
-//            titleHeader.visible()
-
-            mainHeader.gone()
-            navigationView.gone()
-        } else {
-//            if (titleHeader.isVisible) {
-//                titleHeader.gone()
-//            }
-            if (!defaultHeader
-                && !subMenuAddOnActive) {
-                mainHeader.visible()
-                headerWrapper.visible()
-                navigationView.visible()
-            }
-        }
     }
 
     private fun showBaseViewForOptions() {

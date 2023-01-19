@@ -45,8 +45,10 @@
         android:id="@+id/list_top_container_rv"
         android:layout_width="match_parent"
         android:visibility="gone"
+        tools:visibility="visible"
+        tools:listitem="@layout/item_add_on_list"
         style="?actionKeyboardStyle"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
     <DatePicker
         android:id="@+id/date_picker_container"
         android:layout_width="match_parent"

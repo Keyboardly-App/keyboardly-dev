@@ -9,4 +9,6 @@
     <string name="male">Male</string>
     <string name="campaign">Campaign</string>
     <string name="search_campaign">Search campaign</string>
+    <string name="shopping">Shopping</string>
+    <string name="voucher">Voucher</string>
 </resources>

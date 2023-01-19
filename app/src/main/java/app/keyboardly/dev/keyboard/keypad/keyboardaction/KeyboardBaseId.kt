@@ -22,7 +22,7 @@ open class KeyboardBaseId(
 
     val logoMainHeader: ImageView = view.findViewById(R.id.logoButton)
     val navigationBack: ImageView = view.findViewById(R.id.backButton)
-//    val titleHeader: TextView = view.findViewById(R.id.main_header_title_tv)
+    val titleHeader: TextView = view.findViewById(R.id.titleHeader)
 
     val keyboardActionWrapper: LinearLayout = view.findViewById(R.id.keyboard_action_wrapper)
     val keyboardView: FrameLayout = view.findViewById(R.id.keyboardView)

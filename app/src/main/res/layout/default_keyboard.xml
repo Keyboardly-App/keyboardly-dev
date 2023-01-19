@@ -78,6 +78,7 @@
             android:id="@+id/navigation_parent"
             android:orientation="horizontal"
             android:visibility="gone"
+            tools:visibility="visible"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="@dimen/default_height_navigation">
@@ -98,10 +99,21 @@
                 android:id="@+id/navigation"
                 android:orientation="horizontal"
                 tools:itemCount="6"
+                tools:visibility="gone"
                 tools:listitem="@layout/item_navigation_menu"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_height_navigation"/>
+
+            <TextView
+                android:id="@+id/titleHeader"
+                style="@style/TitleTextNormalPrimary"
+                android:text="@string/app_name"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
 
         <include

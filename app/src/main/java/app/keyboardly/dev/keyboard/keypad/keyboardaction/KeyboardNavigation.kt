@@ -4,6 +4,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.keypad.KokoKeyboardView
@@ -229,7 +230,11 @@ open class KeyboardNavigation(
     fun onBackButtonClicked() {
         Timber.i("submenu = $subMenuAddOnActive // defaultHeader=$defaultHeader")
         if (subMenuAddOnActive) {
-            viewDefaultNavigation(defaultNavigation())
+            if (titleHeader.isVisible){
+                showTitle(false)
+            } else {
+                viewDefaultNavigation(defaultNavigation())
+            }
         } else {
             if (!defaultHeader) {
                 defaultHeaderView()
@@ -239,6 +244,40 @@ open class KeyboardNavigation(
         }
     }
 
+    fun showTitle(show: Boolean, text: String? = "") {
+        messageOnFrame.gone()
+
+        if (show) {
+            if (text != null) {
+                titleHeader.text = text
+            }
+
+            if (frame.isVisible){
+                frame.gone()
+            }
+            headerShadowAction.gone()
+            mainHeader.gone()
+            navigationView.gone()
+
+            defaultInputLayout.gone()
+
+            navigationParentLayout.visible()
+            navigationBack.visible()
+            headerWrapper.visible()
+            titleHeader.visible()
+
+        } else {
+            if (titleHeader.isVisible) {
+                titleHeader.gone()
+            }
+            if (!defaultHeader
+                && !subMenuAddOnActive) {
+                mainHeader.visible()
+                headerWrapper.visible()
+                navigationView.visible()
+            }
+        }
+    }
     private fun viewDefaultNavigation(defaultMenuList: MutableList<NavigationMenuModel>) {
         adapterNavigation?.updateList(defaultMenuList)
         adapterNavigation?.updateCallBack(this)

@@ -281,8 +281,8 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.loadingOnInput(loading)
             }
 
-            override fun showTitleAboveList(loading: Boolean, title: String?) {
-                container.showTitle(loading, title)
+            override fun showTitleAboveList(show: Boolean, title: String?) {
+                container.showTitle(show, title)
             }
 
             override fun loadingMain(loading: Boolean) {

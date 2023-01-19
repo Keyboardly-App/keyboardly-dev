@@ -7,6 +7,8 @@ import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.sample.action.campaign.CampaignActionView
 import app.keyboardly.sample.action.discount.RegisterView
+import app.keyboardly.sample.action.shopping.ShoppingActionView
+import timber.log.Timber
 
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
@@ -17,6 +19,7 @@ class SampleView(
 
     private val discountView = RegisterView(dependency)
     private val campaignActionView = CampaignActionView(dependency)
+    private val shoppingActionView = ShoppingActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
@@ -41,10 +44,9 @@ class SampleView(
         )
         menu.add(
             NavigationMenuModel(
-                3,
+                SHOPPING,
                 nameString = "Shopping",
                 icon = R.drawable.ic_round_shopping_cart_24,
-                enable = false
             )
         )
         menu.add(
@@ -87,18 +89,24 @@ class SampleView(
         val view = when (data.id) {
             DISCOUNT -> discountView
             CAMPAIGN -> campaignActionView
+            SHOPPING -> shoppingActionView
             else -> null
         }
 
         if (view != null) {
             dependency.setActionView(view)
         } else {
-            toast("Feature on development")
+            if (!data.enable) {
+                toast("Feature on development")
+            } else {
+                Timber.w("enable but nothing to parse")
+            }
         }
     }
 
     companion object {
         private const val DISCOUNT = 1
         private const val CAMPAIGN = 2
+        private const val SHOPPING = 3
     }
 }
