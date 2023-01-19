@@ -5,12 +5,16 @@
     <dist:module
         dist:instant="false"
         dist:title="@string/sample">
+
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
+
         <dist:fusing dist:include="true" />
+
         <dist:install-time>
             <dist:removable dist:value="true"/>
         </dist:install-time>
+
     </dist:module>
 </manifest>
