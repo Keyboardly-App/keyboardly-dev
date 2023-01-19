@@ -232,6 +232,8 @@ open class KeyboardNavigation(
         if (subMenuAddOnActive) {
             if (titleHeader.isVisible){
                 showTitle(false)
+                goneOptionsView()
+                viewLayoutAction()
             } else {
                 viewDefaultNavigation(defaultNavigation())
             }
@@ -255,7 +257,7 @@ open class KeyboardNavigation(
             if (frame.isVisible){
                 frame.gone()
             }
-            headerShadowAction.gone()
+            headerShadowAction.visible()
             mainHeader.gone()
             navigationView.gone()
 
@@ -265,6 +267,9 @@ open class KeyboardNavigation(
             navigationBack.visible()
             headerWrapper.visible()
             titleHeader.visible()
+
+            defaultHeader = false
+            subMenuAddOnActive = true
 
         } else {
             if (titleHeader.isVisible) {
