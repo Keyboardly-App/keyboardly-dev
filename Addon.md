@@ -40,8 +40,22 @@ On this dialog fill title and chose **on-demand only**
 After creating a dynamic feature module, add these dependencies:
 
 ```groovy
-implementation project(":libraries:style")
-implementation project(":libraries:actionview")
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+...
+
+dependencies {
+    implementation project(":libraries:style")
+    implementation project(":libraries:actionview")
+
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+}
 ```
 
 Then, we need to create a class with requirements:
