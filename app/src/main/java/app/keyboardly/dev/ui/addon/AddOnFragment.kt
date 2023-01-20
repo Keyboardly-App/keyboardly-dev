@@ -51,10 +51,8 @@ class AddOnFragment : Fragment() {
                     layoutManager = LinearLayoutManager(requireActivity())
                     adapter = AddOnListAdapter(requireActivity(), list, object : AddOnListAdapter.OnClickCallback {
                         override fun onClick(data: AddOnModel) {
-                            if (data.featurePackageId== SAMPLE_ID) {
-                                findNavController().navigate(R.id.sample_default_nav)
-                            } else {
-                                Timber.w("unhandle feature=${data.name}")
+                            getListNavigation().firstOrNull { it.name == data.featureNameId }?.apply {
+                                findNavController().navigate(id_nav)
                             }
                         }
                     })
@@ -63,5 +61,18 @@ class AddOnFragment : Fragment() {
         }
     }
 
+    private fun getListNavigation(): MutableList<Navigation> {
+        val list = mutableListOf<Navigation>()
 
+        list.add(
+            Navigation(SAMPLE_ID,
+                R.id.sample_default_nav))
+
+        return list
+    }
+
+
+    data class Navigation(
+        val name: String,
+        val id_nav:Int)
 }
