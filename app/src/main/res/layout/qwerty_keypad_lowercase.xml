@@ -103,6 +103,7 @@
     <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
         android:id="@+id/keyboard_qwerty_two"
         android:layout_width="match_parent"
+        
         android:layout_height="0dp"
         android:layout_weight="1">
 
@@ -168,7 +169,7 @@
             android:layout_weight="1"
             android:text="k" />
 
-        <app.keyboardly.dev.keyboard.keys.SquareKeyView
+.        <app.keyboardly.dev.keyboard.keys.SquareKeyView
             android:id="@+id/key_l"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -185,6 +186,7 @@
     <app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout
         android:id="@+id/keyboard_qwerty_three"
         android:layout_width="match_parent"
+        
         android:layout_height="0dp"
         android:layout_weight="1">
         <Space

@@ -1,5 +1,7 @@
 package app.keyboardly.dev
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -25,6 +28,12 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (isDarkTheme(this)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -119,6 +128,9 @@ class HomeActivity : AppCompatActivity() {
             R.id.action_about->{
                 showAboutDialog()
             }
+            R.id.action_theme->{
+                showThemeDialog()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -133,8 +145,49 @@ class HomeActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun showThemeDialog() {
+        val themeItems = arrayOf("Dark Theme","Light Theme")
+        val dialog = AlertDialog.Builder(this)
+            .setTitle(R.string.action_theme)
+            .setItems(themeItems){ d,position->
+                d.dismiss()
+                val style = if (position==0) {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    updateTheme(this, true)
+//                    app.keyboardly.style.R.style.KeyboardTheme_Dark
+                } else {
+                    updateTheme(this, false)
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//                    app.keyboardly.style.R.style.KeyboardTheme
+                }
+//                theme.applyStyle(style, true)
+                recreate()
+            }
+            .setPositiveButton(android.R.string.ok){ d, _ ->
+                d.dismiss()
+            }
+        dialog.show()
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    companion object{
+        fun updateTheme(context: Context, checkedTheme: Boolean){
+            val editor: SharedPreferences.Editor =
+                sharedPreferences(context).edit()
+            editor.putBoolean("dark_mode", checkedTheme)
+            editor.apply()
+        }
+
+        fun isDarkTheme(context: Context): Boolean {
+            val editor: SharedPreferences = sharedPreferences(context)
+            return editor.getBoolean("dark_mode", false)
+        }
+
+        private fun sharedPreferences(context: Context) =
+            context.getSharedPreferences("themes", Context.MODE_PRIVATE)
     }
 }

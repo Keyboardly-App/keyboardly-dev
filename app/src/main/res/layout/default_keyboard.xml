@@ -7,14 +7,14 @@
     android:layout_gravity="bottom"
     android:descendantFocusability="blocksDescendants"
     tools:ignore="TouchTargetSizeCheck,HardcodedText"
-    android:background="@android:color/transparent">
+    style="?actionKeyboardStyle">
 
 
     <!-- view for recycler view -->
     <RelativeLayout
         android:id="@+id/relativeLayoutRvTop"
         android:layout_width="match_parent"
-        tools:visibility="visible"
+        tools:visibility="gone"
         android:maxHeight="200dp"
         android:visibility="gone"
         android:background="@android:color/transparent"

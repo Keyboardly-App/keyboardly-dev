@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+
+    <style name="KeyboardTheme">
+        <item name="actionKeyboardStyle">@style/ActionKeyboardStyle</item>
+        <item name="textActionKeyboardStyle">@style/TextActionKeyboardStyle</item>
+        <item name="mainEditTextActionKeyboardStyle">@style/MainEditTextStyle</item>
+        <item name="chipActionKeyboardStyle">@style/ChipKeyboardStyle</item>
+        <item name="footerActionKeyboardStyle">@style/FooterActionKeyboardStyle</item>
+        <item name="whiteButtonActionKeyboardStyle">@style/WhiteButtonStyle</item>
+        <item name="datePickerKeyboardStyle">@style/AppDatePickerStyle</item>
+        <item name="previewEditTextActionKeyboardStyle">@style/EditTextPreviewStyle</item>
+        <!-- calculator style -->
+        <item name="darkMode">false</item>
+        <item name="borderMode">false</item>
+    </style>
+
+    <style name="KeyboardTheme.Dark">
+        <item name="actionKeyboardStyle">@style/ActionKeyboardStyle.Dark</item>
+        <item name="textActionKeyboardStyle">@style/TextActionKeyboardStyle.Dark</item>
+        <item name="mainEditTextActionKeyboardStyle">@style/MainEditTextStyle.Dark</item>
+        <item name="chipActionKeyboardStyle">@style/ChipKeyboardStyle.Dark</item>
+        <item name="footerActionKeyboardStyle">@style/FooterActionKeyboardStyle.Dark</item>
+        <item name="whiteButtonActionKeyboardStyle">@style/WhiteButtonStyle.Dark</item>
+        <item name="datePickerKeyboardStyle">@style/AppDatePickerStyle.Dark</item>
+        <item name="previewEditTextActionKeyboardStyle">@style/EditTextPreviewStyle.Dark</item>
+        <!-- calculator style -->
+        <item name="darkMode">true</item>
+        <item name="borderMode">false</item>
+    </style>
+
     <style name="TitleNavigationStyle" parent="TextAppearance.AppCompat.Small">
         <item name="android:textSize">10sp</item>
         <item name="fontFamily">@font/inter_regular</item>
     </style>
 
     <style name="HintStyle" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">10sp</item>
         <item name="fontFamily">@font/inter_regular</item>
     </style>
 
@@ -27,11 +56,80 @@
 
     </style>
 
+
     <style name="InputHintStyle" parent="TextAppearance.AppCompat.Small">
         <item name="android:textColor">@color/green_default</item>
         <item name="fontFamily">@font/inter_medium</item>
         <item name="android:textSize">10sp</item>
         <item name="android:paddingStart">5dp</item>
         <item name="android:paddingEnd">5dp</item>
+    </style>
+
+    <style name="ActionKeyboardStyle" parent="Theme.WooBoard">
+        <item name="android:background">@drawable/keyboard_background_light</item>
+        <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="CardViewKeyboardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="background">@drawable/btn_keyboard_key_light</item>
+        <item name="android:background">@drawable/btn_keyboard_key_light</item>
+        <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style
+        name="FooterActionKeyboardStyle" parent="Theme.WooBoard">
+        <item name="android:background">@drawable/keyboard_background_light</item>
+        <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="FooterActionKeyboardStyle.Dark" parent="Theme.WooBoard">
+        <item name="android:background">@drawable/keyboard_background_dark</item>
+        <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="TextActionKeyboardStyle" parent="TitleTextNormalPrimary">
+        <item name="android:textColor">@color/grey_700</item>
+        <item name="android:textColorPrimary">@color/grey_700</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="ChipKeyboardStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
+        <item name="chipBackgroundColor">@color/keyboard_light_color</item>
+        <!--<item name="checkedIcon">@drawable/ic_round_done_24</item>-->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="DefaultDatePicker" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:textColorPrimary">@color/grey_700</item>
+        <item name="android:background">@color/grey_light</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style
+        name="ActionKeyboardStyle.Dark" parent="Theme.WooBoard.Dark">
+        <item name="cardBackgroundColor">@color/grey_700</item>
+        <item name="android:background">@color/grey_700</item>
+        <item name="android:textAppearance">@style/TextActionKeyboardStyle.Dark</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="TextActionKeyboardStyle.Dark" parent="TitleTextNormalPrimary.Dark">
+        <item name="android:textColorPrimary">@color/key_text_color_lxx_dark</item>
+        <item name="android:textColor">@color/key_text_color_lxx_dark</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+
+    <style name="ChipKeyboardStyle.Dark" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:textColor">@color/key_text_color_lxx_dark</item>
+        <item name="chipBackgroundColor">@color/grey_700</item>
+        <item name="checkedIcon">@drawable/ic_round_done_24</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 </resources>

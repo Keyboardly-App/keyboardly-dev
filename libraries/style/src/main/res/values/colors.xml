@@ -37,6 +37,9 @@
     <color name="sliding_key_input_preview_color_lxx_dark">#B380CBC4</color>
     <color name="key_background_pressed_lxx_dark">#19FFFFFF</color>
 
+    <color name="key_background_dark">#252525</color>
+    <color name="key_background_dark_pressed">#202020</color>
+
     <color name="orange_200">#F2A229</color>
     <color name="green_light">#e7faeb</color>
 

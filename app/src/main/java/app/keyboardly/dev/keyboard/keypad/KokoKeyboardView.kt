@@ -105,7 +105,6 @@ open class KokoKeyboardView : ExpandableLayout {
         initDependency()
     }
 
-    var TAG = KeyboardManager::class.java.simpleName
     private var isLowerCase = true
 
     private fun shiftKeyboard() {
@@ -185,7 +184,7 @@ open class KokoKeyboardView : ExpandableLayout {
         }
     }
 
-    fun hideSoftKeyboard(field: EditText) {
+    private fun hideSoftKeyboard(field: EditText) {
         val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(field.windowToken, 0)
     }
