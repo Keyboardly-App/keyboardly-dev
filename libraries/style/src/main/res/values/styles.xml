@@ -80,13 +80,13 @@
 
     <style
         name="FooterActionKeyboardStyle" parent="Theme.WooBoard">
-        <item name="android:background">@drawable/keyboard_background_light</item>
+        <item name="android:background">@drawable/keyboard_background_lightest</item>
         <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="FooterActionKeyboardStyle.Dark" parent="Theme.WooBoard">
-        <item name="android:background">@drawable/keyboard_background_dark</item>
+        <item name="android:background">@drawable/keyboard_background_darkest</item>
         <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>

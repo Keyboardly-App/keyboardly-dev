@@ -17,6 +17,7 @@
 
         <item name="actionKeyboardStyle">@style/ActionKeyboardStyle.Dark</item>
         <item name="textActionKeyboardStyle">@style/TextActionKeyboardStyle.Dark</item>
+        <item name="footerActionKeyboardStyle">@style/FooterActionKeyboardStyle.Dark</item>
     </style>
 
     <style name="ButtonDarkOutline" parent="Widget.Keys.Button.OutlinedButton">

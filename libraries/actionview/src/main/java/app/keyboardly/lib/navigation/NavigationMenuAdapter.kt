@@ -4,13 +4,13 @@ package app.keyboardly.lib.navigation
  * Created by zainal on 5/30/21 - 9:41 AM
  */
 
-import android.graphics.ColorMatrix
-import android.graphics.ColorMatrixColorFilter
+import android.graphics.*
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.actionview.databinding.ItemNavigationMenuBinding
 import com.bumptech.glide.Glide
@@ -79,16 +79,27 @@ class NavigationMenuAdapter(
                 if (enable) {
                     iconMenuIv.colorFilter = null
                 } else {
-                    val matrix = ColorMatrix()
-                    matrix.setSaturation(0f)
-                    val filter = ColorMatrixColorFilter(matrix)
-                    iconMenuIv.drawable.mutate()
-                    iconMenuIv.colorFilter = filter
+                    iconMenuIv.toGrayscale()
                 }
                 root.setOnClickListener {
                     navigationCallback.onClickMenu(data)
                 }
             }
         }
+    }
+
+    private fun ImageView.toGrayscale(){
+        val bmpOriginal = drawable.toBitmap()
+        val height: Int = bmpOriginal.height
+        val width: Int = bmpOriginal.width
+        val bmpGrayscale: Bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val c = Canvas(bmpGrayscale)
+        val paint = Paint()
+        val cm = ColorMatrix()
+        cm.setSaturation(0f)
+        val f = ColorMatrixColorFilter(cm)
+        paint.colorFilter = f
+        c.drawBitmap(bmpOriginal,Matrix(), paint)
+        setImageBitmap(bmpGrayscale)
     }
 }

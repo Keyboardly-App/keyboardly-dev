@@ -17,6 +17,7 @@
         <item name="materialButtonStyle">@style/Widget.Keys.Button.OutlinedButton</item>
         <item name="actionKeyboardStyle">@style/ActionKeyboardStyle</item>
         <item name="textActionKeyboardStyle">@style/TextActionKeyboard</item>
+        <item name="footerActionKeyboardStyle">@style/FooterActionKeyboardStyle</item>
 
         <!-- Customize your theme here. -->
     </style>

@@ -146,21 +146,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showThemeDialog() {
-        val themeItems = arrayOf("Dark Theme","Light Theme")
+        val themeItems = arrayOf("Light Theme","Dark Theme")
         val dialog = AlertDialog.Builder(this)
             .setTitle(R.string.action_theme)
             .setItems(themeItems){ d,position->
                 d.dismiss()
-                val style = if (position==0) {
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    updateTheme(this, true)
-//                    app.keyboardly.style.R.style.KeyboardTheme_Dark
-                } else {
-                    updateTheme(this, false)
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//                    app.keyboardly.style.R.style.KeyboardTheme
-                }
-//                theme.applyStyle(style, true)
+                if (position == 0) updateTheme( false) else updateTheme( true)
                 recreate()
             }
             .setPositiveButton(android.R.string.ok){ d, _ ->
@@ -175,10 +166,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     companion object{
-        fun updateTheme(context: Context, checkedTheme: Boolean){
+        fun Context.updateTheme(darkMode: Boolean){
             val editor: SharedPreferences.Editor =
-                sharedPreferences(context).edit()
-            editor.putBoolean("dark_mode", checkedTheme)
+                sharedPreferences(this).edit()
+            editor.putBoolean("dark_mode", darkMode)
             editor.apply()
         }
 
