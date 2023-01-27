@@ -37,21 +37,41 @@ On this dialog fill title and chose **on-demand only**
 
 ### Base Add On
 
-After creating a dynamic feature module, add these dependencies:
+After creating a dynamic feature module, update gradle dependencies:
 
 ```groovy
-implementation project(":libraries:style")
-implementation project(":libraries:actionview")
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+...
+
+dependencies {
+    implementation project(":libraries:style")
+    implementation project(":libraries:actionview")
+
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+}
 ```
 
-Then, we need to create a class with requirements:
-
-1. should with name `DynamicFeatureImpl`
-2. located in the root module.
-3. should inherit `DynamicFeature`
-4. have a constructor with param a class that inherits `KeyboardActionView`
-
-For full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
+Then, we need to create some kotlin class with requirements:
+1. A default class
+    - inherits `KeyboardActionView`
+    - located in the root module
+    - example : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt).
+2. DynamicDagger class
+    - contain some component class, interface and module
+    - example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
+3. DynamicFeatureImpl.kt
+    - should with name `DynamicFeatureImpl`
+    - located in the root module
+    - should inherit `DynamicFeature`
+    - have a constructor with default class that inherits `KeyboardActionView` 
+    - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
 
 On `DynamicFeatureImpl` class, there is 2 override methods:
 
