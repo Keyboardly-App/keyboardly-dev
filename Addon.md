@@ -7,6 +7,7 @@
   * [Add On Submenu](#add-on-submenu)
   * [App's addon menu](#app's-addon-menu)
   * [Proguard rules](#proguard-rules)
+  * [Styling](#styling)
   * [Testing](#testing)
     + [Indicator of success](#indicator-success-launched-of-add-on)
 
@@ -45,8 +46,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
-
-...
 
 dependencies {
     implementation project(":libraries:style")
@@ -88,7 +87,7 @@ If the user clicks the icon, the keyboard will do the validation :
 
 This validation can be a check on [this line code](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L163).
 
-### Add On Submenu (Keyboard navigation menu)
+### Add On Submenu
 
 This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
 if you decide to create an add-on without a submenu it can be an empty list (not null).
@@ -155,6 +154,47 @@ On the main source code app, the proguard / minify enabled.
 - Don't forget to keep the model data class if exist.
 
 see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
+
+## Styling
+To make your add on fit with keyboard theme, there is two way:
+1. Use default theme on library/style.
+- check the attribution member on this file [attrs.xml](/libraries/style/src/main/res/values/attrs.xml)
+- sample :
+```xml
+      <EditText
+          android:id="@+id/name"
+          style="?textActionKeyboardStyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"
+          android:focusable="false"
+          android:hint="Name"
+          android:inputType="text" />
+```
+2. Make your own theme and validate through KeyboardDependency. On keyboard dependency there is method
+- `isDarkMode()` : for validate the keyboard theme is dark or bright
+- `isBorderMode()` : for validate the keyboard button style, with border or not
+- sample :
+```kotlin
+
+  val style = if(dependency.isDarkMode()) {
+      if (dependency.isBorderMode()){
+          R.style.YourStyle_Dark_Border
+      } else {
+          R.style.YourStyle_Dark
+      }
+  } else {
+      if (dependency.isBorderMode()){
+          R.style.YourStyle_Border
+      } else {
+          R.style.YourStyle
+      }
+  }
+  val mThemeContext = ContextThemeWrapper(context, style)
+  val inflater = LayoutInflater.from(mThemeContext)
+  viewLayout = inflater.inflate(R.layout.home_layout, null)
+
+```
 
 
 ## Testing
