@@ -5,12 +5,13 @@
     android:id="@+id/parentCampaign"
     android:padding="@dimen/_10sdp"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    style="?actionKeyboardStyle"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/title"
-        android:textColor="@android:color/black"
+        style="?textActionKeyboardStyle"
+        android:textStyle="bold"
         tools:text="@tools:sample/full_names"
         android:textSize="@dimen/_12ssp"
         android:layout_width="match_parent"
