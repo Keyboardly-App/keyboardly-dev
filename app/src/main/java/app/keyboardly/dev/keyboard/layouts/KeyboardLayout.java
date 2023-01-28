@@ -64,8 +64,6 @@ public class KeyboardLayout extends LinearLayout {
                                 char text = ((Button) view).getText().charAt(0);
                                 keyboardManager.onKeyStroke(text);
                             }
-                        } else {
-//                            Timber.w("view="+view);
                         }
                     });
 
@@ -80,8 +78,6 @@ public class KeyboardLayout extends LinearLayout {
                     } else if (child instanceof AppCompatImageView) {
                         child.setClickable(true);
                         child.setOnClickListener(v -> keyboardManager.onButtonClick(child.getId()));
-                    } else {
-//                        Timber.w("child="+child);
                     }
                 }
             }

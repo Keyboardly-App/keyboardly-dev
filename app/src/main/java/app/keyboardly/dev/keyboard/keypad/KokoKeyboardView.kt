@@ -1,5 +1,6 @@
 package app.keyboardly.dev.keyboard.keypad
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.text.InputType
@@ -323,6 +324,24 @@ open class KokoKeyboardView : ExpandableLayout {
 
             override fun setNavigationMenu(list: MutableList<NavigationMenuModel>) {
                 container.switchAddOnNavigationView(list)
+            }
+
+            override fun isDarkMode(): Boolean {
+                val searchAttr = intArrayOf(app.keyboardly.style.R.attr.darkMode)
+                @SuppressLint("ResourceType") val attrs =
+                    getContext().obtainStyledAttributes(null, searchAttr)
+                val isDarkTheme = attrs.getBoolean(0, false)
+                attrs.recycle()
+                return isDarkTheme
+            }
+
+            override fun isBorderMode(): Boolean {
+                val searchAttr = intArrayOf(app.keyboardly.style.R.attr.borderMode)
+                @SuppressLint("ResourceType") val attrs =
+                    getContext().obtainStyledAttributes(null, searchAttr)
+                val isBorderMode = attrs.getBoolean(0, false)
+                attrs.recycle()
+                return isBorderMode
             }
 
         }

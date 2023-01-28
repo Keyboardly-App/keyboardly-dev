@@ -2,6 +2,7 @@ package app.keyboardly.dev
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources.Theme
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -16,6 +17,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
+import app.keyboardly.dev.HomeActivity.Companion.updateTheme
 import app.keyboardly.dev.databinding.ActivityHomeBinding
 import timber.log.Timber
 
@@ -27,13 +29,26 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if (isDarkTheme(this)){
+        val darkTheme = isDarkTheme(this)
+        val border = isBorder(this)
+        Timber.i("dark=$darkTheme/border=$border")
+        val theme = if (darkTheme){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            if (border){
+                R.style.Theme_KeyboardlyDev_Dark_Border
+            } else {
+                R.style.Theme_KeyboardlyDev_Dark
+            }
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            if (border){
+                R.style.Theme_KeyboardlyDev_Border
+            } else {
+                R.style.Theme_KeyboardlyDev
+            }
         }
+        setTheme(theme)
+        super.onCreate(savedInstanceState)
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -146,12 +161,35 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showThemeDialog() {
-        val themeItems = arrayOf("Light Theme","Dark Theme")
+        val themeItems = arrayOf(
+            "Light",
+            "Light Border",
+            "Dark",
+            "Dark Border"
+        )
         val dialog = AlertDialog.Builder(this)
             .setTitle(R.string.action_theme)
             .setItems(themeItems){ d,position->
                 d.dismiss()
-                if (position == 0) updateTheme( false) else updateTheme( true)
+                val darkMode = position > 1
+                val borderMode = position==1 || position == 3
+                Timber.i("$position // bordermode=$borderMode")
+                updateTheme( darkMode, borderMode)
+                /*if (darkMode){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    if (borderMode){
+                        setTheme(R.style.Theme_KeyboardlyDev_Dark_Border)
+                    } else {
+                        setTheme(R.style.Theme_KeyboardlyDev_Dark)
+                    }
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    if (borderMode){
+                        setTheme(R.style.Theme_KeyboardlyDev_Border)
+                    } else {
+                        setTheme(R.style.Theme_KeyboardlyDev)
+                    }
+                }*/
                 recreate()
             }
             .setPositiveButton(android.R.string.ok){ d, _ ->
@@ -166,16 +204,23 @@ class HomeActivity : AppCompatActivity() {
     }
 
     companion object{
-        fun Context.updateTheme(darkMode: Boolean){
+        fun Context.updateTheme(darkMode: Boolean, border: Boolean){
+            Timber.w("darkmode=$darkMode//border=$border")
             val editor: SharedPreferences.Editor =
                 sharedPreferences(this).edit()
             editor.putBoolean("dark_mode", darkMode)
+            editor.putBoolean("border_mode", border)
             editor.apply()
         }
 
         fun isDarkTheme(context: Context): Boolean {
             val editor: SharedPreferences = sharedPreferences(context)
             return editor.getBoolean("dark_mode", false)
+        }
+
+        fun isBorder(context: Context): Boolean {
+            val editor: SharedPreferences = sharedPreferences(context)
+            return editor.getBoolean("border_mode", true)
         }
 
         private fun sharedPreferences(context: Context) =

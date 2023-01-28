@@ -43,7 +43,7 @@ interface KeyboardActionDependency {
     fun getRecyclerView(): RecyclerView
 
     /**
-     * view Woowa's default keyboard navigation
+     * view default keyboard navigation
      */
     fun viewKeyboardNavigation()
 
@@ -162,10 +162,27 @@ interface KeyboardActionDependency {
      */
     fun showMessageView(onViewMessageReady: OnViewMessageReady)
 
-
+    /**
+     * to set callback navigation when submenu add on clicked.
+     */
     fun setNavigationCallback(navigationCallback: NavigationCallback)
 
+    /**
+     * used for set list menu to keyboard navigation.
+     * for example: when the add on installed & clicked, it should do login first before can access
+     * all the menu of add on.
+     */
     fun setNavigationMenu(list: MutableList<NavigationMenuModel>)
+
+    /**
+     *  for check current keyboard theme, is dark mode or not
+     */
+    fun isDarkMode() : Boolean
+
+    /**
+     *  for check current keyboard border theme, is with border or not
+     */
+    fun isBorderMode() : Boolean
 
     /**
      * interface class for handle callback recycler view

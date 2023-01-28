@@ -16,7 +16,7 @@ abstract class KeyboardActionView (
     val dependency: KeyboardActionDependency
 ) {
 
-    private val packageIdMainApp = "app.keyboardly"
+    private val packageIdMainApp = "app.keyboardly.android"
 
     // should declare this onCreate method
     var viewLayout: View? = null

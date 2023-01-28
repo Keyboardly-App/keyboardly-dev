@@ -59,7 +59,6 @@ class KeyboardActionContainer(
 
         Timber.i("floating rv=${floatingRoot.isVisible} // ${floatingRecyclerView.isVisible}")
         onViewReady.onRecyclerViewReady(floatingRecyclerView)
-//        mEditField.performClick()
         floatingRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)

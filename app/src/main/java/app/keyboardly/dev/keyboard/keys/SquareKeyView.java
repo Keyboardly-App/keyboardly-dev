@@ -1,5 +1,7 @@
 package app.keyboardly.dev.keyboard.keys;
 
+import static app.keyboardly.dev.keyboard.keys.RectangularKeyView.DEFAULT_HEIGHT_ROW;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -7,7 +9,6 @@ import android.util.AttributeSet;
 import com.google.android.material.button.MaterialButton;
 
 import app.keyboardly.dev.R;
-import timber.log.Timber;
 
 
 public class SquareKeyView extends MaterialButton {
@@ -49,18 +50,13 @@ public class SquareKeyView extends MaterialButton {
         int minW = getSuggestedMinimumWidth();
         int measuredWidth = getDefaultSize(minW, widthMeasureSpec);
 
-        int minH = getSuggestedMinimumHeight();
-        int measuredHeight = getDefaultSize(minH, heightMeasureSpec);
-
-        int finalWidth = measuredWidth;
         int finalHeight = (int) (measuredWidth / widthHeightRatio);
 
-        setMeasuredDimension(finalWidth, finalHeight);
+        setMeasuredDimension(measuredWidth, finalHeight);
         if (widthHeightRatio > 0.0) {
             // set the image views size
             int width = MeasureSpec.getSize(widthMeasureSpec);
-            int height = (int) (width * widthHeightRatio);
-            setMeasuredDimension(width, height+40);
+            setMeasuredDimension(width, DEFAULT_HEIGHT_ROW);
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
