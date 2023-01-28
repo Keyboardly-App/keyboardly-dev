@@ -1,4 +1,4 @@
-# About: Add On
+# About
 
 Add On is a feature that helps users to add tools from 3rd party inside your keyboard.<br>
 Add on will show in two places:
@@ -9,7 +9,7 @@ Add on will show in two places:
 Add on from 3rd party will be available on the keyboard or on the app after user installs it from the menu **Add On**.
 
 # Table of contents
-- [About](#about-add-on)
+- [About](#about)
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
     * [Dynamic Feature](#dynamic-feature)
