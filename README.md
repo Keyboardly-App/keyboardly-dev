@@ -5,5 +5,5 @@ Keyboard app that gives you *Freedom*.
 <br>
 This repository is playground for development of Add On.
 
-## Hightlight Feature
+## Highlight Feature
 1. [Add on](/Addon.md)

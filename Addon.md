@@ -1,12 +1,7 @@
 # About
 
 Add On is a feature that helps users to add tools from 3rd party inside your keyboard.<br>
-Add on will show in two places:
-
-- Keyboard's navigation menu (add on's submenu)
-- App's addon menu choose
-
-Add on from 3rd party will be available on the keyboard or on the app after user installs it from the menu **Add On**.
+All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace/).
 
 # Table of contents
 - [About](#about)
@@ -15,37 +10,40 @@ Add on from 3rd party will be available on the keyboard or on the app after user
     * [Dynamic Feature](#dynamic-feature)
     * [Keyboard Action View](#keyboard-action-view)
     * [Keyboard Dependency](#keyboard-action-dependency)
-- [Develop Add On](#develop-add-on)
+- [Development](#development)
+    * [Create Module](#create-module)
     * [Setup Dependency](#setup-dependency)
     * [Setup Class](#setup-class)
     * [Load Add On](#load-add-on)
     * [Add On Submenu](#add-on-submenu)
     * [App's addon menu](#app's-addon-menu)
-    * [Proguard rules](#proguard-rules)
     * [Styling](#styling)
+    * [Proguard rules](#proguard-rules)
     * [Testing](#testing)
-        + [Indicator of success](#indicator-success-launched-of-add-on)
+      + [Indicator of success](#indicator-success-launched-of-add-on)
 
 # Glossary
 There are several vocabularies used in this development.
 
-## Dynamic Feature
+### Dynamic Feature
 Dynamic Feature is base of add on, to see full detail of this see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
-## Keyboard Action View
+### Keyboard Action View
 Keyboard Action View is base class for view of add on that will show on keyboard. 
 The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 
-## Keyboard Action Dependency
+### Keyboard Action Dependency
 Keyboard Dependency is way to communicate with the main keyboard.
 See detail [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
 
-# Develop Add On
+# Development
 
 See [this module](/addon/sample) for full sample add on.
 
-To create an add on, start by create a dynamic feature:
+### Create Module
+
+To create an add on, start by create a dynamic feature module:
 
 > File > New > New Module > Choose **Dynamic Feature** > next
 
@@ -64,6 +62,16 @@ plugins {
     id 'com.android.dynamic-feature'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+}
+
+android{
+    ...
+
+    kapt {
+        generateStubs = true
+    }
+    
+    ...
 }
 
 dependencies {
@@ -151,30 +159,6 @@ To make add on's navigation, follow this way:
 
 done.
 
-## Proguard rules
-On the main source code app, the proguard / minify enabled. 
-- Make sure the add-on has consumer-rules.pro to prevent error / failed load of the add-on.
-- Be patient to keep some important
-```proguard
-# keep class data
--keep class app.keyboardly.sample.** { *; }
--keep class app.keyboardly.sample.di.** { *; }
-
--dontwarn com.google.errorprone.annotations.**
-
-# keep the resource / raw file
--keep class *.R
--keep class dagger.* { *; }
-
--keepclasseswithmembers class **.R$* {
-    public static <fields>;
-}
-
-```
-- Don't forget to keep the model data class if exist.
-
-see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
-
 ## Styling
 To make your add on fit with keyboard theme, there is two way:
 1. Use default theme on library/style.
@@ -215,6 +199,30 @@ To make your add on fit with keyboard theme, there is two way:
   viewLayout = inflater.inflate(R.layout.home_layout, null)
 
 ```
+
+## Proguard rules
+On the main source code app, the proguard / minify enabled.
+- Make sure the add-on has consumer-rules.pro to prevent error / failed load of the add-on.
+- Be patient to keep some important
+```proguard
+# keep class data
+-keep class app.keyboardly.sample.** { *; }
+-keep class app.keyboardly.sample.di.** { *; }
+
+-dontwarn com.google.errorprone.annotations.**
+
+# keep the resource / raw file
+-keep class *.R
+-keep class dagger.* { *; }
+
+-keepclasseswithmembers class **.R$* {
+    public static <fields>;
+}
+
+```
+- Don't forget to keep the model data class if exist.
+
+see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 
 
 ## Testing
