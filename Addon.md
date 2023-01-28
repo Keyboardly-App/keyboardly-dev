@@ -1,19 +1,6 @@
-# Table of contents
-- [Table of contents](#table-of-contents)
-- [About](#about-add-on)
-- [Develop Add On](#develop-add-on)
-  * [Base Add On](#base-add-on)
-  * [Load Add On](#load-add-on)
-  * [Add On Submenu](#add-on-submenu)
-  * [App's addon menu](#app's-addon-menu)
-  * [Proguard rules](#proguard-rules)
-  * [Styling](#styling)
-  * [Testing](#testing)
-    + [Indicator of success](#indicator-success-launched-of-add-on)
-
 # About: Add On
 
-A feature that helps users to add tools from 3rd party.<br>
+Add On is a feature that helps users to add tools from 3rd party inside your keyboard.<br>
 Add on will show in two places:
 
 - Keyboard's navigation menu (add on's submenu)
@@ -21,11 +8,39 @@ Add on will show in two places:
 
 Add on from 3rd party will be available on the keyboard or on the app after user installs it from the menu **Add On**.
 
+# Table of contents
+- [About](#about-add-on)
+- [Table of contents](#table-of-contents)
+- [Glossary](#glossary)
+    * [Dynamic Feature](#dynamic-feature)
+    * [Keyboard Action View](#keyboard-action-view)
+    * [Keyboard Dependency](#keyboard-action-dependency)
+- [Develop Add On](#develop-add-on)
+    * [Base Add On](#base-add-on)
+    * [Load Add On](#load-add-on)
+    * [Add On Submenu](#add-on-submenu)
+    * [App's addon menu](#app's-addon-menu)
+    * [Proguard rules](#proguard-rules)
+    * [Styling](#styling)
+    * [Testing](#testing)
+        + [Indicator of success](#indicator-success-launched-of-add-on)
+
+# Glossary
+## Dynamic Feature
+Dynamic Feature is base of add on, to see full detail of this see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
+
+## Keyboard Action View
+Keyboard Action View is base class for view of add on that will show on keyboard. Should have parameter `Keyboard Dependency`
+See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
+
+## Keyboard Action Dependency
+Keyboard Dependency is way to communicate with the main keyboard.
+See detail [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
+
 # Develop Add On
 
-See [this module](/addon/sample) for sample add on.
+See [this module](/addon/sample) for full sample add on.
 
-Base an add-on is a dynamic feature.
 To create dynamic features:
 
 > File > New > New Module > Choose **Dynamic Feature** > next

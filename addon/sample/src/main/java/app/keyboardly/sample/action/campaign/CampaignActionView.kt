@@ -52,10 +52,6 @@ class CampaignActionView (
                 layoutManager = LinearLayoutManager(context)
                 adapter = campaignAdapter
             }
-            titleCampaign.setOnClickListener {
-                Timber.i("darkMode=${dependency.isDarkMode()}")
-                Timber.i("borderMode=${dependency.isBorderMode()}")
-            }
             backBtn.apply {
                 setOnClickListener {
                     dependency.viewAddOnNavigation()
