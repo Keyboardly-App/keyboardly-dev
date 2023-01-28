@@ -16,7 +16,8 @@ Add on from 3rd party will be available on the keyboard or on the app after user
     * [Keyboard Action View](#keyboard-action-view)
     * [Keyboard Dependency](#keyboard-action-dependency)
 - [Develop Add On](#develop-add-on)
-    * [Base Add On](#base-add-on)
+    * [Setup Dependency](#setup-dependency)
+    * [Setup Class](#setup-class)
     * [Load Add On](#load-add-on)
     * [Add On Submenu](#add-on-submenu)
     * [App's addon menu](#app's-addon-menu)
@@ -26,11 +27,14 @@ Add on from 3rd party will be available on the keyboard or on the app after user
         + [Indicator of success](#indicator-success-launched-of-add-on)
 
 # Glossary
+There are several vocabularies used in this development.
+
 ## Dynamic Feature
 Dynamic Feature is base of add on, to see full detail of this see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
 ## Keyboard Action View
-Keyboard Action View is base class for view of add on that will show on keyboard. Should have parameter `Keyboard Dependency`
+Keyboard Action View is base class for view of add on that will show on keyboard. 
+The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 
 ## Keyboard Action Dependency
@@ -41,7 +45,7 @@ See detail [KeyboardActionDependency](/libraries/actionview/src/main/java/app/ke
 
 See [this module](/addon/sample) for full sample add on.
 
-To create dynamic features:
+To create an add on, start by create a dynamic feature:
 
 > File > New > New Module > Choose **Dynamic Feature** > next
 
@@ -51,7 +55,7 @@ On this dialog fill title and chose **on-demand only**
     <img src="image/addon-create-dialog.png" >
 </p>
 
-### Base Add On
+### Setup Dependency
 
 After creating a dynamic feature module, update gradle dependencies:
 
@@ -72,7 +76,8 @@ dependencies {
 }
 ```
 
-Then, we need to create some kotlin class with requirements:
+### Setup Class
+After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
     - inherits `KeyboardActionView`
     - located in the root module
@@ -86,11 +91,11 @@ Then, we need to create some kotlin class with requirements:
     - should inherit `DynamicFeature`
     - have a constructor with default class that inherits `KeyboardActionView` 
     - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
+    On `DynamicFeatureImpl` class, there is 2 override methods:
+    1. `getView()`  : will be used for return view.
+    2. `getSubMenus()`  : for return submenu to show on keyboard navigation.
 
-On `DynamicFeatureImpl` class, there is 2 override methods:
-
-1. `getView()`  : will be used for return view.
-2. `getSubMenus()`  : for return submenu to show on keyboard navigation.
+4. Start build your own feature on `KeyboardActionView` class. 
 
 ### Load Add On
 

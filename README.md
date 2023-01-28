@@ -1,11 +1,9 @@
-# Keyboardly
+<a href="https://play.google.com/store/apps/details?id=app.keyboardly.android"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height=60px /></a>
 
-a powerful keyboard to help you.
-Base code the keyboard is [OpenBoard](https://github.com/OpenBoard-org/OpenBoard)
+# Keyboardly
+Keyboard app that gives you *Freedom*.
+<br>
+This repository is playground for development of Add On.
 
 ## Hightlight Feature
-
-1. Calculator
-2. Clipboard
-3. Reorder navigation menu
-4. [Add on](/Addon.md)
+1. [Add on](/Addon.md)
