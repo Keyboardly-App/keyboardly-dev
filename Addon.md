@@ -18,6 +18,8 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
       + [OnViewReady](#onviewready)
     * [KeyboardActionView](#keyboard-action-view)
     * [KeyboardDependency](#keyboard-action-dependency)
+    * [Keyboard Navigation](#keyboard-navigation)
+    * [Submenu Add On Navigation](#submenu-add-on-navigation)
 - [Development](#development)
     * [Tools](#tools)
     * [Create Module](#create-module)
@@ -33,6 +35,9 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 
 # Glossary
 There are several vocabularies used in this development.
+
+## Dynamic Feature
+Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
 ## EditorInfo
 An editorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
@@ -64,9 +69,6 @@ See [detail](https://developer.android.com/reference/android/view/inputmethod/In
 
 InputConnection also possible to commit an image, if the input app support to receive it.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle)).
-
-## Dynamic Feature
-Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
 ## Keyboard Action View
 Keyboard Action View is base class for view of add on that will show on keyboard. 
@@ -225,6 +227,15 @@ it should do login first before can access all the menu of add on.
     </tr>
 </table>
 
+## Keyboard Navigation
+Keyboard navigation is list menu that appear on top of keyboard.
+The default navigation is available when user click the keyboard logo.
+If new add on installed, the logo will appear on this list keyboard navigation.
+
+## Submenu Add On Navigation
+If an Add On contain submenu navigation, when user click the add on logo the keyboard will replace
+the default keyboard navigation with the submenu. The Add On should handle the event submenu click on default class.
+
 # Development
 
 See [this module](/addon/sample) for full sample add on.
@@ -315,11 +326,11 @@ After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
     - inherits `KeyboardActionView`
     - located in the root module
-    - example : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt).
+    - see example : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt).
 2. DynamicDagger class
     - contain some component class, interface and module
     - should fit with the default class to make it work.
-    - example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
+    - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
 3. DynamicFeatureImpl.kt
     - should with name `DynamicFeatureImpl`
     - located in the root module
@@ -329,6 +340,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
     On `DynamicFeatureImpl` class, there is 2 override methods:
       + `getView()`  : will be used for return view.
       + `getSubMenus()`  : for return submenus to show on keyboard navigation.
+<br>
 `note:` on this class, an add on can configured with empty submenus and only with a default view, or with some submenus without default view.
 And if an add on not contain a default view or submenus, the add on will doesn't work.
 
