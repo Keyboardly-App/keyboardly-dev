@@ -8,6 +8,10 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [About](#about)
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
+    * [Add On](#add-on)
+    * [Default Add On Class](#default-class-add-on)
+    * [DynamicDagger class](#dynamic-feature) // todo
+    * [DynamicImpl class](#dynamic-feature) // todo
     * [Dynamic Feature](#dynamic-feature)
     * [EditorInfo](#editorinfo)
     * [InputConnection](#inputconnection)
@@ -35,6 +39,14 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 
 # Glossary
 There are several vocabularies used in this development.
+
+## Add On
+On this development, `Add On` mean a package of dynamic feature that fit and work with `Keyboardly` keyboard ecosystem
+with guideline that explained on this documentation.
+
+## Default Class Add On
+`Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
+See this sample of default class : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt)
 
 ## Dynamic Feature
 Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
@@ -327,11 +339,15 @@ After setup dependencies, We need to create some kotlin class with requirements:
     - inherits `KeyboardActionView`
     - located in the root module
     - see example : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt).
+> An add on can configured with empty submenus and with a default view, or with some submenus without default view.
+> If an add on not contain a default view or submenus, the add on will doesn't work.
+ 
 2. DynamicDagger class
     - contain some component class, interface and module
     - should fit with the default class to make it work.
     - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
-3. DynamicFeatureImpl.kt
+
+3.DynamicFeatureImpl.kt
     - should with name `DynamicFeatureImpl`
     - located in the root module
     - should inherit `DynamicFeature`
@@ -341,8 +357,6 @@ note:
 > On DynamicFeatureImpl class, there is 2 override methods:
 <br> - `getView()`  : will be used for return view.
 <br> - `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
-> On this class, an add on can configured with empty submenus and only with a default view, or with some submenus without default view.
-And if an add on not contain a default view or submenus, the add on will doesn't work.
 
 4. Start build your own feature on `KeyboardActionView` class. 
 
