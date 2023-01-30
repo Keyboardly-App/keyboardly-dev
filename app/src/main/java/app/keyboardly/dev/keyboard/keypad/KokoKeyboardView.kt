@@ -303,7 +303,7 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.viewFloatingRv(onViewReady)
             }
 
-            override fun showMessageView(onViewMessageReady: OnViewMessageReady) {
+            override fun showMessageView(onViewMessageReady: OnViewMessage) {
                 container.showMessageView(onViewMessageReady)
             }
 

@@ -13,7 +13,7 @@ import app.keyboardly.dev.keyboard.utils.invisible
 import app.keyboardly.dev.keyboard.utils.visible
 import app.keyboardly.lib.helper.ChipGroupCallback
 import app.keyboardly.lib.helper.InputPresenter
-import app.keyboardly.lib.helper.OnViewMessageReady
+import app.keyboardly.lib.helper.OnViewMessage
 import app.keyboardly.lib.helper.OnViewReady
 import com.google.android.material.chip.Chip
 import timber.log.Timber
@@ -29,7 +29,7 @@ class KeyboardActionContainer(
     kokoKeyboardView: KokoKeyboardView,
 ) : KeyboardInputManager(view, moduleHelper, kokoKeyboardView) {
 
-    fun showMessageView(onViewMessageReady: OnViewMessageReady) {
+    fun showMessageView(onViewMessageReady: OnViewMessage) {
         recyclerView.invisible()
         keyboardActionWrapper.visible()
         messageOnFrame.visible()

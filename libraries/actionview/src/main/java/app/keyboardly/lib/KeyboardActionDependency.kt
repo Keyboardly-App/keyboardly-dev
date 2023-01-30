@@ -8,7 +8,7 @@ import android.view.inputmethod.InputConnection
 import android.widget.EditText
 import app.keyboardly.lib.helper.ChipGroupCallback
 import app.keyboardly.lib.helper.InputPresenter
-import app.keyboardly.lib.helper.OnViewMessageReady
+import app.keyboardly.lib.helper.OnViewMessage
 import app.keyboardly.lib.helper.OnViewReady
 import com.google.android.material.chip.Chip
 import app.keyboardly.lib.navigation.NavigationCallback
@@ -168,7 +168,7 @@ interface KeyboardActionDependency {
      * show message on main keyboard layout, it's relate with showRecyclerViewOptions for example
      * if search on the list, then the result is not found the message can be show up here
      */
-    fun showMessageView(onViewMessageReady: OnViewMessageReady)
+    fun showMessageView(onViewMessageReady: OnViewMessage)
 
     /**
      * set callback navigation when navigation keyboard change to be submenu add on
