@@ -35,11 +35,11 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 There are several vocabularies used in this development.
 
 ## EditorInfo
-An EditorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
+An editorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo).
 
 ## Interface 
-There is some interface that used on this development.
+There is several interfaces that used on this development.
 ### ChipGroupCallBack
 Used for handle request chips options.
 See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallBack.kt).
@@ -318,6 +318,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
     - example : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt).
 2. DynamicDagger class
     - contain some component class, interface and module
+    - should fit with the default class to make it work.
     - example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
 3. DynamicFeatureImpl.kt
     - should with name `DynamicFeatureImpl`
