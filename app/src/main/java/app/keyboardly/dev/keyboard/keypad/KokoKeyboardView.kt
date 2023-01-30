@@ -214,10 +214,6 @@ open class KokoKeyboardView : ExpandableLayout {
                 return currentEditorInfo
             }
 
-            override fun getRecyclerView(): RecyclerView {
-                return container.recyclerView
-            }
-
             override fun viewKeyboardNavigation() {
                 keyboardManager.resetInputConnection()
                 container.viewNavigation()
@@ -239,10 +235,6 @@ open class KokoKeyboardView : ExpandableLayout {
 
             override fun viewLayoutAction() {
                 container.viewLayoutAction()
-            }
-
-            override fun viewInputMode(active: Boolean) {
-                container.viewInputMode(active)
             }
 
             override fun commitText(text: String) {

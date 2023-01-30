@@ -18,17 +18,23 @@ import app.keyboardly.lib.navigation.NavigationMenuModel
 interface KeyboardActionDependency {
 
     /**
-     * for get context
+     * for get context of keyboard service / theme context
      */
     fun getContext(): Context
 
     /**
-     * for getting main EditText while on input mode
+     * for getting current editText while on input mode (inside keyboard).
+     * there is two type EditText, default and long,
+     * default  : for short input and single line
+     * long     : for long input and multiline
      * */
     fun getEditTextInput(): EditText
 
     /**
      * get current input connection
+     * input connection is a way to communicate the keyboard with the input from other app
+     * for example: when the keyboard is active on the chat app, the add on possible to send some
+     * words in one tap rather than a single letter.
      * */
     fun getCurrentInputConnection(): InputConnection
 
@@ -38,9 +44,21 @@ interface KeyboardActionDependency {
     fun getCurrentEditorInfo(): EditorInfo
 
     /**
-     * get recyclerView from layout if appeared
+     * get keyboard height
      */
-    fun getRecyclerView(): RecyclerView
+    fun getKeyboardHeight(): Int
+
+    /**
+     * commit string data to editor outside keyboard through IME service
+     *
+     * @param text : string data to commit
+     */
+    fun commitText(text: String)
+
+    /**
+     * loading view on submit icon default input
+     */
+    fun loadingOnInput(loading: Boolean)
 
     /**
      * view default keyboard navigation
@@ -48,12 +66,7 @@ interface KeyboardActionDependency {
     fun viewKeyboardNavigation()
 
     /**
-     * get keyboard height
-     */
-    fun getKeyboardHeight() : Int
-
-    /**
-     * view default keyboard navigation
+     * view default keyboard view
      */
     fun viewDefaultKeyboard()
 
@@ -68,24 +81,12 @@ interface KeyboardActionDependency {
     fun viewLayoutAction()
 
     /**
-     * view to input mode
-     */
-    fun viewInputMode(active: Boolean)
-
-    /**
-     * commit string data to editor outside keyboard through IME service
-     *
-     * @param text : string data to commit
-     */
-    fun commitText(text: String)
-
-    /**
      * add text watcher to main input edittext
      */
     fun setTextWatcher(textWatcher: TextWatcher)
 
     /**
-     * set view on keyboard layout.
+     * set view on keyboard layout like add on menu.
      * @param view : should have parent KeyboardActionView
      */
     fun setActionView(view: KeyboardActionView)
@@ -99,22 +100,25 @@ interface KeyboardActionDependency {
     /**
      * show chip options from keyboard
      */
-    fun showChipOptions(list: MutableList<Chip>, callback: ChipGroupCallback, editText: EditText?=null )
+    fun showChipOptions(
+        list: MutableList<Chip>,
+        callback: ChipGroupCallback,
+        editText: EditText? = null
+    )
 
     /**
      * show date picker from keyboard
      */
-    fun showDatePicker(editText: EditText?=null, inputPresenter: InputPresenter?, readableMode:Boolean?=true)
-
-    /**
-     * loading view on submit icon default input
-     */
-    fun loadingOnInput(loading: Boolean)
+    fun showDatePicker(
+        editText: EditText? = null,
+        inputPresenter: InputPresenter?,
+        readableMode: Boolean? = true
+    )
 
     /**
      * show title above default Recycler view
      */
-    fun showTitleAboveList(show: Boolean, title:String?=null)
+    fun showTitleAboveList(show: Boolean, title: String? = null)
 
     /**
      * loading view on main keyboard
@@ -134,15 +138,15 @@ interface KeyboardActionDependency {
      * @param textWatcher : for add listen text watcher
      * @param onCloseSearch : method that called when close on edit text main
      */
-    fun requestInput (
-        editTextTarget: EditText?=null,
-        inputPresenter: InputPresenter?=null,
-        enableInput: Boolean?=true,
-        longInput: Boolean?=false,
-        hint: Int?=null,
-        inputType: Int?=null,
-        textWatcher: TextWatcher?=null,
-        onCloseSearch: ()->Unit?={}
+    fun requestInput(
+        editTextTarget: EditText? = null,
+        inputPresenter: InputPresenter? = null,
+        enableInput: Boolean? = true,
+        longInput: Boolean? = false,
+        hint: Int? = null,
+        inputType: Int? = null,
+        textWatcher: TextWatcher? = null,
+        onCloseSearch: () -> Unit? = {}
     )
 
     /**
@@ -153,6 +157,7 @@ interface KeyboardActionDependency {
 
     /**
      * show floating recyclerview options
+     * the position is above keyboard navigation, usually use when on input mode.
      * @param onViewReady : to handle callback when recyclerview ready
      */
     fun showFloatingRecyclerView(onViewReady: OnViewReady)
@@ -177,21 +182,21 @@ interface KeyboardActionDependency {
     /**
      *  for check current keyboard theme, is dark mode or not
      */
-    fun isDarkMode() : Boolean
+    fun isDarkMode(): Boolean
 
     /**
      *  for check current keyboard border theme, is with border or not
      */
-    fun isBorderMode() : Boolean
+    fun isBorderMode(): Boolean
 
     /**
      * interface class for handle callback recycler view
      * */
-    interface OnViewReady{
+    interface OnViewReady {
         fun onRecyclerViewReady(recyclerView: RecyclerView)
     }
 
-    interface OnViewMessageReady{
+    interface OnViewMessageReady {
         fun onTextViewReady(textView: TextView)
     }
 }

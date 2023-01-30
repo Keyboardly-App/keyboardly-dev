@@ -7,9 +7,11 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [About](#about)
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
+    * [EditorInfo](#editorinfo)
+    * [InputConnection](#inputconnection)
     * [Dynamic Feature](#dynamic-feature)
-    * [Keyboard Action View](#keyboard-action-view)
-    * [Keyboard Dependency](#keyboard-action-dependency)
+    * [KeyboardActionView](#keyboard-action-view)
+    * [KeyboardDependency](#keyboard-action-dependency)
 - [Development](#development)
     * [Tools](#tools)
     * [Create Module](#create-module)
@@ -26,17 +28,149 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 # Glossary
 There are several vocabularies used in this development.
 
-### Dynamic Feature
+## EditorInfo
+An EditorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
+[detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo)
+
+## InputConnection
+The InputConnection interface is the communication channel from an InputMethod back to the 
+application that is receiving its input. It is used to perform such things as reading text 
+around the cursor, committing text to the text box, and sending raw key events to the application.
+[detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection)
+
+InputConnection also possible to commit an image, if the input app support to receive it.
+See detail on [here](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle))
+## Dynamic Feature
 Dynamic Feature is base of add on, to see full detail of this see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
-### Keyboard Action View
+## Keyboard Action View
 Keyboard Action View is base class for view of add on that will show on keyboard. 
 The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 
-### Keyboard Action Dependency
-Keyboard Dependency is way to communicate with the main keyboard.
+## Keyboard Action Dependency
+Keyboard Dependency is way to communicate with the main keyboard, it just used inside the keyboard.
 See detail [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
+
+This is detail of the function member:
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Return</td>
+        <td>Description</td>
+    </tr>
+    <tr>
+        <td>getContext()</td>
+        <td>Context</td>
+        <td>Get context of keyboard service / theme context.</td>
+    </tr>
+    <tr>
+        <td>getEditTextInput()</td>
+        <td>EditText?</td>
+        <td>Get current editText while on input mode (inside keyboard)<br>
+there is two type EditText, default and long,<br>
+* default  : for short input and single line<br>
+* long     : for long input and multiline</td>
+return null if keyboard not in input mode.</td>
+    </tr>
+    <tr>
+        <td>getCurrentInputConnection()</td>
+        <td>InputConnection</td>
+        <td>Get current InputConnection where the keyboard is active</td>
+    </tr>
+    <tr>
+        <td>getCurrentEditorInfo()</td>
+        <td>EditorInfo</td>
+        <td>Get current active EditorInfo of cursor where the keyboard is active</td>
+    </tr>
+    <tr>
+        <td>viewKeyboardNavigation()</td>
+        <td>-</td>
+        <td>view default keyboard navigation</td>
+    </tr>
+    <tr>
+        <td>getKeyboardHeight()</td>
+        <td>Int</td>
+        <td>height of current keyboard</td>
+    </tr>
+    <tr>
+        <td>viewDefaultKeyboard()</td>
+        <td>-</td>
+        <td>reset view to default keyboard view</td>
+    </tr>
+    <tr>
+        <td>viewAddOnNavigation()</td>
+        <td>-</td>
+        <td>view addon's default submenu navigation if exist.</td>
+    </tr>
+    <tr>
+        <td>viewLayoutAction()</td>
+        <td>-</td>
+        <td>move back to current view KeyboardActionView. Usually this function will called after call requestInput() function or something else</td>
+    </tr>
+    <tr>
+        <td>commitText(text: String)</td>
+        <td>-</td>
+        <td>commit string data to editor outside keyboard.</td>
+    </tr>
+    <tr>
+        <td>loadingOnInput(loading: Boolean)</td>
+        <td>-</td>
+        <td>loading view while on input mode.</td>
+    </tr>
+    <tr>
+        <td>setTextWatcher(textWatcher: TextWatcher)</td>
+        <td>-</td>
+        <td>add text watcher to input edittext while on input mode.</td>
+    </tr>
+    <tr>
+        <td>setActionView(view: KeyboardActionView)</td>
+        <td>-</td>
+        <td>set view on keyboard layout, like add on menu.</td>
+    </tr>
+    <tr>
+        <td>setActionView(view: View?)</td>
+        <td>-</td>
+        <td>set view on keyboard layout, like add on menu.</td>
+    </tr>
+    <tr>
+        <td>showChipOptions(...)
+</td>
+        <td>-</td>
+        <td>show chip options from keyboard.</td>
+    </tr>
+    <tr>
+        <td>showDatePicker(...)
+</td>
+        <td>-</td>
+        <td>show date picker from keyboard</td>
+    </tr>
+    <tr>
+        <td>showTitleAboveList((show: Boolean, title: String? = null)</td>
+        <td>-</td>
+        <td>show title and back button above default Recycler view, same position with keyboard navigation.</td>
+    </tr>
+    <tr>
+        <td>loadingMain(loading: Boolean)</td>
+        <td>-</td>
+        <td>loading view on main keyboard.</td>
+    </tr>
+    <tr>
+        <td>requestInput(...)</td>
+        <td>-</td>
+        <td>request input from keyboard inside a KeyboardActionView</td>
+    </tr>
+    <tr>
+        <td>showRecyclerViewOptions(...)</td>
+        <td>-</td>
+        <td>show recyclerview options</td>
+    </tr>
+    <tr>
+        <td>showFloatingRecyclerView(...)</td>
+        <td>-</td>
+        <td>show recyclerview options. the position is above keyboard navigation, usually use when on input mode.</td>
+    </tr>
+</table>
 
 # Development
 
