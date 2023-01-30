@@ -87,6 +87,6 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.44.2'
     kapt 'com.google.dagger:dagger-compiler:2.44.2'
 
-    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.8.0'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.7.21'
 
 }
