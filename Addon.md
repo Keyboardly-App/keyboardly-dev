@@ -338,9 +338,9 @@ After setup dependencies, We need to create some kotlin class with requirements:
     - have a constructor with default class that inherits `KeyboardActionView` 
     - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
 note:
-> On `DynamicFeatureImpl` class, there is 2 override methods:
-<br>+ `getView()`  : will be used for return view.
-<br>+ `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
+> On DynamicFeatureImpl class, there is 2 override methods:
+<br> - `getView()`  : will be used for return view.
+<br> - `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
 > On this class, an add on can configured with empty submenus and only with a default view, or with some submenus without default view.
 And if an add on not contain a default view or submenus, the add on will doesn't work.
 
