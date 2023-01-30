@@ -14,7 +14,6 @@ import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
-import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.di.BaseComponent
 import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
@@ -23,10 +22,8 @@ import app.keyboardly.dev.keyboard.manager.KeyboardManager
 import app.keyboardly.dev.keyboard.manager.KeyboardManager.KeyboardListener
 import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
 import app.keyboardly.dev.keyboard.utils.InstallFeatureCallback
-import app.keyboardly.lib.ChipGroupCallback
-import app.keyboardly.lib.InputPresenter
-import app.keyboardly.lib.KeyboardActionDependency
-import app.keyboardly.lib.KeyboardActionView
+import app.keyboardly.lib.*
+import app.keyboardly.lib.helper.*
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import com.google.android.material.chip.Chip
@@ -298,15 +295,15 @@ open class KokoKeyboardView : ExpandableLayout {
                 }
             }
 
-            override fun showRecyclerViewOptions(onViewReady: KeyboardActionDependency.OnViewReady) {
+            override fun showRecyclerViewOptions(onViewReady: OnViewReady) {
                 container.viewList(onViewReady)
             }
 
-            override fun showFloatingRecyclerView(onViewReady: KeyboardActionDependency.OnViewReady) {
+            override fun showFloatingRecyclerView(onViewReady: OnViewReady) {
                 container.viewFloatingRv(onViewReady)
             }
 
-            override fun showMessageView(onViewMessageReady: KeyboardActionDependency.OnViewMessageReady) {
+            override fun showMessageView(onViewMessageReady: OnViewMessageReady) {
                 container.showMessageView(onViewMessageReady)
             }
 

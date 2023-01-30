@@ -11,9 +11,10 @@ import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
 import app.keyboardly.dev.keyboard.utils.gone
 import app.keyboardly.dev.keyboard.utils.invisible
 import app.keyboardly.dev.keyboard.utils.visible
-import app.keyboardly.lib.ChipGroupCallback
-import app.keyboardly.lib.InputPresenter
-import app.keyboardly.lib.KeyboardActionDependency
+import app.keyboardly.lib.helper.ChipGroupCallback
+import app.keyboardly.lib.helper.InputPresenter
+import app.keyboardly.lib.helper.OnViewMessageReady
+import app.keyboardly.lib.helper.OnViewReady
 import com.google.android.material.chip.Chip
 import timber.log.Timber
 import java.text.SimpleDateFormat
@@ -28,7 +29,7 @@ class KeyboardActionContainer(
     kokoKeyboardView: KokoKeyboardView,
 ) : KeyboardInputManager(view, moduleHelper, kokoKeyboardView) {
 
-    fun showMessageView(onViewMessageReady: KeyboardActionDependency.OnViewMessageReady) {
+    fun showMessageView(onViewMessageReady: OnViewMessageReady) {
         recyclerView.invisible()
         keyboardActionWrapper.visible()
         messageOnFrame.visible()
@@ -53,7 +54,7 @@ class KeyboardActionContainer(
 
 
 
-    fun viewFloatingRv(onViewReady: KeyboardActionDependency.OnViewReady) {
+    fun viewFloatingRv(onViewReady: OnViewReady) {
         floatingRoot.visible()
         floatingRecyclerView.visible()
 
@@ -121,7 +122,7 @@ class KeyboardActionContainer(
         }
     }
 
-    fun viewList(onViewReady: KeyboardActionDependency.OnViewReady) {
+    fun viewList(onViewReady: OnViewReady) {
         viewInputMode(false)
         showBaseViewForOptions()
         frame.gone()

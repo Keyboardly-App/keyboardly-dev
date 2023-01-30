@@ -8,10 +8,11 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.keyboard.utils.gone
-import app.keyboardly.lib.InputPresenter
+import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.sample.databinding.CampaignLayoutBinding
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
+import app.keyboardly.lib.helper.OnViewReady
 import app.keyboardly.sample.R
 import timber.log.Timber
 
@@ -105,7 +106,7 @@ class CampaignActionView (
         if (list.isEmpty()) {
             floatingRv?.gone()
         } else {
-            dependency.showFloatingRecyclerView(object : KeyboardActionDependency.OnViewReady {
+            dependency.showFloatingRecyclerView(object : OnViewReady {
                 override fun onRecyclerViewReady(recyclerView: RecyclerView) {
                     Timber.i("recyclerView="+recyclerView.isVisible)
                     recyclerView.apply {

@@ -6,8 +6,10 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.widget.EditText
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import app.keyboardly.lib.helper.ChipGroupCallback
+import app.keyboardly.lib.helper.InputPresenter
+import app.keyboardly.lib.helper.OnViewMessageReady
+import app.keyboardly.lib.helper.OnViewReady
 import com.google.android.material.chip.Chip
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
@@ -163,12 +165,13 @@ interface KeyboardActionDependency {
     fun showFloatingRecyclerView(onViewReady: OnViewReady)
 
     /**
-     * show message to keyboard
+     * show message on main keyboard layout, it's relate with showRecyclerViewOptions for example
+     * if search on the list, then the result is not found the message can be show up here
      */
     fun showMessageView(onViewMessageReady: OnViewMessageReady)
 
     /**
-     * to set callback navigation when submenu add on clicked.
+     * set callback navigation when navigation keyboard change to be submenu add on
      */
     fun setNavigationCallback(navigationCallback: NavigationCallback)
 
@@ -189,14 +192,4 @@ interface KeyboardActionDependency {
      */
     fun isBorderMode(): Boolean
 
-    /**
-     * interface class for handle callback recycler view
-     * */
-    interface OnViewReady {
-        fun onRecyclerViewReady(recyclerView: RecyclerView)
-    }
-
-    interface OnViewMessageReady {
-        fun onTextViewReady(textView: TextView)
-    }
 }

@@ -13,7 +13,7 @@ import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
 import app.keyboardly.dev.keyboard.utils.gone
 import app.keyboardly.dev.keyboard.utils.invisible
 import app.keyboardly.dev.keyboard.utils.visible
-import app.keyboardly.lib.InputPresenter
+import app.keyboardly.lib.helper.InputPresenter
 import timber.log.Timber
 
 /**

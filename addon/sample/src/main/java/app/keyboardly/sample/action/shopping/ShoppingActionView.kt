@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.keyboard.utils.gone
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
+import app.keyboardly.lib.helper.OnViewReady
 import app.keyboardly.sample.action.campaign.CampaignListAdapter
 import app.keyboardly.sample.action.campaign.CampaignModel
 import app.keyboardly.sample.databinding.ShoppingLayoutBinding
@@ -57,7 +58,7 @@ class ShoppingActionView (
                 dependency.loadingMain(true)
                 Handler(Looper.getMainLooper()).postDelayed({
                     dependency.loadingMain(false)
-                    dependency.showRecyclerViewOptions(object : KeyboardActionDependency.OnViewReady{
+                    dependency.showRecyclerViewOptions(object : OnViewReady {
                         override fun onRecyclerViewReady(recyclerView: RecyclerView) {
 
                         dependency.showTitleAboveList(true,"Choose 1 promo")

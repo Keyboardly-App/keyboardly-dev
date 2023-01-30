@@ -8,6 +8,7 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
     * [EditorInfo](#editorinfo)
+    * [Interface](#interface)
     * [InputConnection](#inputconnection)
     * [Dynamic Feature](#dynamic-feature)
     * [KeyboardActionView](#keyboard-action-view)
@@ -32,6 +33,12 @@ There are several vocabularies used in this development.
 An EditorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
 [detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo)
 
+## Interface 
+### ChipGroupCallBack
+### InputPresenter
+### OnViewMessage
+### OnViewMessage
+
 ## InputConnection
 The InputConnection interface is the communication channel from an InputMethod back to the 
 application that is receiving its input. It is used to perform such things as reading text 
@@ -49,8 +56,8 @@ The default parameter is `Keyboard Dependency`. This class is where the feature 
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 
 ## Keyboard Action Dependency
-Keyboard Dependency is way to communicate with the main keyboard, it just used inside the keyboard.
-See detail [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
+Keyboard Dependency is interface way to communicate with the main keyboard, it just used inside the keyboard.
+See full source [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
 
 This is detail of the function member:
 <table>
@@ -58,6 +65,11 @@ This is detail of the function member:
         <td>Name</td>
         <td>Return</td>
         <td>Description</td>
+    </tr>
+    <tr>
+        <td>commitText(text: String)</td>
+        <td>-</td>
+        <td>commit string data to editor outside keyboard.</td>
     </tr>
     <tr>
         <td>getContext()</td>
@@ -84,34 +96,19 @@ return null if keyboard not in input mode.</td>
         <td>Get current active EditorInfo of cursor where the keyboard is active</td>
     </tr>
     <tr>
-        <td>viewKeyboardNavigation()</td>
-        <td>-</td>
-        <td>view default keyboard navigation</td>
-    </tr>
-    <tr>
         <td>getKeyboardHeight()</td>
         <td>Int</td>
         <td>height of current keyboard</td>
     </tr>
     <tr>
-        <td>viewDefaultKeyboard()</td>
-        <td>-</td>
-        <td>reset view to default keyboard view</td>
+        <td>isBorderMode()</td>
+        <td>Boolean</td>
+        <td>for check current keyboard border theme, is with border or not.</td>
     </tr>
     <tr>
-        <td>viewAddOnNavigation()</td>
-        <td>-</td>
-        <td>view addon's default submenu navigation if exist.</td>
-    </tr>
-    <tr>
-        <td>viewLayoutAction()</td>
-        <td>-</td>
-        <td>move back to current view KeyboardActionView. Usually this function will called after call requestInput() function or something else</td>
-    </tr>
-    <tr>
-        <td>commitText(text: String)</td>
-        <td>-</td>
-        <td>commit string data to editor outside keyboard.</td>
+        <td>isDarkMode()</td>
+        <td>Boolean</td>
+        <td>for check current keyboard theme, is dark mode or not.</td>
     </tr>
     <tr>
         <td>loadingOnInput(loading: Boolean)</td>
@@ -146,7 +143,7 @@ return null if keyboard not in input mode.</td>
         <td>show date picker from keyboard</td>
     </tr>
     <tr>
-        <td>showTitleAboveList((show: Boolean, title: String? = null)</td>
+        <td>showTitleAboveList(...)</td>
         <td>-</td>
         <td>show title and back button above default Recycler view, same position with keyboard navigation.</td>
     </tr>
@@ -169,6 +166,46 @@ return null if keyboard not in input mode.</td>
         <td>showFloatingRecyclerView(...)</td>
         <td>-</td>
         <td>show recyclerview options. the position is above keyboard navigation, usually use when on input mode.</td>
+    </tr>
+    <tr>
+        <td>showMessageView(...)</td>
+        <td>-</td>
+        <td>show message on main keyboard layout, it's relate with showRecyclerViewOptions for example 
+if search on the list, then the result is not found the message can be show up here.</td>
+    </tr>
+    <tr>
+        <td>setNavigationCallback(...)</td>
+        <td>-</td>
+        <td>set callback navigation when navigation keyboard change to be submenu add on.</td>
+    </tr>
+    <tr>
+        <td>setNavigationMenu(...)</td>
+        <td>-</td>
+        <td> For set list menu to keyboard navigation. for example: when the add on installed & clicked, 
+it should do login first before can access all the menu of add on.
+</td>
+    </tr>
+
+
+    <tr>
+        <td>viewAddOnNavigation()</td>
+        <td>-</td>
+        <td>view addon's default submenu navigation if exist.</td>
+    </tr>
+    <tr>
+        <td>viewDefaultKeyboard()</td>
+        <td>-</td>
+        <td>reset view to default keyboard view</td>
+    </tr>
+    <tr>
+        <td>viewKeyboardNavigation()</td>
+        <td>-</td>
+        <td>view default keyboard navigation</td>
+    </tr>
+    <tr>
+        <td>viewLayoutAction()</td>
+        <td>-</td>
+        <td>move back to current view KeyboardActionView. Usually this function will called after call requestInput() function or something else</td>
     </tr>
 </table>
 

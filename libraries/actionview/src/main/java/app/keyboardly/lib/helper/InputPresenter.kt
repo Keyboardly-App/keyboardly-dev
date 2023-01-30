@@ -1,4 +1,4 @@
-package app.keyboardly.lib
+package app.keyboardly.lib.helper
 
 import android.widget.EditText
 

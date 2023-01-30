@@ -3,8 +3,8 @@ package app.keyboardly.sample.action.discount
 import android.text.InputType
 import android.util.Log
 import android.widget.EditText
-import app.keyboardly.lib.ChipGroupCallback
-import app.keyboardly.lib.InputPresenter
+import app.keyboardly.lib.helper.ChipGroupCallback
+import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.sample.R
