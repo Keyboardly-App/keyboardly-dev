@@ -3,6 +3,10 @@
 
 buildscript {
     ext {
+        targetSdkVersion = 33
+        compileSdkVersion = 33
+        minSdkVersion = 21
+
         nav_version = "2.5.3"
         glideVersion = '4.14.2'
     }

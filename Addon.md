@@ -11,6 +11,7 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
     * [Keyboard Action View](#keyboard-action-view)
     * [Keyboard Dependency](#keyboard-action-dependency)
 - [Development](#development)
+    * [Tools](#tools)
     * [Create Module](#create-module)
     * [Setup Dependency](#setup-dependency)
     * [Setup Class](#setup-class)
@@ -41,7 +42,45 @@ See detail [KeyboardActionDependency](/libraries/actionview/src/main/java/app/ke
 
 See [this module](/addon/sample) for full sample add on.
 
-### Create Module
+## Tools
+
+Tools requires for development:
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Version</td>
+    </tr>
+    <tr>
+        <td>Android Studio</td>
+        <td>`2021.3.1` (min)</td>
+    </tr>
+    <tr>
+        <td>Gradle</td>
+        <td>`7.4`</td>
+    </tr>
+    <tr>
+        <td>Android Gradle Plugin</td>
+        <td>`7.3.1`</td>
+    </tr>
+    <tr>
+        <td>Kotlin plugin</td>
+        <td>`1.7.20`</td>
+    </tr>
+    <tr>
+        <td>`compileSdk`</td>
+        <td>`33`</td>
+    </tr>
+    <tr>
+        <td>`minSdkVersion`</td>
+        <td>`21`</td>
+    </tr>
+    <tr>
+        <td>`targetSdkVersion`</td>
+        <td>33</td>
+    </tr>
+</table>
+
+## Create Module
 
 To create an add on, start by create a dynamic feature module:
 
@@ -53,7 +92,7 @@ On this dialog fill title and chose **on-demand only**
     <img src="image/addon-create-dialog.png" >
 </p>
 
-### Setup Dependency
+## Setup Dependency
 
 After creating a dynamic feature module, update gradle dependencies:
 
@@ -84,7 +123,7 @@ dependencies {
 }
 ```
 
-### Setup Class
+## Setup Class
 After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
     - inherits `KeyboardActionView`
@@ -105,7 +144,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
 
 4. Start build your own feature on `KeyboardActionView` class. 
 
-### Load Add On
+## Load Add On
 
 After the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
 If the user clicks the icon, the keyboard will do the validation :
@@ -115,14 +154,14 @@ If the user clicks the icon, the keyboard will do the validation :
 
 This validation can be a check on [this line code](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L163).
 
-### Add On Submenu
+## Add On Submenu
 
 This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
 if you decide to create an add-on without a submenu it can be an empty list (not null).
 
 The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L49).
 
-### App's addon menu
+## App's addon menu
 
 App's addon menu is a way to access installed **add on** like the common app menu.
 It can be accessed from add on the menu;
