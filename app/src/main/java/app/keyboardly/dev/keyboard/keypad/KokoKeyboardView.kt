@@ -252,7 +252,7 @@ open class KokoKeyboardView : ExpandableLayout {
 
             override fun showChipOptions(
                 list: MutableList<Chip>,
-                callback: ChipGroupCallback,
+                callback: ChipGroupCallBack,
                 editText: EditText?
             ) {
                 container.showChipOptions(list, callback, editText)

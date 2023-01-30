@@ -10,10 +10,10 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [Glossary](#glossary)
     * [EditorInfo](#editorinfo)
     * [Interface](#interface)
-        +[ChipGroupCallBack](#chipgroupcallbacklibrariesactionviewsrcmainjavaappkeyboardlylibhelperchipgroupcallbackkt)
-        +InputPresenter
-        +OnViewMessage
-        +OnViewReady
+      + ChipGroupCallBack
+      + InputPresenter
+      + OnViewMessage
+      + OnViewReady
     * [InputConnection](#inputconnection)
     * [Dynamic Feature](#dynamic-feature)
     * [KeyboardActionView](#keyboard-action-view)
@@ -40,13 +40,13 @@ An EditorInfo describes several attributes of a text editing object that an inpu
 
 ## Interface 
 There is some interface that used on this development.
-### [ChipGroupCallBack](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallback.kt)
+### [ChipGroupCallBack](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallBack.kt)
 Used for handle request chips options.
 ### [InputPresenter](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/InputPresenter.kt)
 Interface for handling when input mode actived.
 ### [OnViewMessage](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewMessage.kt)
 For showing message on options area like default RecyclerView and ChipGroup options
-### [OnViewReady](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallback.kt)
+### [OnViewReady](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewReady.kt)
 For showing default options with RecyclerView
 
 ## InputConnection
@@ -195,8 +195,6 @@ if search on the list, then the result is not found the message can be show up h
 it should do login first before can access all the menu of add on.
 </td>
     </tr>
-
-
     <tr>
         <td>viewAddOnNavigation()</td>
         <td>-</td>
@@ -320,8 +318,10 @@ After setup dependencies, We need to create some kotlin class with requirements:
     - have a constructor with default class that inherits `KeyboardActionView` 
     - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
     On `DynamicFeatureImpl` class, there is 2 override methods:
-    1. `getView()`  : will be used for return view.
-    2. `getSubMenus()`  : for return submenu to show on keyboard navigation.
+      + `getView()`  : will be used for return view.
+      + `getSubMenus()`  : for return submenus to show on keyboard navigation.
+`note:` on this class, an add on can configured with empty submenus and only with a default view, or with some submenus without default view.
+And if an add on not contain a default view or submenus, the add on will doesn't work.
 
 4. Start build your own feature on `KeyboardActionView` class. 
 

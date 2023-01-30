@@ -3,7 +3,7 @@ package app.keyboardly.sample.action.discount
 import android.text.InputType
 import android.util.Log
 import android.widget.EditText
-import app.keyboardly.lib.helper.ChipGroupCallback
+import app.keyboardly.lib.helper.ChipGroupCallBack
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
@@ -18,7 +18,7 @@ import com.google.android.material.chip.ChipGroup
  */
 class RegisterView (
     dependency: KeyboardActionDependency
-) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallback {
+) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallBack {
 
     private lateinit var binding: DiscountFeatureLayoutBinding
 

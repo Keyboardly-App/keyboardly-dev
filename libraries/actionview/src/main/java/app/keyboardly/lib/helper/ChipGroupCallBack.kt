@@ -7,7 +7,7 @@ import com.google.android.material.chip.ChipGroup
 /**
  * Created by zainal on 11/23/21 - 2:23 PM
  */
-interface ChipGroupCallback {
+interface ChipGroupCallBack {
     /**
      * triggered when chip options clicked
      * @param chip : clicked chip

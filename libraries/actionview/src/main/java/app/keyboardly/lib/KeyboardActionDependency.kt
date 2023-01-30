@@ -6,7 +6,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.widget.EditText
-import app.keyboardly.lib.helper.ChipGroupCallback
+import app.keyboardly.lib.helper.ChipGroupCallBack
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.helper.OnViewMessage
 import app.keyboardly.lib.helper.OnViewReady
@@ -104,7 +104,7 @@ interface KeyboardActionDependency {
      */
     fun showChipOptions(
         list: MutableList<Chip>,
-        callback: ChipGroupCallback,
+        callback: ChipGroupCallBack,
         editText: EditText? = null
     )
 

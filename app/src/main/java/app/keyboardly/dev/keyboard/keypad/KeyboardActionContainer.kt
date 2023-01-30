@@ -11,7 +11,7 @@ import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
 import app.keyboardly.dev.keyboard.utils.gone
 import app.keyboardly.dev.keyboard.utils.invisible
 import app.keyboardly.dev.keyboard.utils.visible
-import app.keyboardly.lib.helper.ChipGroupCallback
+import app.keyboardly.lib.helper.ChipGroupCallBack
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.helper.OnViewMessage
 import app.keyboardly.lib.helper.OnViewReady
@@ -155,7 +155,7 @@ class KeyboardActionContainer(
 
     fun showChipOptions(
         list: MutableList<Chip>,
-        callback: ChipGroupCallback,
+        callback: ChipGroupCallBack,
         editText: EditText?
     ) {
         viewChipGroup(editText)
