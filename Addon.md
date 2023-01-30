@@ -1,6 +1,6 @@
 # About
 
-Add On is a way to helps users to make keyboard more powerfull.<br>
+Add On is a way to helps users to make keyboard more powerful.<br>
 Working inside your keyboard.<br>
 All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace/).
 
@@ -36,7 +36,7 @@ There are several vocabularies used in this development.
 
 ## EditorInfo
 An EditorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
-[detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo)
+See [detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo).
 
 ## Interface 
 There is some interface that used on this development.
@@ -53,12 +53,13 @@ For showing default options with RecyclerView
 The InputConnection interface is the communication channel from an InputMethod back to the 
 application that is receiving its input. It is used to perform such things as reading text 
 around the cursor, committing text to the text box, and sending raw key events to the application.
-[detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection)
+See detail [InputConnection](https://developer.android.com/reference/android/view/inputmethod/InputConnection).
 
 InputConnection also possible to commit an image, if the input app support to receive it.
-See detail on [here](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle))
+See detail [commitContent](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle)).
+
 ## Dynamic Feature
-Dynamic Feature is base of add on, to see full detail of this see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
+Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
 ## Keyboard Action View
 Keyboard Action View is base class for view of add on that will show on keyboard. 
