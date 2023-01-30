@@ -1,7 +1,6 @@
 # About
 
-Add On is a way to make keyboard more powerful.<br>
-Add On will working inside your keyboard.<br>
+Add On is smart way to make your android keyboard more powerful.<br>
 
 All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace/).
 
@@ -13,10 +12,10 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
     * [EditorInfo](#editorinfo)
     * [InputConnection](#inputconnection)
     * [Interface](#interface)
-      + ChipGroupCallBack
-      + InputPresenter
-      + OnViewMessage
-      + OnViewReady
+      + [ChipGroupCallBack](#chipgroupcallback)
+      + [InputPresenter](#inputpresenter)
+      + [OnViewMessage](#onviewmessage)
+      + [OnViewReady](#onviewready)
     * [KeyboardActionView](#keyboard-action-view)
     * [KeyboardDependency](#keyboard-action-dependency)
 - [Development](#development)
@@ -41,23 +40,30 @@ See [detail](https://developer.android.com/reference/android/view/inputmethod/Ed
 
 ## Interface 
 There is some interface that used on this development.
-### [ChipGroupCallBack](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallBack.kt)
+### ChipGroupCallBack
 Used for handle request chips options.
-### [InputPresenter](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/InputPresenter.kt)
-Interface for handling when input mode actived.
-### [OnViewMessage](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewMessage.kt)
-For showing message on options area like default RecyclerView and ChipGroup options
-### [OnViewReady](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewReady.kt)
-For showing default options with RecyclerView
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallBack.kt).
+
+### InputPresenter
+Interface for handling when input mode activated.
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/InputPresenter.kt).
+
+### OnViewMessage
+For showing message on options area like default RecyclerView and ChipGroup options.
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewMessage.kt).
+
+### OnViewReady
+For showing default options with RecyclerView.
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewReady.kt).
 
 ## InputConnection
 The InputConnection interface is the communication channel from an InputMethod back to the 
 application that is receiving its input. It is used to perform such things as reading text 
 around the cursor, committing text to the text box, and sending raw key events to the application.
-See detail [InputConnection](https://developer.android.com/reference/android/view/inputmethod/InputConnection).
+See [detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection).
 
 InputConnection also possible to commit an image, if the input app support to receive it.
-See detail [commitContent](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle)).
+See [detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle)).
 
 ## Dynamic Feature
 Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
