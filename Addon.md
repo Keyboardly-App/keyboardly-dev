@@ -44,7 +44,7 @@ See [this module](/addon/sample) for full sample add on.
 
 ## Tools
 
-Tools requires for development:
+Requires tools & config for development:
 <table>
     <tr>
         <td>Name</td>
@@ -52,30 +52,30 @@ Tools requires for development:
     </tr>
     <tr>
         <td>Android Studio</td>
-        <td>`2021.3.1` (min)</td>
+        <td>2021.3.1 (min)</td>
     </tr>
     <tr>
         <td>Gradle</td>
-        <td>`7.4`</td>
+        <td>7.4</td>
     </tr>
     <tr>
         <td>Android Gradle Plugin</td>
-        <td>`7.3.1`</td>
+        <td>7.3.1</td>
     </tr>
     <tr>
         <td>Kotlin plugin</td>
-        <td>`1.7.20`</td>
+        <td>1.7.20</td>
     </tr>
     <tr>
-        <td>`compileSdk`</td>
-        <td>`33`</td>
+        <td>compileSdk</td>
+        <td>33</td>
     </tr>
     <tr>
-        <td>`minSdkVersion`</td>
-        <td>`21`</td>
+        <td>minSdkVersion</td>
+        <td>21</td>
     </tr>
     <tr>
-        <td>`targetSdkVersion`</td>
+        <td>targetSdkVersion</td>
         <td>33</td>
     </tr>
 </table>
