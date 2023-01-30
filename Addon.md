@@ -1,21 +1,22 @@
 # About
 
-Add On is a way to helps users to make keyboard more powerful.<br>
-Working inside your keyboard.<br>
+Add On is a way to make keyboard more powerful.<br>
+Add On will working inside your keyboard.<br>
+
 All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace/).
 
 # Table of contents
 - [About](#about)
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
+    * [Dynamic Feature](#dynamic-feature)
     * [EditorInfo](#editorinfo)
+    * [InputConnection](#inputconnection)
     * [Interface](#interface)
       + ChipGroupCallBack
       + InputPresenter
       + OnViewMessage
       + OnViewReady
-    * [InputConnection](#inputconnection)
-    * [Dynamic Feature](#dynamic-feature)
     * [KeyboardActionView](#keyboard-action-view)
     * [KeyboardDependency](#keyboard-action-dependency)
 - [Development](#development)
