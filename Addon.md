@@ -10,8 +10,8 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [Glossary](#glossary)
     * [Add On](#add-on)
     * [Default Add On Class](#default-class-add-on)
-    * [DynamicDagger class](#dynamic-feature) // todo
-    * [DynamicImpl class](#dynamic-feature) // todo
+    * [DynamicDagger Class](#dynamicdagger-class)
+    * [DynamicImpl Class](#dynamicfeatureimpl-class)
     * [Dynamic Feature](#dynamic-feature)
     * [EditorInfo](#editorinfo)
     * [InputConnection](#inputconnection)
@@ -47,6 +47,14 @@ with guideline that explained on this documentation.
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
 See this sample of default class : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt)
+
+## DynamicDagger Class
+`DynamicDagger Class` mean a class that contain @Component & @Module dagger class to build default class.
+See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt)
+
+## DynamicFeatureImpl Class
+`DynamicImpl Class` a class for implementation to connect the default class with DynamicDagger class
+See this sample of default class : [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt)
 
 ## Dynamic Feature
 Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)

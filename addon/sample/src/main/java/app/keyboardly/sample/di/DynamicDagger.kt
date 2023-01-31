@@ -25,6 +25,9 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * This component for build the default class
+ */
 @Singleton
 @Component(
     modules = [DynamicModule::class],
@@ -35,15 +38,22 @@ interface DynamicComponent {
 }
 
 /**
- * You can have your own modules, providers etc. in this component to build your object graph.
- * You have access to objects provided by the StorageFeature.Dependencies interface from the base component.
-*/
-
+ * You have access to objects provided by the DynamicFeature.Dependencies interface from the base component.
+ */
 @Module
 class DynamicModule {
+    /**
+     * should fit with name default class
+     * @param dependency
+     * @return the default class
+     */
     @Provides
     internal fun provideSampleView(dependency: KeyboardActionDependency) = SampleView(dependency)
 
+    /**
+     * bind the DynamicFeatureImpl
+     * @param featureImpl: DynamicFeatureImpl
+     */
     @Provides
-    internal fun bindDynamicImpl(module: DynamicFeatureImpl): DynamicFeature = module
+    internal fun bindDynamicImpl(featureImpl: DynamicFeatureImpl): DynamicFeature = featureImpl
 }

@@ -42,10 +42,18 @@ class DynamicFeatureImpl @Inject constructor(
         }
     }
 
+    /**
+     * get the default view of add on.
+     * it's possible to be set to null, but don't empty View()
+     */
     override fun getView(): View? {
         return sampleView.getView()
     }
 
+    /**
+     * submenu of add on, list of NavigationMenuModel
+     * it's possible to set to empty mutableList() but getView() not null
+     */
     override fun getSubMenus(): MutableList<NavigationMenuModel> {
         return sampleView.subMenus()
     }
