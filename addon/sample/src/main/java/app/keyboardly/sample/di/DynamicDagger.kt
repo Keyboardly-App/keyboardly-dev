@@ -43,7 +43,7 @@ interface DynamicComponent {
 @Module
 class DynamicModule {
     /**
-     * should fit with name default class
+     * fit with name default class
      * @param dependency
      * @return the default class
      */

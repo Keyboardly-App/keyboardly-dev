@@ -1,6 +1,7 @@
 # About
 
 Add On is smart way to make your android keyboard more powerful.<br>
+This repository is source code just used for development & testing purpose.
 
 All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace/).
 
@@ -53,7 +54,7 @@ See this sample of default class : [SampleView](/addon/sample/src/main/java/app/
 See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt)
 
 ## DynamicFeatureImpl Class
-`DynamicImpl Class` a class for implementation to connect the default class with DynamicDagger class
+`DynamicFeatureImpl` a class for implementation to connect the default class with DynamicDagger class
 See this sample of default class : [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt)
 
 ## Dynamic Feature
@@ -352,7 +353,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
  
 2. DynamicDagger class
     - contain some component class, interface and module
-    - should fit with the default class to make it work.
+    - should fit with the default class to make it work
     - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
 
 3.DynamicFeatureImpl.kt
@@ -366,7 +367,7 @@ note:
 <br> - `getView()`  : will be used for return view.
 <br> - `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
 
-4. Start build your own feature on `KeyboardActionView` class. 
+4. Start build your own feature by `KeyboardActionView` class. 
 
 ## Load Add On
 
