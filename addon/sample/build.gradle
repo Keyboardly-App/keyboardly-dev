@@ -17,14 +17,20 @@ android {
             minifyEnabled false
         }
     }
-
-    packagingOptions{
-        exclude 'META-INF/*'
+    packagingOptions {
+        jniLibs {
+            excludes += ['META-INF/*']
+        }
+        resources {
+            excludes += ['META-INF/*']
+        }
     }
+
 
     buildFeatures {
         viewBinding true
     }
+    namespace 'app.keyboardly.sample'
 
 //    sourceSets.main.res.filter.exclude '**/design_bottom_sheet_slide_in.xml'
 }
