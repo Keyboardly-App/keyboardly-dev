@@ -251,11 +251,20 @@ it should do login first before can access all the menu of add on.
 ## Keyboard Navigation
 Keyboard navigation is list menu that appear on top of keyboard.
 The default navigation is available when user click the keyboard logo.
+<p align="center">
+    <img src="image/keyboard-navigation.png" >
+</p>
 If new add on installed, the logo will appear on this list keyboard navigation.
+<p align="center">
+    <img src="image/addon-installed.png" >
+</p>
 
 ## Submenu Add On Navigation
 If an Add On contain submenu navigation, when user click the add on logo the keyboard will replace
 the default keyboard navigation with the submenu. The Add On should handle the event submenu click on default class.
+<p align="center">
+    <img src="image/submenu-navigation.png" >
+</p>
 
 # Development
 
