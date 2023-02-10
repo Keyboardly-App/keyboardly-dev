@@ -64,6 +64,14 @@ Dynamic Feature is base of add on, to get more information see [feature delivery
 An editorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo).
 
+## Floating RecyclerView
+A recyclerview options that show like floating on above keyboard navigation, usually use when on input mode for quick search.
+<p align="center">
+    <img src="image/floating-recyclerview.png" width="250">
+</p>
+<br>
+To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency)
+
 ## Interface 
 There is several interfaces that used on this development.
 ### ChipGroupCallBack
