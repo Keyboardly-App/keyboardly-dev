@@ -10,7 +10,7 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
     * [Add On](#add-on)
-    * [App's Add On Menu](#app's-add-on-menu)
+    * [App's Add On Menu](#apps-add-on-menu)
     * [Default Add On Class](#default-class-add-on)
     * [DynamicDagger Class](#dynamicdagger-class)
     * [DynamicImpl Class](#dynamicfeatureimpl-class)
@@ -53,7 +53,7 @@ It can be accessed from add on the menu;
 1. if installed, the user will be redirected to a fragment of add on by the navigation graph
 2. if not, a detail add-on will appear.
 <br>
-<video src="image/app-addon-menu.webpm" width="250"/>
+<img src="image/app-addon-menu.webpm" width="250"/>
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
@@ -404,7 +404,7 @@ If the user clicks the icon, the keyboard will do the validation :
 1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
 2. if not contained a list submenu, the keyboard will call `getView()` method.
 <br>
-<video src="image/keyboard-submenu-addon-menu.webm" width="250"/>
+<img src="image/keyboard-submenu-addon-menu.webm" width="250"/>
 This validation can be a check on [this line code](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L163).
 
 ## Add On Submenu
