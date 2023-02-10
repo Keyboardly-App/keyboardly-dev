@@ -130,9 +130,9 @@ This is detail of the function member:
         <td>EditText?</td>
         <td>Get current editText while on input mode (inside keyboard)<br>
 there is two type EditText, default and long,<br>
-* default  : for short input and single line<br>
-* long     : for long input and multiline</td>
-return null if keyboard not in input mode.</td>
+- default  : for short input and single line<br>
+- long     : for long input and multiline</td>
+* return null if keyboard not in input mode.</td>
     </tr>
     <tr>
         <td>getCurrentInputConnection()</td>
