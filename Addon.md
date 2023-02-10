@@ -33,7 +33,7 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
     * [Setup Class](#setup-class)
     * [Load Add On](#load-add-on)
     * [Add On Submenu](#add-on-submenu)
-    * [App's addon menu](#app's-addon-menu)
+    * [App's addon Menu Configuration](#apps-addon-menu-configuration)
     * [Styling](#styling)
     * [Proguard rules](#proguard-rules)
     * [Testing](#testing)
@@ -50,10 +50,13 @@ with guideline that explained on this documentation.
 App's addon menu is a way to access installed **add on** like the common app menu.
 It can be accessed from add on the menu;
 
-1. if installed, the user will be redirected to a fragment of add on by the navigation graph
-2. if not, a detail add-on will appear.
+1. if installed & configured the navigation, the user will be redirected to a fragment of add on by the navigation graph
+2. if not installed or not configured, a detail add-on will appear.
+
 <br>
 <img src="image/app-addon-menu.webm" width="250"/>
+<br>
+It's should to be configured by [this](#apps-addon-menu-configuration)
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
@@ -415,7 +418,7 @@ if you decide to create an add-on without a submenu it can be an empty list (not
 
 The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L49).
 
-## App's addon menu
+## App's Addon Menu Configuration
 To make app's add on menu, follow this way:
 
 1. include a dynamic navigation graph of the add-on to the default navigation graph. for sample:
