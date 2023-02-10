@@ -10,6 +10,7 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 - [Table of contents](#table-of-contents)
 - [Glossary](#glossary)
     * [Add On](#add-on)
+    * [App's Add On Menu](#app's-add-on-menu)
     * [Default Add On Class](#default-class-add-on)
     * [DynamicDagger Class](#dynamicdagger-class)
     * [DynamicImpl Class](#dynamicfeatureimpl-class)
@@ -44,6 +45,17 @@ There are several vocabularies used in this development.
 ## Add On
 On this development, `Add On` mean a package of dynamic feature that fit and work with `Keyboardly` keyboard ecosystem
 with guideline that explained on this documentation.
+
+## App's Add On Menu
+App's addon menu is a way to access installed **add on** like the common app menu.
+It can be accessed from add on the menu;
+
+1. if installed, the user will be redirected to a fragment of add on by the navigation graph
+2. if not, a detail add-on will appear.
+
+<p align="center">
+    <video src="image/app-addon-menu.webpm" width="250"></video>
+</p>
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
@@ -393,7 +405,9 @@ If the user clicks the icon, the keyboard will do the validation :
 
 1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
 2. if not contained a list submenu, the keyboard will call `getView()` method.
-
+<p align="center">
+    <video src="image/keyboard-submenu-addon-menu.webm" width="250"></video>
+</p>
 This validation can be a check on [this line code](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L163).
 
 ## Add On Submenu
@@ -404,14 +418,7 @@ if you decide to create an add-on without a submenu it can be an empty list (not
 The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L49).
 
 ## App's addon menu
-
-App's addon menu is a way to access installed **add on** like the common app menu.
-It can be accessed from add on the menu;
-
-1. if installed, the user will be redirected to a fragment of add on by the navigation graph
-2. if not, a detail add-on will appear.
-
-To make add on's navigation, follow this way:
+To make app's add on menu, follow this way:
 
 1. include a dynamic navigation graph of the add-on to the default navigation graph. for sample:
 
