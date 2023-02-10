@@ -60,7 +60,7 @@ It can be accessed from add on the menu;
 See this sample of default class : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt)
 
 ## DynamicDagger Class
-`DynamicDagger Class` mean a class that contain @Component & @Module dagger class to build default class.
+`DynamicDagger Class` mean a class that contain `@Component` & `@Module` dagger class to build default class.
 See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt)
 
 ## DynamicFeatureImpl Class
