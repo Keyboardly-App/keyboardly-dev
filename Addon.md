@@ -70,7 +70,7 @@ A recyclerview options that show like floating on above keyboard navigation, usu
     <img src="image/floating-recyclerview.png" width="250">
 </p>
 <br>
-To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency)
+To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)`
 
 ## Interface 
 There is several interfaces that used on this development.
