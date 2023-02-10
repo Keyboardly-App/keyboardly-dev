@@ -53,7 +53,7 @@ It can be accessed from add on the menu;
 1. if installed, the user will be redirected to a fragment of add on by the navigation graph
 2. if not, a detail add-on will appear.
 <br>
-<img src="image/app-addon-menu.webpm" width="250"/>
+<img src="image/app-addon-menu.webm" width="250"/>
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
@@ -405,6 +405,7 @@ If the user clicks the icon, the keyboard will do the validation :
 2. if not contained a list submenu, the keyboard will call `getView()` method.
 <br>
 <img src="image/keyboard-submenu-addon-menu.webm" width="250"/>
+<br>
 This validation can be a check on [this line code](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L163).
 
 ## Add On Submenu
