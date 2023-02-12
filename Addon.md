@@ -438,9 +438,15 @@ To make app's add on menu, follow this way:
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" 
     android:id="@id/sample_default_nav"
-    app:startDestination="@id/sampleFragment">
+    app:startDestination="@id/default_nav">
     <!--the id above without plus (@id/...) -->
-    ...
+
+    <!-- startDestination fragment -->
+    <fragment
+        android:id="@+id/default_nav"
+        android:name="app.keyboardly.sample.app.SampleFragment"
+        android:label="Sample Fragment"
+        tools:layout="@layout/fragment_sample" />
 </navigation>
 ```
 
