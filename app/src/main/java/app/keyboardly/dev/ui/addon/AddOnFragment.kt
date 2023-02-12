@@ -51,8 +51,13 @@ class AddOnFragment : Fragment() {
                     layoutManager = LinearLayoutManager(requireActivity())
                     adapter = AddOnListAdapter(requireActivity(), list, object : AddOnListAdapter.OnClickCallback {
                         override fun onClick(data: AddOnModel) {
-                            getListNavigation().firstOrNull { it.name == data.featureNameId }?.apply {
-                                findNavController().navigate(id_nav)
+                            Timber.d("data="+data.featurePackageId)
+                            getListNavigation().firstOrNull { it.name == data.featurePackageId }?.apply {
+                                try {
+                                    findNavController().navigate(id_nav)
+                                }catch (e: java.lang.Exception){
+                                    e.printStackTrace()
+                                }
                             }
                         }
                     })
