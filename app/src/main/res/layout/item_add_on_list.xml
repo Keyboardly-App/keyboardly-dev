@@ -7,8 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_add_on_content"
-        style="?footerActionKeyboardStyle"
         android:layout_width="match_parent"
+        android:background="?selectableItemBackground"
         android:layout_height="@dimen/_50sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
