@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".app.SampleFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listMenu"
         android:gravity="center"
-        android:padding="40dp"
+        tools:listitem="@layout/layout_item_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

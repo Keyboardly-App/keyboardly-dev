@@ -2,12 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/sample_default_nav"
-    app:startDestination="@id/defaultSampleFragment"
+    app:startDestination="@id/default_nav"
     xmlns:tools="http://schemas.android.com/tools">
+    <!--the id above without plus (@id/...) -->
 
     <!-- default start fragment -->
     <fragment
-        android:id="@+id/defaultSampleFragment"
+        android:id="@+id/default_nav"
         android:name="app.keyboardly.sample.app.SampleFragment"
         android:label="Sample Fragment"
         tools:layout="@layout/fragment_sample" />

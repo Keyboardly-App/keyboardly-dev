@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_menu_tv"
+    android:padding="@dimen/_10sdp"
+    tools:text="@tools:sample/full_names"
+    android:fontFamily="@font/inter_regular"
+    android:textColor="?android:textColorPrimary"
+    android:background="?selectableItemBackground"
+    android:drawableEnd="@drawable/ic_round_keyboard_arrow_right_24"
+    android:gravity="center_vertical"
+    android:drawablePadding="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
