@@ -144,8 +144,16 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5" />
+            android:layout_weight="0.5" />
 
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            android:id="@+id/key_dot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            app:is_special_key="false"
+            android:text="@string/symbol_dot" />
 
         <app.keyboardly.dev.keyboard.keys.RectangularKeyView
             app:is_special_key="false"
@@ -155,10 +163,22 @@
             android:layout_weight="2"
             android:text="0" />
 
+
+        <app.keyboardly.dev.keyboard.keys.RectangularKeyView
+            android:id="@+id/key_backspace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="⌫"
+            app:is_special_key="true"
+            app:screen_width_percent="0.3"
+            app:special_key_code="backspace" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5" />
+            android:layout_weight="0.5" />
+
 
     </app.keyboardly.dev.keyboard.layouts.KeyBoardRowLayout>
 
