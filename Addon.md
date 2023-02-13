@@ -116,7 +116,7 @@ Keyboard Action View is base class for view of add on that will show on keyboard
 The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 <p align="center">
-    <img src="image/actionview-sample.png" width="250" alt="sample action view">>
+    <img src="image/actionview-sample.png" width="250" alt="sample action view">
 </p>
 
 ## Keyboard Action Dependency
@@ -289,7 +289,7 @@ If new add on installed, the logo will appear on this list keyboard navigation.
 The default request input is for short text that fit on single line. <br>
 Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()`
 <p align="center">
-    <img src="image/request-input-text.png" width="250" alt="sample request input text">>
+    <img src="image/request-input-text.png" width="250" alt="sample request input text">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L35-43)
 
@@ -297,21 +297,21 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 The long request input is for long text but will appeared with scrollable 2 line inside keyboard. <br>
 Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()` with value `longInput` = `true`
 <p align="center">
-    <img src="image/longtext-sample.png" width="250" alt="sample request input text">>
+    <img src="image/longtext-sample.png" width="250" alt="sample request input text">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L45)
 
 ### Chip Options
 Chip options is view `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
 <p align="center">
-    <img src="image/chip-options.png" width="250" alt="sample chip options">>
+    <img src="image/chip-options.png" width="250" alt="sample chip options">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L52-59)
 
 ### Date Picker
 Just like `Chip Options`, a KeyboardActionView can request input date via [KeyboardActionDependency](#keyboard-action-dependency) > `showDatePicker()`
 <p align="center">
-    <img src="image/datepicker-sample.png" width="250" alt="sample date picker">>
+    <img src="image/datepicker-sample.png" width="250" alt="sample date picker">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L49)
 
@@ -354,7 +354,7 @@ Requires tools & config for development:
     </tr>
     <tr>
         <td>Android Studio</td>
-        <td>2021.3.1 (min)</td>
+        <td>2021.3.1 (min) / latest version</td>
     </tr>
     <tr>
         <td>Gradle</td>
