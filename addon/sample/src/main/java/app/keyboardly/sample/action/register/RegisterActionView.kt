@@ -1,4 +1,4 @@
-package app.keyboardly.sample.action.discount
+package app.keyboardly.sample.action.register
 
 import android.text.InputType
 import android.util.Log
@@ -16,7 +16,7 @@ import com.google.android.material.chip.ChipGroup
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
  */
-class RegisterView (
+class RegisterActionView (
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallBack {
 
@@ -32,21 +32,21 @@ class RegisterView (
     private fun initClick() {
         binding.apply {
             email.setOnClickListener {
-                dependency.requestInput(email,this@RegisterView)
+                dependency.requestInput(email,this@RegisterActionView)
             }
             name.setOnClickListener {
-                dependency.requestInput(name,this@RegisterView)
+                dependency.requestInput(name,this@RegisterActionView)
             }
             number.setOnClickListener {
-                dependency.requestInput(number,this@RegisterView,
+                dependency.requestInput(number,this@RegisterActionView,
                     inputType = InputType.TYPE_CLASS_NUMBER)
             }
             address.setOnClickListener {
-                dependency.requestInput(address,this@RegisterView,
+                dependency.requestInput(address,this@RegisterActionView,
                     longInput = true)
             }
             dateBorn.setOnClickListener {
-                dependency.showDatePicker(dateBorn, this@RegisterView)
+                dependency.showDatePicker(dateBorn, this@RegisterActionView)
             }
             group.setOnClickListener {
                 val list = mutableListOf<Chip>()
@@ -56,7 +56,7 @@ class RegisterView (
                     val chip = createChip().apply { text = it }
                     list.add(chip)
                 }
-                dependency.showChipOptions(list, this@RegisterView, group)
+                dependency.showChipOptions(list, this@RegisterActionView, group)
             }
         }
     }

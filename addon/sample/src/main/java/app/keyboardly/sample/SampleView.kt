@@ -6,7 +6,7 @@ import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.sample.action.campaign.CampaignActionView
-import app.keyboardly.sample.action.discount.RegisterView
+import app.keyboardly.sample.action.register.RegisterActionView
 import app.keyboardly.sample.action.shopping.ShoppingActionView
 import timber.log.Timber
 
@@ -17,7 +17,7 @@ class SampleView(
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), NavigationCallback {
 
-    private val discountView = RegisterView(dependency)
+    private val discountView = RegisterActionView(dependency)
     private val campaignActionView = CampaignActionView(dependency)
     private val shoppingActionView = ShoppingActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
