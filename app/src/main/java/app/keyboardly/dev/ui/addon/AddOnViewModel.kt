@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel
 class AddOnViewModel : ViewModel() {
 
     private val _list = MutableLiveData<List<AddOnModel>>().apply {
-        value = listMenu()
+        value = listAddOn()
     }
     val list: LiveData<List<AddOnModel>> = _list
 
 
-    private fun listMenu(): List<AddOnModel> {
+    private fun listAddOn(): List<AddOnModel> {
         val list = mutableListOf<AddOnModel>()
 
         list.add(

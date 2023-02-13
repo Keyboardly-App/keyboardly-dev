@@ -202,34 +202,30 @@ open class KeyboardNavigation(
 
 
     private fun defaultNavigation(): MutableList<NavigationMenuModel> {
-        val model = NavigationMenuModel(
-            1,
-            R.string.nav_sample,
-            null,
-            true,
-            featurePackageId = "app.keyboardly.sample",
-            featureNameId = "sample",
-            nameString = "Sample",
-            iconUrl = "https://img.icons8.com/external-flaticons-flat-flat-icons/344/external-dummy-robotics-flaticons-flat-flat-icons.png"
-        )
-
-        val mutableList = mutableListOf<NavigationMenuModel>()
-        mutableList.add(NavigationMenuModel(
+        val navigationList = mutableListOf<NavigationMenuModel>()
+        navigationList.add(NavigationMenuModel(
             0,
             R.string.dummy,
             R.drawable.round_emoji_food_beverage_24,
-            true,
             nameString = "Dummy1"
         ))
-        mutableList.add(NavigationMenuModel(
+        navigationList.add(NavigationMenuModel(
             0,
             R.string.dummy2,
             R.drawable.round_emoji_food_beverage_24,
-            true,
             nameString = "Dummy2"
         ))
-        mutableList.add(model)
-        return mutableList
+        navigationList.add(
+            NavigationMenuModel(
+            1,
+            R.string.nav_sample,
+            null,
+            featurePackageId = "app.keyboardly.sample",
+            featureNameId = "sample",
+            nameString = "Sample",
+            iconUrl = "https://img.icons8.com/external-flaticons-flat-flat-icons/344/external-dummy-robotics-flaticons-flat-flat-icons.png")
+        )
+        return navigationList
     }
 
 

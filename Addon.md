@@ -50,7 +50,7 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
 There are several vocabularies used in this development.
 
 ## Add On
-On this development, `Add On` mean a package of dynamic feature that fit and work with `Keyboardly` keyboard ecosystem
+On this development, `Add On` mean a module package of dynamic feature that fit and work with `Keyboardly` keyboard ecosystem
 with guideline that explained on this documentation.
 
 ## App's Add On Menu
@@ -452,9 +452,16 @@ note:
 
 4. Start build your own feature by `KeyboardActionView` class. 
 
+## Add On Submenu
+
+This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
+if you decide to create an add-on without a submenu it can be an empty list (not null).
+
+The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
+
 ## Load Add On
 
-After the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
+On production version, after the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
 If the user clicks the icon, the keyboard will do the validation :
 
 1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
@@ -462,14 +469,16 @@ If the user clicks the icon, the keyboard will do the validation :
 <br>
 <img src="image/keyboard-submenu-addon-menu.webm" width="250"/>
 <br>
-This validation can be a check on [this line code](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L163).
 
-## Add On Submenu
-
-This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
-if you decide to create an add-on without a submenu it can be an empty list (not null).
-
-The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L49).
+For development purpose, we will skip the download process. Let's say the add on downloaded and ready to use.
+To make it ready to use on keyboard, add the menu to [this navigation list](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228).
+This below data should match with the add on when creating dynamic feature module.
+> featurePackageId = "app.keyboardly.sample"
+> featureNameId = "sample"
+> nameString = "Sample"
+<br>
+<img src="image/submenu-addon-dev.webm" width="250"/>
+<br>
 
 ## App's Addon Menu Configuration
 To make app's add on menu, follow this way:
@@ -503,7 +512,8 @@ To make app's add on menu, follow this way:
 </navigation>
 ```
 
-3. save the id of included dynamic navigation graph to [listNavigation](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L64-72) on AddOnFragment.
+3. insert the add on data to [listAddOn](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34). Make sure the data match with the add on module configuration.
+4. save the id of included dynamic navigation graph to [listNavigation](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) on AddOnFragment.
 
 done.
 
@@ -575,9 +585,9 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 
 ## Testing
 
-1. Add data `add on` to [list add on](/app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L203).
-   `featureNameId` should be same with `module name` when creating dynamic feature module.
-2. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
+1. Don't forget insert data `add on` to the [list navigation](app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228) as mentioned on [this](#load-add-on)
+2. And for navigation app's add on (if exist) in [this list](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) 
+3. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
 
 <p align="center">
     <img src="image/install-option.png" >
