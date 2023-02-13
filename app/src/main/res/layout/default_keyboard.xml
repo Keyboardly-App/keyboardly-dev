@@ -107,7 +107,7 @@
 
             <TextView
                 android:id="@+id/titleHeader"
-                style="@style/TitleTextNormalPrimary"
+                style="?textActionKeyboardStyle"
                 android:text="@string/app_name"
                 android:visibility="gone"
                 tools:visibility="visible"
