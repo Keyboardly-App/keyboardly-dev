@@ -306,7 +306,7 @@ Chip options is view `ChipGroup` that can be configured via [KeyboardActionDepen
 <p align="center">
     <img src="image/chip-options.png" width="250" alt="sample chip options">>
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L69)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L52-59)
 
 ### Date Picker
 Just like `Chip Options`, a KeyboardActionView can request input date via [KeyboardActionDependency](#keyboard-action-dependency) > `showDatePicker()`
