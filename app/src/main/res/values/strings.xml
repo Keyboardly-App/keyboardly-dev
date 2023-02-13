@@ -30,5 +30,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="action_theme">Theme</string>
+    <string name="dummy">"Dummy 1"</string>
+    <string name="dummy2">"Dummy 2"</string>
 
 </resources>
