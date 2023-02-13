@@ -388,9 +388,6 @@ open class KokoKeyboardView : ExpandableLayout {
 
 
         fun rebuildBaseComponent(featureNameId: String){
-            if (dependency == null){
-                Timber.e("instance null")
-            }
             dependency?.let {
                 component = DaggerBaseComponent.builder()
                     .keyboardActionDependency(it)

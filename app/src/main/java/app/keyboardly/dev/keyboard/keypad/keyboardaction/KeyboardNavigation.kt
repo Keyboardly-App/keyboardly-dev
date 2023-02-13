@@ -152,6 +152,7 @@ open class KeyboardNavigation(
                 toast("Feature ${data.nameString} not installed yet.")
             }
         } else {
+            toast("It's ${data.nameString} menu.")
             Timber.e("Error. Something wrong on the feature.")
         }
     }
@@ -213,6 +214,20 @@ open class KeyboardNavigation(
         )
 
         val mutableList = mutableListOf<NavigationMenuModel>()
+        mutableList.add(NavigationMenuModel(
+            0,
+            R.string.dummy,
+            R.drawable.round_emoji_food_beverage_24,
+            true,
+            nameString = "Dummy1"
+        ))
+        mutableList.add(NavigationMenuModel(
+            0,
+            R.string.dummy2,
+            R.drawable.round_emoji_food_beverage_24,
+            true,
+            nameString = "Dummy2"
+        ))
         mutableList.add(model)
         return mutableList
     }
