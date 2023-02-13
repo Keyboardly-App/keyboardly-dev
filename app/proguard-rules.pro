@@ -70,11 +70,14 @@
 
 -dontwarn kotlinx.**
 
--keep class app.keyboardly.dev.keyboard.di.** { *; }
--keep class app.keyboardly.dev.keyboard.utils.** { *; }
+# keep di class
+-keep class app.keyboardly.sample.di.** { *; }
+
+-dontwarn com.google.errorprone.annotations.**
 
 # keep the resource / raw file
 -keep class *.R
+-keep class dagger.* { *; }
 
 -keepclasseswithmembers class **.R$* {
     public static <fields>;
