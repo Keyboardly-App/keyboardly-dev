@@ -25,6 +25,13 @@ All add on are listed on [marketplace](https://keyboardly.app/addons-marketplace
     * [KeyboardActionView](#keyboard-action-view)
     * [KeyboardDependency](#keyboard-action-dependency)
     * [Keyboard Navigation](#keyboard-navigation)
+    * [Request Input](#request-input)
+      + [Default Request Input](#default-request-input)
+      + [Long Text Request Input](#long-text-request-input)
+      + [Chip Options](#chip-options)
+      + [Date Picker](#date-picker)
+      + [Floating RecyclerView](#floating-recyclerview)
+      + [RecyclerView Options](#recyclerview-options)
     * [Submenu Add On Navigation](#submenu-add-on-navigation)
 - [Development](#development)
     * [Tools](#tools)
@@ -77,14 +84,6 @@ Dynamic Feature is base of add on, to get more information see [feature delivery
 An editorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo).
 
-## Floating RecyclerView
-A recyclerview options that show like floating on above keyboard navigation, usually use when on input mode for quick search.
-<p align="center">
-    <img src="image/floating-recyclerview.png" width="250">
-</p>
-<br>
-To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)`
-
 ## Interface 
 There is several interfaces that used on this development.
 ### ChipGroupCallBack
@@ -116,6 +115,9 @@ See [detail](https://developer.android.com/reference/android/view/inputmethod/In
 Keyboard Action View is base class for view of add on that will show on keyboard. 
 The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
+<p align="center">
+    <img src="image/actionview-sample.png" width="250" alt="sample action view">>
+</p>
 
 ## Keyboard Action Dependency
 Keyboard Dependency is interface way to communicate with the main keyboard, it just used inside the keyboard.
@@ -217,7 +219,7 @@ there is two type EditText, default and long,<br>
     <tr>
         <td>requestInput(...)</td>
         <td>-</td>
-        <td>request input from keyboard inside a KeyboardActionView</td>
+        <td>request input text from keyboard inside a KeyboardActionView</td>
     </tr>
     <tr>
         <td>showRecyclerViewOptions(...)</td>
@@ -279,6 +281,57 @@ If new add on installed, the logo will appear on this list keyboard navigation.
 <p align="center">
     <img src="image/addon-installed.png" width="250">
 </p>
+
+## Request Input
+`Request Input` mean an activity inside `KeyboardActionView` to request input value like text and can be configured with options view like chip group, date picker, recyclerview, floating recyclerview.
+
+### Default Request Input
+The default request input is for short text that fit on single line. <br>
+Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()`
+<p align="center">
+    <img src="image/request-input-text.png" width="250" alt="sample request input text">>
+</p>
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L35-43)
+
+### Long Text Request Input
+The long request input is for long text but will appeared with scrollable 2 line inside keyboard. <br>
+Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()` with value `longInput` = `true`
+<p align="center">
+    <img src="image/longtext-sample.png" width="250" alt="sample request input text">>
+</p>
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L45)
+
+### Chip Options
+Chip options is view `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
+<p align="center">
+    <img src="image/chip-options.png" width="250" alt="sample chip options">>
+</p>
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L69)
+
+### Date Picker
+Just like `Chip Options`, a KeyboardActionView can request input date via [KeyboardActionDependency](#keyboard-action-dependency) > `showDatePicker()`
+<p align="center">
+    <img src="image/datepicker-sample.png" width="250" alt="sample date picker">>
+</p>
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L49)
+
+### Floating RecyclerView
+A recyclerview options that show like floating on above keyboard navigation, usually use when on input mode for quick search.
+<p align="center">
+    <img src="image/floating-recyclerview.png" width="250">
+</p>
+<br>
+To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)` and combine it with `requestInput(...)` function.
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/campaign/CampaignActionView.kt#L109)
+
+### RecyclerView Options
+Recyclerview options is that appeared on keyboard area and can can be modify the layout manager as needed.
+<p align="center">
+    <img src="image/recyclerview-options-title.png" width="250">
+</p>
+<br>
+To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)` and can be configured with title by `showTitleAboveList()`
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/shopping/ShoppingActionView.kt#L61)
 
 ## Submenu Add On Navigation
 If an Add On contain submenu navigation, when user click the add on logo the keyboard will replace
