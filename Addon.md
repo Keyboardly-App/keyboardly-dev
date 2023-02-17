@@ -13,10 +13,11 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
     * [Create Module](#create-module)
     * [Setup Dependency](#setup-dependency)
     * [Setup Class](#setup-class)
+    * [Resource File Rules](#resource-file-rules)
+    * [Styling](#styling)
     * [Load Add On](#load-add-on)
     * [Add On Submenu](#add-on-submenu)
     * [App's addon Menu Configuration](#apps-addon-menu-configuration)
-    * [Styling](#styling)
     * [Proguard rules](#proguard-rules)
     * [Testing](#testing)
       + [Indicator of success](#indicator-success-launched-of-add-on)
@@ -133,6 +134,53 @@ note:
 
 4. Start build your own feature by `KeyboardActionView` class. 
 
+## Resource File Rules
+To prevent risk of conflict when compiling/merging with main source code, there is some rules for naming of resource file.
+- Resource file here mean only file under resource folder `drawable` and `layout`.
+- The file name should start with `add on name id`. 
+- For example an add on with id `sample`, all the file should be like : `sample_login_activity.xml`, `sample_icon_addon.png`.
+
+## Styling
+To make your add on fit with keyboard theme, there is two way:
+1. Use default theme on library/style.
+- check the attribution member on this file [attrs.xml](/libraries/style/src/main/res/values/attrs.xml)
+- sample :
+```xml
+      <EditText
+          android:id="@+id/name"
+          style="?textActionKeyboardStyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"
+          android:focusable="false"
+          android:hint="Name"
+          android:inputType="text" />
+```
+2. Make your own theme and validate through KeyboardDependency. On keyboard dependency there is method
+- `isDarkMode()` : for validate the keyboard theme is dark or bright
+- `isBorderMode()` : for validate the keyboard button style, with border or not
+- sample :
+```kotlin
+
+  val style = if(dependency.isDarkMode()) {
+      if (dependency.isBorderMode()){
+          R.style.YourStyle_Dark_Border
+      } else {
+          R.style.YourStyle_Dark
+      }
+  } else {
+      if (dependency.isBorderMode()){
+          R.style.YourStyle_Border
+      } else {
+          R.style.YourStyle
+      }
+  }
+  val mThemeContext = ContextThemeWrapper(context, style)
+  val inflater = LayoutInflater.from(mThemeContext)
+  viewLayout = inflater.inflate(R.layout.home_layout, null)
+
+```
+
 ## Add On Submenu
 
 This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
@@ -198,46 +246,6 @@ To make app's add on menu, follow this way:
 
 done.
 
-## Styling
-To make your add on fit with keyboard theme, there is two way:
-1. Use default theme on library/style.
-- check the attribution member on this file [attrs.xml](/libraries/style/src/main/res/values/attrs.xml)
-- sample :
-```xml
-      <EditText
-          android:id="@+id/name"
-          style="?textActionKeyboardStyle"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_margin="10dp"
-          android:focusable="false"
-          android:hint="Name"
-          android:inputType="text" />
-```
-2. Make your own theme and validate through KeyboardDependency. On keyboard dependency there is method
-- `isDarkMode()` : for validate the keyboard theme is dark or bright
-- `isBorderMode()` : for validate the keyboard button style, with border or not
-- sample :
-```kotlin
-
-  val style = if(dependency.isDarkMode()) {
-      if (dependency.isBorderMode()){
-          R.style.YourStyle_Dark_Border
-      } else {
-          R.style.YourStyle_Dark
-      }
-  } else {
-      if (dependency.isBorderMode()){
-          R.style.YourStyle_Border
-      } else {
-          R.style.YourStyle
-      }
-  }
-  val mThemeContext = ContextThemeWrapper(context, style)
-  val inflater = LayoutInflater.from(mThemeContext)
-  viewLayout = inflater.inflate(R.layout.home_layout, null)
-
-```
 
 ## Proguard rules
 On the main source code app, the proguard / minify enabled.
