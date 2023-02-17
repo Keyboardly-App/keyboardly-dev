@@ -12,7 +12,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
     * [Tools](#tools)
     * [Create Module](#create-module)
     * [Setup Dependency](#setup-dependency)
-    * [Setup Class](#setup-class)
+    * [Setup Base Class](#setup-base-class)
     * [Resource File Rules](#resource-file-rules)
     * [Styling](#styling)
     * [Load Add On](#load-add-on)
@@ -107,7 +107,7 @@ dependencies {
 }
 ```
 
-## Setup Class
+## Setup Base Class
 After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
     - inherits `KeyboardActionView`

@@ -4,6 +4,7 @@ There are several vocabularies that you have to know to this development.
 # Table Of Content
 - [Add On](#add-on)
 - [App's Add On Menu](#apps-add-on-menu)
+- [Base Class](#base-class)
 - [Default Add On Class](#default-class-add-on)
 - [DynamicDagger Class](#dynamicdagger-class)
 - [DynamicImpl Class](#dynamicfeatureimpl-class)
@@ -42,6 +43,13 @@ It can be accessed from add on the menu;
 <img src="image/app-addon-menu.webm" width="250"/>
 <br>
 It's should to be configured by [this](#apps-addon-menu-configuration)
+
+## Base Class
+Base Class means several class that must exist in an add on. Member of base class is :
+- Default Class Add On
+- DynamicDagger Class
+- DynamicFeatureImpl Class
+All the class will explain on below.
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
