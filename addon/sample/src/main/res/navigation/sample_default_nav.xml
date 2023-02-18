@@ -11,5 +11,5 @@
         android:id="@+id/default_nav"
         android:name="app.keyboardly.sample.app.SampleFragment"
         android:label="Sample Fragment"
-        tools:layout="@layout/fragment_sample" />
+        tools:layout="@layout/sample_fragment_sample" />
 </navigation>

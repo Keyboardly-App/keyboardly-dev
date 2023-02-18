@@ -8,7 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listMenu"
         android:gravity="center"
-        tools:listitem="@layout/layout_item_menu"
+        tools:listitem="@layout/sample_layout_item_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

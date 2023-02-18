@@ -130,6 +130,6 @@
 
     <include
         android:id="@+id/footerDiscount"
-        layout="@layout/footer_action_sample" />
+        layout="@layout/sample_footer_action" />
 
 </LinearLayout>
