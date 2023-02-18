@@ -26,7 +26,7 @@ import javax.inject.Singleton
 
 @Singleton
 class DynamicFeatureImpl @Inject constructor(
-    private val sampleView: SampleView,
+    private val sampleView: SampleDefaultView,
 ) : DynamicFeature {
 
     /**
