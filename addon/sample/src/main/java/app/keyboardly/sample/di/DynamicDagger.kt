@@ -17,7 +17,7 @@
 package app.keyboardly.sample.di
 
 import app.keyboardly.sample.DynamicFeatureImpl
-import app.keyboardly.sample.SampleView
+import app.keyboardly.sample.SampleDefaultView
 import app.keyboardly.lib.reflector.DynamicFeature
 import app.keyboardly.lib.KeyboardActionDependency
 import dagger.Component
@@ -48,7 +48,7 @@ class DynamicModule {
      * @return the default class
      */
     @Provides
-    internal fun provideSampleView(dependency: KeyboardActionDependency) = SampleView(dependency)
+    internal fun provideSampleView(dependency: KeyboardActionDependency) = SampleDefaultView(dependency)
 
     /**
      * bind the DynamicFeatureImpl

@@ -13,7 +13,7 @@ import timber.log.Timber
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
  */
-class SampleView(
+class SampleDefaultView(
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), NavigationCallback {
 
