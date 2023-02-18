@@ -9,9 +9,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import app.keyboardly.sample.databinding.ItemDataTextBinding
+import app.keyboardly.sample.databinding.SampleItemDataTextBinding
 
 
 class CampaignListAdapter(
@@ -26,7 +25,7 @@ class CampaignListAdapter(
     }
 
     class ViewHolder(
-        view: ItemDataTextBinding,
+        view: SampleItemDataTextBinding,
     ) : RecyclerView.ViewHolder(view.root) {
         val titleTv: TextView = view.title
         val descTv: TextView = view.description
@@ -35,7 +34,7 @@ class CampaignListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(context)
-        val binding = ItemDataTextBinding.inflate(layoutInflater, parent, false)
+        val binding = SampleItemDataTextBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
     }
 

@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import app.keyboardly.sample.databinding.LayoutItemMenuBinding
+import app.keyboardly.sample.databinding.SampleLayoutItemMenuBinding
 
 class SubMenuAdapter(
     private var listMenu: List<SubMenuModel>,
@@ -16,7 +16,7 @@ class SubMenuAdapter(
 ) : RecyclerView.Adapter<SubMenuAdapter.ViewHolder>() {
 
     class ViewHolder(
-        view: LayoutItemMenuBinding,
+        view: SampleLayoutItemMenuBinding,
     ) :
         RecyclerView.ViewHolder(view.root) {
         val title: TextView = view.itemMenuTv
@@ -24,7 +24,7 @@ class SubMenuAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = LayoutItemMenuBinding.inflate(layoutInflater, parent, false)
+        val binding = SampleLayoutItemMenuBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
     }
 

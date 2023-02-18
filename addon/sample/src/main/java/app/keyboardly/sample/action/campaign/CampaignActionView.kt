@@ -8,12 +8,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.keyboard.utils.gone
-import app.keyboardly.lib.helper.InputPresenter
-import app.keyboardly.sample.databinding.CampaignLayoutBinding
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
+import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.helper.OnViewReady
 import app.keyboardly.sample.R
+import app.keyboardly.sample.databinding.SampleCampaignLayoutBinding
 import timber.log.Timber
 
 /**
@@ -28,10 +28,10 @@ class CampaignActionView (
     private lateinit var campaignAdapter: CampaignListAdapter
     private var floatingRv: RecyclerView? = null
     private var countDownTimer: CountDownTimer? = null
-    private lateinit var binding: CampaignLayoutBinding
+    private lateinit var binding: SampleCampaignLayoutBinding
 
     override fun onCreate() {
-        binding = CampaignLayoutBinding.inflate(getLayoutInflater())
+        binding = SampleCampaignLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
 
         initAction()

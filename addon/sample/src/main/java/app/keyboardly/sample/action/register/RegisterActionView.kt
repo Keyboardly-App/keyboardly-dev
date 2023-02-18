@@ -8,7 +8,7 @@ import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.sample.R
-import app.keyboardly.sample.databinding.DiscountFeatureLayoutBinding
+import app.keyboardly.sample.databinding.SampleDiscountFeatureLayoutBinding
 import app.keyboardly.style.helper.invisible
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -20,10 +20,10 @@ class RegisterActionView (
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallBack {
 
-    private lateinit var binding: DiscountFeatureLayoutBinding
+    private lateinit var binding: SampleDiscountFeatureLayoutBinding
 
     override fun onCreate() {
-        binding = DiscountFeatureLayoutBinding.inflate(getLayoutInflater())
+        binding = SampleDiscountFeatureLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
         initClick()
         initFooter()
@@ -63,7 +63,7 @@ class RegisterActionView (
 
     private fun createChip(): Chip {
         return getLayoutInflater().inflate(
-            R.layout.chip_layout, null,
+            R.layout.sample_chip_layout, null,
             false
         ) as Chip
     }

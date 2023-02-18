@@ -1,23 +1,23 @@
 package app.keyboardly.sample.app
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.keyboardly.sample.databinding.FragmentSampleBinding
+import app.keyboardly.sample.databinding.SampleFragmentSampleBinding
 
 class SampleFragment : Fragment() {
 
-    private lateinit var binding: FragmentSampleBinding
+    private lateinit var binding: SampleFragmentSampleBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentSampleBinding.inflate(inflater)
+        binding = SampleFragmentSampleBinding.inflate(inflater)
         return binding.root
     }
 

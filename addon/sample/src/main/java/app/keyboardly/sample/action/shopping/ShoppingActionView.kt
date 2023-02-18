@@ -11,7 +11,7 @@ import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.helper.OnViewReady
 import app.keyboardly.sample.action.campaign.CampaignListAdapter
 import app.keyboardly.sample.action.campaign.CampaignModel
-import app.keyboardly.sample.databinding.ShoppingLayoutBinding
+import app.keyboardly.sample.databinding.SampleShoppingLayoutBinding
 
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
@@ -24,10 +24,10 @@ class ShoppingActionView (
 
     private lateinit var campaignAdapter: CampaignListAdapter
     private var floatingRv: RecyclerView? = null
-    private lateinit var binding: ShoppingLayoutBinding
+    private lateinit var binding: SampleShoppingLayoutBinding
 
     override fun onCreate() {
-        binding = ShoppingLayoutBinding.inflate(getLayoutInflater())
+        binding = SampleShoppingLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
 
         initAction()
