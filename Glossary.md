@@ -17,6 +17,7 @@ There are several vocabularies that you have to know to this development.
     * [OnViewMessage](#onviewmessage)
     * [OnViewReady](#onviewready)
 - [KeyboardActionView](#keyboard-action-view)
+    * [Keyboard Action View Flow](#keyboard-action-view-flow)
 - [KeyboardDependency](#keyboard-action-dependency)
 - [Keyboard Navigation](#keyboard-navigation)
 - [Request Input](#request-input)
@@ -105,6 +106,14 @@ See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboard
 <p align="center">
     <img src="image/actionview-sample.png" width="250" alt="sample action view">
 </p>
+
+### Keyboard Action View Flow
+A keyboard action view have simple flow that should be understand. See diagram below:
+<p align="center">
+    <img src="image/keyboard-action-view-flow.png" width="250">
+</p>
+
+
 
 ## Keyboard Action Dependency
 Keyboard Dependency is interface way to communicate with the main keyboard, it just used inside the keyboard.
