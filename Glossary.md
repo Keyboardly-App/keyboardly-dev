@@ -55,7 +55,7 @@ All the class will explain on below.
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
-See this sample of default class : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt)
+See this sample of default class : [SampleDefaultView](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultView.kt)
 
 ## DynamicDagger Class
 `DynamicDagger Class` mean a class that contain `@Component` & `@Module` dagger class to build default class.

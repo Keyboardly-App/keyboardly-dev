@@ -13,6 +13,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
     * [Create Module](#create-module)
     * [Setup Dependency](#setup-dependency)
     * [Setup Base Class](#setup-base-class)
+    * [Create The Feature](#create-feature-by-keyboard-action-view)
     * [Resource File Rules](#resource-file-rules)
     * [Styling](#styling)
     * [Load Add On](#load-add-on)
@@ -93,13 +94,18 @@ android{
     kapt {
         generateStubs = true
     }
-    
+
+    buildFeatures {
+        viewBinding true
+    }
     ...
 }
 
 dependencies {
     implementation project(":libraries:style")
     implementation project(":libraries:actionview")
+
+    implementation 'androidx.databinding:viewbinding:7.4.1'
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -112,7 +118,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
     - inherits `KeyboardActionView`
     - located in the root module
-    - see example : [SampleView](/addon/sample/src/main/java/app/keyboardly/sample/SampleView.kt).
+    - see example : [SampleDefaultView](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultView.kt).
 > An add on can configured with empty submenus and with a default view, or with some submenus without default view.
 > If an add on not contain a default view or submenus, the add on will doesn't work.
  
@@ -121,7 +127,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
     - should fit with the default class to make it work
     - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
 
-3.DynamicFeatureImpl.kt
+3. DynamicFeatureImpl.kt
     - should with name `DynamicFeatureImpl`
     - located in the root module
     - should inherit `DynamicFeature`
@@ -133,6 +139,40 @@ note:
 <br> - `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
 
 4. Start build your own feature by `KeyboardActionView` class. 
+
+## Create Feature by Keyboard Action View
+After setup all the base class, start develop the feature.
+1. Create a new kotlin class with suffix name `ActionView`, for example `ProfileActionView`
+2. Inherit `KeyboardActionView` and make default constructor with `KeyboardActionDependency` 
+```kotlin
+
+import app.keyboardly.lib.KeyboardActionDependency
+import app.keyboardly.lib.KeyboardActionView
+
+
+class ProfileActionView(
+    dependency: KeyboardActionDependency
+) : KeyboardActionView(dependency) {
+
+}
+```
+3. Implement the function member `onCreate`
+```kotlin
+   override fun onCreate() {
+
+   }
+```
+4. Create xml layout like common layout for fragment or activity. Please take a look the [resource file rule](#resource-file-rules) and [styling](#styling)
+5. Define the view binding and initiate the `viewLayout` variable
+```kotlin
+    override fun onCreate() {
+        val binding = ProfileLayoutBinding.inflate(getLayoutInflater())
+        viewLayout = binding.root 
+    }
+```
+6. Give some logic as needed.
+7. Done. Next step see [testing](#testing)
+
 
 ## Resource File Rules
 To prevent risk of conflict when compiling/merging with main source code, there is some rules for naming of resource file.
