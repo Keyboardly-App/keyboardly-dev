@@ -18,7 +18,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
     * [Styling](#styling)
     * [Load Add On](#load-add-on)
     * [Add On Submenu](#add-on-submenu)
-    * [App's addon Menu Configuration](#apps-addon-menu-configuration)
+    * [App's addon Navigation Configuration](#apps-addon-navigation-configuration)
     * [Proguard rules](#proguard-rules)
     * [Testing](#testing)
       + [Indicator of success](#indicator-success-launched-of-add-on)
@@ -260,8 +260,8 @@ This below data should match with the add on when creating dynamic feature modul
 <img src="doc/image/submenu-addon-dev.webm" width="250"/>
 <br>
 
-## App's Addon Menu Configuration
-To make app's add on menu, follow this way:
+## App's Addon Navigation Configuration
+To make app's add on navigation, follow this way:
 
 1. include a dynamic navigation graph of the add-on to the default navigation graph. for sample:
 
@@ -326,7 +326,7 @@ see full sample [consumer-rules.pro](/consumer-rules.pro).
 ## Testing
 
 1. Don't forget insert data `add on` to the [list navigation](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228) as mentioned on [this](#load-add-on)
-2. And for navigation app's add on (if exist) in [this list](/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) 
+2. And for navigation app's add on (if exist) in [this list](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) 
 3. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
 
 <p align="center">

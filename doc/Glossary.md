@@ -3,7 +3,7 @@ There are several vocabularies that you have to know to this development.
 
 # Table Of Content
 - [Add On](#add-on)
-- [App's Add On Menu](#apps-add-on-menu)
+- [App's Add On Navigation](#apps-add-on-navigation)
 - [Base Class](#base-class)
 - [Default Add On Class](#default-class-add-on)
 - [DynamicDagger Class](#dynamicdagger-class)
@@ -33,11 +33,11 @@ There are several vocabularies that you have to know to this development.
 On this development, `Add On` mean a module package of dynamic feature that fit and work with `Keyboardly` keyboard ecosystem
 with guideline that explained on this documentation.
 
-## App's Add On Menu
-App's addon menu is a way to access installed **add on** like the common app menu.
+## App's Add On Navigation
+App's addon navigation is a way to access installed **add on** like the common app menu.
 It can be accessed from add on the menu;
 
-1. if installed & configured the navigation, the user will be redirected to a fragment of add on by the navigation graph
+1. if it's installed & configured the navigation, the user will be redirected to a fragment of add on by the navigation graph
 2. if not installed or not configured, a detail add-on will appear.
 
 <br>
@@ -55,15 +55,15 @@ All the class will explain on below.
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
-See this sample of default class : [SampleDefaultView](/app/keyboardly/sample/SampleDefaultView.kt)
+See this sample of default class : [SampleDefaultView](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultView.kt)
 
 ## DynamicDagger Class
 `DynamicDagger Class` mean a class that contain `@Component` & `@Module` dagger class to build default class.
-See this sample of default class : [DynamicDagger](/app/keyboardly/sample/di/DynamicDagger.kt)
+See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt)
 
 ## DynamicFeatureImpl Class
 `DynamicFeatureImpl` a class for implementation to connect the default class with DynamicDagger class
-See this sample of default class : [DynamicFeatureImpl](/app/keyboardly/sample/DynamicFeatureImpl.kt)
+See this sample of default class : [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt)
 
 ## Dynamic Feature
 Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
@@ -76,19 +76,19 @@ See [detail](https://developer.android.com/reference/android/view/inputmethod/Ed
 There is several interfaces that used on this development.
 ### ChipGroupCallBack
 Used for handle request chips options.
-See [detail](/app/keyboardly/lib/helper/ChipGroupCallBack.kt).
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallBack.kt).
 
 ### InputPresenter
 Interface for handling when input mode activated.
-See [detail](/app/keyboardly/lib/helper/InputPresenter.kt).
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/InputPresenter.kt).
 
 ### OnViewMessage
 For showing message on options area like default RecyclerView and ChipGroup options.
-See [detail](/app/keyboardly/lib/helper/OnViewMessage.kt).
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewMessage.kt).
 
 ### OnViewReady
 For showing default options with RecyclerView.
-See [detail](/app/keyboardly/lib/helper/OnViewReady.kt).
+See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewReady.kt).
 
 ## InputConnection
 The InputConnection interface is the communication channel from an InputMethod back to the
@@ -102,7 +102,7 @@ See [detail](https://developer.android.com/reference/android/view/inputmethod/In
 ## Keyboard Action View
 Keyboard Action View is base class for view of add on that will show on keyboard.
 The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
-See detail [KeyboardActionView](/app/keyboardly/lib/KeyboardActionView.kt)
+See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 <p align="center">
     <img src="doc/image/actionview-sample.png" width="250" alt="sample action view">
 </p>
@@ -117,7 +117,7 @@ A keyboard action view have simple flow that should be understand. See diagram b
 
 ## Keyboard Action Dependency
 Keyboard Dependency is interface way to communicate with the main keyboard, it just used inside the keyboard.
-See full source [KeyboardActionDependency](/app/keyboardly/lib/KeyboardActionDependency.kt)
+See full source [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
 
 This is detail of the function member:
 <table>
