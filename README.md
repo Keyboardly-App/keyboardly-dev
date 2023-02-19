@@ -6,5 +6,5 @@ Keyboardly app that make you *Freedom*.
 This repository is playground for development of Add On.
 
 ## Navigation
-1. [Glossary](/Glossary.md)
-2. [Development](/Addon.md)
+1. [Glossary](/doc/Glossary.md)
+2. [Development](/doc/Addon.md)
