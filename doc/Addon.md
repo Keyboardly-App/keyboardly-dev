@@ -118,21 +118,21 @@ After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
     - inherits `KeyboardActionView`
     - located in the root module
-    - see example : [SampleDefaultView](/app/keyboardly/sample/SampleDefaultView.kt).
+    - see example : [SampleDefaultView](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultView.kt).
 > An add on can configured with empty submenus and with a default view, or with some submenus without default view.
 > If an add on not contain a default view or submenus, the add on will doesn't work.
  
 2. DynamicDagger class
     - contain some component class, interface and module
     - should fit with the default class to make it work
-    - see example : [DynamicDagger](/app/keyboardly/sample/di/DynamicDagger.kt).
+    - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
 
 3. DynamicFeatureImpl.kt
     - should with name `DynamicFeatureImpl`
     - located in the root module
     - should inherit `DynamicFeature`
     - have a constructor with default class that inherits `KeyboardActionView` 
-    - full code see [DynamicFeatureImpl](/app/keyboardly/sample/DynamicFeatureImpl.kt).
+    - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
 note:
 > On DynamicFeatureImpl class, there is 2 override methods:
 <br> - `getView()`  : will be used for return view.
@@ -194,7 +194,7 @@ To prevent risk of conflict when compiling/merging with main source code, there 
 ## Styling
 To make your add on fit with keyboard theme, there is two way:
 1. Use default theme on library/style.
-- check the attribution member on this file [attrs.xml](/values/attrs.xml)
+- check the attribution member on this file [attrs.xml](/libraries/style/src/main/res/values/attrs.xml)
 - sample :
 ```xml
       <EditText
@@ -234,10 +234,10 @@ To make your add on fit with keyboard theme, there is two way:
 
 ## Add On Submenu
 
-This submenu is list of [NavigationMenuModel](/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
+This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
 if you decide to create an add-on without a submenu it can be an empty list (not null).
 
-The list will be called on `DynamicFeatureImpl` class through [override method](/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
+The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
 
 ## Load Add On
 
@@ -292,8 +292,8 @@ To make app's add on navigation, follow this way:
 </navigation>
 ```
 
-3. insert the add on data to [listAddOn](/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34). Make sure the data match with the add on module configuration.
-4. save the id of included dynamic navigation graph to [listNavigation](/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) on AddOnFragment.
+3. insert the add on data to [listAddOn](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34). Make sure the data match with the add on module configuration.
+4. save the id of included dynamic navigation graph to [listNavigation](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) on AddOnFragment.
 
 done.
 
@@ -320,7 +320,7 @@ On the main source code app, the proguard / minify enabled.
 ```
 - Don't forget to keep the model data class if exist.
 
-see full sample [consumer-rules.pro](/consumer-rules.pro).
+see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 
 
 ## Testing
