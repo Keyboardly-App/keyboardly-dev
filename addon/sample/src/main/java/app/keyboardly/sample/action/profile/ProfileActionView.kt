@@ -14,6 +14,12 @@ class ProfileActionView(
     override fun onCreate() {
         val binding = SampleProfileLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
+
+        binding.apply {
+            back.setOnClickListener {
+                dependency.viewAddOnNavigation()
+            }
+        }
     }
 
     override fun onResume() {
