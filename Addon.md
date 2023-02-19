@@ -162,15 +162,26 @@ class ProfileActionView(
 
    }
 ```
-4. Create xml layout like common layout for fragment or activity. Please take a look the [resource file rule](#resource-file-rules) and [styling](#styling)
-5. Define the view binding and initiate the `viewLayout` variable
+4. Create xml layout like common layout for fragment or activity. Please take a look the [resource file rule](#resource-file-rules) and [styling](#styling).<br>
+And here is some note for layout xml of action view:<br>
+   - must contain back button for navigation back to add on / keyboard navigation, because back press (on physic device) will detected from launcher system and hide the keyboard itself.
+   - the parent layout height should `MATCH_PARENT` with minimum height total about 250 dp, if not the view will look hanging & not fulfill the keyboard 
+ 
+6. Define the view binding and initiate the `viewLayout` variable
 ```kotlin
     override fun onCreate() {
         val binding = ProfileLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root 
     }
 ```
-6. Give some logic as needed.
+6. Give some logic as needed like back navigation.
+```kotlin
+    binding.apply {
+        back.setOnClickListener {
+            dependency.viewAddOnNavigation()
+        }
+    }
+```
 7. Done. Next step see [testing](#testing)
 
 
