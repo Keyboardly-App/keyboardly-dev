@@ -6,6 +6,7 @@ import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.sample.action.campaign.CampaignActionView
+import app.keyboardly.sample.action.profile.ProfileActionView
 import app.keyboardly.sample.action.register.RegisterActionView
 import app.keyboardly.sample.action.shopping.ShoppingActionView
 import timber.log.Timber
@@ -20,6 +21,7 @@ class SampleDefaultView(
     private val discountView = RegisterActionView(dependency)
     private val campaignActionView = CampaignActionView(dependency)
     private val shoppingActionView = ShoppingActionView(dependency)
+    private val profileActionView = ProfileActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
@@ -32,36 +34,35 @@ class SampleDefaultView(
             NavigationMenuModel(
                 DISCOUNT,
                 nameString = "Register",
-                icon = R.drawable.ic_round_discount_24
+                icon = R.drawable.sample_ic_round_discount_24
             )
         )
         menu.add(
             NavigationMenuModel(
                 CAMPAIGN,
                 nameString = "Campaign",
-                icon = R.drawable.ic_round_campaign_24
+                icon = R.drawable.sample_ic_round_campaign_24
             )
         )
         menu.add(
             NavigationMenuModel(
                 SHOPPING,
                 nameString = "Shopping",
-                icon = R.drawable.ic_round_shopping_cart_24,
+                icon = R.drawable.sample_ic_round_shopping_cart_24,
             )
         )
         menu.add(
             NavigationMenuModel(
-                4,
+                PROFILE,
                 nameString = "Account",
-                icon = R.drawable.ic_round_account_circle_24_bot_feature,
-                enable = false
+                icon = R.drawable.sample_ic_round_account_circle_24_bot_feature,
             )
         )
         menu.add(
             NavigationMenuModel(
                 5,
                 nameString = "Setting",
-                icon = R.drawable.ic_round_settings_24_bot,
+                icon = R.drawable.sample_ic_round_settings_24_bot,
                 enable = false
             )
         )
@@ -69,7 +70,7 @@ class SampleDefaultView(
             NavigationMenuModel(
                 6,
                 nameString = "Dashboard",
-                icon = R.drawable.ic_round_bedroom_parent_24,
+                icon = R.drawable.sample_ic_round_bedroom_parent_24,
                 enable = false
             )
         )
@@ -90,6 +91,7 @@ class SampleDefaultView(
             DISCOUNT -> discountView
             CAMPAIGN -> campaignActionView
             SHOPPING -> shoppingActionView
+            PROFILE -> profileActionView
             else -> null
         }
 
@@ -108,5 +110,6 @@ class SampleDefaultView(
         private const val DISCOUNT = 1
         private const val CAMPAIGN = 2
         private const val SHOPPING = 3
+        private const val PROFILE = 4
     }
 }
