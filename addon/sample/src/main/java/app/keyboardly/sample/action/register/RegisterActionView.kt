@@ -8,7 +8,7 @@ import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.sample.R
-import app.keyboardly.sample.databinding.SampleDiscountFeatureLayoutBinding
+import app.keyboardly.sample.databinding.SampleRegisterFeatureLayoutBinding
 import app.keyboardly.style.helper.invisible
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -20,10 +20,10 @@ class RegisterActionView (
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency), InputPresenter, ChipGroupCallBack {
 
-    private lateinit var binding: SampleDiscountFeatureLayoutBinding
+    private lateinit var binding: SampleRegisterFeatureLayoutBinding
 
     override fun onCreate() {
-        binding = SampleDiscountFeatureLayoutBinding.inflate(getLayoutInflater())
+        binding = SampleRegisterFeatureLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
         initClick()
         initFooter()
