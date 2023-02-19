@@ -15,7 +15,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="10dp"
         android:padding="3dp"
-        android:src="@drawable/ic_main_back_arrow" />
+        android:src="@drawable/sample_round_arrow_back_24" />
 
 
     <com.google.android.material.button.MaterialButton

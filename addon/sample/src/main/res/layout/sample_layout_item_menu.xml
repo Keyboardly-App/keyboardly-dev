@@ -7,7 +7,7 @@
     android:fontFamily="@font/inter_regular"
     android:textColor="?android:textColorPrimary"
     android:background="?selectableItemBackground"
-    android:drawableEnd="@drawable/ic_round_keyboard_arrow_right_24"
+    android:drawableEnd="@drawable/sample_ic_round_keyboard_arrow_right_24"
     android:gravity="center_vertical"
     android:drawablePadding="@dimen/_10sdp"
     android:layout_width="match_parent"

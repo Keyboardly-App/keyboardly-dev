@@ -18,12 +18,12 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="10dp"
             android:padding="3dp"
-            android:src="@drawable/ic_main_back_arrow" />
+            android:src="@drawable/sample_round_arrow_back_24" />
 
         <TextView
             android:id="@+id/titleCampaign"
             android:text="@string/shopping"
-            style="@style/TitleTextActionKeyboard"
+            style="?textActionKeyboardStyle"
             android:gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_weight="1"
