@@ -6,7 +6,7 @@ import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.sample.action.campaign.CampaignActionView
-import app.keyboardly.sample.action.profile.ProfileActionView
+import app.keyboardly.sample.action.profile.WelcomeActionView
 import app.keyboardly.sample.action.register.RegisterActionView
 import app.keyboardly.sample.action.shopping.ShoppingActionView
 import timber.log.Timber
@@ -21,7 +21,7 @@ class SampleDefaultView(
     private val discountView = RegisterActionView(dependency)
     private val campaignActionView = CampaignActionView(dependency)
     private val shoppingActionView = ShoppingActionView(dependency)
-    private val profileActionView = ProfileActionView(dependency)
+    private val welcomeActionView = WelcomeActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
@@ -30,6 +30,13 @@ class SampleDefaultView(
     }
 
     private fun initMenuList() {
+        menu.add(
+            NavigationMenuModel(
+                WELCOME,
+                nameString = "Welcome",
+                icon = R.drawable.sample_ic_round_account_circle_24_bot_feature,
+            )
+        )
         menu.add(
             NavigationMenuModel(
                 DISCOUNT,
@@ -51,13 +58,7 @@ class SampleDefaultView(
                 icon = R.drawable.sample_ic_round_shopping_cart_24,
             )
         )
-        menu.add(
-            NavigationMenuModel(
-                PROFILE,
-                nameString = "Account",
-                icon = R.drawable.sample_ic_round_account_circle_24_bot_feature,
-            )
-        )
+
         menu.add(
             NavigationMenuModel(
                 5,
@@ -85,13 +86,11 @@ class SampleDefaultView(
     }
 
     override fun onClickMenu(data: NavigationMenuModel) {
-        Log.d("BotFeature", "clicked=${data.nameString} =====")
-
         val view = when (data.id) {
             DISCOUNT -> discountView
             CAMPAIGN -> campaignActionView
             SHOPPING -> shoppingActionView
-            PROFILE -> profileActionView
+            WELCOME -> welcomeActionView
             else -> null
         }
 
@@ -110,6 +109,6 @@ class SampleDefaultView(
         private const val DISCOUNT = 1
         private const val CAMPAIGN = 2
         private const val SHOPPING = 3
-        private const val PROFILE = 4
+        private const val WELCOME = 4
     }
 }

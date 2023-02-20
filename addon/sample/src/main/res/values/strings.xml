@@ -10,5 +10,6 @@
     <string name="search_campaign">Search campaign</string>
     <string name="shopping">Shopping</string>
     <string name="voucher">Voucher</string>
-    <string name="hello_world">Hello World</string>
+    <string name="welcome">Welcome</string>
+    <string name="input_your_name">input your name</string>
 </resources>
