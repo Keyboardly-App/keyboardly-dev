@@ -48,7 +48,7 @@ class DynamicModule {
      * @return the default class
      */
     @Provides
-    internal fun provideSampleView(dependency: KeyboardActionDependency) = SampleDefaultView(dependency)
+    internal fun provideDefaultClass(dependency: KeyboardActionDependency) = SampleDefaultView(dependency)
 
     /**
      * bind the DynamicFeatureImpl
