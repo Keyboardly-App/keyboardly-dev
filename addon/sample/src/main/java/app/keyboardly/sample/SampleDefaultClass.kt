@@ -1,9 +1,7 @@
 package app.keyboardly.sample
 
-import android.util.Log
 import app.keyboardly.lib.DefaultClass
 import app.keyboardly.lib.KeyboardActionDependency
-import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.sample.action.campaign.CampaignActionView
@@ -15,7 +13,7 @@ import timber.log.Timber
 /**
  * Created by zainal on 6/8/22 - 2:59 PM
  */
-class SampleDefaultView(
+class SampleDefaultClass(
     dependency: KeyboardActionDependency
 ) : DefaultClass(dependency), NavigationCallback {
 
