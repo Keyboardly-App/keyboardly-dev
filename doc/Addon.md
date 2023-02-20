@@ -142,7 +142,7 @@ note:
 
 ## Create Feature by Keyboard Action View
 After setup all the base class, start develop the feature.
-1. Create a new kotlin class with suffix name `ActionView`, for example `ProfileActionView`
+1. Create a new kotlin class with suffix name `ActionView`, for example `WelcomeActionView`
 2. Inherit `KeyboardActionView` and make default constructor with `KeyboardActionDependency` 
 ```kotlin
 
@@ -150,7 +150,7 @@ import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 
 
-class ProfileActionView(
+class WelcomeActionView(
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency) {
 
@@ -165,12 +165,14 @@ class ProfileActionView(
 4. Create xml layout like common layout for fragment or activity. Please take a look the [resource file rule](#resource-file-rules) and [styling](#styling).<br>
 And here is some note for layout xml of action view:<br>
    - must contain back button for navigation back to add on / keyboard navigation, because back press (on physic device) will detected from launcher system and hide the keyboard itself.
-   - the parent layout height should `MATCH_PARENT` with minimum height total about 250 dp, if not the view will look hanging & not fulfill the keyboard 
+   - the parent layout height should `MATCH_PARENT` 
+   - minimum height total about 250 dp, if not the view will look hanging & not fulfill the keyboard 
+   - for `EditText` set focusable to `false` and use `setOnClickListener` for action `requestInput()`.
  
 6. Define the view binding and initiate the `viewLayout` variable
 ```kotlin
     override fun onCreate() {
-        val binding = ProfileLayoutBinding.inflate(getLayoutInflater())
+        val binding = WelcomeLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root 
     }
 ```
@@ -182,7 +184,25 @@ And here is some note for layout xml of action view:<br>
         }
     }
 ```
-7. Done. Next step see [testing](#testing)
+7. Example request input text.
+```kotlin
+    inputName.setOnClickListener {
+        dependency.requestInput(inputName)
+    }
+```
+8. Example logic and showing toast message
+```kotlin
+    submitBtn.setOnClickListener {
+        val name = inputName.text.toString()
+        inputName.error = null
+        if (name.isEmpty()){
+            inputName.error = "can't empty"
+        } else {
+            toast("Welcome $name!")
+        }
+    }
+```
+9. Done. Next step do [testing](#testing).
 
 
 ## Resource File Rules
@@ -229,6 +249,10 @@ To make your add on fit with keyboard theme, there is two way:
   val mThemeContext = ContextThemeWrapper(context, style)
   val inflater = LayoutInflater.from(mThemeContext)
   viewLayout = inflater.inflate(R.layout.home_layout, null)
+  
+  /* or implement with viewBinding */
+  val binding = SampleWelcomeLayoutBinding.inflate(inflater)
+  viewLayout = binding.root
 
 ```
 
@@ -326,15 +350,15 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 ## Testing
 
 1. Don't forget insert data `add on` to the [list navigation](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228) as mentioned on [this](#load-add-on)
-2. And for navigation app's add on (if exist) in [this list](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) 
+2. And for navigation app's add on (if exist) in [this list](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77) 
 3. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
 
 <p align="center">
     <img src="doc/image/install-option.png" >
 </p>
 
-3. Run the code  / `Shift+F10`
-4. When the app launches, open the add-on menu (app/keyboard) and do install the add-on.
+3. Run the app  / `Shift+F10`
+4. When the app launches, open the add-on menu (app/keyboard).
 
 ### Indicator success launched of add-on:
 
