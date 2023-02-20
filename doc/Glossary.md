@@ -330,8 +330,12 @@ To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) >
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/shopping/ShoppingActionView.kt#L61)
 
 ## Submenu Add On Navigation
-If an Add On contain submenu navigation, when user click the add on logo the keyboard will replace
-the default keyboard navigation with the submenu. The Add On should handle the event submenu click on default class.
+This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
+if you decide to create an add-on without a submenu it can be an empty list (not null). <br>
+If an add on contain submenu navigation and then if user click the add on logo, the default keyboard navigation will be replaced with the submenus.<br>
+<br>
+The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
+The add on should handle the submenu click event on default class.
 <p align="center">
     <img src="doc/image/submenu-navigation.png" width="250">
 </p>

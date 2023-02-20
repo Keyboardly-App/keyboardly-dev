@@ -17,7 +17,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
     * [Resource File Rules](#resource-file-rules)
     * [Styling](#styling)
     * [Load Add On](#load-add-on)
-    * [Add On Submenu](#add-on-submenu)
+    * [Setup Submenu Add On](#setup-submenu-add-on)
     * [App's addon Navigation Configuration](#apps-addon-navigation-configuration)
     * [Proguard rules](#proguard-rules)
     * [Testing](#testing)
@@ -105,6 +105,7 @@ dependencies {
     implementation project(":libraries:style")
     implementation project(":libraries:actionview")
 
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.databinding:viewbinding:$view_binding_version"
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
@@ -116,11 +117,11 @@ dependencies {
 ## Setup Base Class
 After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
-    - inherits `KeyboardActionView`
+    - inherits `DefaultClass`
     - located in the root module
-    - see example : [SampleDefaultView](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultView.kt).
+    - see example : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultClass.kt).
 > An add on can configured with empty submenus and with a default view, or with some submenus without default view.
-> If an add on not contain a default view or submenus, the add on will doesn't work.
+> If an add on not contain a default view or submenus, the add on will not work.
  
 2. DynamicDagger class
     - contain some component class, interface and module
@@ -256,12 +257,67 @@ To make your add on fit with keyboard theme, there is two way:
 
 ```
 
-## Add On Submenu
+## Setup Submenu Add On
+1. As mentioned on [glossary](/doc/Glossary.md#L332-340), first step is add list of navigation on default class.
+```kotlin
+    private var menu = mutableListOf<NavigationMenuModel>()
 
-This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
-if you decide to create an add-on without a submenu it can be an empty list (not null).
+    private fun initMenuList() {
+        menu.add(
+            NavigationMenuModel(
+                WELCOME,
+                nameString = "Welcome",
+                icon = R.drawable.sample_ic_round_account_circle_24_bot_feature,
+            )
+        )
+    }
 
-The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
+    override fun getSubmenus(): MutableList<NavigationMenuModel> {
+        if (menu.isEmpty()) {
+            initMenuList()
+        }
+        return menu
+    }
+```
+2. Handle the navigation click by set the navigation callback
+```kotlin
+    override fun getSubmenus(): MutableList<NavigationMenuModel> {
+        if (menu.isEmpty()) {
+            initMenuList()
+        }
+        dependency.setNavigationCallback(this)
+        return menu
+    }
+```
+3. Then implement function member `onClickMenu`
+```kotlin
+    override fun onClickMenu(data: NavigationMenuModel) {
+        
+    }
+```
+4. Add the logic what should do
+```kotlin
+
+    override fun onClickMenu(data: NavigationMenuModel) {
+        val view = when (data.id) {
+            WELCOME -> welcomeActionView
+            else -> null
+        }
+
+        if (view != null) {
+            dependency.setActionView(view)
+        } else {
+            if (!data.enable) {
+                toast("Feature on development")
+            } else {
+                Timber.w("enable but nothing to parse")
+            }
+        }
+    }
+```
+
+5. Done. Test the code.
+
 
 ## Load Add On
 
