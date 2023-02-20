@@ -55,6 +55,6 @@ class DynamicFeatureImpl @Inject constructor(
      * it's possible to set to empty mutableList() but getView() not null
      */
     override fun getSubMenus(): MutableList<NavigationMenuModel> {
-        return sampleView.subMenus()
+        return sampleView.getSubmenus()
     }
 }

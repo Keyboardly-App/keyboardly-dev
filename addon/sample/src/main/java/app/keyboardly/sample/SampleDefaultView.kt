@@ -1,6 +1,7 @@
 package app.keyboardly.sample
 
 import android.util.Log
+import app.keyboardly.lib.DefaultClass
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.navigation.NavigationCallback
@@ -16,7 +17,7 @@ import timber.log.Timber
  */
 class SampleDefaultView(
     dependency: KeyboardActionDependency
-) : KeyboardActionView(dependency), NavigationCallback {
+) : DefaultClass(dependency), NavigationCallback {
 
     private val discountView = RegisterActionView(dependency)
     private val campaignActionView = CampaignActionView(dependency)
@@ -77,7 +78,7 @@ class SampleDefaultView(
         )
     }
 
-    fun subMenus(): MutableList<NavigationMenuModel> {
+    override fun getSubmenus(): MutableList<NavigationMenuModel> {
         if (menu.isEmpty()) {
             initMenuList()
         }
