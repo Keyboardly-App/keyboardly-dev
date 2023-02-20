@@ -339,3 +339,19 @@ The add on should handle the submenu click event on default class.
 <p align="center">
     <img src="doc/image/submenu-navigation.png" width="250">
 </p>
+<br>
+On production version, after the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
+If the user clicks the icon, the keyboard will do the validation :
+
+1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
+2. if not contained a list submenu, the keyboard will call `getView()` method.
+<br>
+   <img src="doc/image/keyboard-submenu-addon-menu.webm" width="250"/>
+<br>
+
+On development version, the download process skipped. And the add on package is just included when compile process.
+To make it ready to use on keyboard, add the menu to [this navigation list](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228).
+This below data should match with the add on when creating dynamic feature module.
+<br>
+ <img src="doc/image/submenu-addon-dev.webm" width="250"/>
+<br>
