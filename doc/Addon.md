@@ -37,7 +37,7 @@ Requires tools & config for development:
     </tr>
     <tr>
         <td>Android Studio</td>
-        <td>2021.3.1 (min) / latest version</td>
+        <td>2022.1.1 / latest version</td>
     </tr>
     <tr>
         <td>Gradle</td>
@@ -45,7 +45,7 @@ Requires tools & config for development:
     </tr>
     <tr>
         <td>Android Gradle Plugin</td>
-        <td>7.3.1</td>
+        <td>7.4.1</td>
     </tr>
     <tr>
         <td>Kotlin plugin</td>
@@ -105,7 +105,7 @@ dependencies {
     implementation project(":libraries:style")
     implementation project(":libraries:actionview")
 
-    implementation 'androidx.databinding:viewbinding:7.4.1'
+    implementation "androidx.databinding:viewbinding:$view_binding_version"
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
