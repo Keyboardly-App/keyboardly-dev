@@ -282,8 +282,6 @@ val style = if(dependency.isDarkMode()) {
 
 ## Setup Submenu Add On
 
-If submenu add on is not needed if the default view not null, and it's be a must if default view null.
-
 1. As mentioned on [glossary](/doc/Glossary.md#L332-340), first step is add list of navigation on default class.
 
 ```kotlin
