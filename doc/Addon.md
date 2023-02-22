@@ -28,7 +28,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
 See [this module](/addon/sample) for full sample add on.
 
 For video version, take a look to [this youtube playlist](https://youtube.com/playlist?list=PLjByoAiq9W7V04GnPbwLmcCuZdA-iiTcE).
-![youtube-playlist.png](assets/youtube-playlist.png)
+![https://youtube.com/playlist?list=PLjByoAiq9W7V04GnPbwLmcCuZdA-iiTcE](assets/youtube-playlist.png)
 
 ## Tools
 
