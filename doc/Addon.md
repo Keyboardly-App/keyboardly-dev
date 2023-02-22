@@ -27,6 +27,9 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
 
 See [this module](/addon/sample) for full sample add on.
 
+For video version, take a look to [this youtube playlist](https://youtube.com/playlist?list=PLjByoAiq9W7V04GnPbwLmcCuZdA-iiTcE).
+![youtube-playlist.png](assets/youtube-playlist.png)
+
 ## Tools
 
 Requires tools & config for development:
@@ -74,7 +77,7 @@ To create an add on, start by create a dynamic feature module:
 
 On this dialog fill title and chose **on-demand only**
 
-![addoncreatedialog.png](image/addon-create-dialog.png)
+![addoncreatedialog.png](assets/addon-create-dialog.png)
 
 ## Setup Dependency
 
@@ -420,7 +423,7 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 3. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
 
 <p align="center">
-    <img src="doc/image/install-option.png" >
+    <img src="doc/assets/install-option.png" >
 </p>
 
 3. Run the app  / `Shift+F10`
