@@ -41,7 +41,7 @@ It can be accessed from add on the menu;
 2. if not installed or not configured, a detail add-on will appear.
 
 <br>
-<img src="doc/image/app-addon-menu.webm" width="250"/>
+<img src="doc/assets/app-addon-menu.webm" width="250"/>
 <br>
 It's should to be configured by [this](#apps-addon-menu-configuration)
 
@@ -104,13 +104,13 @@ Keyboard Action View is base class for view of add on that will show on keyboard
 The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 <p align="center">
-    <img src="doc/image/actionview-sample.png" width="250" alt="sample action view">
+    <img src="doc/assets/actionview-sample.png" width="250" alt="sample action view">
 </p>
 
 ### Keyboard Action View Flow
 A keyboard action view have simple flow that should be understand. See diagram below:
 <p align="center">
-    <img src="doc/image/keyboard-action-view-flow.png" width="250">
+    <img src="doc/assets/keyboard-action-view-flow.png" width="250">
 </p>
 
 
@@ -271,11 +271,11 @@ it should do login first before can access all the menu of add on.
 Keyboard navigation is list menu that appear on top of keyboard.
 The default navigation is available when user click the keyboard logo.
 <p align="center">
-    <img src="doc/image/keyboard-navigation.png" width="250">
+    <img src="doc/assets/keyboard-navigation.png" width="250">
 </p>
 If new add on installed, the logo will appear on this list keyboard navigation.
 <p align="center">
-    <img src="doc/image/addon-installed.png" width="250">
+    <img src="doc/assets/addon-installed.png" width="250">
 </p>
 
 ## Request Input
@@ -285,7 +285,7 @@ If new add on installed, the logo will appear on this list keyboard navigation.
 The default request input is for short text that fit on single line. <br>
 Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()`
 <p align="center">
-    <img src="doc/image/request-input-text.png" width="250" alt="sample request input text">
+    <img src="doc/assets/request-input-text.png" width="250" alt="sample request input text">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L35-43)
 
@@ -293,28 +293,28 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 The long request input is for long text but will appeared with scrollable 2 line inside keyboard. <br>
 Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()` with value `longInput` = `true`
 <p align="center">
-    <img src="doc/image/longtext-sample.png" width="250" alt="sample request input text">
+    <img src="doc/assets/longtext-sample.png" width="250" alt="sample request input text">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L45)
 
 ### Chip Options
 Chip options is view `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
 <p align="center">
-    <img src="doc/image/chip-options.png" width="250" alt="sample chip options">
+    <img src="doc/assets/chip-options.png" width="250" alt="sample chip options">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L52-59)
 
 ### Date Picker
 Just like `Chip Options`, a KeyboardActionView can request input date via [KeyboardActionDependency](#keyboard-action-dependency) > `showDatePicker()`
 <p align="center">
-    <img src="doc/image/datepicker-sample.png" width="250" alt="sample date picker">
+    <img src="doc/assets/datepicker-sample.png" width="250" alt="sample date picker">
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L49)
 
 ### Floating RecyclerView
 A recyclerview options that show like floating on above keyboard navigation, usually use when on input mode for quick search.
 <p align="center">
-    <img src="doc/image/floating-recyclerview.png" width="250">
+    <img src="doc/assets/floating-recyclerview.png" width="250">
 </p>
 <br>
 To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)` and combine it with `requestInput(...)` function.
@@ -323,7 +323,7 @@ To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) >
 ### RecyclerView Options
 Recyclerview options is that appeared on keyboard area and can can be modify the layout manager as needed.
 <p align="center">
-    <img src="doc/image/recyclerview-options-title.png" width="250">
+    <img src="doc/assets/recyclerview-options-title.png" width="250">
 </p>
 <br>
 To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)` and can be configured with title by `showTitleAboveList()`
@@ -337,7 +337,7 @@ If an add on contain submenu navigation and then if user click the add on logo, 
 The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
 The add on should handle the submenu click event on default class.
 <p align="center">
-    <img src="doc/image/submenu-navigation.png" width="250">
+    <img src="doc/assets/submenu-navigation.png" width="250">
 </p>
 <br>
 On production version, after the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
@@ -346,12 +346,12 @@ If the user clicks the icon, the keyboard will do the validation :
 1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
 2. if not contained a list submenu, the keyboard will call `getView()` method.
 <br>
-   <img src="doc/image/keyboard-submenu-addon-menu.webm" width="250"/>
+   <img src="doc/assets/keyboard-submenu-addon-menu.webm" width="250"/>
 <br>
 
 On development version, the download process skipped. And the add on package is just included when compile process.
 To make it ready to use on keyboard, add the menu to [this navigation list](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228).
 This below data should match with the add on when creating dynamic feature module.
 <br>
- <img src="doc/image/submenu-addon-dev.webm" width="250"/>
+ <img src="doc/assets/submenu-addon-dev.webm" width="250"/>
 <br>
