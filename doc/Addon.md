@@ -423,7 +423,7 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 3. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
 
 <p align="center">
-    <img src="doc/assets/install-option.png" >
+    <img src="assets/install-option.png" >
 </p>
 
 3. Run the app  / `Shift+F10`
