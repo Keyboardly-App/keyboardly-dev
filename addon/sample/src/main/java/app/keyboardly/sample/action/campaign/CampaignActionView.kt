@@ -99,10 +99,14 @@ class CampaignActionView (
                     dependency.viewLayoutAction()
                 })
             }
+
+            fullList.setOnClickListener {
+                showFloatingRecyclerView(listCampaign)
+            }
         }
     }
 
-    private fun showFloatingRecyclerView(list: List<CampaignModel>) {
+    private fun showFloatingRecyclerView(list: List<CampaignModel>, inputMode: Boolean=true) {
         if (list.isEmpty()) {
             floatingRv?.gone()
         } else {
@@ -116,7 +120,11 @@ class CampaignActionView (
                         campaignAdapter.updateList(list)
                     }
                 }
-            })
+            }, inputMode)
+
+            if (!inputMode){
+                dependency.showTitleAboveList(true,"Choose Campaign")
+            }
         }
     }
 
