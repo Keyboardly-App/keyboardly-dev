@@ -257,7 +257,7 @@ open class KeyboardNavigation(
         }
     }
 
-    fun showTitle(show: Boolean, text: String? = "") {
+    fun showTitle(show: Boolean, text: String? = "", asFooter: Boolean?=false) {
         messageOnFrame.gone()
 
         if (show) {
@@ -278,6 +278,10 @@ open class KeyboardNavigation(
             navigationBack.visible()
             headerWrapper.visible()
             titleHeader.visible()
+            if (asFooter!!) {
+                keyboardWrapper.gone()
+                keyboardActionWrapper.gone()
+            }
 
             defaultHeader = false
             subMenuAddOnActive = true

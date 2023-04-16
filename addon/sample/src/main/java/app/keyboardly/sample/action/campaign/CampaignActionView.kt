@@ -101,7 +101,7 @@ class CampaignActionView (
             }
 
             fullList.setOnClickListener {
-                showFloatingRecyclerView(listCampaign)
+                showFloatingRecyclerView(listCampaign, false)
             }
         }
     }
@@ -118,13 +118,15 @@ class CampaignActionView (
                         layoutManager = LinearLayoutManager(context)
                         adapter = campaignAdapter
                         campaignAdapter.updateList(list)
+
+                        if (!inputMode){
+                            dependency.showTitleAboveList(true,"Choose Campaign", true)
+                        }
                     }
                 }
             }, inputMode)
 
-            if (!inputMode){
-                dependency.showTitleAboveList(true,"Choose Campaign")
-            }
+
         }
     }
 

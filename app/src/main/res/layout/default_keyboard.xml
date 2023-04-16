@@ -14,7 +14,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayoutRvTop"
         android:layout_width="match_parent"
-        tools:visibility="gone"
+        tools:visibility="visible"
         android:maxHeight="200dp"
         android:visibility="gone"
         android:background="@android:color/transparent"

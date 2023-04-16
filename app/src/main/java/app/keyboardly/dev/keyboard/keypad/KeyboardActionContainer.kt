@@ -54,9 +54,17 @@ class KeyboardActionContainer(
 
 
 
-    fun viewFloatingRv(onViewReady: OnViewReady) {
+    fun viewFloatingRv(onViewReady: OnViewReady, inputMode: Boolean?=true) {
         floatingRoot.visible()
         floatingRecyclerView.visible()
+
+
+        if (inputMode == false) {
+            getKeyboardViewWrapper().gone()
+        } else {
+            // TODO: neeed check this again, is need / bug to menu?
+//            mEditField.performClick()
+        }
 
         Timber.i("floating rv=${floatingRoot.isVisible} // ${floatingRecyclerView.isVisible}")
         onViewReady.onRecyclerViewReady(floatingRecyclerView)
