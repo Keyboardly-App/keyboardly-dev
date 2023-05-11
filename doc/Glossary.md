@@ -43,7 +43,7 @@ It can be accessed from add on the menu;
 
 ![](https://user-images.githubusercontent.com/13946213/231936933-f9d5cfea-1869-4260-9caa-57deebc704e0.gif)
 
-It's should to be configured by [this](#apps-addon-menu-configuration)
+It's should to be configured by [this](./Addon.md#apps-addon-navigation-configuration)
 
 ## Base Class
 Base Class means several class that must exist in an add on. Member of base class is :
@@ -55,7 +55,7 @@ All the class will explain on below.
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
-See this sample of default class : [SampleDefaultView](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultView.kt)
+See this sample of default class : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultClass.kt)
 
 ## DynamicDagger Class
 `DynamicDagger Class` mean a class that contain `@Component` & `@Module` dagger class to build default class.
