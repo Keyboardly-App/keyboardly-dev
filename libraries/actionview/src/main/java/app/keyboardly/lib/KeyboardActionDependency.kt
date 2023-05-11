@@ -119,8 +119,13 @@ interface KeyboardActionDependency {
 
     /**
      * show title above default Recycler view
+     * @param show : for show the title or hide it
+     * @param title : text for the title
+     * @param asFooter : if true, this mean the title layout on bottom as footer and
+     * on the above title is list from showFloatingRecyclerView()
+     * default value is false
      */
-    fun showTitleAboveList(show: Boolean, title: String? = null)
+    fun showTitleAboveList(show: Boolean, title: String? = null, asFooter: Boolean?=false)
 
     /**
      * loading view on main keyboard
@@ -161,8 +166,14 @@ interface KeyboardActionDependency {
      * show floating recyclerview options
      * the position is above keyboard navigation, usually use when on input mode.
      * @param onViewReady : to handle callback when recyclerview ready
+     *
+     * @param inputMode : for flag is input mode or not, default value : true.
+     * if true the keyboard layout will keep appear,
+     * if not keyboard layout will hide.
+     * For input mode false, it's possible combine the view with function showTitleAboveList()
      */
-    fun showFloatingRecyclerView(onViewReady: OnViewReady)
+    fun showFloatingRecyclerView(onViewReady: OnViewReady, inputMode: Boolean?=true)
+
 
     /**
      * show message on main keyboard layout, it's relate with showRecyclerViewOptions for example

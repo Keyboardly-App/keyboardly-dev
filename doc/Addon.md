@@ -12,7 +12,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
 - [Development](#development)
   * [Tools](#tools)
   * [Create Module](#create-module)
-  * [Setup Dependency](#setup-dependency)
+  * [Setup build.gradle](#setup-buildgradle)
   * [Setup Base Class](#setup-base-class)
   * [Create The Feature](#create-feature-by-keyboard-action-view)
   * [Resource File Rules](#resource-file-rules)
@@ -73,13 +73,19 @@ Requires tools & config for development:
 
 To create an add on, start by create a dynamic feature module:
 
-> File > New > New Module > Choose **Dynamic Feature** > next
+`File > New > New Module > on the left, choose Dynamic Feature`
+
+![create-dynamic-feature-dialog.png](assets/create-dynamic-feature-dialog.png)
+
+> <b>Note:<b>
+> - the module name should be claimed on [Keyboardly Dev dashboard](https://dev.keyboardly.app)
+> - the package id should have prefix with `app.keyboardly.addon`
 
 On this dialog fill title and chose **on-demand only**
 
 ![addoncreatedialog.png](assets/addon-create-dialog.png)
 
-## Setup Dependency
+## Setup build.gradle
 
 After creating a dynamic feature module, update gradle dependencies:
 
@@ -91,7 +97,13 @@ plugins {
 }
 
 android{
-    ...
+
+    defaultConfig{
+        // information for versioning
+        buildConfigField "int", "ADD_ON_VERSION", "1" // always increase it on update
+        buildConfigField "String", "ADD_ON_VERSION_NAME", "\"1.0\""
+        buildConfigField "String", "ADD_ON_ID", "\"addon_id\"" // should same with module name
+    }
 
     kapt {
         generateStubs = true
@@ -100,7 +112,7 @@ android{
     buildFeatures {
         viewBinding true
     }
-    ...
+
 }
 
 dependencies {

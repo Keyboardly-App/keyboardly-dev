@@ -40,9 +40,9 @@ It can be accessed from add on the menu;
 1. if it's installed & configured the navigation, the user will be redirected to a fragment of add on by the navigation graph
 2. if not installed or not configured, a detail add-on will appear.
 
-<br>
-<img src="assets/app-addon-menu.webm" width="250"/>
-<br>
+
+![](https://user-images.githubusercontent.com/13946213/231936933-f9d5cfea-1869-4260-9caa-57deebc704e0.gif)
+
 It's should to be configured by [this](#apps-addon-menu-configuration)
 
 ## Base Class
@@ -345,13 +345,12 @@ If the user clicks the icon, the keyboard will do the validation :
 
 1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
 2. if not contained a list submenu, the keyboard will call `getView()` method.
-<br>
-   <img src="assets/keyboard-submenu-addon-menu.webm" width="250"/>
-<br>
+
+![](https://user-images.githubusercontent.com/13946213/231961760-c8dceeb4-eb16-4b27-bc9f-b528d1a96856.gif)
+
 
 On development version, the download process skipped. And the add on package is just included when compile process.
 To make it ready to use on keyboard, add the menu to [this navigation list](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228).
 This below data should match with the add on when creating dynamic feature module.
-<br>
- <img src="assets/submenu-addon-dev.webm" width="250"/>
-<br>
+
+![](https://user-images.githubusercontent.com/13946213/231962118-89293765-bd8f-48fc-82d6-22ec7b97ce27.gif)

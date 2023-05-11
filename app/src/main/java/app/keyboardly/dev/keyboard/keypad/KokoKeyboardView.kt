@@ -270,8 +270,8 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.loadingOnInput(loading)
             }
 
-            override fun showTitleAboveList(show: Boolean, title: String?) {
-                container.showTitle(show, title)
+            override fun showTitleAboveList(show: Boolean, title: String?, asFooter: Boolean?) {
+                container.showTitle(show, title, asFooter)
             }
 
             override fun loadingMain(loading: Boolean) {
@@ -299,8 +299,8 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.viewList(onViewReady)
             }
 
-            override fun showFloatingRecyclerView(onViewReady: OnViewReady) {
-                container.viewFloatingRv(onViewReady)
+            override fun showFloatingRecyclerView(onViewReady: OnViewReady, inputMode: Boolean?) {
+                container.viewFloatingRv(onViewReady, inputMode)
             }
 
             override fun showMessageView(onViewMessageReady: OnViewMessage) {

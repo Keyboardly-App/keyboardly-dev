@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.keyboardly.sample.databinding.SampleFragmentSampleBinding
 
@@ -33,7 +34,11 @@ class SampleFragment : Fragment() {
                 listSubmenu.add(SubMenuModel("Shop"))
                 listSubmenu.add(SubMenuModel("Profile"))
                 adapter = SubMenuAdapter(listSubmenu){
-
+                    if (it==0){
+                        findNavController().navigate(
+                            SampleFragmentDirections.defaultToHome()
+                        )
+                    }
                 }
             }
         }
