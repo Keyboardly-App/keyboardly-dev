@@ -8,8 +8,10 @@ android {
     defaultConfig {
         minSdk rootProject.ext.minSdkVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "FEATURE_ID", "\"app.keyboardly.sample\""
-        buildConfigField "String", "FEATURE_NAME", "\"sample\""
+
+        buildConfigField "int", "ADD_ON_VERSION", "1"
+        buildConfigField "String", "ADD_ON_VERSION_NAME", "\"1.0\""
+        buildConfigField "String", "ADD_ON_ID", "\"sample\""
     }
 
     buildTypes {
@@ -42,16 +44,18 @@ dependencies {
 
     implementation "androidx.databinding:viewbinding:$view_binding_version"
     implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation 'androidx.annotation:annotation:1.5.0'
+    androidTestImplementation "androidx.annotation:annotation:$androidxAnnotationVersion"
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     implementation "com.jakewharton.timber:timber:5.0.1"
-    implementation "androidx.annotation:annotation:1.5.0"
+    implementation "androidx.annotation:annotation:$androidxAnnotationVersion"
 
     implementation "com.google.android.material:material:$materialVersion"
 
