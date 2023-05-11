@@ -40,7 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dynamicFeatures = [':addon:sample']
+    dynamicFeatures = [':addon:sample', ':sample123']
 
     packagingOptions{
 //        merge "META-INF/LICENSE"
