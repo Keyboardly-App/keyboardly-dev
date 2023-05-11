@@ -11,5 +11,16 @@
         android:id="@+id/default_nav"
         android:name="app.keyboardly.sample.app.SampleFragment"
         android:label="Sample Fragment"
+        tools:layout="@layout/sample_fragment_sample" >
+
+        <action
+            android:id="@+id/defaultToHome"
+            app:destination="@id/homeSample"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeSample"
+        android:name="app.keyboardly.sample.app.HomeSampleFragment"
+        android:label="Sample Fragment"
         tools:layout="@layout/sample_fragment_sample" />
 </navigation>
