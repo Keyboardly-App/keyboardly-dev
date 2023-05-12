@@ -11,6 +11,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
 - [Table of contents](#table-of-contents)
 - [Development](#development)
   * [Tools](#tools)
+  * [Register Add On](#register-add-on)
   * [Create Module](#create-module)
   * [Setup build.gradle](#setup-buildgradle)
   * [Setup Base Class](#setup-base-class)
@@ -69,6 +70,15 @@ Requires tools & config for development:
     </tr>
 </table>
 
+## Register Add On
+Before start developing `Add On`, developer must register the add on and claim module name id on Keyboardly's developer dasboard.
+1. Register on [dev.keyboardly.app](https://dev.keyboardly.app/) and verify.
+2. From the dashboard, click `Addons` menu on the left > click the `Create New` button.
+3. A dialog like below will appeared.
+![dashboard-create-add-on.png](assets/dashboard-create-add-on.png)
+> Note:
+> all module name of listed `Add On` should be unique to prevent crash / bug in the future. 
+
 ## Create Module
 
 To create an add on, start by create a dynamic feature module:
@@ -78,7 +88,7 @@ To create an add on, start by create a dynamic feature module:
 ![create-dynamic-feature-dialog.png](assets/create-dynamic-feature-dialog.png)
 
 > <b>Note:<b>
-> - the module name should be claimed on [Keyboardly Dev dashboard](https://dev.keyboardly.app)
+> - the module name should be registered on dashboard, explained on [above](#register-add-on).
 > - the package id should have prefix with `app.keyboardly.addon`
 
 On this dialog fill title and chose **on-demand only**
