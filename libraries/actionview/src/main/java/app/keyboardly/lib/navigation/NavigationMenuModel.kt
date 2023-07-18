@@ -20,5 +20,7 @@ data class NavigationMenuModel(
     /* feature package id for add on. example : com.abc.sample */
     val featurePackageId: String?=null,
     /* feature name id for add on. example : sample */
-    val featureNameId: String?=null
+    val featureNameId: String?=null,
+    /* type of action view, will show on top or not. default : false */
+    val topView: Boolean?=false
 )
