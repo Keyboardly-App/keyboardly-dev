@@ -62,10 +62,11 @@ class SampleDefaultClass(
 
         menu.add(
             NavigationMenuModel(
-                SETTING,
+                TOP_VIEW,
                 nameString = "Top View",
                 icon = R.drawable.sample_ic_round_settings_24_bot,
-                enable = true
+                enable = true,
+                topView = true
             )
         )
         menu.add(
@@ -79,10 +80,10 @@ class SampleDefaultClass(
     }
 
     override fun getSubmenus(): MutableList<NavigationMenuModel> {
-//        if (menu.isEmpty()) {
-//            initMenuList()
-//        }
-//        dependency.setNavigationCallback(this)
+        if (menu.isEmpty()) {
+            initMenuList()
+        }
+        dependency.setNavigationCallback(this)
         return menu
     }
 
@@ -93,14 +94,14 @@ class SampleDefaultClass(
             CAMPAIGN -> campaignActionView
             SHOPPING -> shoppingActionView
             WELCOME -> welcomeActionView
-            SETTING -> topActionView
+            TOP_VIEW -> topActionView
             else -> null
         }
 
         if (view != null) {
-            val mtopActionView = view.getTopActionView()
-            Timber.d("topview=$mtopActionView / view=$view")
-            if (mtopActionView !=null){
+            val isTopView = data.topView
+            Timber.d("topview=$isTopView / view=$view")
+            if (isTopView !=null && isTopView){
                 dependency.setTopActionView(view)
             } else {
                 dependency.setActionView(view)
@@ -119,6 +120,6 @@ class SampleDefaultClass(
         private const val CAMPAIGN = 2
         private const val SHOPPING = 3
         private const val WELCOME = 4
-        private const val SETTING = 5
+        private const val TOP_VIEW = 5
     }
 }
