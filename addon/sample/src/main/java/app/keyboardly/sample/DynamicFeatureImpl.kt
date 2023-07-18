@@ -48,10 +48,10 @@ class DynamicFeatureImpl @Inject constructor(
      * it's possible to be set to null, but don't empty View()
      */
     override fun getView(): View? {
-        return null //sampleView.getView()
+        return sampleView.getView()
     }
 
-    override fun getTopView(): View? = TopActionView(sampleView.dependency).getView()
+    override fun getTopView(): View? = null //TopActionView(sampleView.dependency).getView()
 
     /**
      * submenu of add on, list of NavigationMenuModel
