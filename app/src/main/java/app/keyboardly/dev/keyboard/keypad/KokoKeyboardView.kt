@@ -2,18 +2,22 @@ package app.keyboardly.dev.keyboard.keypad
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.os.IBinder
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnFocusChangeListener
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
+import androidx.core.view.isVisible
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.di.BaseComponent
 import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
@@ -35,6 +39,7 @@ import timber.log.Timber
  * https://github.com/RowlandOti/KokoKeyboard
  */
 open class KokoKeyboardView : ExpandableLayout {
+    private lateinit var mOptionsDialog: AlertDialog
     private var currentInputConnection: InputConnection? = null
     private lateinit var field: EditText
     private lateinit var keyboard: KeyboardLayout
@@ -139,18 +144,36 @@ open class KokoKeyboardView : ExpandableLayout {
             return
         }
         this.field = field
-        field.setRawInputType(InputType.TYPE_CLASS_TEXT)
+        if (type==InputType.TYPE_CLASS_TEXT) {
+            field.setRawInputType(InputType.TYPE_CLASS_TEXT)
+        }
         field.isSoundEffectsEnabled = false
         field.isLongClickable = false
         field.showSoftInputOnFocus = false
         val editorInfo = EditorInfo()
         currentEditorInfo = editorInfo
         currentInputConnection = field.onCreateInputConnection(editorInfo)
+        loadKeyboard(type, field)
+        field.setOnClickListener {
+            if (!isExpanded) {
+                expand()
+            }
+        }
+    }
+
+    fun loadKeyboard(type: Int, field: EditText) {
         keyboard = generateCorrectKeyboard(type, currentInputConnection!!)
         keyboards[field] = keyboard
         keyboards[field]?.registerListener(keyboardListener)
+        val focused = field.isVisible
+        Timber.d("focused="+focused)
+        if (focused) {
+            hideSoftKeyboard(field)
+            activeEditField = field
+            updateKeyboard()
+        }
         field.onFocusChangeListener = OnFocusChangeListener { _: View?, hasFocus: Boolean ->
-            Timber.i("has focus=$hasFocus")
+            Timber.i("field=${field.id} | has focus=$hasFocus")
             if (hasFocus) {
                 hideSoftKeyboard(field)
                 activeEditField = field
@@ -162,15 +185,11 @@ open class KokoKeyboardView : ExpandableLayout {
                             return@OnFocusChangeListener
                         }
                     }
-//                    collapse()
+    //                    collapse()
                 }
             }
         }
-        field.setOnClickListener {
-            if (!isExpanded) {
-                expand()
-            }
-        }
+
     }
 
     private fun updateKeyboard() {
@@ -250,6 +269,14 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.setActionView(view)
             }
 
+            override fun setTopActionView(view: KeyboardActionView) {
+                container.setTopActionView(view.getView())
+            }
+
+            override fun setTopActionView(view: View) {
+                container.setTopActionView(view)
+            }
+
             override fun showChipOptions(
                 list: MutableList<Chip>,
                 callback: ChipGroupCallBack,
@@ -286,12 +313,14 @@ open class KokoKeyboardView : ExpandableLayout {
                 hint: Int?,
                 inputType: Int?,
                 textWatcher: TextWatcher?,
-                onCloseSearch: () -> Unit?
+                onCloseSearch: () -> Unit?,
+                inputOnFloatingView: Boolean?
             ) {
                 if (longInput!=null && longInput){
                     container.requestInputLong(editTextTarget,inputPresenter,hint)
                 } else {
-                    container.requestInput(editTextTarget,enableInput,inputPresenter,hint, inputType, textWatcher, onCloseSearch)
+                    container.requestInput(editTextTarget,enableInput,inputPresenter,hint,
+                        inputType, textWatcher, onCloseSearch, inputOnFloatingView)
                 }
             }
 
@@ -299,7 +328,7 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.viewList(onViewReady)
             }
 
-            override fun showFloatingRecyclerView(onViewReady: OnViewReady, inputMode: Boolean?) {
+            override fun showTopRecyclerView(onViewReady: OnViewReady, inputMode: Boolean?) {
                 container.viewFloatingRv(onViewReady, inputMode)
             }
 
@@ -333,9 +362,36 @@ open class KokoKeyboardView : ExpandableLayout {
                 return isBorderMode
             }
 
+            override fun showDialog(dialog: AlertDialog) {
+                showOptionDialog(dialog)
+            }
+
+            override fun getDialogTheme(): Context {
+                return getContext()
+            }
+
+            override fun hideTopView() {
+                container.hideTopView()
+            }
+
         }
     }
 
+    open fun showOptionDialog(dialog: AlertDialog) {
+        val windowToken: IBinder? = frameKeyboard?.rootView?.windowToken
+        if (windowToken == null) {
+            Timber.e("window token null")
+            return
+        }
+        val window = dialog.window
+        val lp = window!!.attributes
+        lp.token = windowToken
+        lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG
+        window.attributes = lp
+        window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+        mOptionsDialog = dialog
+        dialog.show()
+    }
     private fun generateCorrectKeyboard(type: Int, ic: InputConnection): KeyboardLayout {
         keyboardManager = KeyboardManager(ic)
         var keypad = KeyboardLayout(context, keyboardManager)

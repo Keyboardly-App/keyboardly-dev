@@ -286,4 +286,26 @@ class KeyboardActionContainer(
     }
 
     private fun getLocale() = Locale.getDefault()
+
+
+
+    /**
+     * to set main keyboard view
+     * */
+    fun setTopActionView(view: View?) {
+        floatingRecyclerView.gone()
+        try {
+            floatingRoot.visible()
+            floatingFrame.removeAllViews()
+            floatingFrame.addView(view)
+            floatingFrame.visible()
+        } catch (e: Exception) {
+            toast("error:\n" + e.message)
+        }
+    }
+
+    fun hideTopView() {
+        floatingRoot.gone()
+        floatingFrame.gone()
+    }
 }

@@ -45,14 +45,40 @@ open class KeyboardInputManager(
         hint: Int? = null,
         inputType: Int? = null,
         textWatcher: TextWatcher? = null,
-        onClose: () -> Unit? = { }
+        onClose: () -> Unit? = { },
+        inputFloating: Boolean? = false
     ) {
 
         mPresenter = presenter
-        enableInput?.apply {
-            enableEditText(this)
+        if (inputFloating != null && inputFloating) {
+                val finalInputType = inputType ?: editTextTarget?.inputType
+                customEditorInfo = EditorInfo()
+                if (finalInputType != null) {
+                    customEditorInfo = EditorInfo()
+                    if (editTextTarget != null) {
+                        customEditorInfo?.inputType = editTextTarget.inputType
+                        customEditorInfo?.imeOptions = editTextTarget.imeOptions
+                        customEditorInfo?.hintText = editTextTarget.hint
+                        customEditorInfo?.actionId = editTextTarget.imeActionId
+                    }
+                    Timber.d("inputType=$inputType")
+//                    kokoKeyboardView.loadKeyboard(
+//                        inputType?: KokoKeyboardView.INPUT_TYPE_QWERTY, editTextTarget!!)
+                }
+                // check this for direct input
+            val customIC = editTextTarget?.onCreateInputConnection(customEditorInfo)
+            customIC?.apply {
+                setCustomInput(this)
+            }
+
+            setKeyboardViewAsRequired(inputType?:InputType.TYPE_CLASS_TEXT,null)
+
+        } else {
+            enableInput?.apply {
+                enableEditText(this)
+            }
+            requestInput(editTextTarget, hint, inputType, textWatcher, onClose)
         }
-        requestInput(editTextTarget, hint, inputType, textWatcher, onClose)
     }
 
     /**
@@ -145,7 +171,8 @@ open class KeyboardInputManager(
     private fun requestInput(
         editTextTarget: EditText?, hintResId: Int?, inputType: Int?,
         textWatcher: TextWatcher? = null,
-        onClose: () -> Unit?
+        onClose: () -> Unit?,
+        inputFloating: Boolean? = false
     ) {
 //        Timber.e("request input//%s", editTextTarget.getResources().getResourceName(editTextTarget.getId()));
         Timber.d("textwatcher=$textWatcher")

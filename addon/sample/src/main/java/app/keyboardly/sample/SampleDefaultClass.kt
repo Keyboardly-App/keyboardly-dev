@@ -8,6 +8,7 @@ import app.keyboardly.sample.action.campaign.CampaignActionView
 import app.keyboardly.sample.action.profile.WelcomeActionView
 import app.keyboardly.sample.action.register.RegisterActionView
 import app.keyboardly.sample.action.shopping.ShoppingActionView
+import app.keyboardly.sample.action.top.TopActionView
 import timber.log.Timber
 
 /**
@@ -21,6 +22,7 @@ class SampleDefaultClass(
     private val campaignActionView = CampaignActionView(dependency)
     private val shoppingActionView = ShoppingActionView(dependency)
     private val welcomeActionView = WelcomeActionView(dependency)
+    private val topActionView = TopActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
@@ -60,10 +62,10 @@ class SampleDefaultClass(
 
         menu.add(
             NavigationMenuModel(
-                5,
-                nameString = "Setting",
+                SETTING,
+                nameString = "Top View",
                 icon = R.drawable.sample_ic_round_settings_24_bot,
-                enable = false
+                enable = true
             )
         )
         menu.add(
@@ -77,24 +79,32 @@ class SampleDefaultClass(
     }
 
     override fun getSubmenus(): MutableList<NavigationMenuModel> {
-        if (menu.isEmpty()) {
-            initMenuList()
-        }
-        dependency.setNavigationCallback(this)
+//        if (menu.isEmpty()) {
+//            initMenuList()
+//        }
+//        dependency.setNavigationCallback(this)
         return menu
     }
 
     override fun onClickMenu(data: NavigationMenuModel) {
+        Timber.d("data="+data.featureNameId+"|id="+data.id)
         val view = when (data.id) {
             DISCOUNT -> discountView
             CAMPAIGN -> campaignActionView
             SHOPPING -> shoppingActionView
             WELCOME -> welcomeActionView
+            SETTING -> topActionView
             else -> null
         }
 
         if (view != null) {
-            dependency.setActionView(view)
+            val mtopActionView = view.getTopActionView()
+            Timber.d("topview=$mtopActionView / view=$view")
+            if (mtopActionView !=null){
+                dependency.setTopActionView(view)
+            } else {
+                dependency.setActionView(view)
+            }
         } else {
             if (!data.enable) {
                 toast("Feature on development")
@@ -109,5 +119,6 @@ class SampleDefaultClass(
         private const val CAMPAIGN = 2
         private const val SHOPPING = 3
         private const val WELCOME = 4
+        private const val SETTING = 5
     }
 }

@@ -20,6 +20,7 @@ import android.view.View
 import app.keyboardly.sample.di.DaggerDynamicComponent
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.lib.reflector.DynamicFeature
+import app.keyboardly.sample.action.top.TopActionView
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -47,8 +48,10 @@ class DynamicFeatureImpl @Inject constructor(
      * it's possible to be set to null, but don't empty View()
      */
     override fun getView(): View? {
-        return sampleView.getView()
+        return null //sampleView.getView()
     }
+
+    override fun getTopView(): View? = TopActionView(sampleView.dependency).getView()
 
     /**
      * submenu of add on, list of NavigationMenuModel

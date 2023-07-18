@@ -31,6 +31,12 @@
             app:layout_constraintHeight_default="wrap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <FrameLayout
+            android:id="@+id/floating_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <View

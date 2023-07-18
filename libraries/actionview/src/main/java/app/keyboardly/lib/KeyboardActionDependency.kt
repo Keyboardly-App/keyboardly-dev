@@ -1,5 +1,6 @@
 package app.keyboardly.lib
 
+import android.app.AlertDialog
 import android.content.Context
 import android.text.TextWatcher
 import android.view.View
@@ -144,6 +145,7 @@ interface KeyboardActionDependency {
      * @param inputType : input type to default edit text. if null input type from editTextTarget
      * @param textWatcher : for add listen text watcher
      * @param onCloseSearch : method that called when close on edit text main
+     * @param inputOnFloatingView : flag for input on view above keyboard
      */
     fun requestInput(
         editTextTarget: EditText? = null,
@@ -153,7 +155,8 @@ interface KeyboardActionDependency {
         hint: Int? = null,
         inputType: Int? = null,
         textWatcher: TextWatcher? = null,
-        onCloseSearch: () -> Unit? = {}
+        onCloseSearch: () -> Unit? = {},
+        inputOnFloatingView: Boolean? = false,
     )
 
     /**
@@ -172,7 +175,7 @@ interface KeyboardActionDependency {
      * if not keyboard layout will hide.
      * For input mode false, it's possible combine the view with function showTitleAboveList()
      */
-    fun showFloatingRecyclerView(onViewReady: OnViewReady, inputMode: Boolean?=true)
+    fun showTopRecyclerView(onViewReady: OnViewReady, inputMode: Boolean?=true)
 
 
     /**
@@ -202,5 +205,33 @@ interface KeyboardActionDependency {
      *  for check current keyboard border theme, is with border or not
      */
     fun isBorderMode(): Boolean
+
+    /**
+     * function to show an alert dialog from keyboard
+     */
+    fun showDialog(
+        dialog: AlertDialog
+    )
+
+    /**
+     * get context for dialog theme
+     */
+    fun getDialogTheme() : Context
+
+    /**
+     * hide top view, view above navigation keyboard like top recyclerview, top actionview
+     */
+    fun hideTopView()
+    /**
+     * set top view on keyboard layout like add on menu.
+     * @param view : should have parent KeyboardActionView
+     */
+    fun setTopActionView(view: KeyboardActionView)
+
+    /**
+     * set top view on keyboard layout like add on menu.
+     * @param view : should have parent KeyboardActionView
+     */
+    fun setTopActionView(view: View)
 
 }

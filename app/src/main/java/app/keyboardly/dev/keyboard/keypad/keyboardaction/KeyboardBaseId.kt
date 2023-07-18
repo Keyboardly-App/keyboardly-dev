@@ -39,6 +39,7 @@ open class KeyboardBaseId(
     val navigationParentLayout: LinearLayout = view.findViewById(R.id.navigation_parent)
     val floatingRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewScrollTop)
     val floatingRoot: RelativeLayout = view.findViewById(R.id.relativeLayoutRvTop)
+    val floatingFrame: FrameLayout = view.findViewById(R.id.floating_frame)
 
     /* ids for input layout */
     val defaultInputLayout: View = view.findViewById(R.id.default_input_layout)

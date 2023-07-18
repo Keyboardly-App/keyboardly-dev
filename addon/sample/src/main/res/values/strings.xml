@@ -11,5 +11,7 @@
     <string name="shopping">Shopping</string>
     <string name="voucher">Voucher</string>
     <string name="welcome">Welcome</string>
-    <string name="input_your_name">input your name</string>
+    <string name="input_your_name">input name</string>
+    <string name="top_view">Top View</string>
+    <string name="input_number">input number</string>
 </resources>

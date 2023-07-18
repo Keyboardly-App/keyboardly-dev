@@ -110,7 +110,7 @@ class CampaignActionView (
         if (list.isEmpty()) {
             floatingRv?.gone()
         } else {
-            dependency.showFloatingRecyclerView(object : OnViewReady {
+            dependency.showTopRecyclerView(object : OnViewReady {
                 override fun onRecyclerViewReady(recyclerView: RecyclerView) {
                     Timber.i("recyclerView="+recyclerView.isVisible)
                     recyclerView.apply {

@@ -25,7 +25,7 @@ There are several vocabularies that you have to know to this development.
     * [Long Text Request Input](#long-text-request-input)
     * [Chip Options](#chip-options)
     * [Date Picker](#date-picker)
-    * [Floating RecyclerView](#floating-recyclerview)
+    * [Top RecyclerView](#top-recyclerview)
     * [RecyclerView Options](#recyclerview-options)
 - [Submenu Add On Navigation](#submenu-add-on-navigation)
 
@@ -265,6 +265,26 @@ it should do login first before can access all the menu of add on.
         <td>-</td>
         <td>move back to current view KeyboardActionView. Usually this function will called after call requestInput() function or something else</td>
     </tr>
+    <tr>
+        <td>showDialog()</td>
+        <td>-</td>
+        <td>function to show an alert dialog from keyboard</td>
+    </tr>
+    <tr>
+        <td>hideTopView()</td>
+        <td>-</td>
+        <td>function to hide view above keyboard, like</td>
+    </tr>
+    <tr>
+        <td>setTopActionView(view: KeyboardActionView)</td>
+        <td>-</td>
+        <td>set top view on keyboard layout, like add on menu.</td>
+    </tr>
+    <tr>
+        <td>setTopActionView(view: View?)</td>
+        <td>-</td>
+        <td>set top view on keyboard layout, like add on menu.</td>
+    </tr>
 </table>
 
 ## Keyboard Navigation
@@ -279,7 +299,7 @@ If new add on installed, the logo will appear on this list keyboard navigation.
 </p>
 
 ## Request Input
-`Request Input` mean an activity inside `KeyboardActionView` to request input value like text and can be configured with options view like chip group, date picker, recyclerview, floating recyclerview.
+`Request Input` mean an activity inside `KeyboardActionView` to request input value like text and can be configured with options view like chip group, date picker, recyclerview, top recyclerview.
 
 ### Default Request Input
 The default request input is for short text that fit on single line. <br>
@@ -311,13 +331,13 @@ Just like `Chip Options`, a KeyboardActionView can request input date via [Keybo
 </p>
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L49)
 
-### Floating RecyclerView
-A recyclerview options that show like floating on above keyboard navigation, usually use when on input mode for quick search.
+### Top RecyclerView
+A recyclerview options that show on top keyboard navigation, usually used when on input mode for quick search.
 <p align="center">
     <img src="assets/floating-recyclerview.png" width="250">
 </p>
 <br>
-To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)` and combine it with `requestInput(...)` function.
+To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showTopRecyclerView(...)` and combine it with `requestInput(...)` function.
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/campaign/CampaignActionView.kt#L109)
 
 ### RecyclerView Options
@@ -326,7 +346,7 @@ Recyclerview options is that appeared on keyboard area and can can be modify the
     <img src="assets/recyclerview-options-title.png" width="250">
 </p>
 <br>
-To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showFloatingRecyclerView(...)` and can be configured with title by `showTitleAboveList()`
+To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showTopRecyclerView(...)` and can be configured with title by `showTitleAboveList()`
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/shopping/ShoppingActionView.kt#L61)
 
 ## Submenu Add On Navigation
@@ -344,7 +364,8 @@ On production version, after the user installs an **Add On**, an icon will appea
 If the user clicks the icon, the keyboard will do the validation :
 
 1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
-2. if not contained a list submenu, the keyboard will call `getView()` method.
+2. if not contained a list submenu, the keyboard will call `getTopView()` method.
+2. if topView return null, then keyboard will call `getView()` method.
 
 ![](https://user-images.githubusercontent.com/13946213/231961760-c8dceeb4-eb16-4b27-bc9f-b528d1a96856.gif)
 

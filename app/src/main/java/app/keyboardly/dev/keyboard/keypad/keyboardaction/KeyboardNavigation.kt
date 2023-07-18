@@ -27,8 +27,8 @@ open class KeyboardNavigation(
 ) : KeyboardBaseId(view), NavigationCallback {
 
     private var adapterNavigation: NavigationMenuAdapter? = null
-    var defaultHeader: Boolean = true
-    var subMenuAddOnActive: Boolean = false
+    private var defaultHeader: Boolean = true
+    private var subMenuAddOnActive: Boolean = false
     var textWatcher: TextWatcher? = null
 
     fun Int.toPx(): Int = (this * view.context.resources.displayMetrics.density).toInt()
@@ -51,8 +51,6 @@ open class KeyboardNavigation(
      * to set main keyboard view
      * */
     open fun setActionView(view: View?) {
-        /*floatingRoot.gone()
-        floatingRecyclerView.gone()*/
         try {
             frame.removeAllViews()
             frame.addView(view)
@@ -67,7 +65,6 @@ open class KeyboardNavigation(
      * called after data input or other
      */
     fun viewLayoutAction() {
-//        if (!frame.isVisible || !keyboardActionWrapper.isVisible) {
         goneOptionsView()
         defaultInputLayout.gone()
         mainHeader.gone()
@@ -80,18 +77,8 @@ open class KeyboardNavigation(
         frame.invalidate()
         keyboardActionWrapper.visible()
         resetInputConnection()
-//        reInputFlag = false
-//        Timber.d("header shadow=${headerShadowAction.isVisible}")
-//        Timber.d("header wrapper=${headerWrapper.isVisible}")
-//        Timber.d("nav parent=${navigationParentLayout.isVisible}")
-//        Timber.d("mainHeader=${mainHeader.isVisible}")
-//        Timber.d("frame=${frame.isVisible}")
-//        Timber.d("keyboard action=${keyboardActionWrapper.isVisible}")
         // reset keyboard to alphabet
         Timber.i("----------keyboard switcher back to action---")
-//        } else {
-//            Timber.e("frame is currently visible")
-//        }
     }
 
     private fun resetInputConnection() {
@@ -113,7 +100,6 @@ open class KeyboardNavigation(
                 RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 200.toPx())
             floatingRecyclerView.layoutParams = layoutParams
         } else {
-            floatingRoot.gone()
             floatingRecyclerView.gone()
         }
         recyclerView.gone()
@@ -157,7 +143,7 @@ open class KeyboardNavigation(
         }
     }
 
-    private fun toast(message: String) {
+    fun toast(message: String) {
         Toast.makeText(view.context, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -175,8 +161,11 @@ open class KeyboardNavigation(
                     // if submenu empty, load the view
                     // get view from add on
                     val view = dynamicModule.getView()
-                    Timber.d("view=$view")
-                    if (view != null) {
+                    val topView = dynamicModule.getTopView()
+                    Timber.d("top view=$topView | view=$view")
+                    if (topView != null) {
+                        KokoKeyboardView.dependency?.setTopActionView(topView)
+                    } else if (view != null) {
                         KokoKeyboardView.dependency?.setActionView(view)
                     } else {
                         Timber.e("nothing to do.")
@@ -319,7 +308,7 @@ open class KeyboardNavigation(
     fun viewAddOnSubmenuNavigation() {
         defaultInputLayout.gone()
         mainHeader.gone()
-        floatingRoot.gone()
+//        floatingRoot.gone()
         keyboardActionWrapper.gone()
         frame.removeAllViews()
         navigationParentLayout.visible()
@@ -343,7 +332,7 @@ open class KeyboardNavigation(
         defaultInputLayout.gone()
         mainHeader.gone()
 //            titleHeader.gone()
-        floatingRoot.gone()
+//        floatingRoot.gone()
         keyboardActionWrapper.gone()
         frame.removeAllViews()
 

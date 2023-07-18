@@ -147,7 +147,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
    - located in the root module
    - see example : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultClass.kt).
 
-> An add on can configured with empty submenus and with a default view, or with some submenus without default view.
+> An add on can configured with empty submenus and with a top view / default action view, or with some submenus without default view.
 > If an add on not contain a default view or submenus, the add on will not work.
 
 2. DynamicDagger class
@@ -164,8 +164,9 @@ After setup dependencies, We need to create some kotlin class with requirements:
    - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
      note:
 
-> On DynamicFeatureImpl class, there is 2 override methods:
+> On DynamicFeatureImpl class, there is 3 override methods:
 > <br> - `getView()`  : will be used for return view.
+> <br> - `getTopView()`  : will be used for top view (nullable)
 > <br> - `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
 
 4. Start build your own feature by `KeyboardActionView` class.

@@ -9,6 +9,7 @@ import app.keyboardly.lib.navigation.NavigationMenuModel
  */
 interface DynamicFeature {
     fun getView() : View?
+    fun getTopView() : View?
     fun getSubMenus(): MutableList<NavigationMenuModel>
 
     /**
