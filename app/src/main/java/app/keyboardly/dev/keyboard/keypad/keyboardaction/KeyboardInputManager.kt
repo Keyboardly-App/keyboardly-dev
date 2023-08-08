@@ -10,9 +10,9 @@ import android.widget.EditText
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.keypad.KokoKeyboardView
 import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
-import app.keyboardly.dev.keyboard.utils.gone
-import app.keyboardly.dev.keyboard.utils.invisible
-import app.keyboardly.dev.keyboard.utils.visible
+import app.keyboardly.style.helper.gone
+import app.keyboardly.style.helper.invisible
+import app.keyboardly.style.helper.visible
 import app.keyboardly.lib.helper.InputPresenter
 import timber.log.Timber
 

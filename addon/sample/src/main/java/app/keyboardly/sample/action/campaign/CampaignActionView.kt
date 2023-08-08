@@ -7,7 +7,7 @@ import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.keyboardly.dev.keyboard.utils.gone
+import app.keyboardly.style.helper.gone
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.helper.InputPresenter

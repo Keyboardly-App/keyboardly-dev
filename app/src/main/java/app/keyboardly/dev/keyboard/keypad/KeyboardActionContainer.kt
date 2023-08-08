@@ -8,9 +8,9 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.dev.keyboard.keypad.keyboardaction.KeyboardInputManager
 import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
-import app.keyboardly.dev.keyboard.utils.gone
-import app.keyboardly.dev.keyboard.utils.invisible
-import app.keyboardly.dev.keyboard.utils.visible
+import app.keyboardly.style.helper.gone
+import app.keyboardly.style.helper.invisible
+import app.keyboardly.style.helper.visible
 import app.keyboardly.lib.helper.ChipGroupCallBack
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.helper.OnViewMessage
