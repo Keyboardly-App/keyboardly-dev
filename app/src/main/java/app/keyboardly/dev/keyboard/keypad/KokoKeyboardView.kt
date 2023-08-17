@@ -257,6 +257,10 @@ open class KokoKeyboardView : ExpandableLayout {
                 currentInputConnection?.commitText(text, text.length)
             }
 
+            override fun commitTextToApp(text: String) {
+                currentInputConnection?.commitText(text, text.length)
+            }
+
             override fun setTextWatcher(textWatcher: TextWatcher) {
                 container.textWatcher = textWatcher
             }
@@ -362,6 +366,10 @@ open class KokoKeyboardView : ExpandableLayout {
                 return isBorderMode
             }
 
+            override fun updateSuggestionOnInput(words: String, isDone: Boolean?) {
+
+            }
+
             override fun showDialog(dialog: AlertDialog) {
                 showOptionDialog(dialog)
             }
@@ -372,6 +380,10 @@ open class KokoKeyboardView : ExpandableLayout {
 
             override fun hideTopView() {
                 container.hideTopView()
+            }
+
+            override fun resetInputConnection() {
+                TODO("Not yet implemented")
             }
 
         }

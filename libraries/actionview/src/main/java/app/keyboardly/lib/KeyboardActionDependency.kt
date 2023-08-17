@@ -58,6 +58,12 @@ interface KeyboardActionDependency {
      */
     fun commitText(text: String)
 
+
+    fun commitTextToApp(text: String)
+
+
+    fun updateSuggestionOnInput(words: String, isDone: Boolean?=false)
+
     /**
      * loading view on submit icon default input
      */
@@ -217,6 +223,8 @@ interface KeyboardActionDependency {
      * get context for dialog theme
      */
     fun getDialogTheme() : Context
+
+    fun resetInputConnection()
 
     /**
      * hide top view, view above navigation keyboard like top recyclerview, top actionview
