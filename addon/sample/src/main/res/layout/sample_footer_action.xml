@@ -20,14 +20,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/footer_submit_button"
-        style="@style/DefaultButtonAppCompat"
+        style="@style/DefaultButtonAppearance"
         android:layout_width="0dp"
         android:layout_weight="8"
         android:gravity="center"
         android:paddingBottom="0dp"
         android:paddingTop="0dp"
         android:layout_gravity="center_vertical"
-        android:layout_height="35dp"
         android:text="@string/submit" />
 
 
