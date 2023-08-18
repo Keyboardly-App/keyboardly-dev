@@ -18,7 +18,7 @@ class SampleDefaultClass(
     dependency: KeyboardActionDependency
 ) : DefaultClass(dependency), NavigationCallback {
 
-    private val discountView = RegisterActionView(dependency)
+    private val registerView = RegisterActionView(dependency)
     private val campaignActionView = CampaignActionView(dependency)
     private val shoppingActionView = ShoppingActionView(dependency)
     private val welcomeActionView = WelcomeActionView(dependency)
@@ -90,7 +90,7 @@ class SampleDefaultClass(
     override fun onClickMenu(data: NavigationMenuModel) {
         Timber.d("data="+data.featureNameId+"|id="+data.id)
         val view = when (data.id) {
-            DISCOUNT -> discountView
+            DISCOUNT -> registerView
             CAMPAIGN -> campaignActionView
             SHOPPING -> shoppingActionView
             WELCOME -> welcomeActionView
