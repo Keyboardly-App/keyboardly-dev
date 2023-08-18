@@ -366,10 +366,6 @@ open class KokoKeyboardView : ExpandableLayout {
                 return isBorderMode
             }
 
-            override fun updateSuggestionOnInput(words: String, isDone: Boolean?) {
-
-            }
-
             override fun showDialog(dialog: AlertDialog) {
                 showOptionDialog(dialog)
             }
@@ -383,7 +379,7 @@ open class KokoKeyboardView : ExpandableLayout {
             }
 
             override fun resetInputConnection() {
-                TODO("Not yet implemented")
+                keyboardManager.resetInputConnection()
             }
 
         }
