@@ -15,6 +15,9 @@ abstract class ClipboardDao : BaseDao<ClipboardData> {
     @androidx.room.Transaction
     @Query("SELECT * from table_clipboard ORDER BY id DESC")
     abstract fun getClipboards(): MutableList<ClipboardData>?
+    @androidx.room.Transaction
+    @Query("SELECT * from table_clipboard WHERE path IS NULL ORDER BY id DESC")
+    abstract fun getClipboardsText(): MutableList<ClipboardData>?
 
     @androidx.room.Transaction
     @Query("SELECT * from table_clipboard where text=:string LIMIT 1")

@@ -7,10 +7,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.widget.EditText
-import app.keyboardly.lib.helper.ChipGroupCallBack
-import app.keyboardly.lib.helper.InputPresenter
-import app.keyboardly.lib.helper.OnViewMessage
-import app.keyboardly.lib.helper.OnViewReady
+import app.keyboardly.lib.helper.*
 import com.google.android.material.chip.Chip
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
@@ -58,11 +55,7 @@ interface KeyboardActionDependency {
      */
     fun commitText(text: String)
 
-
     fun commitTextToApp(text: String)
-
-
-    fun updateSuggestionOnInput(words: String, isDone: Boolean?=false)
 
     /**
      * loading view on submit icon default input
@@ -212,6 +205,7 @@ interface KeyboardActionDependency {
      */
     fun isBorderMode(): Boolean
 
+
     /**
      * function to show an alert dialog from keyboard
      */
@@ -224,12 +218,12 @@ interface KeyboardActionDependency {
      */
     fun getDialogTheme() : Context
 
-    fun resetInputConnection()
-
     /**
      * hide top view, view above navigation keyboard like top recyclerview, top actionview
      */
     fun hideTopView()
+
+    fun resetInputConnection()
     /**
      * set top view on keyboard layout like add on menu.
      * @param view : should have parent KeyboardActionView

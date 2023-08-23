@@ -31,6 +31,6 @@
 
         <attr name="darkMode" format="boolean" />
         <attr name="borderMode" format="boolean" />
-
+        <attr name="brandColor" format="color" />
     </declare-styleable>
 </resources>

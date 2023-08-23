@@ -21,6 +21,10 @@ abstract class AddOnDao : BaseDao<AddOnModel> {
     abstract fun getInstalledById(id: Int): AddOnModel?
 
     @androidx.room.Transaction
+    @Query("SELECT * from table_addon where id=:id")
+    abstract fun getAddOnById(id: Int): AddOnModel?
+
+    @androidx.room.Transaction
     @Query("SELECT * from table_addon")
     abstract fun getAddOn(): MutableList<AddOnModel>?
 

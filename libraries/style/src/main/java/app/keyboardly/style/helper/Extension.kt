@@ -22,6 +22,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Fade
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
@@ -186,7 +188,7 @@ fun Context.getImageToShare(bitmap: Bitmap, fileName: String): Uri? {
         outputStream.close()
         uri = FileProvider.getUriForFile(
             this.applicationContext,
-            "com.qodrbee.woowaboard.provider",
+            "app.keyboardly.android.provider",
             file
         )
     } catch (e: java.lang.Exception) {
@@ -271,27 +273,27 @@ fun TextView.enableCopyPaste() {
 
 fun showToast(context: Context, message: String) {
     try {
-        val inflater = LayoutInflater.from(context)
-        val layout: View = inflater.inflate(
-            R.layout.woowa_custom_toast, null
-        )
-
-        // set the text of the TextView of the message
-        val textView = layout.findViewById<TextView>(R.id.toast_text)
-        val imageView = layout.findViewById<ImageView>(R.id.toast_left_color)
-        textView.text = message
-
-        val lowercase = message.lowercase()
-        if (isNegativeToastMessage(lowercase)) {
-            imageView.setImageDrawable(
-                ContextCompat.getDrawable(
-                    context, R.drawable.toast_left_error
-                )
-            )
-        }
-
         // use the application extension function
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            val inflater = LayoutInflater.from(context)
+            val layout: View = inflater.inflate(
+                R.layout.keyboardly_custom_toast, null
+            )
+
+            // set the text of the TextView of the message
+            val textView = layout.findViewById<TextView>(R.id.toast_text)
+            val imageView = layout.findViewById<ImageView>(R.id.toast_left_color)
+            textView.text = message
+
+            val lowercase = message.lowercase()
+            if (isNegativeToastMessage(lowercase)) {
+                imageView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context, R.drawable.toast_left_error
+                    )
+                )
+            }
+
             Toast(context).apply {
                 duration = Toast.LENGTH_SHORT
                 view = layout
@@ -317,27 +319,27 @@ fun showToastLong(context: Context, messageResId: Int) {
 
 fun showToastLong(context: Context, message: String) {
     try {
-        val inflater = LayoutInflater.from(context)
-        val layout: View = inflater.inflate(
-            R.layout.woowa_custom_toast, null
-        )
-
-        // set the text of the TextView of the message
-        val textView = layout.findViewById<TextView>(R.id.toast_text)
-        val imageView = layout.findViewById<ImageView>(R.id.toast_left_color)
-        textView.text = message
-
-        val lowercase = message.lowercase()
-        if (isNegativeToastMessage(lowercase)
-        ) {
-            imageView.setImageDrawable(
-                ContextCompat.getDrawable(
-                    context, R.drawable.toast_left_error
-                )
-            )
-        }
         // use the application extension function
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            val inflater = LayoutInflater.from(context)
+            val layout: View = inflater.inflate(
+                R.layout.keyboardly_custom_toast, null
+            )
+
+            // set the text of the TextView of the message
+            val textView = layout.findViewById<TextView>(R.id.toast_text)
+            val imageView = layout.findViewById<ImageView>(R.id.toast_left_color)
+            textView.text = message
+
+            val lowercase = message.lowercase()
+            if (isNegativeToastMessage(lowercase)
+            ) {
+                imageView.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context, R.drawable.toast_left_error
+                    )
+                )
+            }
             Toast(context).apply {
                 duration = Toast.LENGTH_LONG
                 @Suppress("DEPRECATION")
@@ -360,4 +362,13 @@ fun isOnlyLetters(word: String): Boolean {
     /* letter a-z and A-Z and white space */
     val regex = "^[A-Za-z0-9 ,.]*$".toRegex()
     return regex.matches(word)
+}
+
+fun RecyclerView.smoothSnapToPosition(position: Int, snapMode: Int = LinearSmoothScroller.SNAP_TO_START) {
+    val smoothScroller = object : LinearSmoothScroller(this.context) {
+        override fun getVerticalSnapPreference(): Int = snapMode
+        override fun getHorizontalSnapPreference(): Int = snapMode
+    }
+    smoothScroller.targetPosition = position
+    layoutManager?.startSmoothScroll(smoothScroller)
 }

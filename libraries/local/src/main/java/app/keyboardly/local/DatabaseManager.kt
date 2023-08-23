@@ -19,9 +19,9 @@ class DatabaseManager private constructor(
 
     companion object {
         @Volatile
-        private var INSTANCE: DatabaseManager? = null
+        var INSTANCE: DatabaseManager? = null
 
-        val MIGRATION_10_11: Migration = object : Migration(10, 11) {
+        private val MIGRATION_10_11: Migration = object : Migration(10, 11) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 // Create the new table
                 database.execSQL("CREATE TABLE IF NOT EXISTS table_addon (" +

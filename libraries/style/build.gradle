@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdk 21
-        targetSdk 33
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -34,14 +34,15 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.core:core-splashscreen:1.0.1'
 
-    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.core:core-ktx:$androidCoreVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "com.google.android.material:material:$materialVersion"
+    implementation "com.google.android.material:material:$material_version"
 
     implementation "com.jakewharton.threetenabp:threetenabp:1.2.4"
 
     //scalable dp
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
-    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation "com.intuit.sdp:sdp-android:$intuit_version"
+    implementation "com.intuit.ssp:ssp-android:$intuit_version"
 }

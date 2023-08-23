@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-
     <style name="KeyboardTheme">
         <item name="actionKeyboardStyle">@style/ActionKeyboardStyle</item>
         <item name="textActionKeyboardStyle">@style/TextActionKeyboardStyle</item>
@@ -14,6 +13,7 @@
         <!-- calculator style -->
         <item name="darkMode">false</item>
         <item name="borderMode">false</item>
+        <item name="brandColor" >@color/brand_color</item>
     </style>
 
     <style name="KeyboardTheme.Dark">
@@ -28,6 +28,7 @@
         <!-- calculator style -->
         <item name="darkMode">true</item>
         <item name="borderMode">false</item>
+        <item name="brandColor" >@color/brand_color</item>
     </style>
 
     <style name="TitleNavigationStyle" parent="TextAppearance.AppCompat.Small">
@@ -50,7 +51,7 @@
         <item name="hintTextColor">@color/grey_500</item>
         <item name="android:textColorHint">@color/grey_500</item>
         <item name="boxStrokeWidth">1dp</item>
-        <item name="boxStrokeColor">@color/green_default</item>
+        <item name="boxStrokeColor">@color/brand_color</item>
         <item name="android:background">#00000000</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
@@ -58,14 +59,14 @@
 
 
     <style name="InputHintStyle" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">@color/green_default</item>
+        <item name="android:textColor">@color/brand_color</item>
         <item name="fontFamily">@font/inter_medium</item>
         <item name="android:textSize">10sp</item>
         <item name="android:paddingStart">5dp</item>
         <item name="android:paddingEnd">5dp</item>
     </style>
 
-    <style name="ActionKeyboardStyle" parent="Theme.WooBoard">
+    <style name="ActionKeyboardStyle" parent="KeyboardlyTheme">
         <item name="android:background">@drawable/keyboard_background_light</item>
         <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
@@ -79,14 +80,14 @@
     </style>
 
     <style
-        name="FooterActionKeyboardStyle" parent="Theme.WooBoard">
-        <item name="android:background">@drawable/keyboard_background_lightest</item>
+        name="FooterActionKeyboardStyle" parent="KeyboardlyTheme">
+        <item name="android:background">@drawable/keyboard_background_light</item>
         <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
-    <style name="FooterActionKeyboardStyle.Dark" parent="Theme.WooBoard">
-        <item name="android:background">@drawable/keyboard_background_darkest</item>
+    <style name="FooterActionKeyboardStyle.Dark" parent="KeyboardlyTheme">
+        <item name="android:background">@drawable/keyboard_background_dark</item>
         <item name="android:textAppearance">@style/TextActionKeyboardStyle</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
@@ -111,7 +112,7 @@
     </style>
 
     <style
-        name="ActionKeyboardStyle.Dark" parent="Theme.WooBoard.Dark">
+        name="ActionKeyboardStyle.Dark" parent="KeyboardlyTheme.Dark">
         <item name="cardBackgroundColor">@color/grey_700</item>
         <item name="android:background">@color/grey_700</item>
         <item name="android:textAppearance">@style/TextActionKeyboardStyle.Dark</item>

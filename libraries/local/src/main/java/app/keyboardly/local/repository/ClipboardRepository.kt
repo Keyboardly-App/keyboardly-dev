@@ -30,7 +30,16 @@ class ClipboardRepository(
         return dao.getClipboards()
     }
 
+    fun getClipBoardsTextOnly(): MutableList<ClipboardData>? {
+        return dao.getClipboardsText()
+    }
+
     fun isNotInsertedYet(data: ClipboardData): Boolean {
         return dao.isSaved(data.text.toString()) == null
+    }
+
+    fun updateAsLatest(data: ClipboardData){
+        dao.delete(data)
+        insert(ClipboardData(0, data.text, data.path))
     }
 }

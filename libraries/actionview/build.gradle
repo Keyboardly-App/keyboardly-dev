@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk rootProject.ext.targetSdkVersion
 
     defaultConfig {
-        minSdk 21
-        targetSdk 33
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -30,17 +30,24 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    packagingOptions {
+        resources {
+            pickFirsts += ['META-INF/DEPENDENCIES']
+        }
+    }
     namespace 'app.keyboardly.actionview'
 }
 
 dependencies {
     implementation project(":libraries:style")
-    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.core:core-ktx:$androidCoreVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "com.google.android.material:material:$materialVersion"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.core:core-ktx:$androidCoreVersion"
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.test.ext:junit:$jUnitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
 
     //photo viewer

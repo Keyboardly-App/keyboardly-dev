@@ -149,6 +149,17 @@ fun toReadableDay(date: String): String {
 }
 
 @SuppressLint("SimpleDateFormat")
+fun toDate(date: String): Date? {
+    val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    return try {
+        val dates = formatter.parse(date) as Date
+        dates
+    }catch (e: Exception){
+        null
+    }
+}
+
+@SuppressLint("SimpleDateFormat")
 fun toReadableDayFromStrip(date: String): String {
     val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     val dates = formatter.parse(date) as Date
@@ -255,74 +266,6 @@ fun getCurrentMonth(): String {
 }
 
 @SuppressLint("SimpleDateFormat")
-fun getCurrentHour(): String {
-    val current = Calendar.getInstance()
-    val timeToCheck = GregorianCalendar()
-    timeToCheck.time = current.time
-
-    return when (timeToCheck[GregorianCalendar.HOUR_OF_DAY]) {
-        in 0..2 -> {
-            "00"
-        }
-        in 3..5 -> {
-            "03"
-        }
-        in 6..8 -> {
-            "06"
-        }
-        in 9..11 -> {
-            "09"
-        }
-        in 12..14 -> {
-            "12"
-        }
-        in 15..17 -> {
-            "15"
-        }
-        in 18..20 -> {
-            "18"
-        }
-        else -> {
-            "21"
-        }
-    }
-}
-
-@SuppressLint("SimpleDateFormat")
-fun getCurrentHourMinuteForWeather(): String {
-    val current = Calendar.getInstance()
-    val timeToCheck = GregorianCalendar()
-    timeToCheck.time = current.time
-
-    return when (timeToCheck[GregorianCalendar.HOUR_OF_DAY]) {
-        in 0..2 -> {
-            "00:00:00"
-        }
-        in 3..5 -> {
-            "03:00:00"
-        }
-        in 6..8 -> {
-            "06:00:00"
-        }
-        in 9..11 -> {
-            "09:00:00"
-        }
-        in 12..14 -> {
-            "12:00:00"
-        }
-        in 15..17 -> {
-            "15:00:00"
-        }
-        in 18..20 -> {
-            "18:00:00"
-        }
-        else -> {
-            "21:00:00"
-        }
-    }
-}
-
-@SuppressLint("SimpleDateFormat")
 fun getCurrentMonthYear(): String {
     val locale = getLocale()
     val newFormat = SimpleDateFormat("yyyy-MM", locale)
@@ -402,14 +345,6 @@ fun toBoolean(isDeleted: Int): Boolean {
     return when (isDeleted) {
         1 -> true
         else -> false
-    }
-}
-
-fun toIndonesiaCountryCallingCode(phoneNumber: String): String {
-    return when {
-        phoneNumber.startsWith("0") -> phoneNumber.replaceFirst("0", "+62")
-        phoneNumber.startsWith("62") -> phoneNumber.replaceFirst("62", "+62")
-        else -> phoneNumber
     }
 }
 

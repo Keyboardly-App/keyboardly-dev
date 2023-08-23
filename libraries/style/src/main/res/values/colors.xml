@@ -26,7 +26,7 @@
     <color name="key_text_inactive_color_lxx_light">#B337474F</color>
     <color name="key_hint_letter_color_lxx_light">#B337474F</color>
     <color name="language_on_spacebar_text_color_lxx_light">#B337474F</color>
-    <color name="sliding_key_input_preview_color_lxx_light">@color/green_default</color>
+    <color name="sliding_key_input_preview_color_lxx_light">@color/brand_color</color>
     <color name="key_background_pressed_lxx_light">#2637474F</color>
     <!-- Color resources for LXX_Dark theme.
          10%:0x19 50%:0x80 70%:0xB3 75%:0xC0 80%:0xCC 85%:0xD9 90%:0xE6  -->
@@ -41,6 +41,9 @@
     <color name="key_background_dark_pressed">#202020</color>
 
     <color name="orange_200">#F2A229</color>
+    <color name="blue_overlay">#261976D2</color>
+
+    <color name="brand_color">#06c149</color>
     <color name="green_light">#e7faeb</color>
 
     <color name="green_default">#06c149</color>
@@ -56,6 +59,8 @@
     <color name="grey_500">#828282</color>
     <color name="grey_600">#5C5C5C</color>
     <color name="grey_700">#333333</color>
+    <color name="grey_900">#1E1E1E</color>
+    <color name="grey_a_50">#80000000</color>
     <color name="deep_blue_100">#004378</color>
     <color name="deep_blue">#004175</color>
     <color name="blue">#2D9CDB</color>

@@ -11,13 +11,13 @@ import java.io.Serializable
 @Entity(tableName = "table_addon")
 data class AddOnModel(
     @PrimaryKey
-    val id: Int,
-    val featureNameId: String,
-    val name: String,
-    val description: String,
-    val developer: String,
-    val linkDetail: String,
-    val iconUrl: String,
+    val id: Int=0,
+    val featureNameId: String = "",
+    val name: String = "",
+    val description: String = "",
+    val developer: String = "",
+    val linkDetail: String = "",
+    val iconUrl: String = "",
     val price: Int?=0,
     val featurePackageId: String?=null,
     val developerLink: String?=null,
@@ -26,7 +26,13 @@ data class AddOnModel(
     val authorLink: String?=null,
     val termLink: String?=null,
     val privacyLink: String?=null,
-    var installed: Boolean?=false
+    var installed: Boolean?=false,
+    var thumbnail: List<Thumbnail>?=null,
+    var versionName: String?="",
+    var versionCode: Int?=0,
+    var versionInstalled: Int?=0,
+    var versionNameInstalled: String?="",
+    var versionBaseMinimum: Int=0,
 ) : Serializable {
 
     fun mapToNavigationModel() : NavigationMenuModel {

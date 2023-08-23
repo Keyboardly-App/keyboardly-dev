@@ -15,7 +15,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/actionview" />
+            <option value="$PROJECT_DIR$/libraries/base" />
             <option value="$PROJECT_DIR$/libraries/local" />
+            <option value="$PROJECT_DIR$/libraries/network" />
             <option value="$PROJECT_DIR$/libraries/style" />
           </set>
         </option>
