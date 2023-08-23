@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="DefaultTextInputStyle" parent="Widget.Design.TextInputLayout">
+        <item name="hintTextColor">@color/grey_500</item>
+        <item name="android:textColorHint">@color/grey_500</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeColor">@color/brand_color</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+</resources>
