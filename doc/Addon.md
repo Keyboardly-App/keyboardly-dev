@@ -123,6 +123,14 @@ android{
         viewBinding true
     }
 
+    buildTypes {
+        release {
+            minifyEnabled false
+            // proguardFile's configuration like below should be removed
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
 }
 
 dependencies {
