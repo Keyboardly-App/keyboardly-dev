@@ -71,7 +71,7 @@ Requires tools & config for development:
 </table>
 
 ## Register Add On
-Before start developing `Add On`, developer must register the add on and claim module name id on Keyboardly's developer dasboard.
+Before start developing `Add On`, developer must register the add on and claim module name id on Keyboardly's developer dashboard.
 1. Register on [dev.keyboardly.app](https://dev.keyboardly.app/) and verify.
 2. From the dashboard, click `Addons` menu on the left > click the `Create New` button.
 3. A dialog like below will appeared.
@@ -145,6 +145,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
 }
 ```
+> take attention on proguardFile's configuration, it should be commented / removed.
 
 ## Setup Base Class
 
