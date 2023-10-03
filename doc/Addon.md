@@ -110,7 +110,6 @@ android{
 compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         minSdk rootProject.ext.minSdkVersion
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // information for versioning
         buildConfigField "int", "ADD_ON_VERSION", "1" // always increase it on update
