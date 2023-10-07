@@ -23,6 +23,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
   * [Proguard rules](#proguard-rules)
   * [Testing](#testing)
     + [Indicator of success](#indicator-success-launched-of-add-on)
+  * [Pre-production Test](#pre-production-test)
 
 # Development
 
@@ -467,3 +468,37 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 
 - On the navigation keyboard, if add on clicked `->` success shows submenu/view from add on. And the `add on` works functionally.
 - On the App menu, when opening the add-on menu and then clicking the `add on`, it should load the fragment from the add-on (if exist).
+
+## Pre-production Test
+This test for make sure the add on is works on source code production
+
+1. Clean the project from Android Studio by `Build > Clean Project`
+2. Compress your addon root folder to zip file.
+
+<p align="center">
+    <img src="assets/export-zip.gif" >
+</p>
+
+> Please remember: just compress your add on root folder not the 'addon' folder.
+
+3. Goto addon menu on [dashboard](https://dev.keyboardly.app/dashboard/addon) > select your add on
+<p align="center">
+    <img src="assets/dashboard-addon.png" >
+</p>
+
+4. Click the `Build Now` button
+<p align="center">
+    <img src="assets/dashboard-detail-addon.png" >
+</p>
+
+5. Dialog will appeared, change the description and icon (optional). Select the zip addon and click `Build` button.
+<p align="center">
+    <img src="assets/build-addon-dialog.png" >
+</p>
+
+6. The build process is about 15-20 minutes if success. 
+<p align="center">
+    <img src="assets/addon-building.png" >
+</p>
+
+7. If the build success, download the *.apk file and try it on the real device.
