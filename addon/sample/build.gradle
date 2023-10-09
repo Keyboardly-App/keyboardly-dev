@@ -50,13 +50,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.annotation:annotation:$androidxAnnotationVersion"
+    androidTestImplementation "androidx.annotation:annotation:$androidAnnotationVersion"
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     implementation "com.jakewharton.timber:timber:5.0.1"
-    implementation "androidx.annotation:annotation:$androidxAnnotationVersion"
+    implementation "androidx.annotation:annotation:$androidAnnotationVersion"
 
     implementation "com.google.android.material:material:$materialVersion"
 

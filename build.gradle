@@ -19,7 +19,6 @@ buildscript {
 
         materialVersion = '1.9.0'
         view_binding_version = '8.0.1'
-        androidxAnnotationVersion = '1.6.0'
 
         androidAnnotationVersion = '1.6.0'
         appCompatVersion = '1.6.1'
