@@ -61,6 +61,7 @@
     <color name="grey_700">#333333</color>
     <color name="grey_900">#1E1E1E</color>
     <color name="grey_a_50">#80000000</color>
+    <color name="grey_a_30">#4D000000</color>
     <color name="deep_blue_100">#004378</color>
     <color name="deep_blue">#004175</color>
     <color name="blue">#2D9CDB</color>
