@@ -14,6 +14,7 @@ import app.keyboardly.style.helper.gone
 import app.keyboardly.style.helper.invisible
 import app.keyboardly.style.helper.visible
 import app.keyboardly.lib.helper.InputPresenter
+import app.keyboardly.style.helper.currencyTextWatcher
 import timber.log.Timber
 
 /**
@@ -46,11 +47,12 @@ open class KeyboardInputManager(
         inputType: Int? = null,
         textWatcher: TextWatcher? = null,
         onClose: () -> Unit? = { },
-        inputFloating: Boolean? = false
+        inputFloating: Boolean? = false,
+        isCurrency: Boolean? = false
     ) {
 
         mPresenter = presenter
-        if (inputFloating != null && inputFloating) {
+        if (inputFloating == true) {
                 val finalInputType = inputType ?: editTextTarget?.inputType
                 customEditorInfo = EditorInfo()
                 if (finalInputType != null) {
@@ -71,13 +73,13 @@ open class KeyboardInputManager(
                 setCustomInput(this)
             }
 
-            setKeyboardViewAsRequired(inputType?:InputType.TYPE_CLASS_TEXT,null)
+            setKeyboardViewAsRequired(inputType?:InputType.TYPE_CLASS_TEXT, null, isCurrency)
 
         } else {
             enableInput?.apply {
                 enableEditText(this)
             }
-            requestInput(editTextTarget, hint, inputType, textWatcher, onClose)
+            requestInput(editTextTarget, hint, inputType, textWatcher, onClose, isCurrency)
         }
     }
 
@@ -87,7 +89,8 @@ open class KeyboardInputManager(
     fun requestInputLong(
         editTextTarget: EditText?,
         presenter: InputPresenter?,
-        hintResId: Int?
+        hintResId: Int?,
+        isCurrency : Boolean? = false
     ) {
         mPresenter = presenter
         viewInputMode(true)
@@ -104,7 +107,7 @@ open class KeyboardInputManager(
         }
         val inputType = editTextTarget?.inputType
         inputType?.apply {
-            setKeyboardViewAsRequired(this, textWatcher)
+            setKeyboardViewAsRequired(this, textWatcher, isCurrency)
         }
         if (hintResId != null) {
             setHint(hintResId)
@@ -140,26 +143,43 @@ open class KeyboardInputManager(
             ) {
                 viewInputMode(true)
                 inputType?.apply {
-                    setKeyboardViewAsRequired(this, textWatcher)
+                    setKeyboardViewAsRequired(this, textWatcher, isCurrency)
                 }
             }
         }
     }
 
-    private fun setKeyboardViewAsRequired(inputType: Int, textWatcher: TextWatcher?) {
+    private fun setKeyboardViewAsRequired(
+        inputType: Int,
+        textWatcher: TextWatcher?,
+        isCurrency: Boolean? = false
+    ) {
+
         when(inputType){
             InputType.TYPE_CLASS_NUMBER -> kokoKeyboardView.setKeypadNumber()
-            else -> kokoKeyboardView.setKeypadAlphabet()
+            else -> {
+                if(isCurrency == true){
+                    kokoKeyboardView.setKeypadNumber()
+                } else {
+                    kokoKeyboardView.setKeypadAlphabet()
+                }
+            }
         }
+        Timber.d("added text watcher=$textWatcher || currency=$isCurrency")
 
-        Timber.i("added text watcher=$textWatcher")
-        if (textWatcher!=null) {
-            mEditField.addTextChangedListener(textWatcher)
+        if (isCurrency == true){
+            val currencyTextWatcher = currencyTextWatcher(mEditField)
+            mEditField.addTextChangedListener(currencyTextWatcher)
+            this.textWatcher = currencyTextWatcher
         } else {
-            mEditField.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
-            mEditFieldLong.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
+            if (textWatcher != null) {
+                mEditField.addTextChangedListener(textWatcher)
+            } else {
+                mEditField.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
+                mEditFieldLong.removeTextChangedListener(this@KeyboardInputManager.textWatcher)
+            }
+            this.textWatcher = textWatcher
         }
-        this.textWatcher = textWatcher
     }
 
     /**
@@ -172,7 +192,7 @@ open class KeyboardInputManager(
         editTextTarget: EditText?, hintResId: Int?, inputType: Int?,
         textWatcher: TextWatcher? = null,
         onClose: () -> Unit?,
-        inputFloating: Boolean? = false
+        isCurrency:Boolean?=false
     ) {
 //        Timber.e("request input//%s", editTextTarget.getResources().getResourceName(editTextTarget.getId()));
         Timber.d("textwatcher=$textWatcher")
@@ -196,9 +216,9 @@ open class KeyboardInputManager(
         customEditorInfo = EditorInfo()
         if (finalInputType != null) {
             customEditorInfo?.inputType = finalInputType
-            setKeyboardViewAsRequired(finalInputType, textWatcher)
+            setKeyboardViewAsRequired(finalInputType, textWatcher, isCurrency)
         } else {
-            setKeyboardViewAsRequired(InputType.TYPE_CLASS_TEXT, textWatcher)
+            setKeyboardViewAsRequired(InputType.TYPE_CLASS_TEXT, textWatcher, isCurrency)
         }
 
         val customIC: InputConnection = mEditField.onCreateInputConnection(customEditorInfo)
@@ -214,7 +234,7 @@ open class KeyboardInputManager(
         mEditField.isLongClickable = true
         mEditField.setTextIsSelectable(true)
 
-        if (textWatcher != null) {
+        if (textWatcher!=null) {
             doneEditButton.setImageResource(R.drawable.ic_round_close_24)
         } else {
             doneEditButton.setImageResource(app.keyboardly.style.R.drawable.ic_done)
@@ -261,7 +281,7 @@ open class KeyboardInputManager(
                 reInputFlag = true
                 viewInputMode(true)
                 if (finalInputType != null) {
-                    setKeyboardViewAsRequired(finalInputType, textWatcher)
+                    setKeyboardViewAsRequired(finalInputType, textWatcher, isCurrency)
                 }
             }
         }

@@ -206,9 +206,6 @@ open class KokoKeyboardView : ExpandableLayout {
         imm.hideSoftInputFromWindow(field.windowToken, 0)
     }
 
-    fun unregisterEditText(field: EditText?) {
-        keyboards.remove(field)
-    }
 
     open fun setCustomInputConnection(inputConnection: InputConnection) {
         keyboardManager.setCustomInputConnection(inputConnection)
@@ -318,13 +315,14 @@ open class KokoKeyboardView : ExpandableLayout {
                 inputType: Int?,
                 textWatcher: TextWatcher?,
                 onCloseSearch: () -> Unit?,
-                inputOnFloatingView: Boolean?
+                inputOnFloatingView: Boolean?,
+                clearAllButton: Boolean?
             ) {
                 if (longInput!=null && longInput){
                     container.requestInputLong(editTextTarget,inputPresenter,hint)
                 } else {
                     container.requestInput(editTextTarget,enableInput,inputPresenter,hint,
-                        inputType, textWatcher, onCloseSearch, inputOnFloatingView)
+                        inputType, textWatcher, onCloseSearch, inputOnFloatingView, clearAllButton)
                 }
             }
 
