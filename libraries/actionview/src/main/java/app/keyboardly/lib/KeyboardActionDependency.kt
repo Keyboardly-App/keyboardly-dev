@@ -156,6 +156,7 @@ interface KeyboardActionDependency {
         textWatcher: TextWatcher? = null,
         onCloseSearch: () -> Unit? = {},
         inputOnFloatingView: Boolean? = false,
+        isCurrency: Boolean? = false
     )
 
     /**
