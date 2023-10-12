@@ -14,4 +14,7 @@
     <string name="input_your_name">input name</string>
     <string name="top_view">Top View</string>
     <string name="input_number">input number</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="amount_cash">amount cash</string>
+    <string name="note">note</string>
 </resources>

@@ -9,6 +9,7 @@ import app.keyboardly.sample.action.profile.WelcomeActionView
 import app.keyboardly.sample.action.register.RegisterActionView
 import app.keyboardly.sample.action.shopping.ShoppingActionView
 import app.keyboardly.sample.action.top.TopActionView
+import app.keyboardly.sample.dashboard.DashboardActionView
 import timber.log.Timber
 
 /**
@@ -23,6 +24,7 @@ class SampleDefaultClass(
     private val shoppingActionView = ShoppingActionView(dependency)
     private val welcomeActionView = WelcomeActionView(dependency)
     private val topActionView = TopActionView(dependency)
+    private val dashboardActionView = DashboardActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
@@ -71,10 +73,10 @@ class SampleDefaultClass(
         )
         menu.add(
             NavigationMenuModel(
-                6,
+                DASHBOARD,
                 nameString = "Dashboard",
                 icon = R.drawable.sample_ic_round_bedroom_parent_24,
-                enable = false
+                enable = true
             )
         )
     }
@@ -95,6 +97,7 @@ class SampleDefaultClass(
             SHOPPING -> shoppingActionView
             WELCOME -> welcomeActionView
             TOP_VIEW -> topActionView
+            DASHBOARD -> dashboardActionView
             else -> null
         }
 
@@ -121,5 +124,6 @@ class SampleDefaultClass(
         private const val SHOPPING = 3
         private const val WELCOME = 4
         private const val TOP_VIEW = 5
+        private const val DASHBOARD = 6
     }
 }

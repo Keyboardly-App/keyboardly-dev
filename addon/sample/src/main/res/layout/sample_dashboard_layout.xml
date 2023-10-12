@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:padding="3dp"
+            android:src="@drawable/sample_round_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/titleCampaign"
+            android:text="@string/dashboard"
+            style="?textActionKeyboardStyle"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="@string/amount_cash"
+        android:focusable="false"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/note"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="@string/note"
+        android:focusable="false"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
