@@ -316,13 +316,13 @@ open class KokoKeyboardView : ExpandableLayout {
                 textWatcher: TextWatcher?,
                 onCloseSearch: () -> Unit?,
                 inputOnFloatingView: Boolean?,
-                clearAllButton: Boolean?
+                isCurrency: Boolean?
             ) {
                 if (longInput!=null && longInput){
-                    container.requestInputLong(editTextTarget,inputPresenter,hint)
+                    container.requestInputLong(editTextTarget,inputPresenter,hint, isCurrency)
                 } else {
                     container.requestInput(editTextTarget,enableInput,inputPresenter,hint,
-                        inputType, textWatcher, onCloseSearch, inputOnFloatingView, clearAllButton)
+                        inputType, textWatcher, onCloseSearch, inputOnFloatingView, isCurrency)
                 }
             }
 
