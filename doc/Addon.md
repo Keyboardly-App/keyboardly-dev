@@ -24,6 +24,8 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
   * [Testing](#testing)
     + [Indicator of success](#indicator-success-launched-of-add-on)
   * [Pre-production Test](#pre-production-test)
+    + [Preparation](#preparation)
+    + [Build Time](#build-time)
 
 # Development
 
@@ -470,18 +472,27 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 - On the App menu, when opening the add-on menu and then clicking the `add on`, it should load the fragment from the add-on (if exist).
 
 ## Pre-production Test
-This test for make sure the add on is works on source code production
+This test to make sure the add on is works on production
 
-1. Clean the project from Android Studio by `Build > Clean Project`
-2. Compress your addon root folder to zip file.
+### Preparation
+Before build the addon, please make sure and double check :
+1. The add-on can be installed and opened successfully with the source code on this repo.
+2. All views and buttons work properly
+3. No display is cut off or has problems with the user experience
+4. Work nicely on light and dark themes
+5. Nothing force close, ANR / freeze
+6. Clean the project from Android Studio by `Build > Clean Project`
+7. Compress your addon root folder to zip file.
 
 <p align="center">
     <img src="assets/export-zip.gif" >
 </p>
 
-> Please remember: just compress your add on root folder not the 'addon' folder.
+> Note: just compress your add-on root folder not the 'addon' folder.
 
-3. Goto addon menu on [dashboard](https://dev.keyboardly.app/dashboard/addon) > select your add on
+### Build Time
+
+1. Goto addon menu on [dashboard](https://dev.keyboardly.app/dashboard/addon) > select your add on
 <p align="center">
     <img src="assets/dashboard-addon.png" >
 </p>
@@ -491,7 +502,7 @@ This test for make sure the add on is works on source code production
     <img src="assets/dashboard-detail-addon.png" >
 </p>
 
-5. Dialog will appeared, change the description and icon (optional). Select the zip addon and click `Build` button.
+5. Dialog will appeared, change the description and icon (optional). Select the zip file and click `Build` button.
 <p align="center">
     <img src="assets/build-addon-dialog.png" >
 </p>
