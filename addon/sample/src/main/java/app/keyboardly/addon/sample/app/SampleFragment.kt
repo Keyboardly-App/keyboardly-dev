@@ -1,4 +1,4 @@
-package app.keyboardly.sample.app
+package app.keyboardly.addon.sample.app
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.keyboardly.sample.databinding.SampleFragmentSampleBinding
+import app.keyboardly.addon.sample.databinding.SampleFragmentSampleBinding
 
 class SampleFragment : Fragment() {
 

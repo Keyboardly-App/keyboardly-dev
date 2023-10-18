@@ -9,7 +9,7 @@
     <!-- default start fragment -->
     <fragment
         android:id="@+id/default_nav"
-        android:name="app.keyboardly.sample.app.SampleFragment"
+        android:name="app.keyboardly.addon.sample.app.SampleFragment"
         android:label="Sample Fragment"
         tools:layout="@layout/sample_fragment_sample" >
 
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/homeSample"
-        android:name="app.keyboardly.sample.app.HomeSampleFragment"
+        android:name="app.keyboardly.addon.sample.app.HomeSampleFragment"
         android:label="Sample Fragment"
         tools:layout="@layout/sample_fragment_sample" />
 </navigation>

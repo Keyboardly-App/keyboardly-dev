@@ -14,13 +14,12 @@
  * limitations under the License.
  *
  */
-package app.keyboardly.sample
+package app.keyboardly.addon.sample
 
 import android.view.View
-import app.keyboardly.sample.di.DaggerDynamicComponent
 import app.keyboardly.lib.navigation.NavigationMenuModel
 import app.keyboardly.lib.reflector.DynamicFeature
-import app.keyboardly.sample.action.top.TopActionView
+import app.keyboardly.addon.sample.di.DaggerDynamicComponent
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -50,8 +49,6 @@ class DynamicFeatureImpl @Inject constructor(
     override fun getView(): View? {
         return sampleView.getView()
     }
-
-    override fun getTopView(): View? = null //TopActionView(sampleView.dependency).getView()
 
     /**
      * submenu of add on, list of NavigationMenuModel

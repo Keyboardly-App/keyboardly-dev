@@ -1,9 +1,9 @@
-package app.keyboardly.sample.action.top
+package app.keyboardly.addon.sample.action.top
 
 import android.text.InputType
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
-import app.keyboardly.sample.databinding.SampleTopViewLayoutBinding
+import app.keyboardly.addon.sample.databinding.SampleTopViewLayoutBinding
 
 /**
  * Created by Zainal on 18/02/2023 - 11:59

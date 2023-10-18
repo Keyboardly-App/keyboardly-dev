@@ -14,10 +14,10 @@
  * limitations under the License.
  *
  */
-package app.keyboardly.sample.di
+package app.keyboardly.addon.sample.di
 
-import app.keyboardly.sample.DynamicFeatureImpl
-import app.keyboardly.sample.SampleDefaultClass
+import app.keyboardly.addon.sample.DynamicFeatureImpl
+import app.keyboardly.addon.sample.SampleDefaultClass
 import app.keyboardly.lib.reflector.DynamicFeature
 import app.keyboardly.lib.KeyboardActionDependency
 import dagger.Component

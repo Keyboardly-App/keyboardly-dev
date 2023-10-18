@@ -1,11 +1,11 @@
-package app.keyboardly.sample.app
+package app.keyboardly.addon.sample.app
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import app.keyboardly.sample.databinding.SampleFragmentHomeBinding
+import app.keyboardly.addon.sample.databinding.SampleFragmentHomeBinding
 
 
 class HomeSampleFragment : Fragment() {

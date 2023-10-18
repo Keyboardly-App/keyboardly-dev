@@ -1,9 +1,9 @@
-package app.keyboardly.sample.dashboard
+package app.keyboardly.addon.sample.dashboard
 
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
-import app.keyboardly.sample.databinding.SampleDashboardLayoutBinding
-import app.keyboardly.sample.databinding.SampleShoppingLayoutBinding
+import app.keyboardly.addon.sample.databinding.SampleDashboardLayoutBinding
+import app.keyboardly.addon.sample.databinding.SampleShoppingLayoutBinding
 import app.keyboardly.style.helper.currencyTextWatcher
 
 class DashboardActionView(
@@ -20,6 +20,9 @@ class DashboardActionView(
 
     private fun initAction() {
         binding.apply {
+            backBtn.setOnClickListener {
+                dependency.viewAddOnNavigation()
+            }
 
             val textWatcher = currencyTextWatcher(amount)
             amount.addTextChangedListener(textWatcher)

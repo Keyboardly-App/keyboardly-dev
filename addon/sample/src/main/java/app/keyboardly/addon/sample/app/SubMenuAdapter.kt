@@ -1,4 +1,4 @@
-package app.keyboardly.sample.app
+package app.keyboardly.addon.sample.app
 
 /**
  * Created by zainal on 4/30/21 - 9:31 AM
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import app.keyboardly.sample.databinding.SampleLayoutItemMenuBinding
+import app.keyboardly.addon.sample.databinding.SampleLayoutItemMenuBinding
 
 class SubMenuAdapter(
     private var listMenu: List<SubMenuModel>,

@@ -209,7 +209,7 @@ open class KeyboardNavigation(
             1,
             R.string.nav_sample,
             null,
-            featurePackageId = "app.keyboardly.sample",
+            featurePackageId = "app.keyboardly.addon.sample",
             featureNameId = "sample",
             nameString = "Sample",
             iconUrl = "https://img.icons8.com/external-flaticons-flat-flat-icons/344/external-dummy-robotics-flaticons-flat-flat-icons.png")

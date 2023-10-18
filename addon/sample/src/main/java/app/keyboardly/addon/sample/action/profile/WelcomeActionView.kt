@@ -1,8 +1,8 @@
-package app.keyboardly.sample.action.profile
+package app.keyboardly.addon.sample.action.profile
 
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
-import app.keyboardly.sample.databinding.SampleWelcomeLayoutBinding
+import app.keyboardly.addon.sample.databinding.SampleWelcomeLayoutBinding
 
 /**
  * Created by Zainal on 18/02/2023 - 11:59

@@ -1,4 +1,4 @@
-package app.keyboardly.sample.action.register
+package app.keyboardly.addon.sample.action.register
 
 import android.text.InputType
 import android.util.Log
@@ -7,8 +7,8 @@ import app.keyboardly.lib.helper.ChipGroupCallBack
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
-import app.keyboardly.sample.R
-import app.keyboardly.sample.databinding.SampleRegisterFeatureLayoutBinding
+import app.keyboardly.addon.sample.R
+import app.keyboardly.addon.sample.databinding.SampleRegisterFeatureLayoutBinding
 import app.keyboardly.style.helper.invisible
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup

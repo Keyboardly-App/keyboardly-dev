@@ -48,8 +48,8 @@
 -dontwarn kotlinx.**
 
 # keep class data
--keep class app.keyboardly.sample.** { *; }
--keep class app.keyboardly.sample.di.** { *; }
+-keep class app.keyboardly.addon.sample.** { *; }
+-keep class app.keyboardly.addon.sample.di.** { *; }
 
 -dontwarn com.google.errorprone.annotations.**
 
@@ -63,10 +63,10 @@
 
 
 #noinspection ShrinkerUnresolvedReference
--keep class app.keyboardly.sample.DynamicFeatureImpl {
+-keep class app.keyboardly.addon.sample.DynamicFeatureImpl {
     #noinspection ShrinkerUnresolvedReference
-    app.keyboardly.sample.DynamicFeatureImpl$Provider Provider;
+    app.keyboardly.addon.sample.DynamicFeatureImpl$Provider Provider;
 }
--keep class app.keyboardly.sample.DynamicFeatureImpl$Provider {
+-keep class app.keyboardly.addon.sample.DynamicFeatureImpl$Provider {
     *;
 }

@@ -33,7 +33,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    namespace 'app.keyboardly.sample'
+    namespace 'app.keyboardly.addon.sample'
 
 //    sourceSets.main.res.filter.exclude '**/design_bottom_sheet_slide_in.xml'
 }

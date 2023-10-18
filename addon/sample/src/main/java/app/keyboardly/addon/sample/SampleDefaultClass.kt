@@ -1,15 +1,15 @@
-package app.keyboardly.sample
+package app.keyboardly.addon.sample
 
+import app.keyboardly.addon.sample.action.campaign.CampaignActionView
+import app.keyboardly.addon.sample.action.profile.WelcomeActionView
+import app.keyboardly.addon.sample.action.register.RegisterActionView
+import app.keyboardly.addon.sample.action.shopping.ShoppingActionView
+import app.keyboardly.addon.sample.action.top.TopActionView
+import app.keyboardly.addon.sample.dashboard.DashboardActionView
 import app.keyboardly.lib.DefaultClass
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
-import app.keyboardly.sample.action.campaign.CampaignActionView
-import app.keyboardly.sample.action.profile.WelcomeActionView
-import app.keyboardly.sample.action.register.RegisterActionView
-import app.keyboardly.sample.action.shopping.ShoppingActionView
-import app.keyboardly.sample.action.top.TopActionView
-import app.keyboardly.sample.dashboard.DashboardActionView
 import timber.log.Timber
 
 /**

@@ -1,4 +1,4 @@
-package app.keyboardly.sample.action.shopping
+package app.keyboardly.addon.sample.action.shopping
 
 import android.annotation.SuppressLint
 import android.os.Handler
@@ -9,9 +9,9 @@ import app.keyboardly.style.helper.gone
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.helper.OnViewReady
-import app.keyboardly.sample.action.campaign.CampaignListAdapter
-import app.keyboardly.sample.action.campaign.CampaignModel
-import app.keyboardly.sample.databinding.SampleShoppingLayoutBinding
+import app.keyboardly.addon.sample.action.campaign.CampaignListAdapter
+import app.keyboardly.addon.sample.action.campaign.CampaignModel
+import app.keyboardly.addon.sample.databinding.SampleShoppingLayoutBinding
 
 /**
  * Created by zainal on 6/8/22 - 2:59 PM

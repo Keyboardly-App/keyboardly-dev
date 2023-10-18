@@ -1,4 +1,4 @@
-package app.keyboardly.sample.action.campaign
+package app.keyboardly.addon.sample.action.campaign
 
 import android.os.CountDownTimer
 import android.text.Editable
@@ -12,8 +12,8 @@ import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.lib.helper.OnViewReady
-import app.keyboardly.sample.R
-import app.keyboardly.sample.databinding.SampleCampaignLayoutBinding
+import app.keyboardly.addon.sample.R
+import app.keyboardly.addon.sample.databinding.SampleCampaignLayoutBinding
 import timber.log.Timber
 
 /**

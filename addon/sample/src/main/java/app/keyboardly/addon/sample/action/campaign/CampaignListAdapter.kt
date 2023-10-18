@@ -1,4 +1,4 @@
-package app.keyboardly.sample.action.campaign
+package app.keyboardly.addon.sample.action.campaign
 
 /**
  * Created by zainal on 5/30/21 - 9:41 AM
@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import app.keyboardly.sample.databinding.SampleItemDataTextBinding
+import app.keyboardly.addon.sample.databinding.SampleItemDataTextBinding
 
 
 class CampaignListAdapter(
