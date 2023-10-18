@@ -55,15 +55,15 @@ All the class will explain on below.
 
 ## Default Class Add On
 `Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
-See this sample of default class : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultClass.kt)
+See this sample of default class : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/addon/sample/SampleDefaultClass.kt)
 
 ## DynamicDagger Class
 `DynamicDagger Class` mean a class that contain `@Component` & `@Module` dagger class to build default class.
-See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt)
+See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/addon/sample/di/DynamicDagger.kt)
 
 ## DynamicFeatureImpl Class
 `DynamicFeatureImpl` a class for implementation to connect the default class with DynamicDagger class
-See this sample of default class : [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt)
+See this sample of default class : [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/addon/sample/DynamicFeatureImpl.kt)
 
 ## Dynamic Feature
 Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
@@ -307,7 +307,7 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 <p align="center">
     <img src="assets/request-input-text.png" width="250" alt="sample request input text">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L35-43)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L35-43)
 
 ### Long Text Request Input
 The long request input is for long text but will appeared with scrollable 2 line inside keyboard. <br>
@@ -315,21 +315,21 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 <p align="center">
     <img src="assets/longtext-sample.png" width="250" alt="sample request input text">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L45)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L45)
 
 ### Chip Options
 Chip options is view `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
 <p align="center">
     <img src="assets/chip-options.png" width="250" alt="sample chip options">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L52-59)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L52-59)
 
 ### Date Picker
 Just like `Chip Options`, a KeyboardActionView can request input date via [KeyboardActionDependency](#keyboard-action-dependency) > `showDatePicker()`
 <p align="center">
     <img src="assets/datepicker-sample.png" width="250" alt="sample date picker">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/register/RegisterActionView.kt#L49)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L49)
 
 ### Top RecyclerView
 A recyclerview options that show on top keyboard navigation, usually used when on input mode for quick search.
@@ -338,7 +338,7 @@ A recyclerview options that show on top keyboard navigation, usually used when o
 </p>
 <br>
 To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showTopRecyclerView(...)` and combine it with `requestInput(...)` function.
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/campaign/CampaignActionView.kt#L109)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/campaign/CampaignActionView.kt#L109)
 
 ### RecyclerView Options
 Recyclerview options is that appeared on keyboard area and can can be modify the layout manager as needed.
@@ -347,14 +347,14 @@ Recyclerview options is that appeared on keyboard area and can can be modify the
 </p>
 <br>
 To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showTopRecyclerView(...)` and can be configured with title by `showTitleAboveList()`
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/sample/action/shopping/ShoppingActionView.kt#L61)
+<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/shopping/ShoppingActionView.kt#L61)
 
 ## Submenu Add On Navigation
 This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
 if you decide to create an add-on without a submenu it can be an empty list (not null). <br>
 If an add on contain submenu navigation and then if user click the add on logo, the default keyboard navigation will be replaced with the submenus.<br>
 <br>
-The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt#L57-59).
+The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/addon/sample/DynamicFeatureImpl.kt#L57-59).
 The add on should handle the submenu click event on default class.
 <p align="center">
     <img src="assets/submenu-navigation.png" width="250">

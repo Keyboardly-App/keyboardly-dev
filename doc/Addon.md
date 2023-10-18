@@ -159,7 +159,7 @@ After setup dependencies, We need to create some kotlin class with requirements:
 1. A default class
    - inherits `DefaultClass`
    - located in the root module
-   - see example : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/sample/SampleDefaultClass.kt).
+   - see example : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/addon/sample/SampleDefaultClass.kt).
 
 > An add on can configured with empty submenus and with a top view / default action view, or with some submenus without default view.
 > If an add on not contain a default view or submenus, the add on will not work.
@@ -168,14 +168,14 @@ After setup dependencies, We need to create some kotlin class with requirements:
 
    - contain some component class, interface and module
    - should fit with the default class to make it work
-   - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/sample/di/DynamicDagger.kt).
+   - see example : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/addon/sample/di/DynamicDagger.kt).
 3. DynamicFeatureImpl.kt
 
    - should with name `DynamicFeatureImpl`
    - located in the root module
    - should inherit `DynamicFeature`
    - have a constructor with default class that inherits `KeyboardActionView`
-   - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/sample/DynamicFeatureImpl.kt).
+   - full code see [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/addon/sample/DynamicFeatureImpl.kt).
      note:
 
 > On DynamicFeatureImpl class, there is 3 override methods:
