@@ -9,5 +9,5 @@ abstract class DefaultClass(
     dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency) {
 
-    abstract fun getSubmenus() : MutableList<NavigationMenuModel>
+    open fun getSubmenus() : MutableList<NavigationMenuModel> = mutableListOf()
 }

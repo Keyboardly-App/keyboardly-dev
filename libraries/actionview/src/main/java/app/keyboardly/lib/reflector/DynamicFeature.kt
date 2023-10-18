@@ -8,9 +8,9 @@ import app.keyboardly.lib.navigation.NavigationMenuModel
  * Created by zainal on 6/9/22 - 10:03 AM
  */
 interface DynamicFeature {
-    fun getView() : View?
-    fun getTopView() : View?
-    fun getSubMenus(): MutableList<NavigationMenuModel>
+    fun getView() : View? = null
+    fun getTopView() : View? = null
+    fun getSubMenus(): MutableList<NavigationMenuModel> = mutableListOf()
 
     /**
      * DynamicFeature can be instantiated in whatever way the implementer chooses,
