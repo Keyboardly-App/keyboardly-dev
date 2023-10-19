@@ -121,6 +121,8 @@
 
     <style name="TextActionKeyboardStyle.Dark" parent="TitleTextNormalPrimary.Dark">
         <item name="android:textColorPrimary">@color/key_text_color_lxx_dark</item>
+        <item name="android:textColorHint">@color/grey_500</item>
+        <item name="android:textColorSecondary">@color/grey_500</item>
         <item name="android:textColor">@color/key_text_color_lxx_dark</item>
         <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
