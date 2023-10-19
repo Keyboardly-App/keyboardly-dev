@@ -238,7 +238,4 @@ interface KeyboardActionDependency {
      */
     fun setTopActionView(view: View)
 
-
-    fun updateSuggestionOnInput(words: String, isDone: Boolean?=false)
-
 }
