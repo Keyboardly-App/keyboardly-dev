@@ -1,9 +1,9 @@
 # Glossary
-There are several vocabularies that you have to know to this development.
+There are several vocabularies that you have to know for this development.
 
 # Table Of Content
 - [Add On](#add-on)
-- [App's Add On Navigation](#apps-add-on-navigation)
+- [App's Add-On Navigation](#apps-add-on-navigation)
 - [Base Class](#base-class)
 - [Default Add On Class](#default-class-add-on)
 - [DynamicDagger Class](#dynamicdagger-class)
@@ -30,60 +30,60 @@ There are several vocabularies that you have to know to this development.
 - [Submenu Add On Navigation](#submenu-add-on-navigation)
 
 ## Add On
-On this development, `Add On` mean a module package of dynamic feature that fit and work with `Keyboardly` keyboard ecosystem
-with guideline that explained on this documentation.
+In this development, `Add On` means a module package of a dynamic feature that fits and works with `Keyboardly` keyboard ecosystem
+with guidelines that are explained in this documentation.
 
 ## App's Add On Navigation
 App's addon navigation is a way to access installed **add on** like the common app menu.
 It can be accessed from add on the menu;
 
 1. if it's installed & configured the navigation, the user will be redirected to a fragment of add on by the navigation graph
-2. if not installed or not configured, a detail add-on will appear.
+2. if not installed or not configured, a detailed add-on will appear.
 
 
 ![](https://user-images.githubusercontent.com/13946213/231936933-f9d5cfea-1869-4260-9caa-57deebc704e0.gif)
 
-It's should to be configured by [this](./Addon.md#apps-addon-navigation-configuration)
+It should be configured by [this](./Addon.md#apps-addon-navigation-configuration)
 
 ## Base Class
-Base Class means several class that must exist in an add on. Member of base class is :
+Base Class means several classes that must exist in an add-on. Member of the base class is :
 - Default Class Add On
 - DynamicDagger Class
 - DynamicFeatureImpl Class
 <br>
-All the class will explain on below.
+All the class will explain below.
 
 ## Default Class Add On
-`Default Class Add On` mean a class that created as a gateway of Add On will loaded & works.
+`Default Class Add On` means a class that is created as a gateway of Add On will load & work.
 See this sample of default class : [SampleDefaultClass](/addon/sample/src/main/java/app/keyboardly/addon/sample/SampleDefaultClass.kt)
 
 ## DynamicDagger Class
-`DynamicDagger Class` mean a class that contain `@Component` & `@Module` dagger class to build default class.
+`DynamicDagger Class` means a class that contains `@Component` & `@Module` dagger class to build the default class.
 See this sample of default class : [DynamicDagger](/addon/sample/src/main/java/app/keyboardly/addon/sample/di/DynamicDagger.kt)
 
 ## DynamicFeatureImpl Class
-`DynamicFeatureImpl` a class for implementation to connect the default class with DynamicDagger class
+`DynamicFeatureImpl` is a class for implementation to connect the default class with the DynamicDagger class
 See this sample of default class : [DynamicFeatureImpl](/addon/sample/src/main/java/app/keyboardly/addon/sample/DynamicFeatureImpl.kt)
 
 ## Dynamic Feature
-Dynamic Feature is base of add on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
+Dynamic Feature is a base of the add-on, to get more information see [feature delivery](https://developer.android.com/guide/playcore/feature-delivery)
 
 ## EditorInfo
 An editorInfo describes several attributes of a text editing object that an input method is communicating with (typically an EditText), most importantly the type of text content it contains and the current cursor position.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/EditorInfo).
 
 ## Interface
-There is several interfaces that used on this development.
+There are several interfaces that are used in this development.
 ### ChipGroupCallBack
-Used for handle request chips options.
+Used for handle request chip options.
 See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/ChipGroupCallBack.kt).
 
 ### InputPresenter
-Interface for handling when input mode activated.
+Interface for handling when input mode is activated.
 See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/InputPresenter.kt).
 
 ### OnViewMessage
-For showing message on options area like default RecyclerView and ChipGroup options.
+For showing a message on options areas like default RecyclerView and ChipGroup options.
 See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnViewMessage.kt).
 
 ### OnViewReady
@@ -92,23 +92,23 @@ See [detail](/libraries/actionview/src/main/java/app/keyboardly/lib/helper/OnVie
 
 ## InputConnection
 The InputConnection interface is the communication channel from an InputMethod back to the
-application that is receiving its input. It is used to perform such things as reading text
+application that receives its input. It is used to perform such things as reading text
 around the cursor, committing text to the text box, and sending raw key events to the application.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection).
 
-InputConnection also possible to commit an image, if the input app support to receive it.
+InputConnection can also commit an image if the input target supports receiving it.
 See [detail](https://developer.android.com/reference/android/view/inputmethod/InputConnection#commitContent(android.view.inputmethod.InputContentInfo,%20int,%20android.os.Bundle)).
 
 ## Keyboard Action View
-Keyboard Action View is base class for view of add on that will show on keyboard.
-The default parameter is `Keyboard Dependency`. This class is where the feature add on started and showed by user.
+Keyboard Action View is the base class for a view of the add-on that will show on the keyboard.
+The default parameter is `Keyboard Dependency`. This class is where the feature add-on started and is shown by the user.
 See detail [KeyboardActionView](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionView.kt)
 <p align="center">
     <img src="assets/actionview-sample.png" width="250" alt="sample action view">
 </p>
 
 ### Keyboard Action View Flow
-A keyboard action view have simple flow that should be understand. See diagram below:
+A keyboard action view has a simple flow that should be understood. See diagram below:
 <p align="center">
     <img src="assets/keyboard-action-view-flow.png" width="250">
 </p>
@@ -116,10 +116,10 @@ A keyboard action view have simple flow that should be understand. See diagram b
 
 
 ## Keyboard Action Dependency
-Keyboard Dependency is interface way to communicate with the main keyboard, it just used inside the keyboard.
+Keyboard Dependency is an interface way to communicate with the main keyboard, it is just used inside the keyboard.
 See full source [KeyboardActionDependency](/libraries/actionview/src/main/java/app/keyboardly/lib/KeyboardActionDependency.kt)
 
-This is detail of the function member:
+This is a detail of the function member:
 <table>
     <tr>
         <td>Name</td>
@@ -129,21 +129,21 @@ This is detail of the function member:
     <tr>
         <td>commitText(text: String)</td>
         <td>-</td>
-        <td>commit string data to editor outside keyboard.</td>
+        <td>commit string data to an editor outside the keyboard.</td>
     </tr>
     <tr>
         <td>getContext()</td>
         <td>Context</td>
-        <td>Get context of keyboard service / theme context.</td>
+        <td>Get the context of keyboard service/theme context.</td>
     </tr>
     <tr>
         <td>getEditTextInput()</td>
         <td>EditText?</td>
         <td>Get current editText while on input mode (inside keyboard)<br>
-there is two type EditText, default and long,<br>
-- default  : for short input and single line<br>
-- long     : for long input and multiline
-* return null if keyboard not in input mode.</td>
+there are two types of EditText, default and long,<br>
+- default: for short input and single line<br>
+- long: for long input and multiline
+* return null if the keyboard is not in input mode.</td>
     </tr>
     <tr>
         <td>getCurrentInputConnection()</td>
@@ -153,7 +153,7 @@ there is two type EditText, default and long,<br>
     <tr>
         <td>getCurrentEditorInfo()</td>
         <td>EditorInfo</td>
-        <td>Get current active EditorInfo of cursor where the keyboard is active</td>
+        <td>Get the current active EditorInfo of the cursor where the keyboard is active</td>
     </tr>
     <tr>
         <td>getKeyboardHeight()</td>
@@ -163,12 +163,12 @@ there is two type EditText, default and long,<br>
     <tr>
         <td>isBorderMode()</td>
         <td>Boolean</td>
-        <td>for check current keyboard border theme, is with border or not.</td>
+        <td>To check the current keyboard border theme, is border or non-border.</td>
     </tr>
     <tr>
         <td>isDarkMode()</td>
         <td>Boolean</td>
-        <td>for check current keyboard theme, is dark mode or not.</td>
+        <td>For checking the current keyboard theme, is it dark mode or not. </td>
     </tr>
     <tr>
         <td>loadingOnInput(loading: Boolean)</td>
@@ -178,23 +178,23 @@ there is two type EditText, default and long,<br>
     <tr>
         <td>setTextWatcher(textWatcher: TextWatcher)</td>
         <td>-</td>
-        <td>add text watcher to input edittext while on input mode.</td>
+        <td> Add text watcher to input `edittext` while on input mode.</td>
     </tr>
     <tr>
         <td>setActionView(view: KeyboardActionView)</td>
         <td>-</td>
-        <td>set view on keyboard layout, like add on menu.</td>
+        <td> Set view on keyboard layout, like add on menu.</td>
     </tr>
     <tr>
         <td>setActionView(view: View?)</td>
         <td>-</td>
-        <td>set view on keyboard layout, like add on menu.</td>
+        <td> Set view on keyboard layout, like add on menu.</td>
     </tr>
     <tr>
         <td>showChipOptions(...)
 </td>
         <td>-</td>
-        <td>show chip options from keyboard.</td>
+        <td> Show chip options from the keyboard.</td>
     </tr>
     <tr>
         <td>showDatePicker(...)
@@ -205,50 +205,50 @@ there is two type EditText, default and long,<br>
     <tr>
         <td>showTitleAboveList(...)</td>
         <td>-</td>
-        <td>show title and back button above default Recycler view, same position with keyboard navigation.</td>
+        <td>Show title and back button above default Recycler view, same position with keyboard navigation.</td>
     </tr>
     <tr>
         <td>loadingMain(loading: Boolean)</td>
         <td>-</td>
-        <td>loading view on main keyboard.</td>
+        <td>loading view on the main keyboard.</td>
     </tr>
     <tr>
         <td>requestInput(...)</td>
         <td>-</td>
-        <td>request input text from keyboard inside a KeyboardActionView</td>
+        <td> Request input text from keyboard inside a KeyboardActionView</td>
     </tr>
     <tr>
         <td>showRecyclerViewOptions(...)</td>
         <td>-</td>
-        <td>show recyclerview options</td>
+        <td>show recycler view options</td>
     </tr>
     <tr>
         <td>showFloatingRecyclerView(...)</td>
         <td>-</td>
-        <td>show recyclerview options. the position is above keyboard navigation, usually use when on input mode.</td>
+        <td>show recyclerview options. the position is above keyboard navigation, usually used when in input mode.</td>
     </tr>
     <tr>
         <td>showMessageView(...)</td>
         <td>-</td>
-        <td>show message on main keyboard layout, it's relate with showRecyclerViewOptions for example 
-if search on the list, then the result is not found the message can be show up here.</td>
+        <td>show message on the main keyboard layout, it's related with showRecyclerViewOptions for example 
+if search on the list, then the result is not found the message can be shown here.</td>
     </tr>
     <tr>
         <td>setNavigationCallback(...)</td>
         <td>-</td>
-        <td>set callback navigation when navigation keyboard change to be submenu add on.</td>
+        <td> Set callback navigation when the navigation keyboard changes to a submenu add-on.</td>
     </tr>
     <tr>
         <td>setNavigationMenu(...)</td>
         <td>-</td>
-        <td> For set list menu to keyboard navigation. for example: when the add on installed & clicked, 
-it should do login first before can access all the menu of add on.
+        <td>Set the list menu to keyboard navigation. for example: when the add-on is installed & clicked, 
+it should log in first before can access all the menu of the add-on.
 </td>
     </tr>
     <tr>
         <td>viewAddOnNavigation()</td>
         <td>-</td>
-        <td>view addon's default submenu navigation if exist.</td>
+        <td> View the addon's default submenu navigation if exists.</td>
     </tr>
     <tr>
         <td>viewDefaultKeyboard()</td>
@@ -263,7 +263,7 @@ it should do login first before can access all the menu of add on.
     <tr>
         <td>viewLayoutAction()</td>
         <td>-</td>
-        <td>move back to current view KeyboardActionView. Usually this function will called after call requestInput() function or something else</td>
+        <td>Move back to the current view of KeyboardActionView. Usually, this function will called after calling `requestInput()` function or something else</td>
     </tr>
     <tr>
         <td>showDialog()</td>
@@ -273,36 +273,36 @@ it should do login first before can access all the menu of add on.
     <tr>
         <td>hideTopView()</td>
         <td>-</td>
-        <td>function to hide view above keyboard, like</td>
+        <td>function to hide view above the keyboard, like</td>
     </tr>
     <tr>
         <td>setTopActionView(view: KeyboardActionView)</td>
         <td>-</td>
-        <td>set top view on keyboard layout, like add on menu.</td>
+        <td>Set top view on keyboard layout, like add on menu.</td>
     </tr>
     <tr>
         <td>setTopActionView(view: View?)</td>
         <td>-</td>
-        <td>set top view on keyboard layout, like add on menu.</td>
+        <td> Set top view on keyboard layout, like add on menu.</td>
     </tr>
 </table>
 
 ## Keyboard Navigation
-Keyboard navigation is list menu that appear on top of keyboard.
-The default navigation is available when user click the keyboard logo.
+Keyboard navigation is a list menu that appears on top of the keyboard.
+The default navigation is available when the user clicks the keyboard logo.
 <p align="center">
     <img src="assets/keyboard-navigation.png" width="250">
 </p>
-If new add on installed, the logo will appear on this list keyboard navigation.
+If a new add-on is installed, the logo will appear on this list keyboard navigation.
 <p align="center">
     <img src="assets/addon-installed.png" width="250">
 </p>
 
 ## Request Input
-`Request Input` mean an activity inside `KeyboardActionView` to request input value like text and can be configured with options view like chip group, date picker, recyclerview, top recyclerview.
+`Request Input` means an activity inside `KeyboardActionView` to request input value like text and can be configured with options views like chip group, date picker, recyclerview, and top recyclerview.
 
 ### Default Request Input
-The default request input is for short text that fit on single line. <br>
+The default request input is for a short text that fits on a single line. <br>
 Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()`
 <p align="center">
     <img src="assets/request-input-text.png" width="250" alt="sample request input text">
@@ -310,7 +310,7 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L35-43)
 
 ### Long Text Request Input
-The long request input is for long text but will appeared with scrollable 2 line inside keyboard. <br>
+The long request input is for long text but will appear with scrollable 2 lines inside the keyboard. <br>
 Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `requestInput()` with value `longInput` = `true`
 <p align="center">
     <img src="assets/longtext-sample.png" width="250" alt="sample request input text">
@@ -318,7 +318,7 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L45)
 
 ### Chip Options
-Chip options is view `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
+Chip options are `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
 <p align="center">
     <img src="assets/chip-options.png" width="250" alt="sample chip options">
 </p>
@@ -332,7 +332,7 @@ Just like `Chip Options`, a KeyboardActionView can request input date via [Keybo
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L49)
 
 ### Top RecyclerView
-A recyclerview options that show on top keyboard navigation, usually used when on input mode for quick search.
+A recyclerview option that shows on top keyboard navigation. Usually, used when on input mode for quick search.
 <p align="center">
     <img src="assets/floating-recyclerview.png" width="250">
 </p>
@@ -341,7 +341,7 @@ To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) >
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/campaign/CampaignActionView.kt#L109)
 
 ### RecyclerView Options
-Recyclerview options is that appeared on keyboard area and can can be modify the layout manager as needed.
+Recyclerview options that appeared on the keyboard area. Can be modified by the layout manager as needed.
 <p align="center">
     <img src="assets/recyclerview-options-title.png" width="250">
 </p>
@@ -350,28 +350,28 @@ To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) >
 <br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/shopping/ShoppingActionView.kt#L61)
 
 ## Submenu Add On Navigation
-This submenu is list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
+This submenu is a list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
 if you decide to create an add-on without a submenu it can be an empty list (not null). <br>
-If an add on contain submenu navigation and then if user click the add on logo, the default keyboard navigation will be replaced with the submenus.<br>
+If an add-on contains submenu navigation and then if the user clicks the add-on logo, the default keyboard navigation will be replaced with the submenus.<br>
 <br>
 The list will be called on `DynamicFeatureImpl` class through [override method](/addon/sample/src/main/java/app/keyboardly/addon/sample/DynamicFeatureImpl.kt#L57-59).
-The add on should handle the submenu click event on default class.
+The add-on should handle the submenu click event on the default class.
 <p align="center">
     <img src="assets/submenu-navigation.png" width="250">
 </p>
 <br>
-On production version, after the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
+On the production version, after the user installs an **Add On**, an icon will appear automatically on the keyboard's navigation menu.
 If the user clicks the icon, the keyboard will do the validation :
 
-1. if an **Add On** contain a list submenu (not empty), the sub menu will appear on top of the keyboard.
-2. if not contained a list submenu, the keyboard will call `getTopView()` method.
-2. if topView return null, then keyboard will call `getView()` method.
+1. if an **Add On** contains a list submenu (not empty), the sub menu will appear on top of the keyboard.
+2. if not contain a list submenu, the keyboard will call `getTopView()` method.
+2. if topView returns null, then the keyboard will call `getView()` method.
 
 ![](https://user-images.githubusercontent.com/13946213/231961760-c8dceeb4-eb16-4b27-bc9f-b528d1a96856.gif)
 
 
-On development version, the download process skipped. And the add on package is just included when compile process.
-To make it ready to use on keyboard, add the menu to [this navigation list](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228).
-This below data should match with the add on when creating dynamic feature module.
+On the development version, the download process was skipped. The add-on package is just included in compiling the process.
+To make it ready to use on the keyboard, add the menu to [this navigation list](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228).
+The below data should match with the add-on when creating a dynamic feature module.
 
 ![](https://user-images.githubusercontent.com/13946213/231962118-89293765-bd8f-48fc-82d6-22ec7b97ce27.gif)
