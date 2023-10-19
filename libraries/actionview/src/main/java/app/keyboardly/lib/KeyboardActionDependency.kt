@@ -145,6 +145,7 @@ interface KeyboardActionDependency {
      * @param textWatcher : for add listen text watcher
      * @param onCloseSearch : method that called when close on edit text main
      * @param inputOnFloatingView : flag for input on view above keyboard
+     * @param isCurrency : flag for currency input
      */
     fun requestInput(
         editTextTarget: EditText? = null,
@@ -236,5 +237,8 @@ interface KeyboardActionDependency {
      * @param view : should have parent KeyboardActionView
      */
     fun setTopActionView(view: View)
+
+
+    fun updateSuggestionOnInput(words: String, isDone: Boolean?=false)
 
 }
