@@ -16,6 +16,7 @@ All live add on are listed on [marketplace](https://keyboardly.app/addons-market
   * [Setup build.gradle](#setup-buildgradle)
   * [Setup Base Class](#setup-base-class)
   * [Create The Feature](#create-feature-by-keyboard-action-view)
+  * [Code architecture](#code-architecture)
   * [Resource File Rules](#resource-file-rules)
   * [Styling](#styling)
   * [Setup Submenu Add On](#setup-submenu-add-on)
@@ -180,8 +181,8 @@ After setup dependencies, We need to create some kotlin class with requirements:
 
 > On DynamicFeatureImpl class, there is 3 override methods:
 > <br> - `getView()`  : will be used for return view.
-> <br> - `getTopView()`  : will be used for top view (nullable)
-> <br> - `getSubMenus()`  : for return submenus to show on keyboard navigation.<br>
+> <br> - `getTopView()`  : will be used for top view (optional).
+> <br> - `getSubMenus()`  : for return submenus to show on keyboard navigation (optional).<br>
 
 4. Start build your own feature by `KeyboardActionView` class.
 
@@ -219,6 +220,7 @@ override fun onCreate() {
    - the parent layout height should `MATCH_PARENT`
    - minimum height total about 250 dp, if not the view will look hanging & not fulfill the keyboard
    - for `EditText` set focusable to `false` and use `setOnClickListener` for action `requestInput()`.
+
 5. Define the view binding and initiate the `viewLayout` variable
 
 ```kotlin
@@ -228,7 +230,7 @@ override fun onCreate() {
     }
 ```
 
-6. Give some logic as needed like back navigation.
+6. Give some logic as needed like back navigation. Please see [Code Architecture](#code-architecture) about code style and architecture.
 
 ```kotlin
 binding.apply {
@@ -261,6 +263,19 @@ submitBtn.setOnClickListener {
 ```
 
 9. Done. Next step do [testing](#testing).
+
+## Code Architecture
+1. The main code languages should use Kotlin and Java as alternatives.
+2. Always try to practice Kotlin's official [coding-conventions](https://kotlinlang.org/docs/coding-conventions.html)
+    - Take detail on [Naming rules](https://kotlinlang.org/docs/coding-conventions.html#naming-rules) to make code easy to understand and maintenance.
+3. Some Libraries recommendation :
+    - [Android Jetpack](https://developer.android.com/jetpack) :  material design, view binding, room for database, and others
+    - [Retrofit](https://square.github.io/retrofit/) for networking
+    - [Chucker](https://github.com/ChuckerTeam/chucker) for network logging
+    - [Timber](https://github.com/JakeWharton/timber) for logging
+    - [Glide](https://github.com/bumptech/glide) for load images
+4. Use common code patterns like MVC, MVP, MVVM, Clean Architecture. Don't put all view and logic code in a single class.
+5. We're open to implementing the new technology or suggestions, as long as it works and make it better.
 
 ## Resource File Rules
 
