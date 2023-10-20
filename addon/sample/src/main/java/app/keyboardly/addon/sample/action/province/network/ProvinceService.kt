@@ -1,0 +1,57 @@
+package app.keyboardly.addon.sample.action.province.network
+
+import android.content.Context
+import app.keyboardly.addon.sample.action.province.model.Province
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.*
+import java.util.concurrent.TimeUnit
+
+interface ProvinceService {
+
+    @GET("d223b1f036a963360f57cebf363fb9bb/raw/50b4383720eea7c9c81cc27b75e6bdf405b209b5/id-provincy-list.json")
+    suspend fun getList(): MutableList<Province>?
+
+    companion object {
+        private const val URL = "https://gist.github.com/fnzainal/"
+
+        fun client(context: Context): ProvinceService {
+            val httpClient = OkHttpClient.Builder()
+                .connectTimeout(40, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+
+            httpClient.apply {
+                addNetworkInterceptor(
+                    ChuckerInterceptor.Builder(context)
+                        .build()
+                )
+
+                addInterceptor { chain ->
+                    val req = chain.request()
+                    val response = chain.proceed(req)
+
+                    if (response.code == 400) {
+
+                        val body = response.body?.string().toString()
+                        if (body.contains("Token")) {
+//                            logoutFromAccount(context)
+                        }
+                    }
+                    return@addInterceptor response
+                }
+                cache(null)
+            }
+
+            return Retrofit.Builder()
+                .baseUrl(URL)
+                .client(httpClient.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ProvinceService::class.java)
+        }
+
+    }
+}

@@ -90,4 +90,5 @@ dependencies {
 
     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.8.0'
 
+    debugImplementation "com.github.chuckerteam.chucker:library:4.0.0"
 }

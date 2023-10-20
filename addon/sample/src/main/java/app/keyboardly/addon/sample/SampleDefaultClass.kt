@@ -2,6 +2,7 @@ package app.keyboardly.addon.sample
 
 import app.keyboardly.addon.sample.action.campaign.CampaignActionView
 import app.keyboardly.addon.sample.action.profile.WelcomeActionView
+import app.keyboardly.addon.sample.action.province.ProvinceListActionView
 import app.keyboardly.addon.sample.action.register.RegisterActionView
 import app.keyboardly.addon.sample.action.shopping.ShoppingActionView
 import app.keyboardly.addon.sample.action.top.TopActionView
@@ -25,6 +26,7 @@ class SampleDefaultClass(
     private val welcomeActionView = WelcomeActionView(dependency)
     private val topActionView = TopActionView(dependency)
     private val dashboardActionView = DashboardActionView(dependency)
+    private val provinceActionView = ProvinceListActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
@@ -67,7 +69,6 @@ class SampleDefaultClass(
                 TOP_VIEW,
                 nameString = "Top View",
                 icon = R.drawable.sample_ic_round_settings_24_bot,
-                enable = true,
                 topView = true
             )
         )
@@ -76,7 +77,13 @@ class SampleDefaultClass(
                 DASHBOARD,
                 nameString = "Dashboard",
                 icon = R.drawable.sample_ic_round_bedroom_parent_24,
-                enable = true
+            )
+        )
+        menu.add(
+            NavigationMenuModel(
+                PROVINCE,
+                nameString = "Provinces",
+                icon = R.drawable.sample_provinces_city_24,
             )
         )
     }
@@ -98,6 +105,7 @@ class SampleDefaultClass(
             WELCOME -> welcomeActionView
             TOP_VIEW -> topActionView
             DASHBOARD -> dashboardActionView
+            PROVINCE -> provinceActionView
             else -> null
         }
 
@@ -125,5 +133,6 @@ class SampleDefaultClass(
         private const val WELCOME = 4
         private const val TOP_VIEW = 5
         private const val DASHBOARD = 6
+        private const val PROVINCE = 7
     }
 }

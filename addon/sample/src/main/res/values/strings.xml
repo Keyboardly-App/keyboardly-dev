@@ -17,4 +17,5 @@
     <string name="dashboard">Dashboard</string>
     <string name="amount_cash">amount cash</string>
     <string name="note">note</string>
+    <string name="province">Province</string>
 </resources>
