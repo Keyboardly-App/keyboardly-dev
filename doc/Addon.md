@@ -32,7 +32,7 @@ All live add-ons are listed on [marketplace](https://keyboardly.app/addons-marke
 
 See [this module](/addon/sample) for full sample add-on.
 
-For the video version, take a look at [this youtube playlist](https://youtube.com/playlist?list=PLjByoAiq9W7V04GnPbwLmcCuZdA-iiTcE).
+For the video version, take a look at [this YouTube playlist](https://youtube.com/playlist?list=PLjByoAiq9W7V04GnPbwLmcCuZdA-iiTcE).
 [![youtube-playlist.png](assets/youtube-playlist.png)](https://youtube.com/playlist?list=PLjByoAiq9W7V04GnPbwLmcCuZdA-iiTcE)
 
 ## Tools
@@ -93,7 +93,7 @@ To create an add-on, start by creating a dynamic feature module:
 
 > <b>Note:<b>
 > - the module name should be registered on the dashboard, as explained on [above](#register-add-on).
-> - the package id should have a prefix with `app.keyboardly.addon`
+> - the package ID should have a prefix with `app.keyboardly.addon`
 
 On this dialog fill title and choose **on-demand only**
 
@@ -151,7 +151,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
 }
 ```
-> Take attention to proguardFile's configuration, it should be commented/removed.
+> Take attention to proguardFile's configuration, it should be commented on/removed.
 
 ## Setup Base Class
 
@@ -216,7 +216,7 @@ override fun onCreate() {
 4. Create xml layout like a common layout for fragments or activity. Please take a look the [resource file rule](#resource-file-rules) and [styling](#styling).<br>
    And here is some note for layout xml of action view:<br>
 
-   - must contain a back button for navigation back to add on / keyboard navigation, because back press (on physics device) will detected from the launcher system and hide the keyboard itself.
+   - must contain a back button for navigation back to add on / keyboard navigation, because back press (on physics device) will detect from the launcher system and hide the keyboard itself.
    - the parent layout height should `MATCH_PARENT`
    - minimum height total of about 250 dp, if not the view will look hanging & not fulfill the keyboard
    - for `EditText` set focusable to `false` and use `setOnClickListener` for action `requestInput()`.
@@ -269,12 +269,12 @@ submitBtn.setOnClickListener {
 2. Always try to practice Kotlin's official [coding-conventions](https://kotlinlang.org/docs/coding-conventions.html)
     - Take detail on [Naming rules](https://kotlinlang.org/docs/coding-conventions.html#naming-rules) to make code easy to understand and maintenance.
 3. Some Libraries recommendation :
-    - [Android Jetpack](https://developer.android.com/jetpack) :  material design, view binding, room for database, and others
+    - [Android Jetpack](https://developer.android.com/jetpack):  material design, view binding, room for database, and others
     - [Retrofit](https://square.github.io/retrofit/) for networking
     - [Chucker](https://github.com/ChuckerTeam/chucker) for network logging
     - [Timber](https://github.com/JakeWharton/timber) for logging
     - [Glide](https://github.com/bumptech/glide) for load images
-4. Use common code patterns like MVC, MVP, MVVM, Clean Architecture. Don't put all view and logic code in a single class.
+4. Use common code patterns like MVC, MVP, MVVM, and Clean Architecture. Don't put all view and logic code in a single class.
 5. We're open to implementing the new technology or suggestions, as long as it works and make it better.
 
 ## Resource File Rules
@@ -283,7 +283,7 @@ To prevent the risk of conflict when compiling/merging with the main source code
 
 - Resource file here means only files under the resource folder `drawable` and `layout`.
 - The file name should start with `add on name id`.
-- For example an add-on with id `sample`, all the file should be like : `sample_login_activity.xml`, `sample_icon_addon.png`.
+- For example an add-on with the id `sample`, all the files should be like: `sample_login_activity.xml`, `sample_icon_addon.png`.
 
 ## Styling
 
@@ -306,7 +306,7 @@ To make your add-on fit with the keyboard theme, there is two way:
           android:inputType="text" />
 ```
 
-2. Make your own theme and validate through KeyboardDependency. On keyboard dependency there are two method
+2. Make your own theme and validate through KeyboardDependency. On keyboard dependency, there are two method
 
 - `isDarkMode()` : for validate the keyboard theme is dark or bright
 - `isBorderMode()` : for validate the keyboard button style, with border or not
@@ -380,7 +380,7 @@ override fun onClickMenu(data: NavigationMenuModel) {
     }
 ```
 
-4. Add the logic what should do
+4. Add the logic of what should do
 
 ```kotlin
 override fun onClickMenu(data: NavigationMenuModel) {
@@ -405,7 +405,7 @@ override fun onClickMenu(data: NavigationMenuModel) {
 
 ## App's Addon Navigation Configuration
 
-To make app's add on navigation, follow this way:
+To make the app's add-on navigation, follow this way:
 
 1. include a dynamic navigation graph of the add-on to the default navigation graph. for sample:
 
@@ -417,7 +417,7 @@ To make app's add on navigation, follow this way:
     app:graphPackage="${applicationId}.sample"/>
 ```
 
-2. set the root navigation id of add-on same with id on include-dynamic.
+2. set the root navigation id of the add-on the same as ID on include-dynamic.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -443,7 +443,7 @@ done.
 
 ## Proguard rules
 
-On the main source code app, the proguard / minify enabled.
+On the main source code app, the proguard / minify is enabled.
 
 - Make sure the add-on has consumer-rules.pro to prevent error / failed load of the add-on.
 - Be patient to keep some important
@@ -464,15 +464,15 @@ On the main source code app, the proguard / minify enabled.
 }
 ```
 
-- Don't forget to keep the model data class if exist.
+- Don't forget to keep the model data class if exists.
 
 see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 
 ## Testing
 
-1. Don't forget insert data `add on` to the [list navigation](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228) as mentioned on [this](#load-add-on)
-2. And for navigation app's add on (if exist) in [this list](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77)
-3. Open `Run > Edit Configuration..` and make sure the dynamic module checked on `installation-option` section :
+1. Don't forget to insert data `add on` to the [list navigation](../app/src/main/java/app/keyboardly/dev/keyboard/keypad/keyboardaction/KeyboardNavigation.kt#L204-228) as mentioned on [this](#load-add-on)
+2. And for navigation app's add-on (if exist) in [this list](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnViewModel.kt#L15-34) and [list navigation id](/app/src/main/java/app/keyboardly/dev/ui/addon/AddOnFragment.kt#L69-77)
+3. Open `Run > Edit Configuration..` and make sure the dynamic module is checked on the `installation-option` section :
 
 <p align="center">
     <img src="assets/install-option.png" >
@@ -484,26 +484,26 @@ see full sample [consumer-rules.pro](/addon/sample/consumer-rules.pro).
 ### Indicator success launched of add-on:
 
 - On the navigation keyboard, if add on clicked `->` success shows submenu/view from add on. And the `add on` works functionally.
-- On the App menu, when opening the add-on menu and then clicking the `add on`, it should load the fragment from the add-on (if exist).
+- On the App menu, when opening the add-on menu and then clicking the `add on`, it should load the fragment from the add-on (if exists).
 
 ## Pre-production Test
-This test to make sure the add on is works on production
+This test is to make sure the add-on is works in production
 
 ### Preparation
-Before build the addon, please make sure and double check :
+Before building the addon, please make sure and double-check :
 1. The add-on can be installed and opened successfully with the source code on this repo.
 2. All views and buttons work properly
 3. No display is cut off or has problems with the user experience
 4. Work nicely on light and dark themes
 5. Nothing force close, ANR / freeze
 6. Clean the project from Android Studio by `Build > Clean Project`
-7. Compress your addon root folder to zip file.
+7. Compress your addon root folder to a zip file.
 
 <p align="center">
     <img src="assets/export-zip.gif" >
 </p>
 
-> Note: just compress your add-on root folder not the 'addon' folder.
+> Note: just compress your add-on root folder, not the 'addon' folder.
 
 ### Build Time
 
@@ -517,14 +517,15 @@ Before build the addon, please make sure and double check :
     <img src="assets/dashboard-detail-addon.png" >
 </p>
 
-5. Dialog will appeared, change the description and icon (optional). Select the zip file and click `Build` button.
+5. Dialog will appear, change the description and icon (optional). Select the zip file and click `Build` button.
 <p align="center">
     <img src="assets/build-addon-dialog.png" >
 </p>
 
-6. The build process is about 15-20 minutes if success. 
+6. The build process is about 15-20 minutes if successful. 
 <p align="center">
     <img src="assets/addon-building.png" >
 </p>
 
-7. If the build success, download the *.apk file and try it on the real device.
+7. If the build is successful, download the *.apk file and try it on the real device.
+8. If failed, check the error detail, fix it, and rebuild.
