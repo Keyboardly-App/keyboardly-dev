@@ -6,6 +6,6 @@ package app.keyboardly.addon.sample.action.province.model
 data class Province(
     val id: String,
     val name: String,
-    val latitude: Float,
-    val longitude: Float,
+    val latitude: Double,
+    val longitude: Double,
 )

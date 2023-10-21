@@ -2,30 +2,32 @@ package app.keyboardly.addon.sample.action.province.network
 
 import android.content.Context
 import app.keyboardly.addon.sample.action.province.model.Province
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * Created by Zainal on 20/10/2023 - 16:07
  */
 class ProvinceRepository(
     context: Context,
-    private val presenter: IProvincePresenter
+    private var presenter: IProvincePresenter,
+    private val scope: CoroutineScope
 ) {
 
     private val service = ProvinceService.client(context)
-    private val scope = CoroutineScope(Dispatchers.Default)
 
     fun getList(){
         presenter.onLoading()
         scope.launch {
             try {
                 val list = service.getList()
-                presenter.onSuccess(list)
+                withContext(Dispatchers.Main) {
+                    presenter.onSuccess(list)
+                }
             } catch (e: Exception){
                 e.printStackTrace()
-                presenter.onError(e.message)
+                withContext(Dispatchers.Main) {
+                    presenter.onError(e.message)
+                }
             }
         }
     }

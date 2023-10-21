@@ -1,7 +1,10 @@
 package app.keyboardly.addon.sample.action.province
 
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import app.keyboardly.addon.sample.action.province.model.Province
@@ -13,6 +16,9 @@ import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.lib.helper.OnViewReady
 import app.keyboardly.style.helper.gone
 import app.keyboardly.style.helper.visible
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import timber.log.Timber
 
 /**
@@ -24,19 +30,22 @@ class ProvinceListActionView(
 
     private var topRecyclerView: RecyclerView? = null
     private var provinceListAdapter: ProvinceListAdapter? = null
-    private var listProvinces: MutableList<Province> = mutableListOf()
+    private var listData: MutableList<Province> = mutableListOf()
     private var binding : SampleProvinceListLayoutBinding? = null
-    private var repository = ProvinceRepository(getContext(), this)
+    private var job = Job()
+    private val scope = CoroutineScope(job + Dispatchers.Main)
+    private var repository = ProvinceRepository(getContext(), this,scope)
 
     override fun onCreate() {
         binding = SampleProvinceListLayoutBinding.inflate(getLayoutInflater())
 
         binding?.apply {
-            list.apply {
-                provinceListAdapter = ProvinceListAdapter(context, listProvinces) {
+            listProvincesRV.apply {
+                provinceListAdapter = ProvinceListAdapter(context, listData) {
                     toast("Selected province:\n${it.name}")
                 }
-                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(dependency.getContext())
                 adapter = provinceListAdapter
             }
 
@@ -62,7 +71,7 @@ class ProvinceListActionView(
                     inputOnFloatingView = true,
                     onCloseSearch = {
                         topRecyclerView = null
-                        provinceListAdapter?.updateList(listProvinces)
+                        provinceListAdapter?.updateList(listData)
                     },
                     textWatcher = object :TextWatcher{
                         override fun beforeTextChanged(
@@ -79,13 +88,13 @@ class ProvinceListActionView(
                             count: Int
                         ) {
                             if (topRecyclerView!=null){
-                                val listForFilter = listProvinces
+                                val listForFilter = listData
                                 val query = s?.toString()
                                 if (query!=null){
                                     val filtered = listForFilter.filter { it.name.lowercase().contains(query) }
                                     provinceListAdapter?.updateList(filtered)
                                 } else {
-                                    provinceListAdapter?.updateList(listProvinces)
+                                    provinceListAdapter?.updateList(listData)
                                 }
                             } else {
                                 Timber.e("empty top recyclerview")
@@ -101,31 +110,54 @@ class ProvinceListActionView(
         viewLayout = binding?.root
     }
 
+    override fun onResume() {
+        repository.getList()
+        super.onResume()
+    }
+
     override fun onLoading() {
         loading()
     }
 
     private fun loading(isLoading: Boolean=true) {
-
-        if (isLoading) {
-            binding?.progress?.visible()
-            binding?.list?.gone()
-        } else {
-            binding?.progress?.gone()
-            binding?.list?.visible()
+        Handler(Looper.getMainLooper()).post {
+            binding?.apply {
+                if (isLoading) {
+                    progress.visible()
+                    listProvincesRV.gone()
+                } else {
+                    progress.gone()
+                    listProvincesRV.visible()
+                }
+            }
         }
     }
 
-    override fun onSuccess(list: MutableList<Province>?) {
-        loading(false)
-        if (list!=null){
-            provinceListAdapter?.updateList(list)
-        } else {
-            toast("List is empty")
+    override fun onSuccess(listData: MutableList<Province>?) {
+        Timber.i("list="+listData?.size)
+        binding?.apply {
+            Handler(Looper.getMainLooper()).post {
+                loading(false)
+                if (listData!=null){
+                    provinceListAdapter?.updateList(listData)
+                    listProvincesRV.visible()
+                    listProvincesRV.layoutManager = LinearLayoutManager(getContext())
+                    listProvincesRV.adapter = provinceListAdapter
+
+                    Timber.i("list child=${listProvincesRV.childCount}")
+                    Timber.i("list visible=${listProvincesRV.isVisible}")
+                    Timber.i("adapter=${provinceListAdapter?.itemCount}")
+                } else {
+                    toast("List is empty")
+                }
+            }
         }
     }
 
     override fun onError(error: String?) {
         loading(false)
+        Handler(Looper.getMainLooper()).post {
+            toast(error?:"Error getting data.")
+        }
     }
 }
