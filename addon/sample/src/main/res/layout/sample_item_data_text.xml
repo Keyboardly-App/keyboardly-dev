@@ -5,6 +5,7 @@
     android:id="@+id/parentCampaign"
     android:padding="@dimen/_10sdp"
     android:orientation="vertical"
+    android:background="?selectableItemBackground"
     style="?actionKeyboardStyle"
     xmlns:tools="http://schemas.android.com/tools">
 
