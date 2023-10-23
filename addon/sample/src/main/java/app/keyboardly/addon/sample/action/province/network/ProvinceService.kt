@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 interface ProvinceService {
 
-    @GET("d223b1f036a963360f57cebf363fb9bb/raw/50b4383720eea7c9c81cc27b75e6bdf405b209b5/id-provincy-list.json")
+    @GET("d223b1f036a963360f57cebf363fb9bb/raw/d4292b351175c3e1ca77ddb98127b0f01babc0b4/id-provincy-list.json")
     suspend fun getList(): MutableList<Province>?
 
     companion object {

@@ -47,9 +47,9 @@ class ProvinceListAdapter(
             data.apply {
                 titleTv.text = name
                 descTv.text = buildString {
-                                append("latitude | longitude : ")
+                                append("geo location : ")
                                 append(latitude)
-                                append(" | ")
+                                append(",")
                                 append(longitude)
                             }
                 root.setOnClickListener {

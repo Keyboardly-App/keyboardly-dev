@@ -9,11 +9,12 @@ import kotlinx.coroutines.*
  */
 class ProvinceRepository(
     context: Context,
-    private var presenter: IProvincePresenter,
-    private val scope: CoroutineScope
+    private var presenter: IProvincePresenter
 ) {
 
     private val service = ProvinceService.client(context)
+    private var job = Job()
+    private val scope = CoroutineScope(job + Dispatchers.Main)
 
     fun getList(){
         presenter.onLoading()

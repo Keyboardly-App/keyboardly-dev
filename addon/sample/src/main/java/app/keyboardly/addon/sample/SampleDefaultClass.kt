@@ -37,6 +37,13 @@ class SampleDefaultClass(
     private fun initMenuList() {
         menu.add(
             NavigationMenuModel(
+                PROVINCE,
+                nameString = "Provinces",
+                icon = R.drawable.sample_provinces_city_24,
+            )
+        )
+        menu.add(
+            NavigationMenuModel(
                 WELCOME,
                 nameString = "Welcome",
                 icon = R.drawable.sample_ic_round_account_circle_24_bot_feature,
@@ -77,13 +84,6 @@ class SampleDefaultClass(
                 DASHBOARD,
                 nameString = "Dashboard",
                 icon = R.drawable.sample_ic_round_bedroom_parent_24,
-            )
-        )
-        menu.add(
-            NavigationMenuModel(
-                PROVINCE,
-                nameString = "Provinces",
-                icon = R.drawable.sample_provinces_city_24,
             )
         )
     }
