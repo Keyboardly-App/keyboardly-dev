@@ -23,7 +23,7 @@ import timber.log.Timber
  */
 class ProvinceListActionView(
     dependency: KeyboardActionDependency
-) : KeyboardActionView(dependency), IProvincePresenter, InputPresenter {
+) : KeyboardActionView(dependency), IProvincePresenter {
 
     private var topRecyclerView: RecyclerView? = null
     private var provinceListAdapter: ProvinceListAdapter? = null
@@ -33,14 +33,14 @@ class ProvinceListActionView(
 
     override fun onCreate() {
         binding = SampleProvinceListLayoutBinding.inflate(getLayoutInflater())
+        provinceListAdapter = ProvinceListAdapter(getContext(), listData) {
+            toast("Selected province:\n${it.name}")
+        }
 
         binding?.apply {
-            provinceListAdapter = ProvinceListAdapter(getContext(), listData) {
-                toast("Selected province:\n${it.name}")
-            }
             listProvincesRV.apply {
                 setHasFixedSize(true)
-                layoutManager = LinearLayoutManager(dependency.getContext())
+                layoutManager = LinearLayoutManager(context)
                 adapter = provinceListAdapter
             }
 
@@ -143,9 +143,6 @@ class ProvinceListActionView(
             if (listData.isNotEmpty()){
 
                 provinceListAdapter?.updateList(listData)
-                listProvincesRV.visible()
-                listProvincesRV.layoutManager = LinearLayoutManager(getContext())
-                listProvincesRV.adapter = provinceListAdapter
 
                 Timber.i("list child=${listProvincesRV.childCount}")
                 Timber.i("list visible=${listProvincesRV.isVisible}")
@@ -160,9 +157,5 @@ class ProvinceListActionView(
     override fun onError(error: String?) {
         loading(false)
         toast(error?:"Error getting data.")
-    }
-
-    override fun onDone(text: String, editText: EditText?) {
-
     }
 }
