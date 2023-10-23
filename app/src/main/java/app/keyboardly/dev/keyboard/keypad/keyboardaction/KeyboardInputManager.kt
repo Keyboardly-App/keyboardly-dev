@@ -197,8 +197,8 @@ open class KeyboardInputManager(
 //        Timber.e("request input//%s", editTextTarget.getResources().getResourceName(editTextTarget.getId()));
         Timber.d("textwatcher=$textWatcher")
 
-        if (editTextTarget == null && mPresenter == null) {
-            throw IllegalAccessException("Edittext or InputPresenter can't be null")
+        if (editTextTarget == null && mPresenter == null && textWatcher==null) {
+            throw IllegalAccessException("Edittext, TextWatcher and InputPresenter can't be all null")
         }
 
         viewInputMode(true)
