@@ -21,12 +21,12 @@ class TopActionView(
 
             inputName.setOnClickListener {
                 inputName.requestFocus()
-                dependency.requestInput(inputName, inputOnFloatingView = true)
+                dependency.requestInput(inputName, inputOnTopActionView = true)
             }
 
             inputNumber.setOnClickListener {
                 inputNumber.requestFocus()
-                dependency.requestInput(inputNumber, inputOnFloatingView = true, inputType = InputType.TYPE_CLASS_NUMBER)
+                dependency.requestInput(inputNumber, inputOnTopActionView = true, inputType = InputType.TYPE_CLASS_NUMBER)
             }
 
             submitBtn.setOnClickListener {
