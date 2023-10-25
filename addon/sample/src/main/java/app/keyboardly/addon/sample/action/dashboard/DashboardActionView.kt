@@ -1,4 +1,4 @@
-package app.keyboardly.addon.sample.dashboard
+package app.keyboardly.addon.sample.action.dashboard
 
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView

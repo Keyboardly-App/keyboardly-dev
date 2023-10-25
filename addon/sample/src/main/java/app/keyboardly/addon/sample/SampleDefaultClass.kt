@@ -6,11 +6,13 @@ import app.keyboardly.addon.sample.action.province.ProvinceListActionView
 import app.keyboardly.addon.sample.action.register.RegisterActionView
 import app.keyboardly.addon.sample.action.shopping.ShoppingActionView
 import app.keyboardly.addon.sample.action.top.TopActionView
-import app.keyboardly.addon.sample.dashboard.DashboardActionView
+import app.keyboardly.addon.sample.action.dashboard.DashboardActionView
+import app.keyboardly.addon.sample.di.sampleModule
 import app.keyboardly.lib.DefaultClass
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.navigation.NavigationCallback
 import app.keyboardly.lib.navigation.NavigationMenuModel
+import org.koin.core.context.GlobalContext.loadKoinModules
 import timber.log.Timber
 
 /**
@@ -26,10 +28,12 @@ class SampleDefaultClass(
     private val welcomeActionView = WelcomeActionView(dependency)
     private val topActionView = TopActionView(dependency)
     private val dashboardActionView = DashboardActionView(dependency)
-    private val provinceActionView = ProvinceListActionView(dependency)
     private var menu = mutableListOf<NavigationMenuModel>()
 
     override fun onCreate() {
+        // load koin module
+        loadKoinModules(sampleModule)
+
         menu = mutableListOf()
         initMenuList()
     }
@@ -90,7 +94,7 @@ class SampleDefaultClass(
 
     override fun getSubmenus(): MutableList<NavigationMenuModel> {
         if (menu.isEmpty()) {
-            initMenuList()
+            onCreate()
         }
         dependency.setNavigationCallback(this)
         return menu
@@ -105,7 +109,7 @@ class SampleDefaultClass(
             WELCOME -> welcomeActionView
             TOP_VIEW -> topActionView
             DASHBOARD -> dashboardActionView
-            PROVINCE -> provinceActionView
+            PROVINCE -> ProvinceListActionView(dependency)
             else -> null
         }
 

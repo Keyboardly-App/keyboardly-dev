@@ -55,6 +55,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
+
     implementation "com.jakewharton.timber:timber:5.0.1"
     implementation "androidx.annotation:annotation:$androidAnnotationVersion"
 
@@ -66,5 +67,15 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
-    debugImplementation "com.github.chuckerteam.chucker:library:4.0.0"
+    // Koin
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt "androidx.room:room-compiler:$room_version"
+
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 }

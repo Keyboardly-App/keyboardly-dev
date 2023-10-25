@@ -10,8 +10,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import app.keyboardly.addon.sample.action.province.model.Province
+import app.keyboardly.addon.sample.data.model.Province
 import app.keyboardly.addon.sample.databinding.SampleItemDataTextBinding
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import timber.log.Timber
 
 
 class ProvinceListAdapter(
@@ -45,13 +48,20 @@ class ProvinceListAdapter(
         val data = list[position]
         with(holder){
             data.apply {
+                val isDateNull = date_time == null
+                val date = if (isDateNull) "" else date_time
                 titleTv.text = name
                 descTv.text = buildString {
                                 append("geo location : ")
                                 append(latitude)
                                 append(",")
                                 append(longitude)
-                            }
+                                if (!date.isNullOrEmpty()){
+                                    appendLine()
+                                    append(date)
+                                }
+
+                }
                 root.setOnClickListener {
                     onClick(data)
                 }

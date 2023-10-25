@@ -1,7 +1,7 @@
-package app.keyboardly.addon.sample.action.province.network
+package app.keyboardly.addon.sample.data.remote
 
 import android.content.Context
-import app.keyboardly.addon.sample.action.province.model.Province
+import app.keyboardly.addon.sample.data.model.Province
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -28,20 +28,6 @@ interface ProvinceService {
                     ChuckerInterceptor.Builder(context)
                         .build()
                 )
-
-                addInterceptor { chain ->
-                    val req = chain.request()
-                    val response = chain.proceed(req)
-
-                    if (response.code == 400) {
-
-                        val body = response.body?.string().toString()
-                        if (body.contains("Token")) {
-//                            logoutFromAccount(context)
-                        }
-                    }
-                    return@addInterceptor response
-                }
                 cache(null)
             }
 

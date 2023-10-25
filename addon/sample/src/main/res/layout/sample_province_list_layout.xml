@@ -10,6 +10,7 @@
     <LinearLayout
         android:id="@+id/header"
         app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -32,9 +33,22 @@
             android:layout_weight="1"
             android:layout_height="match_parent"/>
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/local"
+            android:text="Local"
+            app:switchPadding="@dimen/_5sdp"
+            android:src="@drawable/sample_outline_sd_storage_24"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="?selectableItemBackground"
+            android:layout_marginEnd="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
         <ImageView
             android:id="@+id/search"
             android:src="@drawable/ic_main_search"
+            android:background="?selectableItemBackground"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:layout_marginEnd="5dp"
