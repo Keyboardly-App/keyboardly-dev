@@ -76,4 +76,6 @@
     <color name="keyboard_light_color">#ECEFF1</color>
     <color name="keyboard_dark_color">#333333</color>
     <color name="header_background_color">@color/keyboard_light_color</color>
+    <color name="gray">#202020</color>
+    <color name="background_keyboard">#E4E4E4</color>
 </resources>
