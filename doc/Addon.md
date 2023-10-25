@@ -269,11 +269,13 @@ submitBtn.setOnClickListener {
 2. Always try to practice Kotlin's official [coding-conventions](https://kotlinlang.org/docs/coding-conventions.html)
     - Take detail on [Naming rules](https://kotlinlang.org/docs/coding-conventions.html#naming-rules) to make code easy to understand and maintenance.
 3. Some Libraries recommendation :
-    - [Android Jetpack](https://developer.android.com/jetpack):  material design, view binding, room for database, and others
+    - [Android Jetpack](https://developer.android.com/jetpack):  Material design, view binding, Room for database, and others
     - [Retrofit](https://square.github.io/retrofit/) for networking
     - [Chucker](https://github.com/ChuckerTeam/chucker) for network logging
     - [Timber](https://github.com/JakeWharton/timber) for logging
     - [Glide](https://github.com/bumptech/glide) for load images
+    - [Koin](https://insert-koin.io/docs/quickstart/android/) for dependency injection
+   > see sample implementation of Room, Retrofit, and Koin in [this class](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/province/ProvinceListActionView.kt)
 4. Use common code patterns like MVC, MVP, MVVM, and Clean Architecture. Don't put all view and logic code in a single class.
 5. We're open to implementing the new technology or suggestions, as long as it works and make it better.
 

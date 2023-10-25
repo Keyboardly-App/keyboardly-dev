@@ -307,7 +307,9 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 <p align="center">
     <img src="assets/request-input-text.png" width="250" alt="sample request input text">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L35-43)
+<br> 
+
+See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L35-43)
 
 ### Long Text Request Input
 The long request input is for long text but will appear with scrollable 2 lines inside the keyboard. <br>
@@ -315,21 +317,27 @@ Triggered via [KeyboardActionDependency](#keyboard-action-dependency) > `request
 <p align="center">
     <img src="assets/longtext-sample.png" width="250" alt="sample request input text">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L45)
+<br>
+
+See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L45)
 
 ### Chip Options
 Chip options are `ChipGroup` that can be configured via [KeyboardActionDependency](#keyboard-action-dependency) > `showChipOptions()`
 <p align="center">
     <img src="assets/chip-options.png" width="250" alt="sample chip options">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L52-59)
+<br> 
+
+See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L52-59)
 
 ### Date Picker
 Just like `Chip Options`, a KeyboardActionView can request input date via [KeyboardActionDependency](#keyboard-action-dependency) > `showDatePicker()`
 <p align="center">
     <img src="assets/datepicker-sample.png" width="250" alt="sample date picker">
 </p>
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L49)
+<br>
+
+See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L49)
 
 ### Top RecyclerView
 A recyclerview option that shows on top keyboard navigation. Usually, used when on input mode for quick search.
@@ -338,7 +346,9 @@ A recyclerview option that shows on top keyboard navigation. Usually, used when 
 </p>
 <br>
 To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showTopRecyclerView(...)` and combine it with `requestInput(...)` function.
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/campaign/CampaignActionView.kt#L109)
+<br>
+
+See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/campaign/CampaignActionView.kt#L109)
 
 ### RecyclerView Options
 Recyclerview options that appeared on the keyboard area. Can be modified by the layout manager as needed.
@@ -347,7 +357,9 @@ Recyclerview options that appeared on the keyboard area. Can be modified by the 
 </p>
 <br>
 To use it, triggered it from [KeyboardDependency](#keyboard-action-dependency) > `showTopRecyclerView(...)` and can be configured with title by `showTitleAboveList()`
-<br> See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/shopping/ShoppingActionView.kt#L61)
+<br>
+
+See sample on [this](/addon/sample/src/main/java/app/keyboardly/addon/sample/action/shopping/ShoppingActionView.kt#L61)
 
 ## Submenu Add On Navigation
 This submenu is a list of [NavigationMenuModel](/libraries/actionview/src/main/java/app/keyboardly/lib/navigation/NavigationMenuModel.kt),
