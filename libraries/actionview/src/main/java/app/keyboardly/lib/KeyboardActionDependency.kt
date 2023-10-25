@@ -65,7 +65,7 @@ interface KeyboardActionDependency {
     /**
      * view default keyboard navigation
      */
-    fun viewKeyboardNavigation()
+      fun viewKeyboardNavigation()
 
     /**
      * view default keyboard view
@@ -122,7 +122,7 @@ interface KeyboardActionDependency {
      * @param show : for show the title or hide it
      * @param title : text for the title
      * @param asFooter : if true, this mean the title layout on bottom as footer and
-     * on the above title is list from showFloatingRecyclerView()
+     * on the above title is list from showTopRecyclerView()
      * default value is false
      */
     fun showTitleAboveList(show: Boolean, title: String? = null, asFooter: Boolean?=false)
@@ -144,7 +144,7 @@ interface KeyboardActionDependency {
      * @param inputType : input type to default edit text. if null input type from editTextTarget
      * @param textWatcher : for add listen text watcher
      * @param onCloseSearch : method that called when close on edit text main
-     * @param inputOnFloatingView : flag for input on view above keyboard
+     * @param inputOnTopActionView : flag for input on view above keyboard
      * @param isCurrency : flag for currency input
      */
     fun requestInput(
@@ -156,7 +156,7 @@ interface KeyboardActionDependency {
         inputType: Int? = null,
         textWatcher: TextWatcher? = null,
         onCloseSearch: () -> Unit? = {},
-        inputOnFloatingView: Boolean? = false,
+        inputOnTopActionView: Boolean? = false,
         isCurrency: Boolean? = false
     )
 
@@ -167,7 +167,7 @@ interface KeyboardActionDependency {
     fun showRecyclerViewOptions(onViewReady: OnViewReady)
 
     /**
-     * show floating recyclerview options
+     * show top recyclerview options
      * the position is above keyboard navigation, usually use when on input mode.
      * @param onViewReady : to handle callback when recyclerview ready
      *
