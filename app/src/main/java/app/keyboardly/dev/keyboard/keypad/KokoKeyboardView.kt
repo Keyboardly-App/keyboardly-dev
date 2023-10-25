@@ -19,6 +19,10 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import app.keyboardly.dev.R
+import app.keyboardly.dev.databinding.DefaultKeyboardBinding
+import app.keyboardly.dev.databinding.QwertyKeypadLowercaseBinding
+import app.keyboardly.dev.databinding.QwertyKeypadUppercaseBinding
+import app.keyboardly.dev.databinding.QwertyKeypadWithNumBinding
 import app.keyboardly.dev.keyboard.di.BaseComponent
 import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
 import app.keyboardly.dev.keyboard.layouts.KeyboardLayout
@@ -161,12 +165,12 @@ open class KokoKeyboardView : ExpandableLayout {
         }
     }
 
-    fun loadKeyboard(type: Int, field: EditText) {
+    private fun loadKeyboard(type: Int, field: EditText) {
         keyboard = generateCorrectKeyboard(type, currentInputConnection!!)
         keyboards[field] = keyboard
         keyboards[field]?.registerListener(keyboardListener)
         val focused = field.isVisible
-        Timber.d("focused="+focused)
+//        Timber.d("focused="+focused)
         if (focused) {
             hideSoftKeyboard(field)
             activeEditField = field
@@ -408,14 +412,12 @@ open class KokoKeyboardView : ExpandableLayout {
                 keypad
             }
             INPUT_TYPE_QWERTY_NUM -> {
-                view = LayoutInflater.from(context)
-                    .inflate(R.layout.qwerty_keypad_with_num, null)
+                view = QwertyKeypadWithNumBinding.inflate(LayoutInflater.from(context)).root
                 keypad.addView(view)
                 keypad
             }
             else -> {
-                view = LayoutInflater.from(context)
-                    .inflate(R.layout.qwerty_keypad_with_num, null)
+                view = QwertyKeypadLowercaseBinding.inflate(LayoutInflater.from(context)).root
                 keypad.addView(view)
                 keypad
             }
@@ -425,15 +427,17 @@ open class KokoKeyboardView : ExpandableLayout {
     private fun initView(isLowerCase: Boolean?=true): KeyboardLayout{
         val keypad = KeyboardLayout(context, keyboardManager)
 
-        val view = LayoutInflater.from(context).inflate(R.layout.default_keyboard, null)
+        val layoutInflater = LayoutInflater.from(context)
+        val view = DefaultKeyboardBinding.inflate(layoutInflater).root
         container = KeyboardActionContainer(view, moduleHelper, this)
-        val keyboardView = if (isLowerCase!!){
-            LayoutInflater.from(context).inflate(R.layout.qwerty_keypad_lowercase, null)
-        } else {
-            LayoutInflater.from(context).inflate(R.layout.qwerty_keypad_uppercase, null)
-        }
+
+        val binding = if (isLowerCase!!){
+            QwertyKeypadLowercaseBinding.inflate(layoutInflater)
+        } else QwertyKeypadUppercaseBinding.inflate(layoutInflater)
+
+
         frameKeyboard = view.findViewById(R.id.keyboardView)
-        frameKeyboard?.addView(keyboardView)
+        frameKeyboard?.addView(binding.root)
 
         keypad.addView(view)
         return keypad

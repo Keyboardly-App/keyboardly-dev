@@ -15,8 +15,6 @@ android {
         versionCode 1
         versionName "1.0" // 19 Januari 2022
         multiDexEnabled true
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     kapt {
@@ -51,6 +49,11 @@ android {
     buildFeatures {
         dataBinding true
         viewBinding true
+    }
+
+    configurations{
+        all*.exclude module: 'okhttp'
+        all*.exclude module: 'okio'
     }
 }
 
@@ -90,5 +93,10 @@ dependencies {
 
     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.8.0'
 
-    debugImplementation "com.github.chuckerteam.chucker:library:4.0.0"
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+
+    // Koin
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 }
