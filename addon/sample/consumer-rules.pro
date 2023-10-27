@@ -79,3 +79,13 @@
 
 -keep class app.keyboardly.addon.sample.data.** { *; }
 -keep class app.keyboardly.addon.sample.data.model.** { *; }
+-keep class app.keyboardly.addon.sample.data.model.Province
+-keep class app.keyboardly.addon.sample.data.local.** { *; }
+-keep class app.keyboardly.addon.sample.data.local.dao.**{ *; }
+-keep class app.keyboardly.addon.sample.data.local.dao.ProvinceDao_Impl
+-keep class app.keyboardly.addon.sample.data.remote.** { *; }
+-keep class app.keyboardly.addon.sample.data.remote.ProvinceService
+
+-keep class * extends androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-dontwarn androidx.room.paging.**

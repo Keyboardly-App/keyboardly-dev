@@ -1,5 +1,6 @@
 package app.keyboardly.addon.sample.data.model
 
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,6 +10,7 @@ import androidx.room.PrimaryKey
 
 const val TABLE_PROVINCE = "tb_province"
 @Entity(tableName = TABLE_PROVINCE)
+@Keep
 data class Province(
     @PrimaryKey
     val id: String,
