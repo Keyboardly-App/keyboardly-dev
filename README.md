@@ -11,5 +11,6 @@ This repository is playground for development of Add On.
 
 ## Community
 Join our community for more discussion and development through these platforms :
-- [Discord](https://discord.gg/ffNNPU7F)
-- [Telegram](https://t.me/+ZGByTapdX1ljMDQ1)
+<br>
+- Discord [![](https://dcbadge.vercel.app/api/server/26zazeRwEc?style=flat)](https://discord.gg/26zazeRwEc)
+- Telegram [![](https://img.shields.io/badge/Keyboardly%20Community-12%20members-brightgreen?logo=telegram)](https://t.me/+ZGByTapdX1ljMDQ1)
