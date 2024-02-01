@@ -1,5 +1,6 @@
 package app.keyboardly.local.model
 
+import androidx.annotation.Keep
 import java.io.Serializable
 
 /**
@@ -9,6 +10,7 @@ import java.io.Serializable
  * @param imageResId : res id image, just for development
  * It just for a local test
  */
+@Keep
 data class Thumbnail(
     val url: String?=null,
     val imageResId:Int?=null,

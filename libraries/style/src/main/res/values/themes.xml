@@ -96,14 +96,16 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="backgroundTint">?brandColor</item>
+        <item name="android:backgroundTint">?brandColor</item>
         <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
     <style name="MainEditTextStyle.Dark">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/key_text_color_lxx_dark</item>
-        <item name="android:textColorHint">?brandColor</item>
-        <item name="backgroundTint">?brandColor</item>
+        <item name="android:textColorHint">@color/grey_500</item>
+        <item name="android:backgroundTint">@color/grey_500</item>
+        <item name="backgroundTint">@color/grey_500</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
         <item name="android:fontFamily">@font/inter_regular</item>
@@ -143,7 +145,7 @@
     <style name="TitleTextActionKeyboard" parent="TextAppearance.AppCompat.Small">
         <item name="android:textColor">?brandColor</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
     </style>

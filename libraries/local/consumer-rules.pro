@@ -1,3 +1,3 @@
 
 # keep style
--keep class com.qodrbee.woowaboard.local.model.**{*;}
+-keep class app.keyboardly.local.model.**{*;}
