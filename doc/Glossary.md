@@ -285,6 +285,16 @@ it should log in first before can access all the menu of the add-on.
         <td>-</td>
         <td> Set top view on keyboard layout, like add on menu.</td>
     </tr>
+    <tr>
+        <td>setKeyboardHeight(percent: Int)</td>
+        <td>-</td>
+        <td> Set height keyboard runtime.</td>
+    </tr>
+    <tr>
+        <td>doBackSpace</td>
+        <td>-</td>
+        <td> function for backspace on current active editor.</td>
+    </tr>
 </table>
 
 ## Keyboard Navigation

@@ -245,5 +245,10 @@ interface KeyboardActionDependency {
      * range the value should between : 50 - 300
      */
     fun setKeyboardHeight(percent: Int)
+
+    /**
+     * function for backspace on current active editor
+     * @param all : if true, will delete all text on current editor
+     */
     fun doBackSpace(all: Boolean?=false)
 }
