@@ -238,4 +238,12 @@ interface KeyboardActionDependency {
      */
     fun setTopActionView(view: View)
 
+    /**
+     * Set height keyboard runtime.
+     * default height keyboard is on setting menu will be default if on default menu / regular use
+     * @param percent : value for the height. for example 150 to 150% height keyboard.
+     * range the value should between : 50 - 300
+     */
+    fun setKeyboardHeight(percent: Int)
+    fun doBackSpace(all: Boolean?=false)
 }

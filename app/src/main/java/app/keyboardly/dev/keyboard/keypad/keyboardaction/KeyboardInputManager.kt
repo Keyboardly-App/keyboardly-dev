@@ -24,7 +24,7 @@ open class KeyboardInputManager(
     view: View,
     moduleHelper: DynamicModuleHelper,
     private val kokoKeyboardView: KokoKeyboardView
-) : KeyboardNavigation(view, moduleHelper){
+) : KeyboardNavigation(view, moduleHelper, kokoKeyboardView){
 
     private var mPresenter: InputPresenter? = null
     private var reInputFlag = false

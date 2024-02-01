@@ -25,8 +25,14 @@ class RegisterActionView (
     override fun onCreate() {
         binding = SampleRegisterFeatureLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
+        dependency.setKeyboardHeight(150)
         initClick()
         initFooter()
+    }
+
+    override fun onResume() {
+        dependency.setKeyboardHeight(150)
+        super.onResume()
     }
 
     private fun initClick() {

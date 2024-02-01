@@ -23,7 +23,8 @@ import timber.log.Timber
  */
 open class KeyboardNavigation(
     val view: View,
-    private val moduleHelper: DynamicModuleHelper
+    private val moduleHelper: DynamicModuleHelper,
+    private val kokoKeyboardView: KokoKeyboardView
 ) : KeyboardBaseId(view), NavigationCallback {
 
     private var adapterNavigation: NavigationMenuAdapter? = null
@@ -235,11 +236,13 @@ open class KeyboardNavigation(
                 goneOptionsView()
                 viewLayoutAction()
             } else {
+                kokoKeyboardView.resetHeight()
                 viewDefaultNavigation(defaultNavigation())
             }
         } else {
             if (!defaultHeader) {
                 defaultHeaderView()
+                kokoKeyboardView.resetHeight()
             } else {
                 Timber.w("default header is true.")
             }
@@ -329,6 +332,7 @@ open class KeyboardNavigation(
      * method for back to submenu's addon navigation, after view from submenu
      */
     fun viewAddOnNavigation() {
+        kokoKeyboardView.resetHeight()
         defaultInputLayout.gone()
         mainHeader.gone()
 //            titleHeader.gone()

@@ -27,6 +27,7 @@ import app.keyboardly.dev.keyboard.di.BaseComponent
 import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
 import app.keyboardly.dev.keyboard.layouts.KeyboardLayout
 import app.keyboardly.dev.keyboard.manager.KeyboardManager
+import app.keyboardly.dev.keyboard.manager.KeyboardManager.KEYCODE_BACKSPACE
 import app.keyboardly.dev.keyboard.manager.KeyboardManager.KeyboardListener
 import app.keyboardly.dev.keyboard.utils.DynamicModuleHelper
 import app.keyboardly.dev.keyboard.utils.InstallFeatureCallback
@@ -43,6 +44,7 @@ import timber.log.Timber
  * https://github.com/RowlandOti/KokoKeyboard
  */
 open class KokoKeyboardView : ExpandableLayout {
+    private var defaultHeight: Int = 0
     private lateinit var mOptionsDialog: AlertDialog
     private var currentInputConnection: InputConnection? = null
     private lateinit var field: EditText
@@ -282,6 +284,18 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.setTopActionView(view)
             }
 
+            override fun setKeyboardHeight(percent: Int) {
+                updateKeyboardViewRealtime(percent)
+            }
+
+            override fun doBackSpace(all: Boolean?) {
+                if (all!=null && all){
+                    keyboardManager.clearAll()
+                } else {
+                    keyboardManager.onKeyStroke(KEYCODE_BACKSPACE, false)
+                }
+            }
+
             override fun showChipOptions(
                 list: MutableList<Chip>,
                 callback: ChipGroupCallBack,
@@ -440,10 +454,38 @@ open class KokoKeyboardView : ExpandableLayout {
         frameKeyboard?.addView(binding.root)
 
         keypad.addView(view)
+        defaultHeight = height
         return keypad
     }
 
+    fun resetHeight(){
+        Timber.d("default=$defaultHeight")
+        if (defaultHeight>0){
+            updateKeyboardViewRealtime(100,defaultHeight)
+        }
+    }
 
+    fun updateKeyboardViewRealtime(percent: Int, heightParam:Int?=null) {
+        val headerHeight = container.headerShadowAction.height
+        if (defaultHeight==0){
+            defaultHeight = height
+        }
+        val constraintLayoutParams = frameKeyboard?.layoutParams
+        val actionParams = container.frame.layoutParams
+
+        Timber.d("height=$defaultHeight | $height | param=$heightParam")
+        if (percent > 0 && constraintLayoutParams!=null) {
+            val percentValue = percent.toDouble() / 100.0
+            val heightWithPercent = percentValue * (heightParam?:defaultHeight)
+            Timber.d("height=$heightWithPercent")
+            constraintLayoutParams.height = heightWithPercent.toInt() - headerHeight
+            actionParams.height = (heightWithPercent.toInt()+ headerHeight)
+            frameKeyboard?.layoutParams = constraintLayoutParams
+            container.frame.layoutParams = actionParams
+        } else {
+            Timber.e("height total invalid")
+        }
+    }
 
     companion object {
         var dependency: KeyboardActionDependency? = null
