@@ -9,7 +9,9 @@ import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.addon.sample.R
 import app.keyboardly.addon.sample.databinding.SampleRegisterFeatureLayoutBinding
+import app.keyboardly.style.helper.gone
 import app.keyboardly.style.helper.invisible
+import app.keyboardly.style.helper.visible
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
@@ -80,7 +82,11 @@ class RegisterActionView (
                 footerBackBtn.setOnClickListener {
                     dependency.viewAddOnNavigation()
                 }
-                footerFormReset.invisible()
+                footerFormReset.gone()
+                footerDeleteAll.visible()
+                footerDeleteAll.setOnClickListener {
+                    dependency.doBackSpace(true)
+                }
                 footerSubmitButton.text = "Save"
                 footerSubmitButton.setOnClickListener {
                     val registerText = StringBuffer()
