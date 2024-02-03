@@ -244,7 +244,7 @@ interface KeyboardActionDependency {
      * @param percent : value for the height. for example 150 to 150% height keyboard.
      * range the value should between : 50 - 300
      * see sample here:
-     * https://github.com/Keyboardly-App/keyboardly-dev/blob/2555ac44fb622af8188a64d052531ee1ab376a22/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L34]
+     * https://github.com/Keyboardly-App/keyboardly-dev/blob/main/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L34]
      * always call at onCreate and OnResume function of actionView class add-on
      */
     fun setKeyboardHeight(percent: Int)
@@ -253,7 +253,7 @@ interface KeyboardActionDependency {
      * function for backspace on current active editor
      * @param all : if true, will delete all text on current editor
      * see sample here:
-     * https://github.com/Keyboardly-App/keyboardly-dev/blob/2555ac44fb622af8188a64d052531ee1ab376a22/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L88]
+     * https://github.com/Keyboardly-App/keyboardly-dev/blob/main/addon/sample/src/main/java/app/keyboardly/addon/sample/action/register/RegisterActionView.kt#L88
      */
     fun doBackSpace(all: Boolean?=false)
 }
