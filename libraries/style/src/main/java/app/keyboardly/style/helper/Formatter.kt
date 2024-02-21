@@ -5,7 +5,12 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.text.Editable
+import android.text.InputFilter
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.TextWatcher
+import android.text.method.DigitsKeyListener
+import android.util.Log
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
 import org.threeten.bp.LocalDate
@@ -19,17 +24,15 @@ import java.io.IOException
 import java.io.OutputStream
 import java.math.BigInteger
 import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
-import android.text.InputFilter
-import android.text.SpannableStringBuilder
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
-import android.text.Spanned
-
-import android.text.method.DigitsKeyListener
 
 fun toIDR(number: BigInteger): String =
     "Rp" + NumberFormat.getNumberInstance(Locale.US).format(number).replace(",", ".")
@@ -381,39 +384,98 @@ fun textWatcherOnChange(onChange: (CharSequence?) -> Unit) = object : TextWatche
     }
 }
 
-fun decimalTextWatcher(editText: EditText) = object :  TextWatcher {
+val decimalRegex = "^(?:100(?:\\.0+)?|\\d{0,2}(?:\\.\\d{1,2})?)$".toRegex()
+
+fun decimalTextWatcher(editText: EditText,
+                       digitsBeforeZero: Int?=5,
+                       digitsAfterZero: Int?=5,
+                       ) = object :  TextWatcher {
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-
+    @SuppressLint("SetTextI18n")
     override fun afterTextChanged(s: Editable) {
-        val cursorPosition: Int = editText.selectionEnd
-        val originalStr: String = editText.text.toString()
-
-
-        editText.filters = arrayOf<InputFilter>(MoneyValueFilter(2))
-
+        val decimalSymbol: Char = decimalSymbol()
         editText.removeTextChangedListener(this)
+        editText.filters = arrayOf<InputFilter>(
+            DecimalDigitsInputFilter(digitsBeforeZero?:5, digitsAfterZero?:5)
+        )
         try {
             val value: String = editText.text.toString()
+//            Log.i("Formatter","value edittext=$value")
+
             if (value != "") {
-                if (value.contains(",")){
-                    return
+                if (value.startsWith(decimalSymbol)) {
+                    editText.setText("0$decimalSymbol")
+                    editText.setSelection(2)
                 }
-                if (value.startsWith(".")) {
-                    editText.setText("0.")
+                if (!isValidDecimalInput(s)) {
+                    // If the entered text is not a valid decimal, remove the last entered character
+                    s.delete(s.length - 1, s.length)
+                    editText.setSelection(value.length)
                 }
-                val str: String = editText.text.toString().replaceAfter(",", "")
-                if (value != "") editText.setText(getDecimalFormattedString(str))
-                val diff: Int = editText.text.toString().length - originalStr.length
-                editText.setSelection(cursorPosition + diff)
+
+/*                if (value.matches(decimalRegex)) {
+                    editText.setText(value)
+//                    val diff: Int = editText.text.toString().length - originalStr.length
+                    editText.setSelection(value.length)
+                } else {
+                    Log.e("Formatter","not match regex=$value")
+                }*/
             }
         } catch (ex: java.lang.Exception) {
             ex.printStackTrace()
         }
         editText.addTextChangedListener(this)
-
     }
 
+}
+
+fun isValidDecimalInput(text: CharSequence?): Boolean {
+    val decimal = decimalSymbol()
+    return text.isNullOrBlank() || Regex("^\\d*$decimal?\\d*\$").matches(text)
+}
+
+
+class DecimalDigitsInputFilter(
+    private val digitsBeforeZero: Int,
+    private val digitsAfterZero: Int
+) :
+    InputFilter {
+    private lateinit var mPattern: Pattern
+
+    init {
+        applyPattern(digitsBeforeZero, digitsAfterZero)
+    }
+
+    private fun applyPattern(digitsBeforeZero: Int, digitsAfterZero: Int) {
+        val decimalSymbol = decimalSymbol()
+        val maxStart = digitsBeforeZero - 1
+        val maxEnd = digitsAfterZero - 1
+        mPattern = Pattern.compile("^\\d{0,$maxStart}+($decimalSymbol\\d{0,$maxEnd}+)?$")
+    }
+
+    override fun filter(
+        source: CharSequence,
+        start: Int,
+        end: Int,
+        dest: Spanned,
+        dstart: Int,
+        dend: Int
+    ): String? {
+        val decimalSymbol = decimalSymbol()
+        if (dest.toString().contains(decimalSymbol)
+            || source.toString().contains(decimalSymbol)) applyPattern(
+            digitsBeforeZero + 2,
+            digitsAfterZero
+        ) else applyPattern(digitsBeforeZero, digitsAfterZero)
+        val matcher: Matcher = mPattern.matcher(dest)
+        return if (!matcher.matches()) "" else null
+    }
+}
+private fun decimalSymbol(): Char {
+    val format: DecimalFormat = DecimalFormat.getInstance(Locale.ENGLISH) as DecimalFormat
+    val symbols: DecimalFormatSymbols = format.decimalFormatSymbols
+    return symbols.decimalSeparator
 }
 
 class MoneyValueFilter(private val digits: Int) : DigitsKeyListener(false, true) {
@@ -429,6 +491,9 @@ class MoneyValueFilter(private val digits: Int) : DigitsKeyListener(false, true)
         var start = start
         var end = end
         val out = super.filter(source, start, end, dest, dstart, dend)
+
+        Log.i("Formatter","source=$source")
+
 
         // if changed, replace the source
         if (out != null) {
@@ -447,7 +512,7 @@ class MoneyValueFilter(private val digits: Int) : DigitsKeyListener(false, true)
 
         // Find the position of the decimal .
         for (i in 0 until dstart) {
-            if (dest[i] == '.') {
+            if (dest[i] == decimalSymbol()) {
                 // being here means, that a number has
                 // been inserted after the dot
                 // check if the amount of digits is right
@@ -461,7 +526,7 @@ class MoneyValueFilter(private val digits: Int) : DigitsKeyListener(false, true)
             }
         }
         for (i in start until end) {
-            if (source[i] == '.') {
+            if (source[i] == decimalSymbol()) {
                 // being here means, dot has been inserted
                 // check if the amount of digits is right
                 return if (dlen - dend + (end - (i + 1)) > digits) "" else break // return new SpannableStringBuilder(source,
@@ -476,8 +541,11 @@ class MoneyValueFilter(private val digits: Int) : DigitsKeyListener(false, true)
 }
 
 fun getDecimalFormattedString(value: String?): String {
+    Log.i("Formatter","value=$value")
     if (value != null && !value.equals("", ignoreCase = true)) {
-        val lst = StringTokenizer(value, ".")
+        val decimalSymbol = decimalSymbol()
+        val decimalSymbolString = decimalSymbol.toString()
+        val lst = StringTokenizer(value, decimalSymbolString)
         var str1: String = value
         var str2 = ""
         if (lst.countTokens() > 1) {
@@ -487,14 +555,14 @@ fun getDecimalFormattedString(value: String?): String {
         var str3 = ""
         var i = 0
         var j = -1 + str1.length
-        if (str1[-1 + str1.length] == '.') {
+        if (str1[-1 + str1.length] == decimalSymbol) {
             j--
-            str3 = "."
+            str3 = decimalSymbolString
         }
         var k = j
         while (true) {
             if (k < 0) {
-                if (str2.isNotEmpty()) str3 = "$str3.$str2"
+                if (str2.isNotEmpty()) str3 = "$str3$decimalSymbol$str2"
                 return str3
             }
             str3 = str1[k].toString() + str3
