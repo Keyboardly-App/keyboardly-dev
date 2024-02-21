@@ -38,6 +38,7 @@
         android:layout_margin="@dimen/_10sdp"
         android:hint="@string/amount_cash"
         android:focusable="false"
+        style="?mainEditTextActionKeyboardStyle"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -46,6 +47,7 @@
     <EditText
         android:id="@+id/discount"
         android:layout_margin="@dimen/_10sdp"
+        style="?mainEditTextActionKeyboardStyle"
         android:hint="@string/discount"
         android:focusable="false"
         android:layout_width="match_parent"
@@ -54,6 +56,7 @@
     <EditText
         android:id="@+id/note"
         android:layout_margin="@dimen/_10sdp"
+        style="?mainEditTextActionKeyboardStyle"
         android:hint="@string/note"
         android:focusable="false"
         android:inputType="text"
