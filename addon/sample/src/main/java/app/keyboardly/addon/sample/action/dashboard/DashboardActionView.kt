@@ -1,5 +1,6 @@
 package app.keyboardly.addon.sample.action.dashboard
 
+import android.text.InputType
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
 import app.keyboardly.addon.sample.databinding.SampleDashboardLayoutBinding
@@ -29,6 +30,10 @@ class DashboardActionView(
 
             amount.setOnClickListener {
                 dependency.requestInput(amount, isCurrency = true)
+            }
+
+            discount.setOnClickListener {
+                dependency.requestInput(discount, inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL)
             }
 
             note.setOnClickListener {

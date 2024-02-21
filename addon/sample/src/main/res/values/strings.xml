@@ -18,4 +18,5 @@
     <string name="amount_cash">amount cash</string>
     <string name="note">note</string>
     <string name="province">Province</string>
+    <string name="discount">discount (%)</string>
 </resources>

@@ -42,6 +42,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+
+    <EditText
+        android:id="@+id/discount"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="@string/discount"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <EditText
         android:id="@+id/note"
         android:layout_margin="@dimen/_10sdp"

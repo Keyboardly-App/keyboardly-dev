@@ -15,6 +15,7 @@ import app.keyboardly.style.helper.invisible
 import app.keyboardly.style.helper.visible
 import app.keyboardly.lib.helper.InputPresenter
 import app.keyboardly.style.helper.currencyTextWatcher
+import app.keyboardly.style.helper.decimalTextWatcher
 import timber.log.Timber
 
 /**
@@ -157,6 +158,7 @@ open class KeyboardInputManager(
 
         when(inputType){
             InputType.TYPE_CLASS_NUMBER -> kokoKeyboardView.setKeypadNumber()
+            InputType.TYPE_NUMBER_FLAG_DECIMAL -> kokoKeyboardView.setKeypadNumber()
             else -> {
                 if(isCurrency == true){
                     kokoKeyboardView.setKeypadNumber()
@@ -171,6 +173,9 @@ open class KeyboardInputManager(
             val currencyTextWatcher = currencyTextWatcher(mEditField)
             mEditField.addTextChangedListener(currencyTextWatcher)
             this.textWatcher = currencyTextWatcher
+        } else if (inputType == InputType.TYPE_NUMBER_FLAG_DECIMAL){
+            this.textWatcher = decimalTextWatcher(mEditField)
+            mEditField.addTextChangedListener(this.textWatcher)
         } else {
             if (textWatcher != null) {
                 mEditField.addTextChangedListener(textWatcher)

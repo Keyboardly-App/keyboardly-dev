@@ -18,6 +18,7 @@ buildscript {
         dagger_version = '2.44.2'
 
         materialVersion = '1.9.0'
+        material_version = '1.9.0'
         view_binding_version = '8.0.1'
 
         androidAnnotationVersion = '1.6.0'
